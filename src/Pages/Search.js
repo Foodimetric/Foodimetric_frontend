@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './pages.css'
 import ByFood from '../components/ByFood'
+import BodyMassIndex from '../components/Bmi'
 
 
 export function searchLoader (){
@@ -13,6 +14,8 @@ const SearchTab = () => {
     { title: 'Search for Nutrient', content: <ByFood searchfood={"Search Nutrient"} foodcategory={"Food Category"} weight={"Calorie"} foodgroup={"Food Group"}/>},
     { title: 'Multi-Food Search', content: <ByFood searchfood={"Search Multiple Food"} foodcategory={"Food Category"} weight={"Weight"} foodgroup={"Food Group"}/> },
     { title: 'Multi-Nutrient Search', content: <ByFood searchfood={"Search Multiple Nutrient"} foodcategory={"Food Category"} weight={"Calories"} foodgroup={"Food Group"}/> },
+    { title: 'BMI Calculator', content: <BodyMassIndex /> },
+
   ];
 
   const [activeTab, setActiveTab] = useState(0);
@@ -21,6 +24,7 @@ const SearchTab = () => {
     setActiveTab(index);
   };
 
+  console.log(activeTab);
   return (
     <div className="tab-page">
       <div className="tab-buttons">
@@ -35,6 +39,7 @@ const SearchTab = () => {
         ))}
       </div>
       <div className="tab-content">
+        {/* <button className='current_tab'>{tabs[activeTab].title}</button> */}
         <div>{tabs[activeTab].content}</div>
       </div>
     </div>

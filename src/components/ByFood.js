@@ -9,27 +9,39 @@ const ByFood = (props) => {
             <div className="search-form">
                 <div className="form-group">
                     <label htmlFor="searchFood">{props.searchfood}</label>
-                    <input type="text" id="searchFood" name="searchFood" />
-                    <img src={down} alt='down'/>
+                    <select id="searchFood" name="searchFood">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="foodCategory">{props.foodcategory}</label>
-                    <input type="text" id="foodCategory" name="foodCategory" />
-                    <img src={down} alt='down'/>
+                    <select id="foodCategory" name="foodCategory">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="weight">{props.weight}</label>
-                    <input type="text" id="weight" name="weight" />
-                    <img src={down} alt='down'/>
+                    <select id="weight" name="weight">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="foodGroup">{props.foodgroup}</label>
-                    <input type="text" id="foodGroup" name="foodGroup" />
-                    <img src={down} alt='down'/>
+                    <select id="foodGroup" name="foodGroup">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
                 </div>
             </div>
             <div className='proceed'>
-                <button>Proceed <img src={right} alt='right'  height={"20px"} width={"20px"}/></button>
+                <button>Proceed <img src={right} alt='right' height={"20px"} width={"20px"} /></button>
             </div>
         </>
     );

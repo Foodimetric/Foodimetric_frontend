@@ -1,52 +1,63 @@
 .tab-page {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 15px;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
-  }
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
 
-  
+
+.tab-buttons {
+  border-radius: 8px;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  background-color: #CECDCD;
+  padding: 8px 0px;
+}
+
+.tab-buttons button {
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+
+.tab-buttons button.active {
+  background-color: white;
+  border: 2px solid  rgba(224, 149, 35, 1);
+  /* background: linear-gradient(0deg, rgba(224, 149, 35, 0.5), rgba(224, 149, 35, 0.5)),linear-gradient(0deg, #CECDCD, #CECDCD); */
+
+}
+
+.tab-content {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.current_tab{
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border: 2px solid  rgba(224, 149, 35, 1);
+}
+/* Responsive Styles */
+
+@media (max-width: 480px) {
   .tab-buttons {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    max-width: 1100px;
-    margin: 0 auto;
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .tab-buttons button {
-    width: 100%;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    border-right:1px solid rgba(0, 0, 0, 0.1) ;
-  }
-  
-  .tab-buttons button.active {
-    background: linear-gradient(0deg, rgba(224, 149, 35, 0.5), rgba(224, 149, 35, 0.5)),linear-gradient(0deg, #CECDCD, #CECDCD);
-    border-radius: 6px;
 
+  .tab-buttons button {
+    margin-bottom: 10px;
   }
-  
-  .tab-content {
-    padding: 20px;
-  }
-  
-  /* Responsive Styles */
-  
-  @media (max-width: 480px) {
-    .tab-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .tab-buttons button {
-      margin-bottom: 10px;
-    }
-  }
-  
+}
