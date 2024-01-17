@@ -71,7 +71,7 @@
     .header-nav {
         display: none;
         margin-left: unset;
-        margin-left: 20px;
+        /* margin-left: 20px; */
     }
 
     .mobile .header-nav {
@@ -164,6 +164,25 @@
         background-color: black;
         border-radius: 10px;
     }
+}
+
+.profile-circle {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%; 
+    background-color: #e0e0e0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px; 
+}
+
+
+.profile-tab{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* Hero */
@@ -261,7 +280,22 @@
     right: 0;
 }
 
+
+.mobile{
+    display: none;
+}
 @media screen and (max-width: 768px) {
+    .desktop{
+        display: none;
+    }
+
+    .mobile{
+        display: block;
+    }
+
+    .profile-tab{
+        justify-content: end;
+    }
     .hero {
         height: auto;
         margin-top: 120px;
@@ -668,9 +702,14 @@
     height: auto;
 }
 
-.resources-container .card-text p {
-    font-size: 1rem;
+.resources-container .card-text a {
+    font-size: 0.8rem;
     line-height: 1.5;
+    text-decoration: none;
+}
+
+.resources-container .card-text a:hover, .resources-container .card-text a:focus, .resources-container .card-text a:active{
+    color: rgba(224, 148, 35, 0.959);
 }
 
 /* Media queries for responsive design */
@@ -726,6 +765,8 @@
     padding: 20px;
     background-color: #f9f9f9;
     font-size: 14px;
+    font-weight: 300;
+    word-spacing: 1;
 }
 
 @media (max-width: 600px) {
@@ -1001,3 +1042,61 @@
     cursor: pointer
   }
   
+  .search-container {
+  margin: 20px;
+  padding: 10px;
+ 
+}
+
+.search-label {
+  /* Your label styles */
+}
+
+.search-input {
+  width: 100%;
+  padding: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+.results-list {
+  list-style-type: none;
+  padding-left: 0;
+  height: 200px;
+  overflow-y: scroll;
+  margin-top:0.5rem;
+}
+
+.results-list::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.results-list::-webkit-scrollbar-track {
+  background: rgba(255, 185, 8, 0.685);
+  border-radius: 5px; /* Track (background) color */
+}
+
+.results-list::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.results-list::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hovered scrollbar thumb color */
+}
+
+
+.result-item {
+  margin: 5px 0;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.result-item:hover{
+    background-color: rgba(182, 182, 182, 0.199);
+}
+
+input[type="number"] {
+    width: 95%;
+
+}

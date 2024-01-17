@@ -1,53 +1,46 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SignupPage, { signupAction, signupLoader } from './Auth/Signup';
-import LandingPage, { landingLoader } from './Pages/Landingpage';
-import Header, { headerLoader } from './components/Header';
-import Login, { loginAction, loginLoader } from './Auth/Login';
-import SearchTab, { searchLoader } from './Pages/Search';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignupPage from './Auth/Signup';
+import LandingPage from './Pages/Landingpage';
+import Header from './components/Header';
+import Login from './Auth/Login';
+import SearchTab from './Pages/Search';
 import Error from './Pages/Error';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import UserProfile from './Pages/UserProfiile';
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Header />,
-    loader: headerLoader,
-    children: [
-      {
-        index: true,
-        element: <LandingPage/>,
-        loader: landingLoader,
-      },
-      {
-        path: "signup",
-        element: <SignupPage/>,
-        loader: signupLoader,
-        action: signupAction,
-      },
-      {
-        path: "login",
-        element: <Login />,
-        loader: loginLoader,
-        action: loginAction,
-      },
-      {
-        path: "search",
-        element: <SearchTab/>,
-        loader: searchLoader,
-      },
-      {
-        path: "*",
-        element: <Error />,
-      },
-    ],
-  },
-]);
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity
+    }
+  }
+})
 
 function App() {
   return (
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/signup' element={<SignupPage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path="/search" element={<SearchTab />} />
+            <Route path='/profile' element={<UserProfile />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
+        </div>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 

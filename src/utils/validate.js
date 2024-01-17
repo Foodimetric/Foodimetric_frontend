@@ -1,32 +1,33 @@
-export const validateForm = (email, password, fullName, useCase) => {
-    const errors = {};
+import { FOODIMETRIC_HOST_URL } from './getData';
 
-    if (useCase === "signup") {
-        if (!fullName.trim()) {
-            errors.fullName = 'Full name is required';
+export async function checkAuthenticationStatus() {
+    try {
+        const accessToken = JSON.parse(localStorage.getItem("Foodie-token"));
+
+        if (!accessToken) {
+
+            return "unauthenticated";
         }
-    }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.trim()) {
-        errors.email = 'Email address is required';
-    } else if (!emailRegex.test(email)) {
-        errors.email = 'Invalid email address';
-    }
+        const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/logged-user`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+            },
+        });
 
-    // Password validation
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    if (!password.trim()) {
-        errors.password = 'Password is required';
-    } else if (!passwordRegex.test(password)) {
-        errors.password =
-            'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number';
-    }
+        if (!response.ok) {
+            return "unauthenticated";
+        }
 
-    return {
-        isValid: Object.keys(errors).length === 0,
-        errors
-      };
-      
-};
+        const data = await response.json();
+        if (data?.payload?._id) {
+            return "authenticated";
+        } else {
+            return "unauthenticated";
+        }
+    } catch (error) {
+        console.error("Error checking authentication status:", error);
+        return "unauthenticated";
+    }
+}

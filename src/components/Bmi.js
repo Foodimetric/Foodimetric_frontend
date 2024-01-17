@@ -4,6 +4,7 @@ import './component.css';
 const BodyMassIndex = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [Bmi, setBmi] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   const handleWeightChange = (event) => {
@@ -16,6 +17,8 @@ const BodyMassIndex = () => {
 
   const handleProceedClick = () => {
     setShowModal(true);
+    const value = (parseFloat(weight) / Math.pow(parseFloat(height), 2))
+    setBmi(value);
   };
 
   const handleModalClose = () => {
@@ -27,7 +30,7 @@ const BodyMassIndex = () => {
       <div className="Bmi_weight">
         <label htmlFor="weight">Weight (kg):</label>
         <input
-          type="text"
+          type="number"
           id="weight"
           value={weight}
           onChange={handleWeightChange}
@@ -36,9 +39,9 @@ const BodyMassIndex = () => {
       </div>
 
       <div className="Bmi_height">
-        <label htmlFor="height">Height (m²):</label>
+        <label htmlFor="height">Height (m):</label>
         <input
-          type="text"
+          type="number"
           id="height"
           value={height}
           onChange={handleHeightChange}
@@ -55,7 +58,7 @@ const BodyMassIndex = () => {
           <div className="modal-content">
             <p className='Bmi-result'>BMI Result</p>
             <p>Your BMI is:</p>
-            <h3>{`Result Kgm²`}</h3>
+            <h3>{`${Bmi}Kgm²`}</h3>
             <button onClick={handleModalClose}>Close</button>
           </div>
         </div>

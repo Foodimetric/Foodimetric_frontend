@@ -16,21 +16,21 @@ const Easy = () => {
                             <div className="icon">
                                 <img src={easy_1} alt='step one' />
                             </div>
-                            <h3 className="card-heading">Search</h3>
+                            <h3 className="card-heading">Input</h3>
                         </div>
-                        <p className="card-text">Search for food by clicking on the search bar or simply type in the food in the search bar.</p>
+                        <p className="card-text">Input the required parameters such as weight of food in grams.</p>
                     </div>
                     <div className="arrow">
-                        <img src={arrow_1} alt='direction'/>
+                        <img src={arrow_1} alt='direction' />
                     </div>
                     <div className="card-group">
                         <div className="card">
                             <div className="icon">
-                            <img src={easy_2} alt='step two' />
+                                <img src={easy_2} alt='step two' />
                             </div>
-                            <h3 className="card-heading">Input</h3>
+                            <h3 className="card-heading">Search</h3>
                         </div>
-                        <p className="card-text">Input the required parameters such as weight of food in grams.</p>
+                        <p className="card-text">Search for food by clicking on the search bar or simply type in the food in the search bar.</p>
                     </div>
                     <div className="arrow">
                         <img src={arrow_2} alt='direction' />
@@ -49,5 +49,5 @@ const Easy = () => {
         </section>
     );
 }
- 
+
 export default Easy;

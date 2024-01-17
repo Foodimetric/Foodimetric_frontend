@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './component.css';
 import logo from '../assets/logo.svg'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import { checkAuthenticationStatus } from '../utils/validate';
+import ProfileTab from './Profile';
+import toast, { Toaster } from 'react-hot-toast';
 
-export function headerLoader (){
-  return "folake"
-
-}
 const Header = () => {
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [authenticationStatus, setAuthenticationStatus] = useState("loading");
 
   useEffect(() => {
+    checkAuthenticationStatus()
+      .then((status) => {
+        setAuthenticationStatus(status);
+      })
+      .catch((error) => {
+        console.error("Error checking authentication status:", error);
+        setAuthenticationStatus("unauthenticated");
+      });
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     setIsMobile(mediaQuery.matches);
 
@@ -30,6 +40,20 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleRedirect = () => {
+    const bearer = JSON.parse(localStorage.getItem("Foodie-token"));
+    if (!bearer) {
+      toast.error('Kindly login', {
+        duration: 3000,
+        icon: <img src="img/loadingError.svg" alt='error' />,
+        id: 'clipboard',
+        style: {
+          fontSize: '0.8rem',
+        },
+      });
+      return
+    }
+  }
   return (
     <header className={`header ${isMobile ? 'mobile' : ''} ${isFixed ? 'fixed' : ''}`}>
       <div className="container_box">
@@ -43,26 +67,35 @@ const Header = () => {
         </div>
         <nav className={`header-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul>
+            <div className='mobile'>
+              <ProfileTab status={authenticationStatus} />
+            </div>
             {isMobile && <h3>"Fuel your body, fuel the economy: the power of nutrition"</h3>}
-            <li>
+            {/* <li>
               <Link to={"/"}>Home</Link>
+            </li> */}
+            <li>
+              <HashLink smooth to="/#features">Features</HashLink>
             </li>
             <li>
-              <a href="#features">Features</a>
+              <HashLink smooth to='/#about-us' > About Us </HashLink>
             </li>
             <li>
-              <a href="#about-us">About Us</a>
+              <HashLink smooth to="/#resources-container">Resources</HashLink>
             </li>
-            <li>
-              <a href="#resources-container">Resources</a>
-            </li>
-            <li>
-              <a href="#faq-section">FAQs</a>
+            <li onClick={() => handleRedirect()}>
+              <Link smooth to="/search">Search</Link>
             </li>
           </ul>
         </nav>
-        <button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>
+        {(authenticationStatus === 'loading' || authenticationStatus === 'unauthenticated') && (<button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>)}
+        {authenticationStatus === 'authenticated' && (
+          <div className='desktop'>
+            <ProfileTab status={authenticationStatus} />
+          </div>
+        )}
       </div>
+      <Toaster />
       <Outlet />
     </header>
   );

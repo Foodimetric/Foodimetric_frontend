@@ -1,5 +1,6 @@
 import React from 'react';
-import partner from '../assets/feature_2.png'
+import diet from '../assets/diet.png'
+import adtech from '../assets/adtech.png'
 import './component.css'
 
 
@@ -9,17 +10,12 @@ const Partner = () => {
             <div className="container2">
                 <h2>Our Partners</h2>
                 <div className="partner-logos">
-                    <img src={partner} alt="Partner 1"/>
-                    <img src={partner} alt="Partner 2"/>
-                    <img src={partner} alt="Partner 3"/>
-                    <img src={partner} alt="Partner 4"/>
-                    <img src={partner} alt="Partner 5"/>
-                    <img src={partner} alt="Partner 6"/>
-                    <img src={partner} alt="Partner 7"/>
+                    <img src={diet} alt="Partner 1" />
+                    <img src={adtech} alt="Partner 2" />
                 </div>
             </div>
         </section>
     );
 }
- 
+
 export default Partner;

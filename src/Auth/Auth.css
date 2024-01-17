@@ -102,6 +102,15 @@ input:focus-visible {
     font-style: italic;
 }
 
+#name{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#name div:first-of-type{
+    margin-right: 2rem;
+}
 @media screen and (max-width: 768px) {
     .signup-container {
         margin-top: unset;
@@ -149,3 +158,4 @@ input:focus-visible {
         margin-top: 20px;
     }
 }
+
