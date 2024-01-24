@@ -8,17 +8,9 @@ import Resources from '../components/Resources';
 import Faq from '../components/Faq';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
-import { FOODIMETRIC_HOST_URL } from '../utils/getData';
 
 
 const LandingPage = () => {
-    const response = async () => {
-        const request = await fetch(FOODIMETRIC_HOST_URL, {
-            method: "GET"
-        })
-        const data = await request.json();
-        console.log(data);
-    }
     return (
         <>
             <Hero />

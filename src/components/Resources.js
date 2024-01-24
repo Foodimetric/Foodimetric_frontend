@@ -1,7 +1,6 @@
 import React from 'react';
 import "./component.css"
 import { data } from '../utils/data';
-import article from '../assets/article.png'
 
 const Resources = () => {
   return (

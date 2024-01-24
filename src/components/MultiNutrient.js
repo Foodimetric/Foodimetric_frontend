@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { multiNutrientSearch } from '../utils/findkey';
 
+const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames'];
 
 const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMultiNutrientResult }) => {
     const [selectedNutrient, setSelectedNutrient] = useState('');
@@ -8,8 +9,10 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
     const [selectedFood, setSelectedFood] = useState('');
     const [searchData, setSearchData] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [nutrient, setNutrient] = useState(null);
 
-    const hanleNutrientSave = (e) => {
+
+    const handleNutrientSave = (e) => {
         e.preventDefault();
         setFormSubmitted(false);
         const searchQuery = {
@@ -36,30 +39,39 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
         setSearchData([])
     }
 
-
+    const handleFoodChange = (e) => {
+        setSelectedFood(e.target.value);
+        const matchingDataItem = data?.payload.find((item) => item.foodName === e.target.value);
+        setNutrient(matchingDataItem?.details);
+    }
+    
     return (
         <>
             <div className='proceed' style={{ justifyContent: "end", width: '91%' }}>
-                <button onClick={hanleNutrientSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5 ? true : false}>Save</button>
+                <button onClick={handleNutrientSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5 ? true : false}>Save</button>
             </div>
             <form onSubmit={handleNutrientSubmit}>
+                <div className="form-group">
+                    <label htmlFor="foodCategory">{food}</label>
+                    <select id="foodCategory" name="foodCategory" value={selectedFood} onChange={(e) => handleFoodChange(e)}>
+                        <option value={""}></option>
+                        {data?.payload?.map((item) => (
+                            <option key={item._id} value={item.foodName}>
+                                {item.foodName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <div className="search-form">
                     <div className="form-group">
                         <label htmlFor="searchFood">{searchnutrient}</label>
                         <select id="searchFood" name="searchNutrient" value={selectedNutrient} onChange={(e) => setSelectedNutrient(e.target.value)}>
                             <option value={""}></option>
-                            <option value="CALCIUM">CALCIUM (mg)</option>
-                            <option value="IRON">IRON (mg)</option>
-                            <option value="MAGNESIUM">MAGNESIUM (mg)</option>
-                            <option value="PHOSPHORUS\n(mg)">PHOSPHORUS (mg)</option>
-                            <option value="POTASSIUM">POTASSIUM (mg)</option>
-                            <option value="SODIUM">SODIUM (mg)</option>
-                            <option value="ZINC">ZINC (mg)</option>
-                            <option value="COPPER">COPPER (mg)</option>
-                            <option value="VIT A RE">VIT A RE (mcg)</option>
-                            <option value="VIT A RAE">VIT A RAE (mcg)</option>
-                            <option value="RETINOL">RETINOL (mcg)</option>
-                            <option value="BETA-CAROTENE EQUIV">BETA-CAROTENE EQUIV</option>
+                            {nutrient && Object.entries(nutrient)
+                            .filter(([key]) => !excludeKeys.includes(key))
+                            .map(([key]) => (
+                                <option value={key}>{key}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="form-group">
@@ -77,17 +89,6 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
                             <option value="20">20</option>
                             <option value="10">10</option>
                             <option value="5">5</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="foodCategory">{food}</label>
-                        <select id="foodCategory" name="foodCategory" value={selectedFood} onChange={(e) => setSelectedFood(e.target.value)}>
-                            <option value={""}></option>
-                            {data?.payload?.map((item) => (
-                                <option key={item._id} value={item.foodName}>
-                                    {item.foodName}
-                                </option>
-                            ))}
                         </select>
                     </div>
                     <div style={{ display: "flex", gap: "1rem", marginTop: '1rem', justifyContent: 'center'}}>

@@ -92,7 +92,7 @@ const Footer = () => {
         <h4>Menu</h4>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="#features">Features</a>

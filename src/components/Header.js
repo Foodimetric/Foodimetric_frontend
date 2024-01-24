@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import './component.css';
 import logo from '../assets/logo.svg'
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { checkAuthenticationStatus } from '../utils/validate';
 import ProfileTab from './Profile';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Header = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

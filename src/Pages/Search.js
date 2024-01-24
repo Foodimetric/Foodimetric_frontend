@@ -22,7 +22,7 @@ const SearchTab = () => {
   const [multiFoodResults, setMultiFoodResults] = useState([]);
   const [selectedValue, setSelectedValue] = useState("100");
   const [multiNutrientResult, setMultiNutrientResult] = useState([]);
-  const { data, isLoading, isError } = useQuery(["foods"], fetchData)
+  const { data} = useQuery(["foods"], fetchData)
   const tabs = [
     { title: 'Search for Food', content: <ByFood searchfood={"Search Food"} foodcategory={"Quantity(g)"} weight={"Category"} data={data} render={true} setFood={setFoodResults} setSelectedValue={setSelectedValue} selectedValue={selectedValue}/> },
     { title: 'Search for Nutrient', content: <ByNutrient searchfood={"Search Nutrient"} foodcategory={"Nutrient quantity"} weight={"Food"} render={true} data={data} setNutrientResult={setNutrientResult} nutrientResult={nutrientResult} /> },
@@ -39,7 +39,7 @@ const SearchTab = () => {
       return
     }
 
-  }, []);
+  }, [navigate]);
 
   const handleTabClick = (index) => {
     setActiveTab(index);

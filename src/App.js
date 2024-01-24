@@ -6,9 +6,6 @@ import Login from './Auth/Login';
 import SearchTab from './Pages/Search';
 import Error from './Pages/Error';
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'

@@ -19,7 +19,7 @@ const SignupPage = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUserData((prev) => ({ ...prev, [name]: value }));
+        setUserData((prev) => ({ ...prev, [name]: value.trim() }));
     };
 
 
@@ -41,6 +41,7 @@ const SignupPage = () => {
             errors.email = 'Email is not valid';
         }
 
+        console.log(passwordRegex.test(data.password));
         if (!passwordRegex.test(data.password)) {
             errors.password = 'Password should include at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long';
         }

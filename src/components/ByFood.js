@@ -1,56 +1,51 @@
-import { useState } from 'react';
-import './search.css'
+import { useState, useEffect, useMemo } from 'react';
+import './search.css';
 
 const ByFood = (props) => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedFood, setSelectedFood] = useState('');
+    const [grams, setGrams] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
-    const handleCategoryChange = (e) => {
-        const selectedValue = e.target.value;
-        setSelectedCategory(selectedValue);
-        if (selectedValue === "Others") {
-            setFilteredData(props.data?.payload)
-            return;
+    useEffect(() => {
+        if (selectedCategory === "Others") {
+            setFilteredData(props.data?.payload);
+        } else {
+            const filtered = props.data?.payload?.filter(item =>
+                item.details?.Category.toLowerCase().includes(selectedCategory.toLowerCase()));
+            setFilteredData(filtered);
         }
+    }, [selectedCategory, props.data?.payload]);
 
-        const filtered = props.data?.payload?.filter((item) => item.foodName.toLowerCase().includes(selectedValue.toLowerCase())
-        );
+    const filteredDataToDisplay = useMemo(() => (
+        filteredData?.length === 0 ? (props.data?.payload ?? []) : filteredData
+    ), [filteredData, props.data?.payload]);
 
-        setFilteredData(filtered);
-    };
-    const filteredDataToDisplay = filteredData.length === 0 ? (props.data?.payload ?? []) : filteredData;
+    const handleCategoryChange = (e) => setSelectedCategory(e.target.value);
+    const handleFoodChange = (e) => setSelectedFood(e.target.value);
+    const handleGrams = (e) => setGrams(e.target.value);
 
-    const handleFoodChange = (e) => {
-        setSelectedFood(e.target.value);
-    }
-
-    const handleGrams = (e) => {
-        props.setSelectedValue(e.target.value);
-    };
-
-
-    const resetFields = () => {
-        setSelectedCategory('');
-        setSelectedFood('');
-        props.setSelectedValue("")
-    };
+    // const resetFields = () => {
+    //     setSelectedCategory('');
+    //     setSelectedFood('');
+    //     setGrams('');
+    //     props.setSelectedValue("");
+    // };
 
     const searchFood = () => {
-        if (props.data?.payload && selectedFood) {
-            const foundFood = props.data.payload.find(foodItem => foodItem.foodName === selectedFood);
-            if (foundFood) {
-                props.setFood(foundFood);
-            } else {
-                props.setFood("Food not found");
-            }
-        } else {
-            props.setFood("Data not available");
-        }
-
-        console.log(selectedFood);
-        resetFields();
+        props.setSelectedValue(grams);
+        const foundFood = props.data?.payload?.find(foodItem => foodItem.foodName === selectedFood);
+        props.setFood(foundFood || "Data not available");
+        setGrams('');
     };
+
+    function renderOptions(data) {
+        const uniqueCategories = Array.from(new Set(data?.map(item => item?.details?.Category)));
+        return uniqueCategories?.map(category => (
+            <option key={category} value={category}>{category}</option>
+        ));
+    }
+
     return (
         <>
             <div className="search-form">
@@ -58,33 +53,14 @@ const ByFood = (props) => {
                     <label htmlFor="weight">{props.weight}</label>
                     <select id="weight" name="weight" onChange={handleCategoryChange} value={selectedCategory}>
                         <option value=""></option>
-                        <option value="Fruit">Fruit</option>
-                        <option value="Vegetable">Vegetable</option>
-                        <option value="Protein">Protein</option>
-                        <option value="Dairy">Dairy</option>
-                        <option value="Milk">Milk</option>
-                        <option value="Oil">Oil</option>
-                        <option value="Tuber">Tuber</option>
-                        <option value="Grains">Grains</option>
-                        <option value="Cereal">Cereal</option>
-                        <option value="Beverage">Beverage</option>
-                        <option value="Desserts">Dessert</option>
-                        <option value="Sweet">Sweet</option>
-                        <option value="Snack">Snack</option>
-                        <option value="Condiment">Condiment</option>
-                        <option value="Sauces">Sauce</option>
-                        <option value="Herb">Herb</option>
-                        <option value="Spice">Spice</option>
-                        <option value="Others">Others</option>
+                        {renderOptions(props.data?.payload)}
                     </select>
                 </div>}
                 <div className="form-group">
                     <label htmlFor="searchFood">{props.searchfood}</label>
-                    <select id="searchFood" name="searchFood" onChange={handleFoodChange}>
+                    <select id="searchFood" name="searchFood" onChange={handleFoodChange} value={selectedFood}>
                         {filteredDataToDisplay?.map((item) => (
-                            <option key={item._id} value={item.foodName}>
-                                {item.foodName}
-                            </option>
+                            <option key={item._id} value={item.foodName}>{item.foodName}</option>
                         ))}
                     </select>
                 </div>
@@ -94,12 +70,11 @@ const ByFood = (props) => {
                         type="number"
                         id="foodCategory"
                         name="foodCategory"
-                        min="1" // Set the minimum value to 1
-                        max='1000'
-                        value={props.selectedValue}
+                        min="1"
+                        max="1000"
+                        value={grams}
                         onChange={handleGrams}
                     />
-
                 </div>
             </div>
             <div className='proceed'>
