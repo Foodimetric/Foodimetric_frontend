@@ -78,7 +78,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        position: absolute;
+        position: fixed;
         top: 60px;
         left: 0;
         width: 100%;
@@ -92,7 +92,6 @@
     .mobile .header-nav.open {
         opacity: 1;
         pointer-events: all;
-        position: fixed;
     }
 
     .mobile .header-nav ul {
