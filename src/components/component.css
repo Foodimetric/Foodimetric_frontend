@@ -954,6 +954,7 @@
     align-items: center;
 }
 
+
 .Bmi_weight,
 .Bmi_height {
     margin-bottom: 16px;
@@ -1099,4 +1100,11 @@
 input[type="number"] {
     width: 95%;
 
+}
+
+@media (max-width: 600px) {
+    .Bmi_weight,
+    .Bmi_height {
+        width: 90%;
+    }
 }
