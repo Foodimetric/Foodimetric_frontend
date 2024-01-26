@@ -75,10 +75,11 @@
     }
 
     .mobile .header-nav {
+        border: 1px solid blue;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        position: fixed;
+        position: absolute;
         top: 60px;
         left: 0;
         width: 100%;
@@ -90,12 +91,13 @@
     }
 
     .mobile .header-nav.open {
+        border: 1px solid green;
         opacity: 1;
         pointer-events: all;
     }
 
     .mobile .header-nav ul {
-        /* border: 1px solid red; */
+        border: 1px solid red;
         position: absolute;
         right: 5px;
         top: 50px;
