@@ -29,6 +29,9 @@ const Header = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsFixed(scrollPosition > 0);
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => {

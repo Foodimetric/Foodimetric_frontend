@@ -74,7 +74,6 @@
     }
 
     .mobile .header-nav {
-        border: 1px solid blue;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -90,7 +89,6 @@
     }
 
     .mobile .header-nav.open {
-        border: 1px solid green;
         opacity: 1;
         pointer-events: all;
     }
