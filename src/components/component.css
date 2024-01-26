@@ -425,16 +425,16 @@
     }
 
     .features .card {
-        width: calc(50% - 40px);
+        width: 70%;
         margin-bottom: 30px;
     }
 
     .features .card:nth-child(odd) {
-        margin-right: 20px;
+        /* margin-right: 20px; */
     }
 
     .features .card:nth-child(even) {
-        margin-left: 20px;
+        /* margin-left: 20px; */
     }
 
     .features .card img {
