@@ -27,7 +27,7 @@ const SignupPage = () => {
         let errors = {};
         const regex = /^[a-zA-Z0-9]+$/; // regex for alphanumeric characters
         const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/; // regex for email
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // regex for password
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?.&])[A-Za-z\d@$!%*?.&]{8,}$/; // regex for password
 
         if (!regex.test(data.firstName)) {
             errors.firstName = 'First name should not include special characters';
