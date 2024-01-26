@@ -92,6 +92,7 @@
     .mobile .header-nav.open {
         opacity: 1;
         pointer-events: all;
+        position: fixed;
     }
 
     .mobile .header-nav ul {
