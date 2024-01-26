@@ -148,7 +148,7 @@ const SignupPage = () => {
                         </div>
                         {errors.email && <span className="error">{errors.email}</span>}
                         <div className="form-group">
-                            <label htmlFor="passwrd">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input
                                 type="password"
                                 id="password"
