@@ -96,12 +96,12 @@
 
     .mobile .header-nav ul {
         /* border: 1px solid red; */
-        position: absolute;
+        position: fixed;
         right: 5px;
         top: 50px;
         background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.87) 50%, rgba(255, 185, 8, 0.685) 100%);
         width: 40vw;
-        min-height: 80vh;
+        min-height: 85vh;
         flex-direction: column;
         z-index: 999;
         padding: 20px;
