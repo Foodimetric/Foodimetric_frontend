@@ -18,7 +18,7 @@ const MultiFoodResult = ({ result }) => {
 
     return (
         <TableContainer>
-            <Table>
+            <Table> 
                 {result.map((item, index) => {
                     const rows = renderTableRows(item);
                     return (

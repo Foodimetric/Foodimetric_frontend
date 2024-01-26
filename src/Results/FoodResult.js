@@ -1,15 +1,7 @@
 import React, { useMemo } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-const tableHeadStyle = {
-    backgroundColor: 'rgba(224, 149, 35, 0.50)',
-    height: 80,
-};
 
-const cellStyle = {
-    fontWeight: 'bolder',
-    fontSize: '14px',
-};
 
 const FoodResult = React.memo(({ data, selectedValue }) => {
     const processedData = useMemo(() => {
@@ -33,10 +25,10 @@ const FoodResult = React.memo(({ data, selectedValue }) => {
     return (
         <TableContainer>
             <Table stickyHeader>
-                <TableHead style={tableHeadStyle}>
+                <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
                     <TableRow>
                         {processedData?.map(({ key }) => (
-                            <TableCell key={key} style={cellStyle}>{key}</TableCell>
+                            <TableCell key={key} style={{ fontWeight: 'bolder', fontSize: '14px' }}>{key}</TableCell>
                         ))}
                     </TableRow>
                 </TableHead>
