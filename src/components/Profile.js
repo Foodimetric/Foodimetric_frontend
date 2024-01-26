@@ -18,9 +18,12 @@ const ProfileTab = ({ status }) => {
     return (
         <div className="profile-tab">
             <div className="profile-circle">
-                <Link to={'/profile'} className="initials" style={{ textDecoration: "none" }} >
-                    {`${user?.user?.firstName?.charAt(0).toUpperCase()} ${user?.user?.lastName?.charAt(0).toUpperCase()}`}
-                </Link>
+                {
+                    user && 
+                    <Link to={'/profile'} className="initials" style={{ textDecoration: "none" }} >
+                        {`${user?.user?.firstName?.charAt(0).toUpperCase()} ${user?.user?.lastName?.charAt(0).toUpperCase()}`}
+                    </Link>
+                }
             </div>
 
 
