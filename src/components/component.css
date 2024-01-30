@@ -318,7 +318,7 @@
 
 /* Partner */
 .partners {
-    padding: 50px 0;
+    padding: 30px 0 10px 0;
 }
 
 .container2 {
@@ -343,9 +343,10 @@
 }
 
 .partner-logos img {
-    margin: 20px;
-    max-width: 150px;
+    margin: 0 20px;
+    max-width: 100px;
 }
+
 
 @media screen and (max-width: 768px) {
     .partner-logos img {
@@ -762,8 +763,8 @@
 .faq-answer {
     padding: 20px;
     background-color: #f9f9f9;
-    font-size: 14px;
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 400;
     word-spacing: 1;
 }
 
@@ -1105,4 +1106,11 @@ input[type="number"] {
     .Bmi_height {
         width: 90%;
     }
+}
+
+.data-source{
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    padding: 0px 20px;
 }

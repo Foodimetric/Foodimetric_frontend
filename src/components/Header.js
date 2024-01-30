@@ -87,7 +87,7 @@ const Header = () => {
               <HashLink smooth to="/#resources-container">Resources</HashLink>
             </li>
             <li onClick={() => handleRedirect()}>
-              <Link smooth to="/search">Search</Link>
+              <Link smooth to={"search"}>Search</Link>
             </li>
           </ul>
         </nav>

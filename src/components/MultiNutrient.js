@@ -48,7 +48,7 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
     return (
         <>
             <div className='proceed' style={{ justifyContent: "end", width: '91%' }}>
-                <button onClick={handleNutrientSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5 ? true : false}>Save</button>
+                <button onClick={handleNutrientSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5 ? true : false}>Add</button>
             </div>
             <form onSubmit={handleNutrientSubmit}>
                 <div className="form-group">

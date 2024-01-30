@@ -17,9 +17,8 @@ const MultiFood = ({ data, setResult }) => {
             setFilteredFoods([]);
             return;
         }
-
         const filteredResults = data?.payload?.filter((food) =>
-            food.foodName.toLowerCase().includes(newQuery.toLowerCase())
+            food?.details?.LocalName?.toLowerCase().includes(newQuery.toLowerCase())
         );
         setFilteredFoods(filteredResults);
     }, [data]);
@@ -51,7 +50,7 @@ const MultiFood = ({ data, setResult }) => {
     return (
         <>
             <div className='proceed' style={{ justifyContent: "end", width: '91%' }}>
-                <button onClick={handleSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5}>Save</button>
+                <button onClick={handleSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5}>Add</button>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="search-form">
