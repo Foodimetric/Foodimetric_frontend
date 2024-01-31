@@ -25,6 +25,34 @@ const BodyMassIndex = () => {
     setShowModal(false);
   };
 
+
+  const getBmiCategory = () => {
+    switch (true) {
+      case Bmi < 18.5:
+        return 'Underweight';
+      case Bmi >= 18.5 && Bmi <= 24.9:
+        return 'Normal weight';
+      case Bmi >= 25 && Bmi <= 29.9:
+        return 'Overweight';
+      default:
+        return 'Obese';
+    }
+  };  
+
+
+  const getBmiColor = () => {
+    switch (true) {
+      case Bmi < 18.5:
+        return 'red'; // Underweight
+      case Bmi >= 18.5 && Bmi <= 24.9:
+        return 'green'; // Normal weight
+      case Bmi >= 25 && Bmi <= 29.9:
+        return 'white'; // Overweight (warning)
+      default:
+        return 'red'; // Obese
+    }
+  };
+  
   return (
     <div className="Bmi-content">
       <div className="Bmi_weight">
@@ -58,7 +86,8 @@ const BodyMassIndex = () => {
           <div className="modal-content">
             <p className='Bmi-result'>BMI Result</p>
             <p>Your BMI is:</p>
-            <h3>{`${Bmi}Kgm²`}</h3>
+            <h3>{`${Bmi.toFixed(2)}Kgm²`}</h3>
+            <p style={{ color: getBmiColor(), marginBottom: '0.5rem', fontWeight: 'bold'}}>{`Category: ${getBmiCategory()}`}</p>
             <button onClick={handleModalClose}>Close</button>
           </div>
         </div>
