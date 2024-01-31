@@ -7,8 +7,6 @@ body {
   font-family:'Manrope', 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: scroll;
-	scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
