@@ -14,9 +14,13 @@
     align-items: center;
     padding: 10px 20px;
 }
+.container-img{
+    width: 20%;
+}
 
 .container-img img {
     width: 40px;
+
 }
 
 .sub-container {
@@ -31,21 +35,24 @@
 
 .header-nav {
     display: flex;
-    align-items: center;
-    margin-left: 100px;
+    justify-content: center;
+    width: 60%;
 }
 
+.third-child{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .header-nav ul {
     display: flex;
+    gap: 2.5rem;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.header-nav li {
-    margin-right: 20px;
-}
 
 .header-nav a {
     text-decoration: none;
@@ -71,6 +78,10 @@
     .header-nav {
         display: none;
         margin-left: unset;
+    }
+
+    .third-child{
+        display: none;
     }
 
     .mobile .header-nav {
@@ -209,7 +220,7 @@
 
 .hero-content h3 {
     margin: 0 0 20px 0;
-    font-size: 32px;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #333;
     line-height: 1.2;

@@ -91,12 +91,14 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        {(authenticationStatus === 'loading' || authenticationStatus === 'unauthenticated') && (<button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>)}
-        {authenticationStatus === 'authenticated' && (
-          <div className='desktop'>
-            <ProfileTab status={authenticationStatus} />
-          </div>
-        )}
+        <div className='third-child'>
+          {(authenticationStatus === 'loading' || authenticationStatus === 'unauthenticated') && (<button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>)}
+          {authenticationStatus === 'authenticated' && (
+            <div className='desktop'>
+              <ProfileTab status={authenticationStatus} />
+            </div>
+          )}
+        </div>
       </div>
       <Toaster />
       <Outlet />
