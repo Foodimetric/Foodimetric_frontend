@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast';
 const SignupPage = () => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const [userData, setUserData] = useState({
         email: '',
         password: '',
@@ -147,10 +148,10 @@ const SignupPage = () => {
                             />
                         </div>
                         {errors.email && <span className="error">{errors.email}</span>}
-                        <div className="form-group">
+                        <div className="form-group password-icon">
                             <label htmlFor="password">Password</label>
                             <input
-                                type="password"
+                               type={passwordVisible ? 'text' : 'password'}
                                 id="password"
                                 placeholder="Enter your password"
                                 maxLength={20}
@@ -158,6 +159,8 @@ const SignupPage = () => {
                                 onChange={handleChange}
                                 required
                             />
+                            {userData.password && <div className="icons8-eye" onClick={()=>setPasswordVisible(!passwordVisible)}></div>}
+
                         </div>
                         {errors.password && <span className="error">{errors.password}</span>}
                         <button type="submit" className='create_acct'>Create Account</button>

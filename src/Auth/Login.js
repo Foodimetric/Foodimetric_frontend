@@ -11,6 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -76,16 +77,17 @@ const Login = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group password-icon">
                             <label htmlFor="password">Password</label>
                             <input
-                                type="password"
+                                 type={passwordVisible ? 'text' : 'password'}
                                 id="password"
                                 name="password"
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            {password && <div className="icons8-eye" onClick={()=>setPasswordVisible(!passwordVisible)}></div>}
                         </div>
                         {error && <span className="error">{error}</span>}
                         <button type="submit" className='create_acct'>Login</button>
