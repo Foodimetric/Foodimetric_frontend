@@ -27,26 +27,27 @@ const BodyMassIndex = () => {
 
 
   const getBmiCategory = () => {
+    const BmiToFixed = Bmi.toFixed(2);
     switch (true) {
-      case Bmi < 18.5:
+      case BmiToFixed < 18.5:
         return 'Underweight';
-      case Bmi >= 18.5 && Bmi <= 24.9:
+      case BmiToFixed >= 18.5 && BmiToFixed <= 24.99:
         return 'Normal weight';
-      case Bmi >= 25 && Bmi <= 29.9:
+      case BmiToFixed >= 25 && BmiToFixed <= 29.99:
         return 'Overweight';
       default:
         return 'Obese';
     }
   };  
 
-
   const getBmiColor = () => {
+    const BmiToFixed = Bmi.toFixed(2);
     switch (true) {
-      case Bmi < 18.5:
+      case BmiToFixed < 18.5:
         return 'red'; // Underweight
-      case Bmi >= 18.5 && Bmi <= 24.9:
+      case BmiToFixed >= 18.5 && BmiToFixed <= 24.99:
         return 'green'; // Normal weight
-      case Bmi >= 25 && Bmi <= 29.9:
+      case BmiToFixed >= 25 && BmiToFixed <= 29.99:
         return 'white'; // Overweight (warning)
       default:
         return 'red'; // Obese
