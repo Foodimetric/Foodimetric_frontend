@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './component.css';
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import { Link, Outlet } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { checkAuthenticationStatus } from '../utils/validate';

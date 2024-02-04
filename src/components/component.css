@@ -19,9 +19,10 @@
 }
 
 .container-img img {
-    width: 40px;
-
+    width: 80%;;
 }
+
+
 
 .sub-container {
     display: flex;
@@ -172,6 +173,10 @@
         height: 3px;
         background-color: black;
         border-radius: 10px;
+    }
+
+    .container-img img {
+        width: 100%;;
     }
 }
 

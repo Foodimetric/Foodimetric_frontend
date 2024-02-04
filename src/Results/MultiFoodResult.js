@@ -1,16 +1,18 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useFoodContext } from '../Context/FoodContext';
 
 const excludeKeys = ['Id', 'Code', 'REFID'];
 
-const MultiFoodResult = ({ result }) => {
+const MultiFoodResult = () => {
+    const {multiFoodResults} = useFoodContext();
     const renderTableRows = (item) => {
         return Object.entries(item.details)
             .filter(([key, value]) => !excludeKeys.includes(key) && value !== null)
             .map(([key, value]) => {
                 let displayValue = value;
                 if (typeof value === 'number') {
-                    displayValue = ((parseFloat(value) * parseInt(item?.details?.WEIGHT)) / 100).toString();
+                    displayValue = ((parseFloat(value) * parseInt(item?.details?.WEIGHT)) / 100).toFixed(2).toString();
                 }
                 return { key, displayValue };
             });
@@ -19,7 +21,7 @@ const MultiFoodResult = ({ result }) => {
     return (
         <TableContainer>
             <Table> 
-                {result.map((item, index) => {
+                {multiFoodResults?.map((item, index) => {
                     const rows = renderTableRows(item);
                     return (
                         <React.Fragment key={index}>

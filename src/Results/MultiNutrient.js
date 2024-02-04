@@ -1,13 +1,14 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useFoodContext } from '../Context/FoodContext'
 
 
-const MultiNutrient = ({ result }) => {
-    console.log(result);
+const MultiNutrient = () => {
+    const {multiNutrientResult} = useFoodContext();
     return (
         <TableContainer>
-            <Table>
-                {result.length > 1 && <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
+            <Table> 
+                {multiNutrientResult && multiNutrientResult?.length > 1 && <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
                     <TableRow>
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '14px', textTransform: 'uppercase' }}>Nutrient</TableCell>
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '14px', textTransform: 'uppercase' }}>Nutrient Quantity</TableCell>
@@ -15,7 +16,7 @@ const MultiNutrient = ({ result }) => {
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '14px', textTransform: 'uppercase' }}>Food Quantity(g)</TableCell>
                     </TableRow>
                 </TableHead>}
-                {result.map((item, index) => (
+                {multiNutrientResult && multiNutrientResult?.map((item, index) => (
                     <TableBody>
 
                         <TableRow >
@@ -25,7 +26,7 @@ const MultiNutrient = ({ result }) => {
                             <TableCell>
                                 {item.result === 'Food not found in data' || item.result === 'Nutrient not found in details'
                                     ? item.result
-                                    : ((parseFloat(item.foodWeight) * 100) / (parseFloat(item.result))).toString()}
+                                    : ((parseFloat(item.foodWeight) * 100) / (parseFloat(item.result))).toFixed(2).toString()}
                             </TableCell>
                         </TableRow>
                     </TableBody>

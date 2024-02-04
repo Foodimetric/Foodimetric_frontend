@@ -1,27 +1,31 @@
 import React, { useMemo } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useFoodContext } from '../Context/FoodContext';
 
 
+const FoodResult = React.memo(() => {
+    const { selectedValue, foodResults } = useFoodContext();
 
-const FoodResult = React.memo(({ data, selectedValue }) => {
     const processedData = useMemo(() => {
        const excludeKeys = ['Id', 'Code', 'REFID'];
-       if (!data) return [];
+       if (!foodResults) return [];
 
-       return Object.entries(data).reduce((acc, [key, value]) => {
+       const details = foodResults?.details || {};
+       return Object.entries(details).reduce((acc, [key, value]) => {
            // Skip the keys in the exclusion list
            if (excludeKeys.includes(key) || value === null) return acc;
 
 
             let processedValue = value;
             if (typeof value === 'number') {
-                processedValue = ((parseFloat(value) * parseInt(selectedValue)) / 100).toString();
+                processedValue = ((parseFloat(value) * parseInt(selectedValue)) / 100).toFixed(2).toString();
             }
 
             acc.push({ key, value: processedValue });
             return acc;
         }, []);
-    }, [data, selectedValue]);
+    }, [foodResults, selectedValue]);
+
     return (
         <TableContainer>
             <Table stickyHeader>

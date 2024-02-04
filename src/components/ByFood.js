@@ -1,86 +1,72 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect} from 'react';
 import './search.css';
+import { useFoodContext } from '../Context/FoodContext';
+import DropdownSelector from './DropdownSelector';
+import { useFoodSearch } from '../utils/useFoodSearch';
 
-const ByFood = (props) => {
+const ByFood = () => {
+    const { data, filteredFoods, setFilteredFoods, selectedFood, setSelectedFood, selectedWeight, setSelectedWeight, setSelectedValue, setFoodResults, setSearchQuery } = useFoodContext();
+    const { handleGroupChange, handleWeightChange } = useFoodSearch();
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [selectedFood, setSelectedFood] = useState('');
-    const [grams, setGrams] = useState('');
-    const [filteredData, setFilteredData] = useState([]);
+    const foodOptions = filteredFoods.map(item => item.foodName);
+    const foodGroups = Array.from(new Set(data?.map(item => item?.details?.Category)));
 
     useEffect(() => {
-        if (selectedCategory === "Others") {
-            setFilteredData(props.data?.payload);
-        } else {
-            const filtered = props.data?.payload?.filter(item =>
-                item.details?.Category.toLowerCase().includes(selectedCategory.toLowerCase()));
-            setFilteredData(filtered);
-        }
-    }, [selectedCategory, props.data?.payload]);
+        selectedCategory && handleGroupChange(selectedCategory);
+    }, [handleGroupChange, selectedCategory]);
 
-    const filteredDataToDisplay = useMemo(() => (
-        filteredData?.length === 0 ? (props.data?.payload ?? []) : filteredData
-    ), [filteredData, props.data?.payload]);
-
-    const handleCategoryChange = (e) => setSelectedCategory(e.target.value);
-    const handleFoodChange = (e) => setSelectedFood(e.target.value);
-    const handleGrams = (e) => setGrams(e.target.value);
-
-    // const resetFields = () => {
-    //     setSelectedCategory('');
-    //     setSelectedFood('');
-    //     setGrams('');
-    //     props.setSelectedValue("");
-    // };
-
-    const searchFood = () => {
-        props.setSelectedValue(grams);
-        const foundFood = props.data?.payload?.find(foodItem => foodItem.foodName === selectedFood);
-        props.setFood(foundFood || "Data not available");
-        setGrams('');
+    const searchFood = (e) => {
+        e.preventDefault();
+        setSelectedValue(selectedWeight);
+        const foundFood = data?.find(foodItem => foodItem.foodName === selectedFood);
+        setFoodResults(foundFood || "Data not available");
+        setSelectedWeight(0);
+        setSelectedFood("");
+        setSearchQuery("");
+        setFilteredFoods([]);
     };
 
-    function renderOptions(data) {
-        const uniqueCategories = Array.from(new Set(data?.map(item => item?.details?.Category)));
-        return uniqueCategories?.map(category => (
-            <option key={category} value={category}>{category}</option>
-        ));
-    }
-
     return (
-        <>
+        <form onSubmit={searchFood}>
             <div className="search-form">
-                {props.render && <div className="form-group">
-                    <label htmlFor="weight">{props.weight}</label>
-                    <select id="weight" name="weight" onChange={handleCategoryChange} value={selectedCategory}>
-                        <option value=""></option>
-                        {renderOptions(props.data?.payload)}
-                    </select>
-                </div>}
                 <div className="form-group">
-                    <label htmlFor="searchFood">{props.searchfood}</label>
-                    <select id="searchFood" name="searchFood" onChange={handleFoodChange} value={selectedFood}>
-                        {filteredDataToDisplay?.map((item) => (
-                            <option key={item._id} value={item.foodName}>{item.foodName}</option>
-                        ))}
-                    </select>
+                    <label htmlFor="Food-category">Food Groups</label>
+                    <DropdownSelector
+                        id={"Food-category"}
+                        name={"Food-category"}
+                        value={selectedCategory}
+                        onChange={setSelectedCategory}
+                        options={foodGroups}
+                        placeholder='Groups'
+                    />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="foodCategory">{props.foodcategory}</label>
+                    <label htmlFor="Food">Food</label>
+                    <DropdownSelector
+                        id={"Food"}
+                        name={"Food"}
+                        value={selectedFood}
+                        onChange={setSelectedFood}
+                        options={foodOptions}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="weight">Weight(g) </label>
                     <input
                         type="number"
-                        id="foodCategory"
-                        name="foodCategory"
-                        min="1"
-                        max="1000"
-                        value={grams}
-                        onChange={handleGrams}
+                        id="weight"
+                        name="weight"
+                        value={selectedWeight}
+                        onChange={handleWeightChange}
+                        min={1} 
+                        max={1000}
                     />
                 </div>
             </div>
             <div className='proceed'>
-                <button onClick={searchFood}>Proceed</button>
+                <button type='submit'>Proceed</button>
             </div>
-        </>
+        </form>
     );
 }
 

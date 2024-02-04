@@ -1,11 +1,13 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useFoodContext } from '../Context/FoodContext';
 
-const NutrientResult = ({ result }) => {
+const NutrientResult = () => {
+    const {nutrientResult} = useFoodContext();
     return (
         <TableContainer>
             <Table stickyHeader >
-                {result.nutrientName && <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
+                {nutrientResult.nutrientName && <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
                     <TableRow>
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '18px' }}>Nutrient</TableCell>
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '18px' }}>Nutrient Quantity</TableCell>
@@ -14,13 +16,13 @@ const NutrientResult = ({ result }) => {
                     </TableRow>
                 </TableHead>}
                 <TableBody>
-                    {result.nutrientName && <TableRow>
-                        <TableCell>{result.nutrientName}</TableCell>
-                        <TableCell>{result.nutrientQuantity}</TableCell>
-                        <TableCell>{result.foodName}</TableCell>
-                        {result.nutrientValue && (
+                    {nutrientResult.nutrientName && <TableRow>
+                        <TableCell>{nutrientResult.nutrientName}</TableCell>
+                        <TableCell>{nutrientResult.nutrientQuantity}</TableCell>
+                        <TableCell>{nutrientResult.foodName}</TableCell>
+                        {nutrientResult.nutrientValue && (
                             <TableCell>
-                                {((parseFloat(result.nutrientQuantity) * 100) / parseInt(result.nutrientValue)).toFixed(1).toString()}
+                                {((parseFloat(nutrientResult.nutrientQuantity) * 100) / parseInt(nutrientResult.nutrientValue)).toFixed(2).toString()}
                             </TableCell>
                         )}
                     </TableRow>}

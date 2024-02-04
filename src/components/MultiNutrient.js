@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { multiNutrientSearch } from '../utils/findkey';
+import { useFoodContext } from '../Context/FoodContext'
+import { useFoodSearch } from '../utils/useFoodSearch'
+import SearchInput from './SearchInput';
+import DropdownSelector from './DropdownSelector';
 
 const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames'];
 
-const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMultiNutrientResult }) => {
-    const [selectedNutrient, setSelectedNutrient] = useState('');
-    const [selectedWeight, setSelectedWeight] = useState('100');
-    const [selectedFood, setSelectedFood] = useState('');
+const MultiNutrientComponent = () => {
+    const { data, setMultiNutrientResult, searchQuery, setSearchQuery, selectedWeight, setSelectedWeight, selectedFood, setSelectedFood, nutrient, setNutrient, filteredFoods} = useFoodContext();
+    const { handleSearchChange, selectItem, handleWeightChange } = useFoodSearch();
+    const nutrientOptions = Object.entries(nutrient || {}).filter(([key]) => !excludeKeys.includes(key)).map(([key]) => key);
     const [searchData, setSearchData] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const [nutrient, setNutrient] = useState(null);
-
 
     const handleNutrientSave = (e) => {
         e.preventDefault();
         setFormSubmitted(false);
-        const searchQuery = {
-            foodName: selectedFood,
-            foodWeight: selectedWeight ===''? "100":selectedWeight,
-            nutrient: selectedNutrient
+        const search = {
+            foodName: searchQuery,
+            foodWeight: selectedWeight,
+            nutrient: selectedFood
         }
-        setSearchData([...searchData, searchQuery]);
+        setSearchData([...searchData, search]);
         setSelectedWeight("");
-        setSelectedFood('')
-        setSelectedNutrient('')
+        setSelectedFood('');
+        setSearchQuery('')
     }
     const removeItem = (index) => {
         const updatedSearchData = [...searchData];
@@ -39,59 +41,59 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
         setSearchData([])
     }
 
-    const handleFoodChange = (e) => {
-        setSelectedFood(e.target.value);
-        const matchingDataItem = data?.payload.find((item) => item.foodName === e.target.value);
+    function searchNutrient(foodName) {
+        selectItem(foodName);
+        const matchingDataItem = data?.find((item) => item.foodName.toLowerCase() === foodName.toLowerCase());
         setNutrient(matchingDataItem?.details);
     }
-    
+
     return (
         <>
             <div className='proceed' style={{ justifyContent: "end", width: '91%' }}>
                 <button onClick={handleNutrientSave} style={{ width: "max-content", padding: '0.5rem 1rem', marginTop: '0px' }} disabled={searchData.length === 5 ? true : false}>Add</button>
             </div>
             <form onSubmit={handleNutrientSubmit}>
-                <div className="form-group">
-                    <label htmlFor="foodCategory">{food}</label>
-                    <select id="foodCategory" name="foodCategory" value={selectedFood} onChange={(e) => handleFoodChange(e)}>
-                        <option value={""}></option>
-                        {data?.payload?.map((item) => (
-                            <option key={item._id} value={item.foodName}>
-                                {item.foodName}
-                            </option>
-                        ))}
-                    </select>
+                <div className="form-group search-container">
+                    <label htmlFor="MultiNutrient">Search Food</label>
+                    <SearchInput
+                        id={"MultiNutrient"}
+                        name={"MultiNutrient"}
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                    />
+                    {filteredFoods.length > 0 && (
+                        <ul className="results-list">
+                            {filteredFoods.map((food) => (
+                                <li key={`1-${food._id}`} className="result-item" onClick={() => searchNutrient(food.foodName)}>{food.foodName}</li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
                 <div className="search-form">
                     <div className="form-group">
-                        <label htmlFor="searchFood">{searchnutrient}</label>
-                        <select id="searchFood" name="searchNutrient" value={selectedNutrient} onChange={(e) => setSelectedNutrient(e.target.value)}>
-                            <option value={""}></option>
-                            {nutrient && Object.entries(nutrient)
-                            .filter(([key]) => !excludeKeys.includes(key))
-                            .map(([key]) => (
-                                <option value={key}>{key}</option>
-                            ))}
-                        </select>
+                        <label htmlFor="nutrients">Nutrients</label>
+                        <DropdownSelector
+                            id={"nutrients"}
+                            name={"nutrients"}
+                            value={selectedFood}
+                            onChange={setSelectedFood}
+                            options={nutrientOptions}
+                            placeholder='Nutrients'
+                        />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="weight">{quantities}</label>
-                        <select id="weight" name="weight" value={selectedWeight} onChange={(e) => setSelectedWeight(e.target.value)}>
-                            <option value={""}></option>
-                            <option value="100">100</option>
-                            <option value="90">90</option>
-                            <option value="80">80</option>
-                            <option value="70">70</option>
-                            <option value="60">60</option>
-                            <option value="50">50</option>
-                            <option value="40">40</option>
-                            <option value="30">30</option>
-                            <option value="20">20</option>
-                            <option value="10">10</option>
-                            <option value="5">5</option>
-                        </select>
+                        <label htmlFor="weight">Weight</label>
+                        <input
+                            type="number"
+                            id="weight"
+                            name="weight"
+                            value={selectedWeight}
+                            onChange={handleWeightChange}
+                            min={1}
+                            max={1000} 
+                        />
                     </div>
-                    <div style={{ display: "flex", gap: "1rem", marginTop: '1rem', justifyContent: 'center'}}>
+                    <div style={{ display: "flex", gap: "1rem", marginTop: '1rem', justifyContent: 'center' }}>
                         {searchData && searchData.map((item, index) => (<p key={index} style={{
                             borderRadius: "10px",
                             padding: "5px",
@@ -117,7 +119,7 @@ const MultiNutrientComponent = ({ searchnutrient, food, quantities, data, setMul
                     </div>
                 </div>
                 <div className='proceed'>
-                    <button disabled={searchData.length < 2 || formSubmitted}>Proceed</button>
+                    <button disabled={searchData.length < 2 || formSubmitted} type='submit'>Proceed</button>
                 </div>
             </form>
         </>
