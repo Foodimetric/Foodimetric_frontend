@@ -19,7 +19,7 @@
 }
 
 .container-img img {
-    width: 80%;;
+    width: 80%;
 }
 
 
@@ -175,8 +175,12 @@
         border-radius: 10px;
     }
 
+    .container-img{
+        width: 50%;
+    }
+
     .container-img img {
-        width: 100%;;
+        width: 100%;
     }
 }
 
@@ -1063,6 +1067,7 @@
  
 }
 
+
 .search-label {
   /* Your label styles */
 }
@@ -1128,4 +1133,12 @@ input[type="number"] {
     font-weight: 300;
     font-style: italic;
     padding: 0px 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .search-container {
+        padding: 0px;
+       
+      }
+      
 }
