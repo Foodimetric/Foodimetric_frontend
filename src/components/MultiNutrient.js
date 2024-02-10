@@ -91,6 +91,7 @@ const MultiNutrientComponent = () => {
                             onChange={handleWeightChange}
                             min={1}
                             max={1000} 
+                            step="0.01"
                         />
                     </div>
                     <div style={{ display: "flex", gap: "1rem", marginTop: '1rem', justifyContent: 'center' }}>

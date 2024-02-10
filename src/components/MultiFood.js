@@ -64,6 +64,7 @@ const MultiFood = () => {
                             onChange={handleWeightChange}
                             min={1}
                             max={1000}
+                            step="0.01"
                         />
                         <div style={{ display: "flex", gap: "1rem", marginTop: '1rem' }}>
                             {searchData && searchData.map((item, index) => (<p key={index} style={{

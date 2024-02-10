@@ -78,6 +78,7 @@ const ByNutrient = () => {
                         onChange={handleWeightChange}
                         min={1} 
                         max={1000}
+                        step="0.01"
                     />
                 </div>
             </div>
