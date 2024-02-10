@@ -63,7 +63,7 @@ const Header = () => {
         <nav className={`header-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul>
             <div className='mobile'>
-              <ProfileTab status={status} />
+              <ProfileTab/>
             </div>
             {isMobile && <h3>"Fuel your body, fuel the economy: the power of nutrition"</h3>}
             {/* <li>
