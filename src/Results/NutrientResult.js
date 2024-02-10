@@ -23,7 +23,7 @@ const NutrientResult = () => {
                         <TableCell>{nutrientResult.foodName}</TableCell>
                         {nutrientResult.nutrientValue && (
                             <TableCell>
-                                {((parseFloat(nutrientResult.nutrientQuantity) * 100) / parseInt(nutrientResult.nutrientValue)).toFixed(2).toString()}
+                                {((parseFloat(nutrientResult.nutrientQuantity) * 100) / parseFloat(nutrientResult.nutrientValue)).toFixed(2).toString()}
                             </TableCell>
                         )}
                     </TableRow>}

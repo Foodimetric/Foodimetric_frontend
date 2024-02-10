@@ -25,7 +25,7 @@ const MultiNutrient = () => {
                             <TableCell>{item.foodName}</TableCell>
                             <TableCell>
                                 {item.result === 'Food not found in data' || item.result === 'Nutrient not found in details'
-                                    ? item.result
+                                    ? item.result 
                                     : ((parseFloat(item.foodWeight) * 100) / (parseFloat(item.result))).toFixed(2).toString()}
                             </TableCell>
                         </TableRow>

@@ -16,12 +16,12 @@ const SearchTab = () => {
   const navigate = useNavigate();
   const tabs = [
     {
-      title: 'Search for Food',
+      title: 'Food Search',
       content: <ByFood/>,
       result: () => <FoodResult/>
     },
     {
-      title: 'Search for Nutrient',
+      title: 'Nutrient Search',
       content: <ByNutrient/>,
       result: () => <NutrientResult/>
     },
