@@ -2,18 +2,19 @@ import React, { useDeferredValue, useState } from 'react';
 import './pages.css'
 import { useNavigate } from 'react-router-dom'; // Assuming you use React Router for routing
 import toast from 'react-hot-toast';
+import { useAuthContext } from '../Context/AuthContext';
 
 const UserProfile = () => {
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem("foodie-user"))
     const [isEditing, setIsEditing] = useState(false);
-    const [userName, setUserName] = useState(`${userData.user.firstName} ${userData.user.lastName}`);
-    const [email, setEmail] = useState(userData.user.email);
+    const [userName, setUserName] = useState(`${userData.firstName} ${userData.lastName}`);
+    const [email, setEmail] = useState(userData.email);
     const [password, setPassword] = useState('********');
     const userStatus = useDeferredValue('Active');
     const subscriptionInfo = useDeferredValue('Freemium');
     const [profileImage, setProfileImage] = useState(localStorage.getItem('userProfileImage') || null);
-
+    const {setStatus} = useAuthContext()
     // const handleEditClick = () => {
     //     setIsEditing(!isEditing);
     // };
@@ -24,7 +25,7 @@ const UserProfile = () => {
       
         // Show a toast notification that the user has been logged out
         toast.success('You have been logged out.');
-    
+        setStatus("unauthenticated");
         navigate('/login'); 
       };
       
@@ -59,7 +60,7 @@ const UserProfile = () => {
                                 <img src={profileImage} alt="User Profile" />
                             ) : (
                                 <p className="profile-dummy">
-                                    {`${(userData?.user?.firstName?.charAt(0) || '').toUpperCase()} ${(userData?.user?.lastName?.charAt(0) || '').toUpperCase()}`}
+                                    {`${(userData?.firstName?.charAt(0) || '').toUpperCase()} ${(userData?.lastName?.charAt(0) || '').toUpperCase()}`}
                                 </p>
                             )}
                         </label>

@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-query'
 import UserProfile from './Pages/UserProfiile';
 import { FoodProvider } from './Context/FoodContext';
+import { AuthProvider } from './Context/AuthContext';
 
 
 const queryClient = new QueryClient({
@@ -27,16 +28,18 @@ function App() {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <div className="App">
-          <Header />
           <FoodProvider>
-            <Routes>
-              <Route path='/' element={<LandingPage />} />
-              <Route path='/signup' element={<SignupPage />} />
-              <Route path='/login' element={<Login />} />
-              <Route path="/search" element={<SearchTab />} />
-              <Route path='/profile' element={<UserProfile />} />
-              <Route path='*' element={<Error />} />
-            </Routes>
+            <AuthProvider>
+              <Header />
+              <Routes>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='/signup' element={<SignupPage />} />
+                <Route path='/login' element={<Login />} />
+                <Route path="/search" element={<SearchTab />} />
+                <Route path='/profile' element={<UserProfile />} />
+                <Route path='*' element={<Error />} />
+              </Routes>
+            </AuthProvider>
           </FoodProvider>
         </div>
       </QueryClientProvider>

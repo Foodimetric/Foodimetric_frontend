@@ -5,7 +5,7 @@ import { useFoodContext } from '../Context/FoodContext'
 import SearchInput from './SearchInput';
 import { useFoodSearch } from '../utils/useFoodSearch';
 const MultiFood = () => {
-    const { data, searchQuery, setSearchQuery, multiFoodResults, setMultiFoodResults, filteredFoods, setFilteredFoods, setSelectedWeight, selectedWeight } = useFoodContext();
+    const { data, searchQuery, setSearchQuery, setMultiFoodResults, filteredFoods, setSelectedWeight, selectedWeight } = useFoodContext();
     const { handleSearchChange, selectItem, handleWeightChange } = useFoodSearch();
     const [searchData, setSearchData] = useState([]);
     const [isFormSubmitted, setFormSubmitted] = useState(false);

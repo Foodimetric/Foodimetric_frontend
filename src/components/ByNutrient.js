@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, {useCallback } from 'react';
 import './search.css';
 import { findKeyByWord } from '../utils/findkey';
 import { useFoodContext } from '../Context/FoodContext';

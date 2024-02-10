@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FOODIMETRIC_HOST_URL } from '../utils/getData';
 import { toast } from 'react-hot-toast';
+import { useAuthContext } from '../Context/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const {setUser, setAccessToken } = useAuthContext();
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -26,11 +28,17 @@ const Login = () => {
                         },
                     });
                     const data = await response.json();
-                    localStorage.setItem("foodie-user", JSON.stringify(data?.payload));
-                    localStorage.setItem("Foodie-token", JSON.stringify(data?.payload?.token));
-
                     if (response.ok) {
+                        localStorage.setItem("foodie-user", JSON.stringify({
+                            email: data?.payload?.user?.email,
+                            firstName: data?.payload?.user?.firstName,
+                            lastName: data?.payload?.user?.lastName,
+                            _id: data?.payload?.user?._id,
+                        }));
+                        localStorage.setItem("Foodie-token", JSON.stringify(data?.payload?.token));
+                        setAccessToken(data?.payload?.token);
                         navigate('/search');
+                        setUser(true);
                         resolve();
                     } else {
                         setError("Invalid email or password.");
@@ -80,14 +88,14 @@ const Login = () => {
                         <div className="form-group password-icon">
                             <label htmlFor="password">Password</label>
                             <input
-                                 type={passwordVisible ? 'text' : 'password'}
+                                type={passwordVisible ? 'text' : 'password'}
                                 id="password"
                                 name="password"
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            {password && <div className="icons8-eye" onClick={()=>setPasswordVisible(!passwordVisible)}></div>}
+                            {password && <div className="icons8-eye" onClick={() => setPasswordVisible(!passwordVisible)}></div>}
                         </div>
                         {error && <span className="error">{error}</span>}
                         <button type="submit" className='create_acct'>Login</button>

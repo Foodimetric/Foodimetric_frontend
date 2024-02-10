@@ -3,29 +3,19 @@ import './component.css';
 import logo from '../assets/logo.png'
 import { Link, Outlet } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import { checkAuthenticationStatus } from '../utils/validate';
 import ProfileTab from './Profile';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAuthContext } from '../Context/AuthContext';
 
 const Header = () => {
-  // const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [authenticationStatus, setAuthenticationStatus] = useState("loading");
+  const {user, status} = useAuthContext();
 
   useEffect(() => {
-    checkAuthenticationStatus()
-      .then((status) => {
-        setAuthenticationStatus(status);
-      })
-      .catch((error) => {
-        console.error("Error checking authentication status:", error);
-        setAuthenticationStatus("unauthenticated");
-      });
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     setIsMobile(mediaQuery.matches);
-
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsFixed(scrollPosition > 0);
@@ -37,7 +27,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, user]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -57,6 +47,8 @@ const Header = () => {
       return
     }
   }
+
+  console.log(status);
   return (
     <header className={`header ${isMobile ? 'mobile' : ''} ${isFixed ? 'fixed' : ''}`}>
       <div className="container_box">
@@ -71,7 +63,7 @@ const Header = () => {
         <nav className={`header-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul>
             <div className='mobile'>
-              <ProfileTab status={authenticationStatus} />
+              <ProfileTab status={status} />
             </div>
             {isMobile && <h3>"Fuel your body, fuel the economy: the power of nutrition"</h3>}
             {/* <li>
@@ -92,12 +84,12 @@ const Header = () => {
           </ul>
         </nav>
         <div className='third-child'>
-          {(authenticationStatus === 'loading' || authenticationStatus === 'unauthenticated') && (<button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>)}
-          {authenticationStatus === 'authenticated' && (
+          {status === 'authenticated' && (
             <div className='desktop'>
-              <ProfileTab status={authenticationStatus} />
+              <ProfileTab/>
             </div>
           )}
+          {(status === 'loading' || status === 'unauthenticated') && (<button><Link to={"signup"} style={{ textDecoration: 'none', color: 'inherit' }}>Get Started</Link></button>)}
         </div>
       </div>
       <Toaster />
