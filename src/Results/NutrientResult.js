@@ -7,7 +7,7 @@ const NutrientResult = () => {
     console.log(nutrientResult);
     return (
         <TableContainer>
-            <Table stickyHeader >
+            <Table>
                 {nutrientResult.nutrientName && <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
                     <TableRow>
                         <TableCell style={{ fontWeight: 'bolder', fontSize: '18px' }}>Nutrient</TableCell>

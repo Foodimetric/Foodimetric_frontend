@@ -28,7 +28,7 @@ const FoodResult = React.memo(() => {
 
     return (
         <TableContainer>
-            <Table stickyHeader>
+            <Table>
                 <TableHead style={{ backgroundColor: 'rgba(224, 149, 35, 0.50)', height: 80 }}>
                     <TableRow>
                         {processedData?.map(({ key }) => (

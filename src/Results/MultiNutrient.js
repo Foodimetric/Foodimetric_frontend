@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useFoodContext } from '../Context/FoodContext'
 
-
+ 
 const MultiNutrient = () => {
     const {multiNutrientResult} = useFoodContext();
     return (
