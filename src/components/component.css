@@ -113,6 +113,7 @@
         width: 40vw;
         min-height: 88svh;
         flex-direction: column;
+        gap: 1.5rem;
         z-index: 999;
         padding: 20px;
         transform: translateY(-10%);
@@ -142,6 +143,7 @@
     .mobile .header-nav ul li a {
         background: linear-gradient(to right, #21A60B, rgba(255, 185, 8, 0.685));
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 16px;
         font-weight: 400;
@@ -280,7 +282,7 @@
 
 .container1 img {
     max-width: 80%;
-    height: auto;
+    min-height: 400px;
 }
 
 .container1 #left,
@@ -447,13 +449,6 @@
         margin-bottom: 30px;
     }
 
-    .features .card:nth-child(odd) {
-        /* margin-right: 20px; */
-    }
-
-    .features .card:nth-child(even) {
-        /* margin-left: 20px; */
-    }
 
     .features .card img {
         width: 50%;
@@ -1067,10 +1062,6 @@
  
 }
 
-
-.search-label {
-  /* Your label styles */
-}
 
 .search-input {
   width: 100%;

@@ -19,7 +19,7 @@ const Hero = () => {
                     <Link to={"signup"}><button>Get Started</button></Link>
                     <Link to={"search"}><button id='trial'>Search</button></Link>
                 </div>
-                <img src={landing} alt="nutritionist" />
+                <img src={landing} alt="nutritionist" loading="eager" />
             </div>
         </section>
     );
