@@ -48,7 +48,6 @@ const Header = () => {
     }
   }
 
-  console.log(status);
   return (
     <header className={`header ${isMobile ? 'mobile' : ''} ${isFixed ? 'fixed' : ''}`}>
       <div className="container_box">

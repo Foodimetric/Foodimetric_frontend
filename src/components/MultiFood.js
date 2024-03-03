@@ -12,6 +12,7 @@ const MultiFood = () => {
 
     const handleSave = useCallback((e) => {
         e.preventDefault();
+        setFormSubmitted(false);
         setSearchData(searchData => [...searchData, { foodName: searchQuery, selectedWeight }]);
         setSearchQuery('');
         setSelectedWeight(100);
@@ -28,7 +29,7 @@ const MultiFood = () => {
         setMultiFoodResults(result);
         setSearchData([]);
     }, [searchData, data, setMultiFoodResults]);
-
+    
     return (
         <>
             <div className='proceed' style={{ justifyContent: "end", width: '91%' }}>

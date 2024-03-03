@@ -4,7 +4,6 @@ import { useFoodContext } from '../Context/FoodContext';
 
 const NutrientResult = () => {
     const {nutrientResult} = useFoodContext();
-    console.log(nutrientResult);
     return (
         <TableContainer>
             <Table>

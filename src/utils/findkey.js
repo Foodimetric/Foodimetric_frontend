@@ -58,3 +58,22 @@ export function multiNutrientSearch(searchData, data) {
   return searchResults;
 
 }
+
+
+export function addTotal(obj) {
+  const totals = {};
+
+  obj.forEach(array => {
+    array.forEach((row) => {
+      const { key, displayValue } = row;
+  
+      if (totals[key]) {
+        totals[key] += Number(displayValue); // Ensure consistent numeric type for adding
+      } else {
+        totals[key] = Number(displayValue);
+      }
+    });
+  })
+
+  return totals;
+}

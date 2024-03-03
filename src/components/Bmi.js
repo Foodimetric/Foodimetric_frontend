@@ -32,7 +32,7 @@ const BodyMassIndex = () => {
       case BmiToFixed < 18.5:
         return 'Underweight';
       case BmiToFixed >= 18.5 && BmiToFixed <= 24.99:
-        return 'Normal weight';
+        return 'Normal BMI';
       case BmiToFixed >= 25 && BmiToFixed <= 29.99:
         return 'Overweight';
       default:
