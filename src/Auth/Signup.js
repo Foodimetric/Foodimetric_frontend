@@ -28,12 +28,12 @@ const SignupPage = () => {
         let errors = {};
         const regex = /^[a-zA-Z0-9]+$/; // regex for alphanumeric characters
         const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/; // regex for email
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?.&])[A-Za-z\d@$!%*?.&]{8,}$/; // regex for password
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/; 
 
         if (!regex.test(data.firstName)) {
             errors.firstName = 'First name should not include special characters';
         }
-
+        
         if (!regex.test(data.lastName)) {
             errors.lastName = 'Last name should not include special characters';
         }
@@ -42,9 +42,8 @@ const SignupPage = () => {
             errors.email = 'Email is not valid';
         }
 
-        console.log(passwordRegex.test(data.password));
         if (!passwordRegex.test(data.password)) {
-            errors.password = 'Password should include at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long';
+          errors.password = 'Password must be at least 8 characters, include one uppercase letter, one lowercase letter, one number.';
         }
         return errors;
     };

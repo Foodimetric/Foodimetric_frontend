@@ -24,6 +24,7 @@
   cursor: pointer;
   background-color: white;
   border: none;
+  display: flex;
 }
 
 .tab-buttons button.active {
@@ -68,12 +69,7 @@
   }
 }
 
-
-
-
 /* UserProfile.css */
-
-
 .user-container{
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -186,8 +182,6 @@
 
 .actions {
   margin-top: 20px;
-
-  
 }
 
 .actions button {
@@ -222,3 +216,4 @@
   font-size: 24px;
   color: #fff;
 }
+
