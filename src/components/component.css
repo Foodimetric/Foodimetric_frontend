@@ -951,20 +951,22 @@
 /* BMI component */
 .Bmi-content {
     width: 100%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .Bmi_weight,
 .Bmi_height {
     width: 500px;
+    margin: 0 auto;
 }
 
 /* bmi-content.css */
 
 .Bmi-content {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
+    justify-content: space-around;
 }
 
 
@@ -1115,7 +1117,7 @@ input[type="number"] {
 @media (max-width: 600px) {
     .Bmi_weight,
     .Bmi_height {
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -1130,6 +1132,23 @@ input[type="number"] {
     .search-container {
         padding: 0px;
        
-      }
+    }
+    
+    
+    .Bmi-content {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .bmi_body{
+        width: 90%;
+
+    }
+    .bmi-proceed{
+        width: 100%;
+    }
+    
       
 }

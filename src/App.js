@@ -12,6 +12,7 @@ import {
 import UserProfile from './Pages/UserProfiile';
 import { FoodProvider } from './Context/FoodContext';
 import { AuthProvider } from './Context/AuthContext';
+import FindAlternative from './Pages/FindAlternative';
 
 
 const queryClient = new QueryClient({
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path="/search" element={<SearchTab />} />
                 <Route path='/profile' element={<UserProfile />} />
+                <Route path='/alt' element={<FindAlternative />} />
                 <Route path='*' element={<Error />} />
               </Routes>
             </AuthProvider>

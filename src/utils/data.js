@@ -44,3 +44,34 @@ export const data = [
 ]
 
 
+export const altdata = [
+    {
+        foodID: 1,
+        foodName: "Apple",
+        foodType: "Fruit",
+        description: "A crisp and sweet fruit.",
+        imageURL: "https://example.com/apple.jpg",
+        alternativeNutrient: "Vitamin C",
+        unit: "mg",
+        alternativeID: 1,
+        alternativeFoodName: "Orange",
+        alternativeDescription: "A citrus fruit known for its tangy flavor.",
+        alternativeImageURL: "https://example.com/orange.jpg",
+        alternativeNutrient: "Vitamin C",
+    },
+    {
+        foodID: 2,
+        foodName: "Spinach",
+        foodType: "Vegetable",
+        description: "A leafy green vegetable rich in iron.",
+        imageURL: "https://example.com/spinach.jpg",
+        alternativeNutrient: "Iron",
+        unit: "mg",
+        alternativeID: 2,
+        alternativeFoodName: "Kale",
+        alternativeDescription: "A nutrient-dense leafy green vegetable.",
+        alternativeImageURL: "https://example.com/kale.jpg",
+        alternativeNutrient: "Iron",
+    },
+    // Add more entries as needed...
+];
