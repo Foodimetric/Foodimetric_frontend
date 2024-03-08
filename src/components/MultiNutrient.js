@@ -4,6 +4,7 @@ import { useFoodContext } from '../Context/FoodContext'
 import { useFoodSearch } from '../utils/useFoodSearch'
 import SearchInput from './SearchInput';
 import DropdownSelector from './DropdownSelector';
+import Tooltip from '@mui/material/Tooltip'
 
 const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames'];
 
@@ -120,7 +121,14 @@ const MultiNutrientComponent = () => {
                     </div>
                 </div>
                 <div className='proceed'>
-                    <button disabled={searchData.length < 2 || formSubmitted} type='submit'>Proceed</button>
+                    <button disabled={searchData.length < 2 || formSubmitted} type='submit'>
+                        <span>Proceed</span>
+                        <Tooltip title="Add more than one nutrient to proceed">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30" className='tips'>
+                                <path d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16,21h-2v-7h2V21z M15,11.5 c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S15.828,11.5,15,11.5z"></path>
+                            </svg>
+                        </Tooltip>
+                    </button>
                 </div>
             </form>
         </>

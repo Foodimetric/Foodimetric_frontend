@@ -73,5 +73,34 @@ export const altdata = [
         alternativeImageURL: "https://example.com/kale.jpg",
         alternativeNutrient: "Iron",
     },
+    {
+        foodID: 3,
+        foodName: "Brocolli",
+        foodType: "Vegetable",
+        description: "Broccoli is an edible green plant rich in fiber and Vitamin C.",
+        imageURL: "https://example.com/spinach.jpg",
+        alternativeNutrient: "Fiber, Vitamin C",
+        unit: "mg",
+        alternativeID: 2,
+        alternativeFoodName: "Spinach",
+        alternativeDescription: "A leafy green vegetable rich in iron.",
+        alternativeImageURL: "https://example.com/kale.jpg",
+        alternativeNutrient: "Iron, Vitamin C",
+    },
+    {
+        foodID: 4,
+        foodName: "Plum",
+        foodType: "Fruit",
+        description: "Plums are sweet and juicy fruits with a smooth skin and a stone in the middle.",
+        imageURL: "https://example.com/plum.jpg",
+        alternativeNutrient: "Vitamin C",
+        unit: "mg",
+        alternativeID: 2,
+        alternativeFoodName: "Apple",
+        alternativeDescription: "Apples are crisp, sweet, and juicy fruits with a variety of flavors and colors.",
+        alternativeImageURL: "https://example.com/apple.jpg",
+        alternativeNutrient: "Vitamin C",
+    }
+    
     // Add more entries as needed...
 ];
