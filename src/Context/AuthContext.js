@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { FOODIMETRIC_HOST_URL } from '../utils/getData';
 
 const AuthContext = createContext();
 
