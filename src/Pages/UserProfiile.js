@@ -22,7 +22,7 @@ const UserProfile = () => {
     const handleLogoutClick = () => {
         // Clear the token from localStorage
         localStorage.clear();
-      
+        setIsEditing(false);
         // Show a toast notification that the user has been logged out
         toast.success('You have been logged out.');
         setStatus("unauthenticated");
