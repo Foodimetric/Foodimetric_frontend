@@ -269,9 +269,14 @@
   width: 100vw;
 }
 
-.search_card{
+
+.alt-component{
   width: 90%;
   margin: 0 auto;
+}
+
+.search_card{
+  margin-top: 2rem;
 }
 
 .alt-food-container .food{
@@ -301,18 +306,32 @@
   font-size: 0.85rem;
   width: 90%;
   max-width: 95%;
-  align-items: center;
   line-height: 1.3rem;
   word-spacing: 0.25rem;
-
+  height: 150px;
+  max-height: 200px;
+  overflow:hidden;
 }
 
-.food-card-details div:first-of-type{
+.show-more{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  width: 90%;
+  max-width: 95%;
+  line-height: 1.3rem;
+  word-spacing: 0.25rem;
+  height: auto;
+  /* overflow:hidden; */
+}
+
+.food-card-details div:first-of-type, .show-more div:first-of-type{
   width: 40%;
   text-align: left;
 }
 
-.food-card-details div:last-of-type{
+.food-card-details div:last-of-type, .show-more div:last-of-type{
   width: 30%;
 }
 
@@ -324,7 +343,7 @@
   text-decoration: underline;
 }
 
-.food-card-details button{
+.search_card_btn{
   padding: 10px 20px;
   background-color: rgba(255, 186, 8, 1);
   color: white;
@@ -333,4 +352,16 @@
   border-radius: 10px;
   cursor: pointer;
   margin-top: 0.5rem;
+}
+
+#alt-heading{
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-block: 3rem;
+}
+
+#alt-card{
+  margin-top: 0px;
 }
