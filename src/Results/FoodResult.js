@@ -26,6 +26,7 @@ const FoodResult = React.memo(() => {
         }, []);
     }, [foodResults, selectedValue]);
 
+    console.log(foodResults);
     return (
         <TableContainer>
             <Table>
