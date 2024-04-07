@@ -1,0 +1,128 @@
+/* styles.css */
+.privacy-page{
+  padding: 0px 20px;
+
+}
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.privacy-content h2 {
+    color: #333;
+}
+
+.privacy-content h3 {
+    color: #555;
+}
+
+.privacy-content h4 {
+    color: #777;
+}
+
+.privacy-content p {
+    margin-bottom: 20px;
+}
+
+.privacy-content ul {
+    margin-bottom: 20px;
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.privacy-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.privacy-content a:hover {
+    text-decoration: underline;
+}
+
+.privacy-content strong {
+    font-weight: bold;
+}
+
+/* styles.css */
+
+.footer-link{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    /* background-color: #333 !important; */
+    /* color: #fff !important; */
+    padding: 10px 20px !important;
+    border-top: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.705) !important;
+}
+
+.footer-link nav ul {
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+}
+
+.footer-link nav ul li {
+    margin-right: 20px !important;
+}
+
+.footer-link nav ul li a {
+    text-decoration: none !important;
+    color: #1a1919 !important;
+    font-weight: bold !important;
+    transition: color 0.3s ease !important;
+}
+
+.footer-link ul li a:hover {
+    color: #ffd700 !important;
+}
+
+.footer-link div:last-child {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.footer-link div:last-child img {
+    margin-right: 10px !important;
+}
+
+.privacy {
+    /* background-color: #222 !important; */
+    /* color: #fff !important; */
+    text-align: center !important;
+    padding: 20px 0 !important;
+}
+
+.privacy p {
+    margin: 0 !important;
+}
+
+.privacy a {
+    color: #ffd700 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.privacy a:hover {
+    /* color: #fff !important; */
+}
+
+
+@media (max-width: 768px) {
+    .footer-link {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-link nav {
+        margin-top: 10px;
+    }
+    
+    
+    .footer-link nav ul li {
+        margin: 5px 0;
+    }
+}

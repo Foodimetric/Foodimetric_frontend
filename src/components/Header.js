@@ -68,17 +68,17 @@ const Header = () => {
             {/* <li>
               <Link to={"/"}>Home</Link>
             </li> */}
-            <li onClick={() => handleRedirect()}>
-              <Link smooth to={"search"}>Search</Link>
-            </li>
             <li>
               <HashLink smooth to="/#resources-container">Resources</HashLink>
             </li>
             <li>
-              <HashLink smooth to='/#about-us' > About Us </HashLink>
+              <Link smooth to={"privacy"}>Privacy</Link>
+            </li>
+            <li onClick={() => handleRedirect()}>
+              <Link smooth to={"search"}>Search</Link>
             </li>
             <li>
-              <HashLink smooth to='/#contact-us' > Contact Us </HashLink>
+              <HashLink smooth to='/#about-us' > About Us </HashLink>
             </li>
             {/* <li>
               <HashLink  smooth to={"alt"}>Food</HashLink>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './pages.css'
+import './privacy.css'
 import ByFood from '../components/ByFood'
 import BodyMassIndex from '../components/Bmi'
 import FoodResult from '../Results/FoodResult';
@@ -12,6 +13,7 @@ import MultiNutrientComponent from '../components/MultiNutrient';
 import { useNavigate } from 'react-router-dom';
 import { useTabs } from '../utils/useTabs';
 import Tooltip from '@mui/material/Tooltip'
+import FooterLink from '../components/FooterLink';
 
 const SearchTab = () => {
   const navigate = useNavigate();
@@ -83,6 +85,7 @@ const SearchTab = () => {
       <div>
         {renderTabResult()}
       </div>
+      <FooterLink/>
     </div>
   );
 };
