@@ -3,6 +3,7 @@ import './pages.css'
 import { useNavigate } from 'react-router-dom'; // Assuming you use React Router for routing
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../Context/AuthContext';
+import FooterLink from '../components/FooterLink';
 
 const UserProfile = () => {
     const navigate = useNavigate();
@@ -125,6 +126,7 @@ const UserProfile = () => {
                     </button>
                 </div>
             </div>
+            <FooterLink/>
         </div>
 
     );

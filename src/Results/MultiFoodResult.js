@@ -33,7 +33,6 @@ const MultiFoodResult = () => {
     }, [multiFoodResults]);
 
 
-    console.log(allRows)
     return (
         <TableContainer>
             <Table>
