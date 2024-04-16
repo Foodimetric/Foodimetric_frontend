@@ -1,53 +1,59 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignupPage from './Auth/Signup';
-import LandingPage from './Pages/Landingpage';
-import Header from './components/Header';
-import Login from './Auth/Login';
-import SearchTab from './Pages/Search';
-import Error from './Pages/Error';
+import './App.css';
+import { Home } from './Pages/Home';
 import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import UserProfile from './Pages/UserProfiile';
-import { FoodProvider } from './Context/FoodContext';
-import { AuthProvider } from './Context/AuthContext';
-import FindAlternative from './Pages/FindAlternative';
-import Privacy from './Pages/Privacy';
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 
+import Register from './Pages/Register';
+import Login from './Pages/Login';
+import About from './Pages/About';
+import Error from './Pages/Error';
+import Contact from './Pages/Contact';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: Infinity,
-      cacheTime: Infinity
-    }
-  }
-})
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Home />
+    ),
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "about",
+    element: <About />,
+  },
+  {
+    path: "contact",
+    element: <Contact />,
+  },
+  {
+    path: "search",
+    element: <Contact />,
+  },
+  {
+    path: "anthro",
+    element: <Contact />,
+  },
+  {
+    path: "*",
+    element: <Error />,
+  },
+]);
 
 function App() {
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <div className="App">
-          <FoodProvider>
-            <AuthProvider>
-              <Header />
-              <Routes>
-                <Route path='/' element={<LandingPage />} />
-                <Route path='/signup' element={<SignupPage />} />
-                <Route path='/login' element={<Login />} />
-                <Route path="/search" element={<SearchTab />} />
-                <Route path='/profile' element={<UserProfile />} />
-                <Route path='/alt' element={<FindAlternative />} />
-                <Route path='/privacy' element={<Privacy/>} />
-                <Route path='*' element={<Error />} />
-              </Routes>
-            </AuthProvider>
-          </FoodProvider>
-        </div>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
