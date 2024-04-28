@@ -8,7 +8,7 @@ import About from '../Components/sections/About';
 export const Home = () => {
     return (
         <>
-            <div className="preloader">
+            {/* <div className="preloader">
                 <div className="vertical-centered-box">
                     <div className="content">
                         <div className="loader-circle"></div>
@@ -18,7 +18,7 @@ export const Home = () => {
                         <img src="assets/images/preloader.png" alt="" />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <Header />
             <main>
                 <div className="relative">
@@ -111,7 +111,7 @@ export const Home = () => {
                         </div>
                     </section>
                 </div>
-               <About padding={'90px'} />
+                <About padding={'90px'} />
                 <section id="stat" className='bg-cover bg-center bg-no-repeat md:bg-fixed
              bg-local'>
                     <div className="text-center py-20 md:pb-12 relative z-10  before:absolute before:left-0 before:top-0

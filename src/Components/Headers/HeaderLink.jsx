@@ -9,7 +9,7 @@ const HeaderLink = () => {
                     <div id="dl-menu" className="dl-menuwrapper block md:hidden">
                         <button className="dl-trigger">Open Menu</button>
                         <ul className="dl-menu">
-                            <li><a href="# ">About Us </a>
+                            <li><Link to="/about">About Us </Link>
                             <ul className="dl-submenu">
                                     <li><a href="team.html">Team</a></li>
                                     <li><a href="Faq.html">FAQ</a></li>
@@ -17,18 +17,18 @@ const HeaderLink = () => {
                             </li>
                             <li><a href="# ">Search</a>
                                 <ul className="dl-submenu">
-                                    <li><a href="team.html">Nutrient</a></li>
-                                    <li><a href="service.html">Food</a></li>
-                                    <li><a href="service-single.html">Multi-Nutrient</a></li>
-                                    <li><a href="testimonial.html">Multi-Food</a></li>
+                                    <li><Link to="/search/nutrient">Nutrient</Link></li>
+                                    <li><Link to="/search/food">Food</Link></li>
+                                    <li><Link to="/search/multi-nutrient">Multi-Nutrient</Link></li>
+                                    <li><Link to="/search/multi-food">Multi-Food</Link></li>
                                 </ul>
                             </li>
                             <li><a href="# ">Anthropometric</a>
                                 <ul className="dl-submenu">
-                                    <li><a href="shop.html">BMI </a></li>
-                                    <li><a href="shop-single.html">IBW</a></li>
-                                    <li><a href="cart.html">WHR</a></li>
-                                    <li><a href="checkout.html">Percentile</a></li>
+                                    <li><Link to="/anthro/BMI">BMI </Link></li>
+                                    <li><Link to="/anthro/IBW">IBW</Link></li>
+                                    <li><Link to="/anthro/WHR">WHR</Link></li>
+                                    <li><Link to="/anthro/percentile">Percentile</Link></li>
                                 </ul>
                             </li>
                             <li>
@@ -75,32 +75,32 @@ const HeaderLink = () => {
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
                                 <li>
-                                    <a href="shop.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/anthro/BMI" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">BMI</a>
+                                        hover:after:w-[50%]">BMI</Link>
                                 </li>
                                 <li>
-                                    <a href="shop-single.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/anthro/IBW" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">IBW</a>
+                                        hover:after:w-[50%]">IBW</Link>
                                 </li>
                                 <li>
-                                    <a href="cart.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/anthro/WHR" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">WHR</a>
+                                        hover:after:w-[50%]">WHR</Link>
                                 </li>
                                 <li>
-                                    <a href="checkout.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/anthro/percentile" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Percentile</a>
+                                        hover:after:w-[50%]">Percentile</Link>
                                 </li>
                             </ul>
                         </li>
@@ -118,39 +118,39 @@ const HeaderLink = () => {
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
                                 <li>
-                                    <a href="team.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/search/food" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Food</a>
+                                        hover:after:w-[50%]">Food</Link>
                                 </li>
                                 <li>
-                                    <a href="service.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/search/nutrient" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[rgb(234,124,8)] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Nutrient</a>
+                                        hover:after:w-[50%]">Nutrient</Link>
                                 </li>
                                 <li>
-                                    <a href="service-single.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/search/multi-nutrient"className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Multi-Nutrient</a>
+                                        hover:after:w-[50%]">Multi-Nutrient</Link>
                                 </li>
                                 <li>
-                                    <a href="testimonial.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/search/multi-food" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Multi-Food</a>
+                                        hover:after:w-[50%]">Multi-Food</Link>
                                 </li>
                                 <li>
-                                    <a href="testimonial.html" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                    <Link to="/search/alternative" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
-                                        hover:after:w-[50%]">Alternative Food Search</a>
+                                        hover:after:w-[50%]">Alternative Food Search</Link>
                                 </li>
                             </ul>
                         </li>

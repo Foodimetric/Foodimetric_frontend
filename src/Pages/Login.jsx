@@ -22,7 +22,7 @@ const Login = () => {
                                 <div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
-                                        <input type="text" id="email" name="email" placeholder="demo@gmail.com"
+                                        <input type="email" id="email" name="email" placeholder="demo@gmail.com"
                                             className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
                                     </div>
                                     <div className="w-full relative">
@@ -42,8 +42,8 @@ const Login = () => {
                                                 Me</label>
                                         </div>
                                         <div className="forget-btn">
-                                            <a href="forgot.html" className="font-base-font text-[16px] text-[#687693]">Forgot
-                                                Password?</a>
+                                            <Link to="/reset" className="font-base-font text-[16px] text-[#687693]">Forgot
+                                                Password?</Link>
                                         </div>
                                     </div>
                                     <div className="w-full">

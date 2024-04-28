@@ -30,7 +30,7 @@ const Register = () => {
                                     </div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
-                                        <input type="text" id="email" name="email" placeholder="Your email here.."
+                                        <input type="email" id="email" name="email" placeholder="Your email here.."
                                             className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
                                     </div>
                                     <div className="w-full relative">
