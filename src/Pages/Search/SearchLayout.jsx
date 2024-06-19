@@ -25,13 +25,13 @@ const SearchLayout = () => {
     }
     return (
         <main className='flex max-h-screen'>
-            <div className='w-full lg:w-1/5 max-h-full'>
+            <div className=''>
                 <SearchNav />
             </div>
-            <div className='w-full lg:w-4/5 max-h-full font-base-font'>
+            <div className='ml-60 max-h-screen overflow-auto font-base-font max-w-6xl w-[100vw] mx-auto'>
                 <SearchHeader title={pageTitle} />
-                <div className='w-full bg-gray-100 max-h-full'>
-                    <div className='px-8 max-h-full'>
+                <div className='bg-gray-100'>
+                    <div className='px-8 pt-16 '>
                         <Outlet />
                     </div>
                 </div>

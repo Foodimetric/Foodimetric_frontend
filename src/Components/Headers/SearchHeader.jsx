@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProfileDropdown from '../Nav/ProfileDropdown';
 
 const SearchHeader = ({ title }) => {
     // State to keep track of the selected database
@@ -10,7 +11,7 @@ const SearchHeader = ({ title }) => {
     };
 
     return (
-        <div className="flex flex-col flex-grow">
+        <div className="fixed right-0 top-0 left-60 h-16 bg-white z-10">
             <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
                 <h1 className="text-xl font-medium text-[#147e03] font-heading-font">{title}</h1>
                 <label className={`flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded cursor-pointer`}>
@@ -36,6 +37,7 @@ const SearchHeader = ({ title }) => {
                     />
                     West-Africa DB
                 </label>
+                <ProfileDropdown />
             </div>
         </div>
     );

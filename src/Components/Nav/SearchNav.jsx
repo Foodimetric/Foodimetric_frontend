@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const SearchNav = () => {
     return (
-        <nav className="inset-y-0 h-screen bg-white shadow-xl max-h-screen w-full font-base-font">
+        <nav className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 font-base-font">
             <div className="flex flex-col justify-between h-full">
                 <div className="flex-grow">
                     <div className="px-4 py-0 text-center border-b h-16">

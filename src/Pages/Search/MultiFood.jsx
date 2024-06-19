@@ -2,8 +2,8 @@ import React from 'react';
 
 const MultiFood = () => {
     return (
-        <main class="py-8 max-h-full">
-            <div class="bg-white p-8 max-h-full">
+        <main class="py-8">
+            <div class="bg-white p-8 min-h-screen">
                 <form className='w-full md:w-3/4 mx-auto'>
                     <div>
                         <label htmlFor='food' className='mb-2 block'>Search Food:</label>

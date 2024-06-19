@@ -3,7 +3,6 @@ import { Home } from './Pages/Home';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 
 import Register from './Pages/Register';
@@ -14,11 +13,23 @@ import Contact from './Pages/Contact';
 import Reset from './Pages/ResetPassword';
 import SearchLayout from './Pages/Search/SearchLayout';
 import AnthroLayout from './Pages/Anthro/AnthroLayout';
-import {Food} from './Pages/Search/Food';
+import { Food } from './Pages/Search/Food';
 import Nutrient from './Pages/Search/Nutrient';
 import MultiFood from './Pages/Search/MultiFood';
 import MultiNutrient from './Pages/Search/MultiNutrient';
 import Alternative from './Pages/Search/Alternative';
+import IBW from './Pages/Anthro/IBW'
+import WeightAge from './Pages/Anthro/Weight-age';
+import HeightAge from './Pages/Anthro/Height-age'
+import BMI from './Pages/Anthro/BMI'
+import BMIAge from './Pages/Anthro/BMI-age';
+import WHR from './Pages/Anthro/WHR';
+import BMR from './Pages/Anthro/BMR';
+import EE from './Pages/Anthro/EE';
+import EER from './Pages/Anthro/EER';
+import WeightHeight from './Pages/Anthro/WeightHeight';
+import WaterIntake from './Pages/Anthro/WaterIntake';
+import Dashboard from './Pages/User/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +48,7 @@ const router = createBrowserRouter([
   },
   {
     path: "reset",
-    element: <Reset /> ,
+    element: <Reset />,
   },
   {
     path: "about",
@@ -46,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact />,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
   },
   {
     path: "/search",
@@ -80,19 +95,47 @@ const router = createBrowserRouter([
     children: [
       {
         path: "IBW",
-        element: <Login />,
+        element: <IBW />,
       },
       {
         path: "BMI",
-        element: <Login />,
+        element: <BMI />,
+      },
+      {
+        path: "BMR",
+        element: <BMR />,
       },
       {
         path: "WHR",
-        element: <Login />,
+        element: <WHR />,
       },
       {
-        path: "percentile",
-        element: <Login />,
+        path: "EER",
+        element: <EER />,
+      },
+      {
+        path: "EE",
+        element: <EE />,
+      },
+      {
+        path: "BMI-age",
+        element: <BMIAge />,
+      },
+      {
+        path: "Weight-age",
+        element: <WeightAge />,
+      },
+      {
+        path: "Height-age",
+        element: <HeightAge />,
+      },
+      {
+        path: "Weight-Height",
+        element: <WeightHeight />,
+      },
+      {
+        path: "Water-intake",
+        element: <WaterIntake />,
       },
     ],
   },
