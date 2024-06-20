@@ -1492,7 +1492,7 @@ input[type=number] {
 	max-width: 550px;
 }
 
-.swiper-button-prev,
+/* .swiper-button-prev,
 .swiper-button-next {
 	background: rgba(255, 255, 255, 0.2);
 	width: 60px;
@@ -1508,7 +1508,7 @@ input[type=number] {
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
 	opacity: 0.9;
-}
+} */
 
 @media (max-width: 767px) {
 
@@ -1522,24 +1522,24 @@ input[type=number] {
 	left: 25px;
 }
 
-.swiper-button-prev:before {
+/* .swiper-button-prev:before {
 	font-family: "themify";
 	content: "\e629";
 	font-size: 20px;
 	color: #fff;
-}
+} */
 
-.swiper-button-next {
+/* .swiper-button-next {
 	right: 25px;
-}
+} */
 
 
-.swiper-button-next:before {
+/* .swiper-button-next:before {
 	font-family: "themify";
 	content: "\e628";
 	font-size: 20px;
 	color: #fff;
-}
+} */
 
 @media (max-width: 991px) {
 

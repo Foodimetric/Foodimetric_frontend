@@ -1,6 +1,11 @@
 import React from 'react';
+import ProceedButton from '../../Components/Buttons/ProceedButton';
 
 const MultiNutrient = () => {
+    const handleProceed = () => {
+        alert('Proceed button clicked');
+    };
+
     return (
         <main class="py-8">
             <div class="bg-white p-8 min-h-screen">
@@ -32,14 +37,8 @@ const MultiNutrient = () => {
                     <div className='my-4'>
 
                     </div>
-                    <div className="w-3/4 mx-auto mt-8">
-                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
-                                    items-center mt-[20px] w-full
-                                    justify-center capitalize text-[#fff]
-                                    border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
-                                ">
-                            Proceed
-                        </button>
+                    <div className="w-full mx-auto mt-8">
+                        <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} width="100%" />
                     </div>
                 </form>
                 <div className='mt-12'>

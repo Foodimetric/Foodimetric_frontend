@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ProfileDropdown from '../Nav/ProfileDropdown';
+import { Avatar, IconButton } from '@mui/material';
 
 const Header = () => {
+    const [auth, setAuth] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     return (
         <header className="relative z-[111]">
             <h1 className="hidden">section heading hidde</h1>
@@ -46,9 +53,11 @@ const Header = () => {
             </div>
             <div className="px-2 md:px-12 border-t-[#eee] border-t">
                 <div className="flex items-center justify-between  rounded-[5px]  relative z-10 md:py-[10px]">
-                    <div id="dl-menu" className="dl-menuwrapper block md:hidden">
-                        <button className="dl-trigger">Open Menu</button>
-                        <ul className="dl-menu">
+                    <div id="dl-menu" className="dl-menuwrapper w-full block md:hidden">
+                        <button className="dl-trigger" onClick={toggleMenu}>
+                            {isMenuOpen ? 'Close Menu' : 'Open Menu'}
+                        </button>
+                        <ul className={` ${isMenuOpen ? 'block w-full mt-3' : 'hidden'}`}>
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
@@ -58,7 +67,7 @@ const Header = () => {
                                     <li><a href="Faq.html">FAQ</a></li>
                                 </ul>
                             </li>
-                            <li><a href="# ">Search</a>
+                            <li><NavLink to="/search/food" >Search</NavLink>
                                 <ul className="dl-submenu">
                                     <li><NavLink to="/search/nutrient">Nutrient</NavLink></li>
                                     <li><NavLink to="/search/food">Food</NavLink></li>
@@ -66,7 +75,7 @@ const Header = () => {
                                     <li><NavLink to="/search/multi-food">Multi-Food</NavLink></li>
                                 </ul>
                             </li>
-                            <li><a href="# ">Anthropometric</a>
+                            <li><NavLink to="/anthro/BMI">Anthropometric</NavLink>
                                 <ul className="dl-submenu">
                                     <li><a href="shop.html">BMI </a></li>
                                     <li><a href="shop-single.html">IBW</a></li>
@@ -74,20 +83,19 @@ const Header = () => {
                                     <li><a href="checkout.html">Percentile</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="http://google.com/">Articles</a>
-                            </li>
-                            <li>
-                                <a href="http://google.com/">Alternative Search</a>
-                            </li>
                             <li><Link to="contact">Contact</Link></li>
-                            <li>
-                                <a href="http://google.com/">Dashboard</a>
-                            </li>
+                            {auth && <li className='flex space-x-2 items-center'>
+                                <Link to="/dashboard" className='before:hidden after:hidden'>
+                                    <IconButton >
+                                        <Avatar alt="Profile Image" src="assets/logo.png" />
+                                    </IconButton>
+                                </Link>
+                                <span className='text-white font-bold'> Folake Olamide</span>
+                            </li>}
                         </ul>
                     </div>
 
-                    <div className="w-[195px] md:w-[150px] sm:w-[200px] col:w-[150px] col:ml-[50px] ">
+                    <div className="w-[195px] md:w-[150px] sm:w-[200px] col:w-[150px] col:ml-[50px] hidden lg:block">
                         <Link to={'/'} className="flex items-center md:justify-center text-white">
                             <img className="" src="assets/logo.png" alt="" /></Link>
                     </div>
@@ -115,7 +123,7 @@ const Header = () => {
                                 hover:before:opacity-100 hover:before:visible">About Us</NavLink>
                         </li>
                         <li className="relative inline-block group">
-                            <a href="# " className="relative text-[16px] lg:text-[17px] py-[35px]
+                            <button className="relative text-[16px] lg:text-[17px] py-[35px]
                                 xl:py-[30px] px-[20px] xl:px-[6px]
                                 text-[#14212b] block capitalize
                                 font-base-font font-bold transition-all
@@ -123,7 +131,7 @@ const Header = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Anthro</a>
+                                hover:before:opacity-100 hover:before:visible">Anthro</button>
                             <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
@@ -158,7 +166,7 @@ const Header = () => {
                             </ul>
                         </li>
                         <li className="relative inline-block group">
-                            <a href="# " className="relative text-[16px] lg:text-[17px] py-[35px]
+                            <button className="relative text-[16px] lg:text-[17px] py-[35px]
                                 xl:py-[30px] px-[20px] xl:px-[6px]
                                 text-[#14212b] block capitalize
                                 font-base-font font-bold transition-all
@@ -166,7 +174,7 @@ const Header = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Search</a>
+                                hover:before:opacity-100 hover:before:visible">Search</button>
                             <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
@@ -221,10 +229,12 @@ const Header = () => {
                             ">Contact</NavLink>
                         </li>
                     </ul>
-                    <Link className="theme-btn py-[10px] px-[25px] bg-[#1f1e1e] hidden md:block  before:hidden"
+                    <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
                         to="register">Register
                     </Link>
-                    <ProfileDropdown />
+                    {auth && <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
+                        <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
+                    </IconButton>}
                 </div>
             </div>
         </header>

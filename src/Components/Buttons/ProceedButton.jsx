@@ -17,10 +17,10 @@ const ProceedButton = ({ color, type, auth, onClick, width }) => {
     return (
         <StyledButton
             variant="contained"
-            type={type}
+            type={'submit'}
             customcolor={color}
             disabled={auth === 'unauthorized'}
-            onClick={onClick}
+            onClick={auth.user && onClick}
             width={width}
         >
             {auth === 'unauthorized' ? 'Login Required' : 'Proceed'}

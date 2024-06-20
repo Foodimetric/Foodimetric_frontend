@@ -30,6 +30,8 @@ import EER from './Pages/Anthro/EER';
 import WeightHeight from './Pages/Anthro/WeightHeight';
 import WaterIntake from './Pages/Anthro/WaterIntake';
 import Dashboard from './Pages/User/Dashboard'
+import UserSettings from './Pages/User/Settings';
+import DashboardLayout from './Pages/User/DashboardLayout';
 
 const router = createBrowserRouter([
   {
@@ -59,10 +61,6 @@ const router = createBrowserRouter([
     element: <Contact />,
   },
   {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
     path: "/search",
     element: <SearchLayout />,
     children: [
@@ -89,6 +87,20 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "setting",
+        element: <UserSettings />,
+      },
+    ],
+  },
   {
     path: "/anthro",
     element: <AnthroLayout />,

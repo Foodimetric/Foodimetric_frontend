@@ -62,8 +62,8 @@ const BMI = () => {
 
     return (
         <main class="py-8">
-            <div class="bg-white p-8 min-h-screen">
-                <Box sx={{ width: 350, margin: 'auto', textAlign: 'center' }}>
+            <div class="bg-white p-8 min-h-screen w-full">
+                <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
                     <Typography variant="h6">Weight (kg)</Typography>
                     <CustomSlider
                         value={weight}
@@ -78,7 +78,7 @@ const BMI = () => {
                     />
                     <Typography variant="body1">Current Weight: {weight} kg</Typography>
                 </Box>
-                <Box sx={{ width: 350, margin: 'auto', textAlign: 'center', mt: 4 }}>
+                <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
                     <Typography variant="h6">Height (cm)</Typography>
                     <CustomSlider
                         value={height}

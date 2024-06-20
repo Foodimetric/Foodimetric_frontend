@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from '../Nav/ProfileDropdown';
+import { Avatar, IconButton } from '@mui/material';
 
 
 const HeaderLink = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [auth, setAuth] = useState(false);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     return (
         <div className="px-2 md:px-0 border-t-[#eee] border-t wraper">
             <div className="flex items-center justify-between  rounded-[5px]  relative z-10 md:py-[10px]">
-                <div id="dl-menu" className="dl-menuwrapper block md:hidden">
-                    <button className="dl-trigger">Open Menu</button>
-                    <ul className="dl-menu">
+                <div id="dl-menu" className="dl-menuwrapper block w-full md:hidden">
+                    <button className="dl-trigger" onClick={toggleMenu}>
+                        {isMenuOpen ? 'Close Menu' : 'Open Menu'}
+                    </button>
+                    <ul className={` ${isMenuOpen ? 'block w-[100%] mt-3' : 'hidden'}`}>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
                         <li><Link to="/about">About Us </Link>
                             <ul className="dl-submenu">
                                 <li><a href="team.html">Team</a></li>
                                 <li><a href="Faq.html">FAQ</a></li>
                             </ul>
                         </li>
-                        <li><a href="# ">Search</a>
+                        <li><Link to="/search/food">Search</Link>
                             <ul className="dl-submenu">
                                 <li><Link to="/search/nutrient">Nutrient</Link></li>
                                 <li><Link to="/search/food">Food</Link></li>
@@ -24,7 +35,7 @@ const HeaderLink = () => {
                                 <li><Link to="/search/multi-food">Multi-Food</Link></li>
                             </ul>
                         </li>
-                        <li><a href="# ">Anthropometric</a>
+                        <li><Link to="/anthro/BMI">Anthropometric</Link>
                             <ul className="dl-submenu">
                                 <li><Link to="/anthro/BMI">BMI </Link></li>
                                 <li><Link to="/anthro/IBW">IBW</Link></li>
@@ -32,20 +43,19 @@ const HeaderLink = () => {
                                 <li><Link to="/anthro/percentile">Percentile</Link></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="http://google.com/">Articles</a>
-                        </li>
-                        <li>
-                            <a href="http://google.com/">Alternative Search</a>
-                        </li>
-                        <li><Link to="contact">Contact</Link></li>
-                        <li>
-                            <a href="http://google.com/">Dashboard</a>
-                        </li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        {auth && <li className='flex space-x-2 items-center'>
+                            <Link to="/dashboard" className='before:hidden after:hidden'>
+                                <IconButton >
+                                    <Avatar alt="Profile Image" src="assets/logo.png" />
+                                </IconButton>
+                            </Link>
+                            <span className='text-white font-bold'> Folake Olamide</span>
+                        </li>}
                     </ul>
                 </div>
 
-                <div className="w-[195px] md:w-[150px] sm:w-[200px] col:w-[150px] col:ml-[50px] ">
+                <div className="w-[195px] md:w-[150px] sm:w-[200px] col:w-[150px] col:ml-[50px] hidden lg:block">
                     <Link className="flex items-center md:justify-center text-white" to="/">
                         <img className="" src="assets/logo.png" alt="" /></Link>
                 </div>
@@ -63,7 +73,7 @@ const HeaderLink = () => {
                                 hover:before:opacity-100 hover:before:visible">About Us</Link>
                     </li>
                     <li className="relative inline-block group">
-                        <a href="# " className="relative text-[16px] lg:text-[17px] py-[35px]
+                        <button className="relative text-[16px] lg:text-[17px] py-[35px]
                                 xl:py-[30px] px-[20px] xl:px-[6px]
                                 text-[#14212b] block capitalize
                                 font-base-font font-bold transition-all
@@ -71,10 +81,10 @@ const HeaderLink = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Anthro</a>
+                                hover:before:opacity-100 hover:before:visible">Anthro</button>
                         <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
-                                group-hover:opacity-100 group-hover:top-full group-hover:visible ">
+                                group-hover:opacity-100 group-hover:top-full group-hover:visible">
                             <li>
                                 <Link to="/anthro/BMI" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
@@ -106,7 +116,7 @@ const HeaderLink = () => {
                         </ul>
                     </li>
                     <li className="relative inline-block group">
-                        <a href="# " className="relative text-[16px] lg:text-[17px] py-[35px]
+                        <button className="relative text-[16px] lg:text-[17px] py-[35px]
                                 xl:py-[30px] px-[20px] xl:px-[6px]
                                 text-[#14212b] block capitalize
                                 font-base-font font-bold transition-all
@@ -114,7 +124,7 @@ const HeaderLink = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Search</a>
+                                hover:before:opacity-100 hover:before:visible">Search</button>
                         <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
@@ -157,7 +167,7 @@ const HeaderLink = () => {
                     </li>
 
                     <li className="relative inline-block">
-                        <Link to="contact" className="relative text-[16px] lg:text-[17px] py-[35px]
+                        <Link to="/contact" className="relative text-[16px] lg:text-[17px] py-[35px]
                                 xl:py-[30px] px-[20px] xl:px-[6px]
                                 text-[#14212b] block capitalize
                                 font-base-font font-bold transition-all
@@ -170,7 +180,12 @@ const HeaderLink = () => {
                         </Link>
                     </li>
                 </ul>
-                <ProfileDropdown />
+                <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
+                    to="register">Register
+                </Link>
+                {auth && <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
+                    <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
+                </IconButton>}
             </div>
         </div>
     );

@@ -96,9 +96,11 @@ const Contact = () => {
                                         <select name="service"
                                             className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px]  text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent">
                                             <option disabled="disabled" selected="">Services</option>
-                                            <option>Agricultural Services</option>
-                                            <option>Product Delivery</option>
-                                            <option>Natural food</option>
+                                            <option>Food Search</option>
+                                            <option>Anthropometric</option>
+                                            <option>Article</option>
+                                            <option>Partnership</option>
+                                            <option>Others</option>
                                         </select>
                                     </div>
                                     <div className="w-[calc-(100%-25px)] mb-[25px] mx-[15px]">
@@ -128,7 +130,7 @@ const Contact = () => {
                 </div>
             </section>
             <section >
-            <Footer />
+                <Footer />
             </section>
 
         </>

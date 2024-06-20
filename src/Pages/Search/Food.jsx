@@ -1,6 +1,12 @@
 import React from 'react';
+import ProceedButton from '../../Components/Buttons/ProceedButton'
 
 export const Food = () => {
+    const handleProceed = (e) => {
+        e.preventDEfault();
+        alert('Proceed button clicked');
+    };
+
     return (
         <main class="py-8" >
             <div class="bg-white p-8 min-h-screen">
@@ -18,14 +24,8 @@ export const Food = () => {
                         <label htmlFor='weight' className='mb-2 block'>Weight:</label>
                         <input type="number" name="weight" id="weight" placeholder="Weight" class="w-full p-2 text-sm text-black border border-gray-200 outline-none focus:outline-none bg-transparent h-12" />
                     </div>
-                    <div className="w-3/4 mx-auto mt-8">
-                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
-                                            items-center mt-[20px] w-full
-                                            justify-center capitalize text-[#fff]
-                                            border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
-                                        ">
-                            Proceed
-                        </button>
+                    <div className="w-full mx-auto mt-8">
+                        <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} width="100%" />
                     </div>
                 </form>
                 <div className='mt-12'>

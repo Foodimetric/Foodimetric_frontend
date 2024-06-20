@@ -1507,7 +1507,7 @@ input[type=number] {
 	max-width: 550px;
 }
 
-.swiper-button-prev,
+/* .swiper-button-prev,
 .swiper-button-next {
 	background: rgba(255, 255, 255, 0.2);
 	width: 60px;
@@ -1616,7 +1616,7 @@ input[type=number] {
 	-o-object-fit: cover;
 	object-fit: cover;
 	width: 100%;
-}
+} */
 
 @-webkit-keyframes kenburn {
 	from {
@@ -4115,4 +4115,15 @@ All this is done for any sub-level being entered.
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+}
+
+.bg-hero{
+	background-image: url("../public/assets/images/slider/slide-4.jpg");
+}
+
+.bg-hero-1{
+	background-image: url("../public/assets/images/slider/slide-1.jpg");
+}
+.bg-hero-3{
+	background-image: url("../public/assets/images/slider/slider-3.jpg");
 }

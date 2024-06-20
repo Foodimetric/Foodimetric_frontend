@@ -3,6 +3,11 @@ import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Headers/Header';
 import { Link } from 'react-router-dom';
 import About from '../Components/sections/About';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import { Autoplay } from 'swiper/modules';
+import StatSection from '../Components/sections/Stat';
 
 
 export const Home = () => {
@@ -21,54 +26,56 @@ export const Home = () => {
             </div> */}
             <Header />
             <main>
-                <div className="relative">
+                <div className="relative mt-2">
                     <section className="bg-[#131313] w-full h-[900px]  lg:h-[680px]
                  md:h-[600px] sm:h-[500px]  relative z-[1] overflow-hidden">
-                        <div className="swiper-container w-full h-full absolute left-0 top-0">
-                            <div className="swiper-wrapper">
-                                <div className="swiper-slide px-12">
-                                    <div className="slide-inner slide-bg-image before:absolute before:left-0
-                            before:top-0 before:w-full before:h-full before:bg-[#040128] before:opacity-[0.6] pt-[35px] lg:pt-0"
-                                        data-background="assets/images/slider/slide-1.jpg">
+                        <div className="w-full h-full absolute left-0 top-0">
+                            <Swiper
+                                spaceBetween={30}
+                                centeredSlides={true}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                modules={[Autoplay]}
+                                className=""
+                            >
+                                <SwiperSlide className=''>
+                                    <div className='slide-bg-image before:absolute before:left-0
+                                        before:top-0 before:w-full before:h-full before:bg-[#040128] before:opacity-[0.6] pt-[35px] lg:pt-0 bg-hero-1'>
                                         <div className="gradient-overlay"></div>
                                         <div className="wraper">
                                             <div className="relative h-[900px] lg:h-[680px]  md:h-[600px] sm:h-[500px]">
-                                                <div
-                                                    className="max-w-[720px] lg:w-[600px] md:w-full  absolute top-1/2 left-0 transform  -translate-y-1/2 pb-[175px] lg:pb-0">
-
+                                                <div className="max-w-[720px] lg:w-[600px] md:w-full  absolute top-1/2 left-0 transform  -translate-y-1/2 pb-[175px] lg:pb-0">
                                                     <div data-swiper-parallax="200" className="wpo-hero-title-top">
-                                                        <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize
-                                                    mb-[30px] font-normal tracking-[2px]">“<span
-                                                                className="text-[#F78914]">100% ACCURATE BMI RESULT</span>”</p>
+                                                        <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize mb-[30px] font-normal tracking-[2px]">
+                                                            “<span className="text-[#F78914]">100% ACCURATE BMI RESULT</span>”
+                                                        </p>
                                                     </div>
                                                     <div data-swiper-parallax="300" className="slide-title">
                                                         <h2 className="text-[75px] font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
-                                                     lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px]
-                                                     col:leading-[35px] text-white col:mb-[20px]">Carry out BMI <span
-                                                                className="text-[#F78914]">And</span> Other Anthropmetric Calculations.</h2>
+                        lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px] col:leading-[35px] text-white col:mb-[20px]">
+                                                            Carry out BMI <span className="text-[#F78914]">And</span> Other Anthropometric Calculations.
+                                                        </h2>
                                                     </div>
                                                     <div data-swiper-parallax="400" className="slide-text">
-                                                        <p className="text-[22px] text-[#e2e2e2] font-base-font
-                                                    leading-[35px]
-                                                     mb-[40px] 
-                                                    md:text-[18px] col:leading-[25px] 
-                                                    col:mb-[30px]">
-                                                            Say goodbye to manual calculations. Our accurate Anthropometric calculator gives you instant insights into your health.</p>
+                                                        <p className="text-[22px] text-[#e2e2e2] font-base-font leading-[35px] mb-[40px] 
+                        md:text-[18px] col:leading-[25px] col:mb-[30px]">
+                                                            Say goodbye to manual calculations. Our accurate Anthropometric calculator gives you instant insights into your health.
+                                                        </p>
                                                     </div>
-
                                                     <div data-swiper-parallax="500" className="slide-btn">
-                                                        <Link to="login" className="btn theme-btn bg-[#147e03]">
-                                                            Explore more</Link>
+                                                        <Link to="/login" className="btn theme-btn bg-[#147e03]">Explore more</Link>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="swiper-slide">
-                                    <div className="slide-inner slide-bg-image before:absolute before:left-0
-                            before:top-0 before:w-full before:h-full before:bg-[#040128] before:opacity-[0.6] pt-[35px] lg:pt-0"
-                                        data-background="assets/images/slider/slide-4.jpg">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className=" slide-bg-image before:absolute before:left-0
+                                        before:top-0 before:w-full before:h-full before:bg-[#040128] before:opacity-[0.6] pt-[35px] lg:pt-0 bg-hero"
+                                    >
                                         <div className="gradient-overlay"></div>
                                         <div className="wraper">
                                             <div className="relative h-[900px] lg:h-[680px]  md:h-[600px] sm:h-[500px]">
@@ -96,65 +103,59 @@ export const Home = () => {
                                                     </div>
 
                                                     <div data-swiper-parallax="500" className="slide-btn">
-                                                        <a href="about.html" className="btn theme-btn bg-[#147e03]">
-                                                            Explore more</a>
+                                                        <Link to="/about" className="btn theme-btn bg-[#147e03]">
+                                                            Explore more</Link>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="swiper-pagination"></div>
-                            <div className="swiper-button-next"></div>
-                            <div className="swiper-button-prev"></div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className=" slide-bg-image before:absolute before:left-0
+                                        before:top-0 before:w-full before:h-full before:bg-[#040128] before:opacity-[0.6] pt-[35px] lg:pt-0 bg-hero-3"
+                                    >
+                                        <div className="gradient-overlay"></div>
+                                        <div className="wraper">
+                                            <div className="relative h-[900px] lg:h-[680px]  md:h-[600px] sm:h-[500px]">
+                                                <div
+                                                    className="max-w-[720px] lg:w-[600px] md:w-full  absolute top-1/2 left-0 transform  -translate-y-1/2 pb-[175px] lg:pb-0">
+
+                                                    <div data-swiper-parallax="200" className="wpo-hero-title-top">
+                                                        <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize
+                                                    mb-[30px] font-normal tracking-[2px]">“<span
+                                                                className="text-[#F78914]">GET ACCESS TO ARTICLES</span>”</p>
+                                                    </div>
+                                                    <div data-swiper-parallax="300" className="slide-title">
+                                                        <h2 className="text-[75px] font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
+                                                     lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px]
+                                                     col:leading-[35px] text-white col:mb-[20px]">    Stay Informed with the Latest in Nutrition,
+                                                            <span className="text-[#F78914]">Read Our Articles!</span>.</h2>
+                                                    </div>
+                                                    <div data-swiper-parallax="400" className="slide-text">
+                                                        <p className="text-[22px] text-[#e2e2e2] font-base-font
+                                                    leading-[35px]
+                                                     mb-[40px] 
+                                                    md:text-[18px] col:leading-[25px] 
+                                                    col:mb-[30px]">
+                                                            Don't miss out on the latest research and insights in nutrition. Our regularly updated articles provide you with the knowledge you need to make informed dietary choices. Stay ahead with tips, trends, and scientifically-backed information.</p>
+                                                    </div>
+
+                                                    <div data-swiper-parallax="500" className="slide-btn">
+                                                        <Link to="/about" className="btn theme-btn bg-[#147e03]">
+                                                            Explore more</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
                         </div>
                     </section>
                 </div>
                 <About padding={'90px'} />
-                <section id="stat" className='bg-cover bg-center bg-no-repeat md:bg-fixed
-             bg-local'>
-                    <div className="text-center py-20 md:pb-12 relative z-10  before:absolute before:left-0 before:top-0
-             before:bg-[#0008] before:-z-10 before:w-full before:h-full">
-                        <div className="wraper">
-                            <div className="grid grid-cols-12 gap-x-4 justify-center">
-                                <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
-                                    <div>
-                                        <h3
-                                            className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
-                                            <span className="odometer" data-count="200">00</span>+</h3>
-                                        <p className="text-base text-white md:text-sm">Trusted By Customers</p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
-                                    <div>
-                                        <h3
-                                            className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
-                                            <span className="odometer" data-count="6">00</span>{`>`}</h3>
-                                        <p className="text-base text-white md:text-sm">Months of Foundation</p>
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
-                                    <div>
-                                        <h3
-                                            className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
-                                            <span className="odometer" data-count="50">00</span>+</h3>
-                                        <p className="text-base text-white md:text-sm">Monthly User</p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
-                                    <div>
-                                        <h3
-                                            className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
-                                            <span className="odometer" data-count="500">00</span>+</h3>
-                                        <p className="text-base text-white md:text-sm">Food Search</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <StatSection />
                 <section className="pt-[120px] md:pt-[90px] sm:pt-[80px] pb-[90px] md:pb-[60px] sm:pb-[50px]">
                     <div className="wraper">
                         <div className="grid justify-center">
@@ -313,66 +314,82 @@ export const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="testimonial-slider owl-carousel owl-loaded owl-drag">
-                            <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                <div className="basis-[28%]">
-                                    <img src="assets/images/testimonial/img-1.jpg" alt=""
-                                        className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
+                        <Swiper
+                            spaceBetween={30}
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Autoplay]}
+                            className=""
+                        >
+                            <SwiperSlide className='px-12'>
+                                <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
+                                    <div className="basis-[28%]">
+                                        <img src="assets/images/testimonial/img-1.jpg" alt=""
+                                            className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
+                                    </div>
+                                    <div
+                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px]  before:absolute 
+                                            before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
+                                            before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
+                                            before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
+                                        <p className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">“It uses a dictionary of over 200 Latin words, combined with handful the model
+                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
+                                            lorem ipsum is therefore always free from repetition sentence structures, to
+                                            generate lorem ipsum which looks..</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Modern Sater</h2>
+                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                    </div>
                                 </div>
-                                <div
-                                    className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px]  before:absolute 
+                            </SwiperSlide>
+                            <SwiperSlide className='px-12'>
+                                <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
+                                    <div className="basis-[28%]">
+                                        <img src="assets/images/testimonial/img-2.jpg" alt=""
+                                            className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
+                                    </div>
+                                    <div
+                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
                         before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
                          before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
                          before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
-                                    <p className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">“It uses a dictionary of over 200 Latin words, combined with handful the model
-                                        sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                        lorem ipsum is therefore always free from repetition sentence structures, to
-                                        generate lorem ipsum which looks..</p>
-                                    <h2 className="font-normal md:text-4xl text-white text-3xl">Modern Sater</h2>
-                                    <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                        <p
+                                            className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">
+                                            “It uses a dictionary of over 200 Latin words, combined with handful the model
+                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
+                                            lorem ipsum is therefore always free from repetition sentence structures, to
+                                            generate lorem ipsum which looks..</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Marry Jenefer</h2>
+                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                <div className="basis-[28%]">
-                                    <img src="assets/images/testimonial/img-2.jpg" alt=""
-                                        className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
+                            </SwiperSlide>
+                            <SwiperSlide className='px-12'>
+                                <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
+                                    <div className="basis-[28%]">
+                                        <img src="assets/images/testimonial/img-3.jpg" alt=""
+                                            className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
+                                    </div>
+                                    <div
+                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
+                                        before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
+                                        before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
+                                        before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
+                                        <p
+                                            className="font-heading-font font-normal md:text-2xl mb-6 relative text-white lg:mb-4 ">
+                                            “It uses a dictionary of over 200 Latin words, combined with handful the model
+                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
+                                            lorem ipsum is therefore always free from repetition sentence structures, to
+                                            generate lorem ipsum which looks..</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">William Robert</h2>
+                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                    </div>
                                 </div>
-                                <div
-                                    className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
-                        before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
-                         before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
-                         before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
-                                    <p
-                                        className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">
-                                        “It uses a dictionary of over 200 Latin words, combined with handful the model
-                                        sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                        lorem ipsum is therefore always free from repetition sentence structures, to
-                                        generate lorem ipsum which looks..</p>
-                                    <h2 className="font-normal md:text-4xl text-white text-3xl">Marry Jenefer</h2>
-                                    <span className="font-normal text-base text-white">CEO of Digital Studio</span>
-                                </div>
-                            </div>
-                            <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                <div className="basis-[28%]">
-                                    <img src="assets/images/testimonial/img-3.jpg" alt=""
-                                        className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
-                                </div>
-                                <div
-                                    className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
-                        before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
-                         before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
-                         before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
-                                    <p
-                                        className="font-heading-font font-normal md:text-2xl mb-6 relative text-white lg:mb-4 ">
-                                        “It uses a dictionary of over 200 Latin words, combined with handful the model
-                                        sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                        lorem ipsum is therefore always free from repetition sentence structures, to
-                                        generate lorem ipsum which looks..</p>
-                                    <h2 className="font-normal md:text-4xl text-white text-3xl">William Robert</h2>
-                                    <span className="font-normal text-base text-white">CEO of Digital Studio</span>
-                                </div>
-                            </div>
-                        </div>
+                            </SwiperSlide>
+                        </Swiper>
+
                     </div>
                 </section>
                 <Footer />

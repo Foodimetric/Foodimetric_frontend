@@ -24,11 +24,11 @@ const SearchLayout = () => {
         }
     }
     return (
-        <main className='flex max-h-screen'>
+        <main className='flex max-h-screen w-screen'>
             <div className=''>
                 <SearchNav />
             </div>
-            <div className='ml-60 max-h-screen overflow-auto font-base-font max-w-6xl w-[100vw] mx-auto'>
+            <div className='ml-60 max-h-screen overflow-auto max-w-6xl w-[100vw] mx-auto xs:ml-0 md:ml-60'>
                 <SearchHeader title={pageTitle} />
                 <div className='bg-gray-100'>
                     <div className='px-8 pt-16 '>

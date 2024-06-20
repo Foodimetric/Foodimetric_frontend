@@ -4,12 +4,12 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer className="bg-[#147e03] relative z-[1]">
-            <div className="py-[80px] md:pb-[60px] relative overflow-hidden">
+            <div className="py-[80px] md:pb-[60px] relative overflow-hidden xs:px-6 sm:px-2">
                 <div className="wraper">
                     <div className="grid grid-cols-12 gap-4">
-                        <div className="col-span-3 lg:col-span-3 md:col-span-6 sm:col-span-6 col:col-span-12 md:mb-[30px]">
+                        <div className="col-span-6 lg:col-span-3 md:col-span-6 sm:col-span-6 xs:col-span-12 col:col-span-12 md:mb-[30px]">
                             <div className="max-w-[180px] mb-[30px]">
-                                <img src="assets/logo.png" alt="blog"/>
+                                <img src="assets/logo.png" alt="blog" />
                             </div>
                             <p className="mb-[10px] text-white text-[16px] leading-[30px]">Many desktop publishing
                                 packages
@@ -50,8 +50,8 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-span-3 lg:col-span-3 md:col-span-6 sm:col-span-6 col:col-span-12 md:mb-[30px]">
-                            <div className="pl-[50px] lg:pl-0 md:pl-0">
+                        <div className="col-span-6 lg:col-span-3 md:col-span-6 sm:col-span-6 xs:col-span-12 col:col-span-12 md:mb-[30px]">
+                            <div className="pl-[50px] lg:pl-0 md:pl-0 sm:pl-0 xs:pl-0">
                                 <div className="mb-[30px]">
                                     <h3 className="text-[25px] text-white capitalize relative font-heading-font font-normal
                                      ">Quick Links</h3>
@@ -84,8 +84,8 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-span-3 lg:col-span-3 md:col-span-6 sm:col-span-6 col:col-span-12 md:mb-[30px]">
-                            <div className="px-[20px] lg:px-0 ">
+                        <div className="col-span-6 lg:col-span-3 md:col-span-6 sm:col-span-6 xs:col-span-12 col:col-span-12 md:mb-[30px]">
+                            <div className="px-[20px] lg:px-0 sm:pl-0 xs:pl-0">
                                 <div className="mb-[30px]">
                                     <h3 className="text-[25px] text-white capitalize relative font-heading-font font-normal
                                      ">Our Address</h3>
@@ -104,7 +104,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-span-3 lg:col-span-3 md:col-span-6 sm:col-span-6 col:col-span-12 md:mb-[30px]">
+                        <div className="col-span-6 lg:col-span-3 md:col-span-6 sm:col-span-6 xs:col-span-12 col:col-span-12 md:mb-[30px]">
                             <div className="mb-[30px]">
                                 <h3 className="text-[25px] text-white capitalize relative font-heading-font font-normal
                                      ">Newsletter</h3>
@@ -115,7 +115,7 @@ const Footer = () => {
                             <form className="mt-[25px] relative">
                                 <input type="email" className="bg-white h-[55px] text-[#141d37] p-[6px_15px] 
                                 border-[1px] border-white w-full focus:outline-0 rounded-[5px] "
-                                    placeholder="Email Address *" required=""/>
+                                    placeholder="Email Address *" required="" />
                                 <div className="absolute right-[5px] top-[-17px] translate-y-1/2">
                                     <button type="submit" className="bg-[#F78914] border-0 outline-0
                                      text-white w-[40px] h-[45px] leading-[45px] transition-all-all rounded-[5px] ">
@@ -142,5 +142,5 @@ const Footer = () => {
         </footer>
     );
 }
- 
+
 export default Footer;

@@ -41,7 +41,7 @@ const AnthroLayout = () => {
             <div className=''>
                 <AntroNav />
             </div>
-            <div className='ml-60 max-h-screen overflow-auto max-w-6xl w-[100vw] mx-auto'>
+            <div className='ml-60 max-h-screen overflow-auto max-w-6xl w-[100vw] mx-auto xs:ml-0 md:ml-60'>
                 <AntroHeader title={pageTitle} />
                 <div className='bg-gray-100'>
                     <div className='px-8 pt-16 '>
