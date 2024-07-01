@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext'
 
 const Register = () => {
+    const { register, formValues, setFormValues, handleChange } = useAuth();
+
     return (
         <main>
             <div className="page-wrapper">
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper">
-                        <form className="w-[600px] sm:w-[500px] md:w-[1170px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px] overflow-hidden" action="#">
+                        <form className="w-[600px] sm:w-[500px] md:w-[1170px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px] overflow-hidden" onSubmit={register}>
                             <div className="w-full md:w-1/2 flex flex-col justify-center min-h-[600px] text-center p-[50px] col:p-[30px_10px] register">
                             </div>
                             <div

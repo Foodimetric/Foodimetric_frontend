@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import { useAuth } from '../../Context/AuthContext';
+import { Link } from 'react-router-dom';
 
 // Styled component using MUI's styling
 const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({
@@ -13,17 +15,29 @@ const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({
     },
 }));
 
-const ProceedButton = ({ color, type, auth, onClick, width }) => {
+const ProceedButton = ({ color, onClick, width }) => {
+    const { isAuthenticated } = useAuth();
+    const handleClick = (e, func) => {
+        e.preventDefault();
+        if (!isAuthenticated) return;
+        func();
+    };
+
     return (
         <StyledButton
             variant="contained"
             type={'submit'}
             customcolor={color}
-            disabled={auth === 'unauthorized'}
-            onClick={auth.user && onClick}
+            onClick={(e) => handleClick(e, onClick)}
             width={width}
         >
-            {auth === 'unauthorized' ? 'Login Required' : 'Proceed'}
+            {isAuthenticated ? (
+                'Proceed'
+            ) : (
+                <Link to="/login">
+                    Login Required
+                </Link>
+            )}
         </StyledButton>
     );
 };

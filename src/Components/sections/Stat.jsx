@@ -11,7 +11,7 @@ const StatSection = () => {
     useEffect(() => {
         // Simulating an API call to get the statistics
         setTimeout(() => {
-            setTrustedCustomers(268);
+            setTrustedCustomers(276);
             setMonthsFoundation(6);
             setMonthlyUsers(50);
             setFoodSearch(500);

@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext';
 
 const Login = () => {
+    const { handleSubmit, email, password, rememberMe, setEmail, setPassword, setRememberMe } = useAuth();
+
+    useEffect(() => {
+        const rememberedEmail = localStorage.getItem('rememberMeEmail');
+        if (rememberedEmail) {
+            setEmail(rememberedEmail);
+            setRememberMe(true);
+        }
+    }, [setEmail, setRememberMe]);
+
     return (
         <main>
             <div className="page-wrapper">
@@ -11,9 +22,9 @@ const Login = () => {
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper">
                         <form className="md:w-[1170px] w-[600px] sm:w-[500px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
-                             overflow-hidden" action="#">
+                             overflow-hidden" onSubmit={handleSubmit}>
                             <div className="md:w-1/2 w-full bg-[#1a384c] flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login">
-                                
+
                             </div>
                             <div
                                 className="md:w-1/2 w-full p-[70px_85px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
@@ -22,13 +33,13 @@ const Login = () => {
                                 <div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
-                                        <input type="email" id="email" name="email" placeholder="demo@gmail.com"
-                                            className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
+                                        <input value={email} type="email" id="email" name="email" placeholder="demo@gmail.com"
+                                            className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                     <div className="w-full relative">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Password</label>
-                                        <input type="password" placeholder="" value="123456" name="pass" id="password" className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5]
-                                    border-[1px] block focus:outline-0"/>
+                                        <input type="password" placeholder="" value={password} name="pass" id="password" className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5]
+                                    border-[1px] block focus:outline-0" onChange={(e) => setPassword(e.target.value)} />
                                         <span className="absolute right-[10px] top-[45px]">
                                             <button className="btn btn-default reveal6" type="button">
                                                 <i className="ti-eye" id="togglePassword"></i>
@@ -37,7 +48,8 @@ const Login = () => {
                                     </div>
                                     <div className="w-full flex justify-between items-center">
                                         <div className="input-box">
-                                            <input type="checkbox" id="fruit4" name="fruit-4" value="Strawberry" />
+                                            <input type="checkbox" id="fruit4" name="fruit-4" value="Strawberry"
+                                                checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
                                             <label for="fruit4" className="text-[#676B79] font-medium text-[14px] ml-2">Remember
                                                 Me</label>
                                         </div>
@@ -47,7 +59,7 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                    <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
+                                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
                                     items-center mt-[20px] w-full
                                      justify-center capitalize text-[#fff]
                                  border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]

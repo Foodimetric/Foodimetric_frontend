@@ -35,17 +35,23 @@ const Header = () => {
                     <div className="md:col-span-4 col-span-12 ">
                         <ul className="md:text-right text-center md:mt-2 space-x-4">
                             <li className="inline-block ml-2">Visit our social pages</li>
-                            <li className="inline-block ml-2"><a href="# "
+                            <li className="inline-block ml-2"><Link target="_blank"
+                                rel="noopener noreferrer" to="https://web.facebook.com/profile.php?id=61557260650546"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
-                                    className="ti-facebook"></i></a></li>
+                                    className="ti-facebook"></i></Link></li>
 
-                            <li className="inline-block ml-2"><a href="# "
+                            <li className="inline-block ml-2"><Link to="https://www.instagram.com/p/CzYXNuTIhqx/?igshid=NTc4MTIwNjQ2YQ=="
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
-                                    className="ti-instagram"></i></a></li>
+                                    className="ti-instagram"></i></Link></li>
 
-                            <li className="inline-block ml-2"><a href="# "
+                            <li className="inline-block ml-2"><Link target="_blank"
+                                rel="noopener noreferrer" to="https://www.linkedin.com/company/foodimetric/"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
-                                    className="ti-linkedin"></i></a></li>
+                                    className="ti-linkedin"></i></Link></li>
+                            <li className="inline-block ml-2"><Link target="_blank"
+                                rel="noopener noreferrer" to="https://twitter.com/foodimetric"
+                                className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
+                                    className="ti-twitter"></i></Link></li>
 
                         </ul>
                     </div>

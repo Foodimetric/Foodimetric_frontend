@@ -13,3 +13,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0,0,0,.3);
 }
+
+input[type="password"]::-ms-reveal {
+    display: none;
+}

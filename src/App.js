@@ -32,6 +32,7 @@ import WaterIntake from './Pages/Anthro/WaterIntake';
 import Dashboard from './Pages/User/Dashboard'
 import UserSettings from './Pages/User/Settings';
 import DashboardLayout from './Pages/User/DashboardLayout';
+import { AuthProvider } from './Context/AuthContext';
 
 const router = createBrowserRouter([
   {
@@ -160,7 +161,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </div>
   );
 }

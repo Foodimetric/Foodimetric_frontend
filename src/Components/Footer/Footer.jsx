@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -11,42 +12,43 @@ const Footer = () => {
                             <div className="max-w-[180px] mb-[30px]">
                                 <img src="assets/logo.png" alt="blog" />
                             </div>
-                            <p className="mb-[10px] text-white text-[16px] leading-[30px]">Many desktop publishing
-                                packages
-                                web page editors now is use model search for many
-                                web sites.</p>
+                            <p className="mb-[10px] text-white text-[16px] leading-[30px]">Providing access to technological resources to improve nutrition and health.</p>
                             <ul className="pt-[10px]">
                                 <li className="inline-block text-[22px] text-white">
-                                    <a className="text-white w-[36px] h-[36px] leading-[40px]
+                                    <Link to={'https://web.facebook.com/profile.php?id=61557260650546'} target="_blank"
+                                        rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
                                       hover:bg-[#F78914]" href="# ">
                                         <i className="ti-facebook"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="inline-block text-[22px] text-white ml-[20px] lg:ml-[20px]">
-                                    <a className="text-white w-[36px] h-[36px] leading-[40px]
+                                    <Link to='https://twitter.com/foodimetric' target="_blank"
+                                        rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
                                       hover:bg-[#F78914]" href="# ">
                                         <i className="ti-twitter-alt"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="inline-block text-[22px] text-white ml-[20px] lg:ml-[20px]">
-                                    <a className="text-white w-[36px] h-[36px] leading-[40px]
+                                    <Link to="https://www.instagram.com/p/CzYXNuTIhqx/?igshid=NTc4MTIwNjQ2YQ==" target="_blank"
+                                        rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
                                       hover:bg-[#F78914]" href="# ">
                                         <i className="ti-instagram"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="inline-block text-[22px] text-white ml-[20px] lg:ml-[20px]">
-                                    <a className="text-white w-[36px] h-[36px] leading-[40px]
+                                    <Link to="https://www.linkedin.com/company/foodimetric/" target="_blank"
+                                        rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
                                       hover:bg-[#F78914]" href="# ">
-                                        <i className="ti-google"></i>
-                                    </a>
+                                        <i className="ti-linkedin"></i>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -58,28 +60,28 @@ const Footer = () => {
                                 </div>
                                 <ul>
                                     <li className="relative z-[1] py-[6px]">
-                                        <a href="about.html" className="text-[16px] font-heading-font transition-all-all text-white 
+                                        <Link to="/about" className="text-[16px] font-heading-font transition-all-all text-white 
                                            duration-300 hover:text-[#F78914]">
                                             About Us
+                                        </Link>
+                                    </li>
+                                    <li className="relative z-[1] py-[6px]">
+                                        <a href="about.html" className="text-[16px] font-heading-font transition-all-all text-white 
+                                           duration-300 hover:text-[#F78914]">
+                                            Terms of Service
                                         </a>
                                     </li>
                                     <li className="relative z-[1] py-[6px]">
                                         <a href="about.html" className="text-[16px] font-heading-font transition-all-all text-white 
                                            duration-300 hover:text-[#F78914]">
-                                            Newsroom
+                                            Privacy
                                         </a>
                                     </li>
                                     <li className="relative z-[1] py-[6px]">
-                                        <a href="about.html" className="text-[16px] font-heading-font transition-all-all text-white 
-                                           duration-300 hover:text-[#F78914]">
-                                            Checkout
-                                        </a>
-                                    </li>
-                                    <li className="relative z-[1] py-[6px]">
-                                        <a href="about.html" className="text-[16px] font-heading-font transition-all-all text-white 
+                                        <Link to="contact" className="text-[16px] font-heading-font transition-all-all text-white 
                                            duration-300 hover:text-[#F78914]">
                                             Contact us
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -92,14 +94,17 @@ const Footer = () => {
                                 </div>
                                 <ul>
                                     <li className="mb-[10px] text-white text-[15px] font-heading-font">
-                                        <i className="ti-location-pin text-[#F78914]"></i> <span>123 Main Street New Yourk
-                                            Town , USA 12345</span>
+                                        <i className="ti-location-pin text-[#F78914]"></i> <span>Lagos, Nigeria</span>
                                     </li>
                                     <li className="mb-[10px] text-white text-[15px] font-heading-font">
-                                        <i className="ti-email text-[#F78914]"></i> <span>nutrey@gmail.com</span>
+                                        <Link to="mailto:foodimetric@gmail.com" target="_blank" rel="noopener noreferrer">
+                                            <i className="ti-email text-[#F78914]"></i> <span>foodimetric@gmail.com</span>
+                                        </Link>
                                     </li>
                                     <li className="mb-[10px] text-white text-[15px] font-heading-font">
-                                        <i className="ti-mobile text-[#F78914]"></i> <span>+1 888 187 986 897</span>
+                                        <Link to="tel:+2347085056806" target="_blank" rel="noopener noreferrer">
+                                            <i className="ti-mobile text-[#F78914]"></i> <span>+2347085056806</span>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -109,9 +114,7 @@ const Footer = () => {
                                 <h3 className="text-[25px] text-white capitalize relative font-heading-font font-normal
                                      ">Newsletter</h3>
                             </div>
-                            <p className="mb-[10px] text-white text-[16px] leading-[30px] font-heading-font">Many desktop
-                                publi’s shing
-                                packages web page editors now is use sites.</p>
+                            <p className="mb-[10px] text-white text-[16px] leading-[30px] font-heading-font">Stay informed about new tools and resources that can help you achieve your health goals.</p>
                             <form className="mt-[25px] relative">
                                 <input type="email" className="bg-white h-[55px] text-[#141d37] p-[6px_15px] 
                                 border-[1px] border-white w-full focus:outline-0 rounded-[5px] "
@@ -133,7 +136,7 @@ const Footer = () => {
                         <div className="col-span-12">
                             <p className="text-[15px] text-white text-center font-heading-font">
                                 Copyright &copy; 2024 All Right Reserved by
-                                <a href="index.html" className="text-[#147e03]"> Foodimetric</a>
+                                <Link to="/" className="text-[#147e03]"> Foodimetric</Link>
                             </p>
                         </div>
                     </div>
