@@ -93,18 +93,23 @@ const EER = () => {
             } else {
                 eerValue = (89 * weight - 100) + 20;
             }
+            //age 3 - 8
         } else if (age <= 8) {
             if (gender === 'male') {
                 eerValue = 88.5 - (61.9 * age) + activityLevel * (26.7 * weight + 903 * heightInMeters) + 20;
             } else {
                 eerValue = 135.3 - (30.8 * age) + activityLevel * (10 * weight + 934 * heightInMeters) + 20;
             }
+
+            //9-18
         } else if (age <= 18) {
             if (gender === 'male') {
                 eerValue = 88.5 - (61.9 * age) + activityLevel * (26.7 * weight + 903 * heightInMeters) + 25;
             } else {
                 eerValue = 135.3 - (30.8 * age) + activityLevel * (10 * weight + 934 * heightInMeters) + 25;
             }
+
+            //19 and above
         } else if (age >= 19) {
             if (gender === 'male') {
                 eerValue = 662 - (9.53 * age) + activityLevel * (15.91 * weight + 539.6 * heightInMeters);
@@ -133,6 +138,7 @@ const EER = () => {
         alert('Proceed button clicked');
     };
 
+    console.log(eer);
     return (
         <main className="py-8 ">
             <div className="bg-white p-8 min-h-screen">
@@ -212,7 +218,7 @@ const EER = () => {
                         </RadioGroup>
                     </Box>
                     {gender === 'female' && age >= 14 && age <= 50 && (
-                        <Box sx={{ textAlign: 'left', mt: 2 }}>
+                        <Box sx={{ textAlign: 'left', my: 2 }}>
                             <FormLabel component="legend">Pregnancy/Lactation Status</FormLabel>
                             <Select
                                 value={status}

@@ -80,11 +80,11 @@ const EE = () => {
         let bmr;
         const heightInMeters = height / 100;
 
-        // Mifflin-St Jeor Equation for BMR
+
         if (gender === 'male') {
-            bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
         } else {
-            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
         }
 
         // Calculate TEE
@@ -97,6 +97,7 @@ const EE = () => {
         alert('Proceed button clicked');
     };
 
+    console.log(tee);
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

@@ -55,9 +55,11 @@ const BMR = () => {
     };
 
     const handleProceed = () => {
+        calculateBMR();
         alert('Proceed button clicked');
     };
 
+    console.log(bmr);
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

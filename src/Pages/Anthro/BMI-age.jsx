@@ -94,16 +94,19 @@ const BMIAge = () => {
             percentile = bmiValue <= 15 ? 5 : bmiValue <= 20 ? 50 : bmiValue <= 25 ? 85 : 95;
         }
 
-        if (percentile < 5) {
+        console.log(percentile);
+        if (percentile <= 5) {
             setCategory('Underweight');
-        } else if (percentile < 85) {
+        } else if (percentile <= 85) {
             setCategory('Healthy Weight');
-        } else if (percentile < 95) {
+        } else if (percentile <= 95) {
             setCategory('Overweight');
         } else {
             setCategory('Obesity');
         }
     };
+
+    console.log(category);
 
     const handleProceed = () => {
         calculateBMI();

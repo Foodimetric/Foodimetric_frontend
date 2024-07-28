@@ -19,7 +19,7 @@ const ProceedButton = ({ color, onClick, width }) => {
     const { isAuthenticated } = useAuth();
     const handleClick = (e, func) => {
         e.preventDefault();
-        if (!isAuthenticated) return;
+        // if (!isAuthenticated) return;
         func();
     };
 
@@ -31,13 +31,14 @@ const ProceedButton = ({ color, onClick, width }) => {
             onClick={(e) => handleClick(e, onClick)}
             width={width}
         >
-            {isAuthenticated ? (
+            Proceed
+            {/* {isAuthenticated ? (
                 'Proceed'
             ) : (
                 <Link to="/login">
                     Login Required
                 </Link>
-            )}
+            )} */}
         </StyledButton>
     );
 };

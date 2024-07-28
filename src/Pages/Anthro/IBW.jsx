@@ -65,11 +65,11 @@ const IBW = () => {
 
     const calculateIBW = () => {
         let ibwValue;
-        const heightInInches = height / 2.54;
+        // const heightInInches = height / 2.54;
         if (gender === 'male') {
-            ibwValue = 50 + 2.3 * (heightInInches - 60);
+            ibwValue = 50 + (0.91 * (height - 152.4));
         } else {
-            ibwValue = 45.5 + 2.3 * (heightInInches - 60);
+            ibwValue = 45.5 + (0.91 * (height - 152.4));
         }
         setIbw(ibwValue);
     };
@@ -79,6 +79,7 @@ const IBW = () => {
         alert('Proceed button clicked');
     };
 
+    console.log(ibw);
     return (
         <main className="py-8 ">
             <div className="bg-white p-8 min-h-screen">
