@@ -40,7 +40,8 @@ const Header = () => {
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
                                     className="ti-facebook"></i></Link></li>
 
-                            <li className="inline-block ml-2"><Link to="https://www.instagram.com/p/CzYXNuTIhqx/?igshid=NTc4MTIwNjQ2YQ=="
+                            <li className="inline-block ml-2"><Link target="_blank"
+                                rel="noopener noreferrer" to="https://www.instagram.com/foodimetric/?utm_source=ig_web_button_share_sheet"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
                                     className="ti-instagram"></i></Link></li>
 

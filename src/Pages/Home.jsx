@@ -175,10 +175,10 @@ export const Home = () => {
                                             className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
                                     </div>
                                     <div>
-                                        <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
+                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
                                 rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
                                             <img src="assets/images/service/icon-1.svg" alt="" className="max-w-[55px]" />
-                                        </div>
+                                        </div> */}
                                         <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">
                                             Agriculture Products</h4>
                                         <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
@@ -195,10 +195,10 @@ export const Home = () => {
                                             className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
                                     </div>
                                     <div>
-                                        <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
+                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
                                 rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
                                             <img src="assets/images/service/icon-2.svg" alt="" className="max-w-[55px]" />
-                                        </div>
+                                        </div> */}
                                         <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Dairy
                                             Products</h4>
                                         <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
@@ -215,10 +215,10 @@ export const Home = () => {
                                             className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
                                     </div>
                                     <div>
-                                        <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
+                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
                                 rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
                                             <img src="assets/images/service/icon-3.svg" alt="" className="max-w-[55px]" />
-                                        </div>
+                                        </div> */}
                                         <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Organic
                                             Fruits</h4>
                                         <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
@@ -235,10 +235,10 @@ export const Home = () => {
                                             className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
                                     </div>
                                     <div>
-                                        <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
+                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
                                 rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
                                             <img src="assets/images/service/icon-4.svg" alt="" className="max-w-[55px]" />
-                                        </div>
+                                        </div> */}
                                         <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Fresh
                                             Vegetables</h4>
                                         <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
