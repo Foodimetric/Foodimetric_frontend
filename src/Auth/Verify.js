@@ -35,7 +35,7 @@ const Verify = () => {
                 const data = await response.json();
                 
                 if (response.ok) {
-                    setUserName(data.payload.user.firstName); // Assuming user's first name is returned
+                    setUserName(data?.payload?.payload?.firstName); // Assuming user's first name is returned
                     setMessage('Your account has been successfully verified!');
                 } else {
                     setMessage(data.message || 'Failed to verify your account.');
