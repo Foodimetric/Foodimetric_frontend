@@ -101,7 +101,6 @@ const Login = () => {
                         {error && <span className="error">{error}</span>}
                         <button type="submit" className='create_acct'>Login</button>
                         <p>New here? <Link to={"/signup"} style={{ textDecoration: 'none', color: 'rgba(255, 186, 8, 1)' }}>Register</Link></p>
-                        <p>New here? <Link to={"/verify"} style={{ textDecoration: 'none', color: 'rgba(255, 186, 8, 1)' }}>Verify</Link></p>
                     </form>
                 </div>
             </div>
