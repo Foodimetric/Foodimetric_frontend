@@ -42,7 +42,7 @@ const Login = () => {
                         resolve();
                     } else {
                         const errorMessage = data?.message || "Error during login.";
-                        setError("Invalid email or password.");
+                        setError(errorMessage);
                         reject(errorMessage);
                     }
                 } catch (error) {
