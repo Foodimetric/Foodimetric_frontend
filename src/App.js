@@ -14,6 +14,7 @@ import { FoodProvider } from './Context/FoodContext';
 import { AuthProvider } from './Context/AuthContext';
 import FindAlternative from './Pages/FindAlternative';
 import Privacy from './Pages/Privacy';
+import Verify from './Auth/Verify';
 
 
 const queryClient = new QueryClient({
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/' element={<LandingPage />} />
                 <Route path='/signup' element={<SignupPage />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/verify' element={<Verify />} />
                 <Route path="/search" element={<SearchTab />} />
                 <Route path='/profile' element={<UserProfile />} />
                 <Route path='/alt' element={<FindAlternative />} />

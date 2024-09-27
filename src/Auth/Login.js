@@ -41,18 +41,19 @@ const Login = () => {
                         setUser(true);
                         resolve();
                     } else {
+                        const errorMessage = data?.message || "Error during login.";
                         setError("Invalid email or password.");
-                        reject();
+                        reject(errorMessage);
                     }
                 } catch (error) {
                     console.error("Error during login:", error);
-                    reject();
+                    reject("Something went wrong. Please try again.");
                 }
             }),
             {
                 loading: 'Loading',
                 success: `Login successful`,
-                error: `Error during login`,
+                error: (errorMsg) => errorMsg,
             },
             {
                 style: {
