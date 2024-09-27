@@ -39,37 +39,41 @@ const FooterLink = () => {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href="/privacy">Privacy</a></li>
-                        <li><a href="/profile">Settings</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/search">Search</Link></li>
+                        <li><Link to="/privacy">Privacy</Link></li>
+                        <li><Link to="/profile">Settings</Link></li>
                     </ul>
                 </nav>
                 <div>
                     <p>
-                        <a href={mailtoUrl}>
+                        <Link
+                            to={mailtoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <img src={message} alt="email" />
-                        </a>
+                        </Link>
                     </p>
                     <p>
-                        <a
-                            href={`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(initialMessage)}`}
+                        <Link
+                            to={`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(initialMessage)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <img src={whatsapp} alt="whatsapp" />
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
             <div className="privacy" id="privacy">
                 <p>© Copyright 2024, All Rights Reserved</p>
                 <div>
-                    <p><a href="/privacy">Privacy & Policy</a></p>
+                    <p><Link to="/privacy">Privacy & Policy</Link></p>
                 </div>
             </div>
         </footer>
     );
 }
- 
+
 export default FooterLink;
