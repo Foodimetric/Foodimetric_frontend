@@ -51,7 +51,7 @@ const Verify = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p>Verifying...</p>;
     }
 
     return (
@@ -59,7 +59,7 @@ const Verify = () => {
             <h1>Hello {userName}!</h1>
             <p>{message}</p>
             {message === 'Your account has been successfully verified!' && (
-                <button onClick={() => navigate('/login')} style={{ padding: '10px 20px', marginTop: '20px' }}>
+                <button onClick={() => navigate('/login')} className='create_acct'>
                     Login
                 </button>
             )}
