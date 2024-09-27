@@ -26,7 +26,7 @@ const Verify = () => {
 
             try {
                 const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/verify-user/${token}`, {
-                    method: 'POST',
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                     },
