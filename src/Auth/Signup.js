@@ -75,9 +75,8 @@ const SignupPage = () => {
                         navigate('/login');
                         resolve(data); // Resolve the Promise with data for success
                     } else {
-                        const errorData = await response.json();
-                        console.error("Registration failed:", errorData.message);
-                        reject(new Error("Registration failed")); // Reject the Promise with error for failure
+                        const errorMessage = data?.message || "Registration failed";
+                        reject(errorMessage); // Reject the Promise with error for failure
                     }
                 } catch (error) {
                     reject(error); // Reject the Promise with error for failure
@@ -86,7 +85,7 @@ const SignupPage = () => {
             {
                 loading: 'Loading',
                 success: `Registration successful`,
-                error: `Error registering user`,
+                error:  (errorMsg) => errorMsg,
             },
             {
                 style: {
