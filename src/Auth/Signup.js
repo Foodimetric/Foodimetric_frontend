@@ -92,7 +92,7 @@ const SignupPage = () => {
                     fontSize: '0.8rem',
                 },
                 success: {
-                    duration: 5000,
+                    duration: 10000,
                     icon: '🔥',
                 },
             }
