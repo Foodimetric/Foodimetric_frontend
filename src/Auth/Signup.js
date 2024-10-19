@@ -84,7 +84,7 @@ const SignupPage = () => {
             }),
             {
                 loading: 'Loading',
-                success: 'Registration successful, check your mail/spam to verify.',
+                success: 'Registration successful, check your email/spam for verification.',
                 error:  (errorMsg) => errorMsg,
             },
             {
