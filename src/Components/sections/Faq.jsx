@@ -9,23 +9,36 @@ const Faq = () => {
 
     const faqs = [
         {
-            question: "How to you can start your own agency?",
-            answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum exercitationem pariatur iure nemo esse repellendus est quo recusandae. Delectus, maxime."
+            id: 1,
+            question: "What is Foodimetric?",
+            answer:
+                "Foodimetric is a database-inclined platform that assists users to make informed nutrition choices by providing important information about foods around them. Having noted the gap between nutrition information and healthy eating among Nigerians, Foodimetric presents compiled data on several foods around the country in a more relatable way to its users. Foodimetric is an important tool for both nutrition professionals and the general public to identify the nutrient composition of foods and their level of safety. Our vision is to advance the reality of healthiness to all. Our mission is to harness technology resources to improve nutrition and health.",
         },
         {
-            question: "Before hiring a consultant, what kind of questions should I ask?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Lorem Ipsum is that it has a more-or-less normal."
+            id: 2,
+            question: "Why Foodimetric?",
+            answer:
+                "Foodimetric improves the knowledge of users about the compositions of their foods and encourages healthy nutrition practices by presenting the data of foods in a simplified and understandable way. Foodimetric is a powerful tool for dietetics students and professionals because it eases the process of calculating the nutrient composition of foods for medical nutrition therapy. Foodimetric also provides reliable and credible nutrition information. Foodimetric aims to encourage researchers to conduct more studies on indigenous food composition to further expand the available database.",
         },
         {
-            question: "Should I meet with multiple consultants and shop around before hiring one?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Lorem Ipsum is that it has a more-or-less normal."
+            id: 3,
+            question: "What is Food Composition?",
+            answer:
+                "Food composition refers to the detailed breakdown of the nutrients and other components present in a specific food. This information is important for understanding the nutritional value and potential health benefits of different foods. Food composition data is often used by researchers, nutritionists, and food manufacturers to assess dietary intake and develop guidelines for healthy eating.",
         },
         {
-            question: "In addition to billable hours, what other costs can consultants charge for?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Lorem Ipsum is that it has a more-or-less normal."
-        }
+            id: 4,
+            question: "What is Nutrition?",
+            answer:
+                "Nutrition refers to the process of obtaining and utilizing food for growth, development, and overall health. It involves the study of nutrients and how they impact us. Good nutrition is essential for maintaining proper bodily functions, supporting growth and development, and preventing diseases. It plays a crucial role in providing energy, building and repairing tissues, and supporting the immune system.",
+        },
+        {
+            id: 5,
+            question: "What is BMI?",
+            answer:
+                "BMI stands for Body Mass Index, and it's a measure used to assess a person's body weight in relation to their height. It's a simple calculation that helps determine if a person is underweight, normal weight, overweight, or obese. The formula for BMI is weight (in kilograms) divided by height (in meters) squared. The resulting number can be interpreted using standard BMI categories. However, it's important to note that BMI is a general indicator and does not take into account factors such as muscle mass or body composition. It's always a good idea to consult with a healthcare professional for a comprehensive evaluation of your health and weight.",
+        },
     ];
-
     return (
         <section className="section-wrap">
             <div className="wraper">

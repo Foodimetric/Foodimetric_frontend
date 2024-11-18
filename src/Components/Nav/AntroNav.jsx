@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const AntroNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navRef = useRef(null);
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleBlur = (event) => {
+        if (!navRef.current.contains(event.relatedTarget)) {
+            setIsMenuOpen(false);
+        }
+    }
     return (
         <>
             <div className="fixed top-0 left-0 bg-white h-16 z-10 w-60 md:hidden flex items-center border-b border-gray-300">
@@ -17,7 +24,9 @@ const AntroNav = () => {
                     </svg>
                 </button>
             </div>
-            <nav className={`fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 z-10 font-base-font transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+            <nav ref={navRef}
+                onBlur={handleBlur}
+                tabIndex="0" className={`fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 z-10 font-base-font transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
                 <div className="flex flex-col justify-between h-full overflow-auto hide-scrollbar">
                     <div className="flex-grow">
                         <div className="px-4 py-0 text-center border-b h-16">
@@ -27,13 +36,13 @@ const AntroNav = () => {
                         </div>
                         <div className="p-4 h-[80vh] overflow-scroll hide-scrollbar">
                             <ul className="space-y-1">
-                                <li className='flex justify-end sm:hidden'>
+                                {/* <li className='flex justify-end sm:hidden'>
                                     <button onClick={toggleMenu} className="text-gray-700 hover:text-gray-900 focus:outline-none">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                                         </svg>
                                     </button>
-                                </li>
+                                </li> */}
                                 <li>
                                     <NavLink
                                         to='/anthro/BMI'
@@ -181,5 +190,4 @@ const AntroNav = () => {
         </>
     );
 }
-
 export default AntroNav;

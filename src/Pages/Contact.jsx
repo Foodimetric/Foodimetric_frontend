@@ -24,8 +24,7 @@ const Contact = () => {
                                                 </div>
                                             </div>
                                             <h2 className="text-[30px] text-[#232f4b] font-medium my-[20px]">Address</h2>
-                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">7 Green Lake Street
-                                                Crawfordsville, IN 47933</p>
+                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">Lagos, Nigeria</p>
                                         </div>
                                     </div>
                                     <div className="md:col-span-4 col-span-6 sm:col-span-12 mb-7">
@@ -39,8 +38,7 @@ const Contact = () => {
                                                 </div>
                                             </div>
                                             <h2 className="text-[30px] text-[#232f4b] font-medium my-[20px]">Email Us</h2>
-                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">Consoel@gmail.com</p>
-                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">helloyou@gmail.com</p>
+                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">foodimetric@gmail.com</p>
                                         </div>
                                     </div>
                                     <div className="md:col-span-4 col-span-6 sm:col-span-12 mb-7">
@@ -53,8 +51,7 @@ const Contact = () => {
                                                 </div>
                                             </div>
                                             <h2 className="text-[30px] text-[#232f4b] font-medium my-[20px]">Call Now</h2>
-                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">+1 800 123 456 789</p>
-                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">+1 800 123 654 987</p>
+                                            <p className="text-[#4f555a] text-[16px] leading-[22px]">+2347085056806</p>
                                         </div>
                                     </div>
                                 </div>
@@ -64,9 +61,7 @@ const Contact = () => {
                                 mb-[20px]">
                                     Have
                                     Any Question?</h2>
-                                <p className="text-[#687693] text-[16px] leading-[22px]">It is a long established fact that a
-                                    reader will be distracted
-                                    content of a page when looking.</p>
+                                <p className="text-[#687693] text-[16px] leading-[22px]"> If you have any questions or need assistance, feel free to reach out to us. We're here to help!</p>
                             </div>
                             <div className="p-[50px] bg-white mb-[-125px] relative z-10
                             shadow-[0px_1px_15px_0px_rgba(62,65,159,0.1)] sm:p-7 sm:pt-[50px]">

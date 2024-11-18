@@ -33,6 +33,7 @@ import Dashboard from './Pages/User/Dashboard'
 import UserSettings from './Pages/User/Settings';
 import DashboardLayout from './Pages/User/DashboardLayout';
 import { AuthProvider } from './Context/AuthContext';
+import Education from './Pages/Education';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact />,
+  },
+  {
+    path: "educate",
+    element: <Education />,
   },
   {
     path: "/search",

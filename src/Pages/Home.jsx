@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Autoplay } from 'swiper/modules';
 import StatSection from '../Components/sections/Stat';
+import BMI from './Anthro/BMI'
+import { data } from '../Utils/db';
 
 
 export const Home = () => {
@@ -154,6 +156,7 @@ export const Home = () => {
                         </div>
                     </section>
                 </div>
+                <BMI islandingPage={true} />
                 <About padding={'90px'} />
                 <StatSection />
                 <section className="pt-[120px] md:pt-[90px] sm:pt-[80px] pb-[90px] md:pb-[60px] sm:pb-[50px]">
@@ -168,86 +171,26 @@ export const Home = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-12 gap-x-4">
-                            <div className="md:col-span-3 col-span-6 col:col-span-12">
-                                <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
-                                    <div className="overflow-hidden rounded-full">
-                                        <img src="assets/images/service/img-1.jpg" alt=""
-                                            className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
-                                    </div>
-                                    <div>
-                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
-                                rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
-                                            <img src="assets/images/service/icon-1.svg" alt="" className="max-w-[55px]" />
-                                        </div> */}
-                                        <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">
-                                            Agriculture Products</h4>
-                                        <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
-                                mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
-                                            <i className="ti-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="md:col-span-3 col-span-6 col:col-span-12">
-                                <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
-                                    <div className="overflow-hidden rounded-full">
-                                        <img src="assets/images/service/img-2.jpg" alt=""
-                                            className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
-                                    </div>
-                                    <div>
-                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
-                                rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
-                                            <img src="assets/images/service/icon-2.svg" alt="" className="max-w-[55px]" />
-                                        </div> */}
-                                        <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Dairy
-                                            Products</h4>
-                                        <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
-                                mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
-                                            <i className="ti-arrow-right"></i>
-                                        </a>
+                            {data.map((item) => (
+                                <div key={item.id} className="md:col-span-3 col-span-6 col:col-span-12">
+                                    <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
+                                        <div className="overflow-hidden rounded-full">
+                                            <img src={item.img}
+                                                alt={item.alt}
+                                                className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">
+                                                {item.title}</h4>
+                                            <a href={item.link} target="_blank"
+                                                rel="noopener noreferrer" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
+                                                mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
+                                                <i className="ti-arrow-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="md:col-span-3 col-span-6 col:col-span-12">
-                                <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
-                                    <div className="overflow-hidden rounded-full">
-                                        <img src="assets/images/service/img-3.jpg" alt=""
-                                            className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
-                                    </div>
-                                    <div>
-                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
-                                rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
-                                            <img src="assets/images/service/icon-3.svg" alt="" className="max-w-[55px]" />
-                                        </div> */}
-                                        <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Organic
-                                            Fruits</h4>
-                                        <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
-                                mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
-                                            <i className="ti-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="md:col-span-3 col-span-6 col:col-span-12">
-                                <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
-                                    <div className="overflow-hidden rounded-full">
-                                        <img src="assets/images/service/img-4.jpg" alt=""
-                                            className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
-                                    </div>
-                                    <div>
-                                        {/* <div className="w-[120px] h-[120px] leading-[120px] flex items-center justify-center bg-white shadow-[4px_8px_20px_rgba(35,35,35,0.1)]
-                                rounded-full mx-auto relative mt-[-60px] mb-[20px] text-center">
-                                            <img src="assets/images/service/icon-4.svg" alt="" className="max-w-[55px]" />
-                                        </div> */}
-                                        <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">Fresh
-                                            Vegetables</h4>
-                                        <a href="service-single.html" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
-                                mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
-                                            <i className="ti-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -259,35 +202,15 @@ export const Home = () => {
                     <div className="wraper">
                         <div className="partners-slider owl-carousel owl-loaded owl-drag">
                             <div className='owl-stage-outer'>
-                                <div className='owl-stage md:flex items-center justify-between block'>
+                                <div className='owl-stage md:flex items-center justify-center block'>
                                     <div className="h-[120px] flex items-center justify-center">
                                         <div>
-                                            <img src="assets/images/partner/1.png" alt="" className="mx-auto w-auto" />
+                                            <img src="assets/images/adtech.png" alt="" className="mx-auto w-[120px] h-[70px] object-contain" />
                                         </div>
                                     </div>
                                     <div className="h-[120px] flex items-center justify-center">
                                         <div>
-                                            <img src="assets/images/partner/2.png" alt="" className="mx-auto w-auto" />
-                                        </div>
-                                    </div>
-                                    <div className="h-[120px] flex items-center justify-center">
-                                        <div>
-                                            <img src="assets/images/partner/3.png" alt="" className="mx-auto w-auto" />
-                                        </div>
-                                    </div>
-                                    <div className="h-[120px] flex items-center justify-center">
-                                        <div>
-                                            <img src="assets/images/partner/4.png" alt="" className="mx-auto w-auto" />
-                                        </div>
-                                    </div>
-                                    <div className="h-[120px] flex items-center justify-center">
-                                        <div>
-                                            <img src="assets/images/partner/5.png" alt="" className="mx-auto w-auto" />
-                                        </div>
-                                    </div>
-                                    <div className="h-[120px] flex items-center justify-center">
-                                        <div>
-                                            <img src="assets/images/partner/2.png" alt="" className="mx-auto w-auto" />
+                                            <img src="assets/images/diet.png" alt="" className="mx-auto w-[120px] h-[70px] object-contain" />
                                         </div>
                                     </div>
                                 </div>
@@ -335,12 +258,14 @@ export const Home = () => {
                                             before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
                                             before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
                                             before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
-                                        <p className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">“It uses a dictionary of over 200 Latin words, combined with handful the model
-                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                            lorem ipsum is therefore always free from repetition sentence structures, to
-                                            generate lorem ipsum which looks..</p>
-                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Modern Sater</h2>
-                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                        <p className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">“Foodimetric is a game-changer!
+                                            It saves me the hassle of sifting through food composition tables, making it an incredibly efficient tool. The calculations are lightning-fast, with no glitches or freezing during use.
+
+                                            I’d call Foodimetric a lifesaver—not just for nutritionists but for everyone!
+
+                                            I give it a solid 10/10! 👌</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Karamot Adesewa</h2>
+                                        <span className="font-normal text-base text-white">Nutrition and Dietetics Student, Federal University of Agriculture, Abeokuta</span>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -357,12 +282,15 @@ export const Home = () => {
                          before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
                                         <p
                                             className="font-heading-font font-normal md:text-2xl mb-6 relative text-white text-lg lg:mb-4">
-                                            “It uses a dictionary of over 200 Latin words, combined with handful the model
-                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                            lorem ipsum is therefore always free from repetition sentence structures, to
-                                            generate lorem ipsum which looks..</p>
-                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Marry Jenefer</h2>
-                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                            “Foodimetric is truly a game-changer, especially for someone like me who has relied on my Food Composition Table (FCT) hardcopy for 5-6 years. No matter how far I travel, my Nigerian FCT has always been by my side.
+
+                                            Thanks to this amazing innovation, I can now leave the hardcopy at home and still have everything I need right in my pocket, 24/7!
+
+                                            It would be fantastic if Foodimetric could support Nigerian dietitians even further by adding more nutrition calculators. Keep up the great work!</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Akinade Emmanuel Adefowowe
+                                        </h2>
+                                        <span className="font-normal text-base text-white">Akinade Emmanuel Adefowowe
+                                        </span>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -379,12 +307,13 @@ export const Home = () => {
                                         before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
                                         <p
                                             className="font-heading-font font-normal md:text-2xl mb-6 relative text-white lg:mb-4 ">
-                                            “It uses a dictionary of over 200 Latin words, combined with handful the model
-                                            sentence structures, to generate lorem ipsum which looks reasonable. The generated
-                                            lorem ipsum is therefore always free from repetition sentence structures, to
-                                            generate lorem ipsum which looks..</p>
-                                        <h2 className="font-normal md:text-4xl text-white text-3xl">William Robert</h2>
-                                        <span className="font-normal text-base text-white">CEO of Digital Studio</span>
+                                            “The solution is truly innovative and makes it so easy to find the nutritional value of Nigerian foods.
+
+                                            I once measured my cucumber with a kitchen scale and was eager to know its potassium content. Foodimetric was my go-to! It was simple to navigate, and the absence of ads made the experience seamless.
+
+                                            Thank you for all you’re doing to advance nutrition.</p>
+                                        <h2 className="font-normal md:text-4xl text-white text-3xl">Olaniyi Barakat</h2>
+                                        <span className="font-normal text-base text-white">Nutritionist, Olabisi Onabanjo University Teaching Hospital</span>
                                     </div>
                                 </div>
                             </SwiperSlide>

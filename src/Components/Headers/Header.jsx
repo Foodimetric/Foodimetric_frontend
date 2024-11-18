@@ -12,7 +12,7 @@ const Header = () => {
     };
     return (
         <header className="relative z-[111]">
-            <h1 className="hidden">section heading hidde</h1>
+            <h1 className="hidden">section heading hidden</h1>
             <div className="py-[20px] px-12 relative z-10">
                 <div className="grid grid-cols-12 gap-4 items-center">
                     <div className="md:col-span-8 col-span-12 ">
@@ -82,7 +82,7 @@ const Header = () => {
                                     <li><NavLink to="/search/multi-food">Multi-Food</NavLink></li>
                                 </ul>
                             </li>
-                            <li><NavLink to="/anthro/BMI">Anthropometric</NavLink>
+                            <li><NavLink to="/anthro/BMI">Physical Stats</NavLink>
                                 <ul className="dl-submenu">
                                     <li><a href="shop.html">BMI </a></li>
                                     <li><a href="shop-single.html">IBW</a></li>
@@ -138,7 +138,7 @@ const Header = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Anthro</button>
+                                hover:before:opacity-100 hover:before:visible">Physical Stats</button>
                             <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">

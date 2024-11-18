@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const About = ({padding}) => {
+const About = ({ padding }) => {
     return (
         <section
             className={`relative flex justify-center flex-col z-20 py-[120px] md:py-[${padding}] sm:py-[80px] sm:pt-[60px] `}>
@@ -13,8 +13,8 @@ const About = ({padding}) => {
                                 <span
                                     className="text-xl font-heading-font inline-block mb-1 font-normal underline text-[#F78914]">“ABOUT
                                     US”</span>
-                                <h2 className="text-4xl font-normal font-heading-font mb-5 lg:text-4xl sm:text-3xl">Explore the Intersection of Anthropometric Data and Food Databases.</h2>
-                                <p className="mb-5">Foodimetric is an important tool for both nutrition professionals and general public to identify nutrient composition of foods and their level of safety. </p>
+                                <h2 className="text-4xl font-normal font-heading-font mb-5 lg:text-4xl sm:text-3xl">Discover How Foodimetric Helps You Stay Healthy</h2>
+                                <p className="mb-5">Foodimetric combines body measurements with food data to make it easier for everyone—from nutrition experts to everyday users—to understand what’s in their food and how safe it is to eat. </p>
                                 <ul className="mb-8 flex col:block">
                                     <li className="py-1 relative pl-6 font-semibold inline-block text-base  text-[#687693]">
                                         <i className="absolute left-0 top-1">
@@ -29,8 +29,7 @@ const About = ({padding}) => {
                                         <p>It presents data of different foods around West Africa.</p>
                                     </li>
                                 </ul>
-                                <a className="theme-btn bg-[#ffba08] hover:bg-[#f78914ee]" href="about.html">Get In
-                                    Touch</a>
+                                <a className="theme-btn bg-[#ffba08] hover:bg-[#f78914ee]" href="/educate">Learn More</a>
 
                             </div>
                         </div>
