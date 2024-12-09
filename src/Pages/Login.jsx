@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../Utils/host';
+import showToast from '../Utils/toast';
 
 const Login = () => {
-    const { handleSubmit, email, password, rememberMe, setEmail, setPassword, setRememberMe } = useAuth();
+    const navigate = useNavigate()
+    const { email, password, rememberMe, setEmail, setPassword, setRememberMe, setIsAuthenticated, login } = useAuth();
 
     useEffect(() => {
         const rememberedEmail = localStorage.getItem('rememberMeEmail');
@@ -14,6 +17,53 @@ const Login = () => {
             setRememberMe(true);
         }
     }, [setEmail, setRememberMe]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Making a request to the login endpoint
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/sign-in`, {
+                method: "POST",
+                body: JSON.stringify({ email, password }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsAuthenticated(true);
+                const user = {
+                    _id: data.payload.user._id,
+                    email: data.payload.user.email,
+                    firstName: data.payload.user.firstName,
+                    lastName: data.payload.user.lastName,
+                    token: data.payload.token,
+                    category: data.payload.user.category
+                }
+                if (rememberMe) {
+                    localStorage.setItem("user", JSON.stringify(user));
+                    login(data.payload.token, user);
+                } else {
+                    sessionStorage.setItem("user", JSON.stringify(user));
+                }
+
+                if (user.category === 0) {
+                    // Route to Educate page
+                    navigate('/educate');
+                } else {
+                    // Route to Dashboard
+                    navigate('/dashboard');
+                }
+            } else {
+                console.error('Login failed:', data);
+                showToast('error', `${data.message}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <main>

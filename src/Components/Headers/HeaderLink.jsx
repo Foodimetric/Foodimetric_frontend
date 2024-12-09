@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from '../Nav/ProfileDropdown';
 import { Avatar, IconButton } from '@mui/material';
+import { useAuth } from '../../Context/AuthContext';
 
 
 const HeaderLink = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [auth, setAuth] = useState(false);
+    const { isAuthenticated } = useAuth();
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -44,7 +45,7 @@ const HeaderLink = () => {
                             </ul>
                         </li>
                         <li><Link to="/contact">Contact</Link></li>
-                        {auth && <li className='flex space-x-2 items-center'>
+                        {isAuthenticated && <li className='flex space-x-2 items-center'>
                             <Link to="/dashboard" className='before:hidden after:hidden'>
                                 <IconButton >
                                     <Avatar alt="Profile Image" src="assets/logo.png" />
@@ -180,12 +181,15 @@ const HeaderLink = () => {
                         </Link>
                     </li>
                 </ul>
-                <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
-                    to="register">Register
-                </Link>
-                {auth && <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
-                    <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
-                </IconButton>}
+                {!isAuthenticated && <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
+                    to="/register">Register
+                </Link>}
+                {isAuthenticated &&
+                    <Link to={'/dashboard'} className='before:hidden after:hidden'>
+                        <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
+                            <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
+                        </IconButton>
+                    </Link>}
             </div>
         </div>
     );

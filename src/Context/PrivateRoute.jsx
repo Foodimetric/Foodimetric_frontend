@@ -1,8 +1,11 @@
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import DashboardLayout from '../Pages/User/DashboardLayout';
+import { useAuth } from './AuthContext';
 
-const PrivateRoute = ({ isAuthenticated }) => {
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+const PrivateRoute = () => {
+    const { isAuthenticated, user } = useAuth();
+    return isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

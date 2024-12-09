@@ -1,11 +1,18 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router';
+import { Navigate, Outlet, useLocation } from 'react-router';
 import AntroNav from '../../Components/Nav/AntroNav';
 import AntroHeader from '../../Components/Headers/AntroHeader';
+import { useAuth } from '../../Context/AuthContext';
 
 const AnthroLayout = () => {
+    const { user } = useAuth()
     const location = useLocation();
+    if (user?.category === 0) {
+        return <Navigate to="*" />;
+    }
     const pageTitle = getPageTitle(location.pathname);
+
+    console.log(user);
 
     function getPageTitle(pathname) {
         switch (pathname) {

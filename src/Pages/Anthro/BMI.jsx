@@ -71,7 +71,7 @@ const BMI = ({ islandingPage }) => {
                             </span>
                             <h2 className="text-4xl font-normal font-heading-font mb-5 lg:text-4xl sm:text-3xl">Track Your Physical Health</h2>
                             <p className="mb-5"> We offer a range of tools to help you monitor and improve your physical health. From our BMI calculator to other essential metrics, our tools empower you to understand your body better and make informed choices for a healthier lifestyle. Explore our physical stat tools to set and reach your wellness goals.</p>
-                            <a className="theme-btn bg-[#147E03] hover:bg-[#289217]" href="about.html">More Tools</a>
+                            <a className="theme-btn bg-[#147E03] hover:bg-[#289217]" href="/anthro/BMI">More Tools</a>
                         </div>
                     </div>
                 </div>}

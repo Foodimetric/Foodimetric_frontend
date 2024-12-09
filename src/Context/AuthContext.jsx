@@ -1,7 +1,9 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import showToast from '../Utils/toast'
 import { FOODIMETRIC_HOST_URL } from '../Utils/host'
 const AuthContext = createContext({
     isAuthenticated: false,
+    errors: {},
     login: () => { },
     logout: () => { },
     register: () => { },
@@ -60,54 +62,69 @@ export const AuthProvider = ({ children }) => {
     const login = (token, user) => {
         setToken(token);
         setUser(user);
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
     };
+
 
     const logout = () => {
         setToken(null);
         setUser(null);
-        localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('token'); // Clearing token from localStorage
+        sessionStorage.removeItem('user'); // Clearing user from sessionStorage
+        sessionStorage.removeItem('token'); // Clearing token from sessionStorage
         setIsAuthenticated(false);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (rememberMe) {
-            localStorage.setItem('rememberMeEmail', email);
-        } else {
-            localStorage.removeItem('rememberMeEmail');
-        }
 
-        // Making a request to the login endpoint
-        try {
-            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/sign-in`, {
-                method: "POST",
-                body: JSON.stringify({ email, password }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
+    // working
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
 
-            if (response.ok) {
-                const user = {
-                    _id: data.payload.user._id,
-                    email: data.payload.user.email,
-                    firstName: data.payload.user.firstName,
-                    lastName: data.payload.user.lastName,
-                }
-                setIsAuthenticated(true);
-                login(data.payload.token, user);
-            } else {
-                console.error('Login failed:', data);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
+    //     // Making a request to the login endpoint
+    //     try {
+    //         const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/sign-in`, {
+    //             method: "POST",
+    //             body: JSON.stringify({ email, password }),
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
+    //         const data = await response.json();
 
+    //         if (response.ok) {
+    //             setIsAuthenticated(true);
+    //             const user = {
+    //                 _id: data.payload.user._id,
+    //                 email: data.payload.user.email,
+    //                 firstName: data.payload.user.firstName,
+    //                 lastName: data.payload.user.lastName,
+    //                 token: data.payload.token,
+    //                 category: data.payload.user.category
+    //             }
+    //             if (rememberMe) {
+    //                 localStorage.setItem("user", JSON.stringify(user));
+    //                 login(data.payload.token, user);
+    //             } else {
+    //                 sessionStorage.setItem("user", JSON.stringify(user));
+    //             }
+
+    //             if (user.category === 0) {
+    //                 // Route to Educate page
+    //                 window.location.href = '/educate';
+    //             } else {
+    //                 // Route to Dashboard
+    //                 window.location.href = '/dashboard';
+    //             }
+    //         } else {
+    //             console.error('Login failed:', data);
+    //             showToast('error', `${data.message}`);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // };
+
+    // working
 
     const register = async (e) => {
         e.preventDefault();
@@ -115,19 +132,25 @@ export const AuthProvider = ({ children }) => {
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length === 0) {
+            const adjustedFormValues = {
+                ...formValues,
+                category: formValues.category === "others" ? 0 : 1,
+            };
+
             try {
                 const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/sign-up`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formValues),
+                    body: JSON.stringify(adjustedFormValues),
                 });
                 const data = await response.json();
+
                 if (response.ok) {
-                    register(data.payload.token, data.payload.user);
+                    showToast('success', 'Registration successful!, Check your email for verification.');
                 } else {
-                    console.error('Registration failed:', data.message);
+                    showToast('error', `Registration failed: ${data.message}`);
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -136,16 +159,19 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const savedToken = localStorage.getItem('token');
-        const savedUser = localStorage.getItem('user');
-        if (savedToken && savedUser) {
-            setToken(savedToken);
+        const savedUser =
+            localStorage.getItem('user') || sessionStorage.getItem('user');
+        if (savedUser) {
+            setToken(savedUser?.token);
             setUser(JSON.parse(savedUser));
             setIsAuthenticated(true);
         }
     }, []);
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, email, password, rememberMe, formValues, login, logout, register, handleSubmit, setEmail, setPassword, setRememberMe, setFormValues, handleChange }}>
+        <AuthContext.Provider value={{
+            isAuthenticated, email, password, rememberMe, formValues, errors, user, login, logout, register, setEmail, setPassword, setIsAuthenticated, setRememberMe, setFormValues, handleChange
+        }}>
             {children}
         </AuthContext.Provider>
     );

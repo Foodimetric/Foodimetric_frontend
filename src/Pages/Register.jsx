@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext'
 
 const Register = () => {
-    const { register, formValues, setFormValues, handleChange } = useAuth();
+    const { register, formValues, handleChange, errors } = useAuth();
 
     return (
         <main>
@@ -23,32 +23,46 @@ const Register = () => {
                                 <div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">First Name</label>
-                                        <input type="text" id="text" name="name" placeholder="Your first name here.."
+                                        <input type="text" id="text" name="firstName"
+                                            value={formValues.firstName}
+                                            onChange={handleChange} placeholder="Your first name here.."
                                             className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
+                                        {errors.firstName && <span>{errors.firstName}</span>}
                                     </div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Last Name</label>
-                                        <input type="text" id="last-name" name="last-name" placeholder="Your last name here.."
+                                        <input type="text" id="last-name" name="lastName"
+                                            value={formValues.lastName}
+                                            onChange={handleChange} placeholder="Your last name here.."
                                             className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
+                                        {errors.lastName && <span>{errors.lastName}</span>}
                                     </div>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
-                                        <input type="email" id="email" name="email" placeholder="Your email here.."
+                                        <input type="email" id="email" name="email"
+                                            value={formValues.email}
+                                            onChange={handleChange} placeholder="Your email here.."
                                             className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
+                                        {errors.email && <span>{errors.email}</span>}
                                     </div>
                                     <div className="w-full relative">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Category</label>
-                                        <select name="category" id="category" className="pwd6 relative rounded-[2px] w-full mb-[15px] px-[20px] h-[60px] border-[#e5e5e5]
+                                        <select name="category"
+                                            value={formValues.category}
+                                            onChange={handleChange} id="category" className="pwd6 relative rounded-[2px] w-full mb-[15px] px-[20px] h-[60px] border-[#e5e5e5]
                                             border-[1px] block focus:outline-0">
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200 first:border-t-0" value="Lecturer/Researcher">Lecturer/Researcher</option>
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200" value="Registered Dietitian/Clinical Nutritionist">Registered Dietitian/Clinical Nutritionist</option>
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200" value="nutrition student">Nutrition Student</option>
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200 last:border-b-0" value="others">Others</option>
                                         </select>
+                                        {errors.category && <span>{errors.category}</span>}
                                     </div>
                                     <div className="w-full relative">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Password</label>
-                                        <input type="password" placeholder="" value="123456" name="pass" id="password"
+                                        <input type="password" placeholder="" name="password"
+                                            value={formValues.password}
+                                            onChange={handleChange} id="password"
                                             className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
 
                                         <span className="absolute right-[10px] top-[45px]">
@@ -56,6 +70,7 @@ const Register = () => {
                                                 <i className="ti-eye" id="togglePassword"></i>
                                             </button>
                                         </span>
+                                        {errors.password && <span>{errors.password}</span>}
                                     </div>
                                     <div className="w-full">
                                         <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex

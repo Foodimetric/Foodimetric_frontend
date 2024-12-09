@@ -34,6 +34,11 @@ import UserSettings from './Pages/User/Settings';
 import DashboardLayout from './Pages/User/DashboardLayout';
 import { AuthProvider } from './Context/AuthContext';
 import Education from './Pages/Education';
+import PrivateRoute from './Context/PrivateRoute';
+import FoodDiary from './Pages/User/Diary';
+import HistoryPage from './Pages/User/History';
+import NutritionReportCard from './Pages/User/Report';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -95,7 +100,7 @@ const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute />,
     children: [
       {
         index: true,
@@ -104,6 +109,18 @@ const router = createBrowserRouter([
       {
         path: "setting",
         element: <UserSettings />,
+      },
+      {
+        path: "history",
+        element: <HistoryPage />,
+      },
+      {
+        path: "report",
+        element: <NutritionReportCard />,
+      },
+      {
+        path: "diary",
+        element: <FoodDiary />,
       },
     ],
   },
@@ -168,6 +185,16 @@ function App() {
     <div className="App">
       <AuthProvider>
         <RouterProvider router={router} />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }}
+        />
       </AuthProvider>
     </div>
   );
