@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-
+import { FOODIMETRIC_HOST_URL } from "../../Utils/host";
+import showToast from '../../Utils/toast'
 
 const Footer = () => {
+    const [email, setEmail] = useState("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!email) {
+            alert("Email is required");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/newsletter/subscribe`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const result = await response.json();
+            console.log("result", result);
+
+
+            if (response.ok) {
+                showToast('success', "Subscribed successfully!");
+            } else {
+                showToast('error', result.message || "Failed to subscribe");
+            }
+        } catch (error) {
+            console.error("Error subscribing:", error);
+            showToast('error', "An error occurred. Please try again.");
+        }
+    };
     return (
         <footer className="bg-[#147e03] relative z-[1]">
             <div className="py-[80px] md:pb-[60px] relative overflow-hidden xs:px-6 sm:px-2">
@@ -115,10 +149,12 @@ const Footer = () => {
                                      ">Newsletter</h3>
                             </div>
                             <p className="mb-[10px] text-white text-[16px] leading-[30px] font-heading-font">Stay informed about new tools and resources that can help you achieve your health goals.</p>
-                            <form className="mt-[25px] relative">
+                            <form className="mt-[25px] relative" onSubmit={handleSubmit}>
                                 <input type="email" className="bg-white h-[55px] text-[#141d37] p-[6px_15px] 
                                 border-[1px] border-white w-full focus:outline-0 rounded-[5px] "
-                                    placeholder="Email Address *" required="" />
+                                    placeholder="Email Address *" required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
                                 <div className="absolute right-[5px] top-[-17px] translate-y-1/2">
                                     <button type="submit" className="bg-[#F78914] border-0 outline-0
                                      text-white w-[40px] h-[45px] leading-[45px] transition-all-all rounded-[5px] ">

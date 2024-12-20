@@ -43,7 +43,7 @@ function Dashboard() {
     };
 
     return (
-        <div className="col-span-12">
+        <div className="col-span-12 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600">Meals Tracked</h3>
@@ -82,8 +82,8 @@ function Dashboard() {
                 </div>
             </div>
             {/* Actions Section */}
-            <div className='flex gap-4'>
-                <div className='w-1/3'>
+            <div className='flex flex-col gap-4 md:flex-row'>
+                <div className='w-full md:w-1/3'>
                     {/* Nutrition Quote of the Day */}
                     <div className="mt-8 p-6 bg-gray-50 border-t rounded-lg shadow-sm w-full h-fit">
                         <h3 className="text-lg font-semibold text-gray-800">Nutrition Quote of the Day</h3>
@@ -105,7 +105,7 @@ function Dashboard() {
                     </div>
 
                 </div>
-                <div className='w-2/3'>
+                <div className='w-full md:w-2/3'>
                     <BMI islandingPage={false} />
                 </div>
             </div>

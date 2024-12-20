@@ -5,7 +5,7 @@ import { Avatar, IconButton } from '@mui/material';
 import { useAuth } from '../../Context/AuthContext';
 
 const Header = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, user } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -95,7 +95,9 @@ const Header = () => {
                             {isAuthenticated && <li className='flex space-x-2 items-center'>
                                 <Link to="/dashboard" className='before:hidden after:hidden'>
                                     <IconButton >
-                                        <Avatar alt="Profile Image" src="assets/logo.png" />
+                                        <Avatar alt={user?.firstName && user?.lastName
+                                            ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
+                                            : 'Guest'} src="/path/to/profile.jpg" />
                                     </IconButton>
                                 </Link>
                                 <span className='text-white font-bold'> Folake Olamide</span>
@@ -241,9 +243,11 @@ const Header = () => {
                         to="/register">Register
                     </Link>}
                     {isAuthenticated &&
-                        <Link to={'/dashboard'} className='before:hidden after:hidden'>
+                        <Link to={'/dashboard'} className='before:hidden after:hidden hidden md:block' >
                             <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
-                                <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
+                                <Avatar alt={user?.firstName && user?.lastName
+                                    ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
+                                    : 'Guest'} src="/path/to/profile.jpg" />
                             </IconButton>
                         </Link>}
                 </div>

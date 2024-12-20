@@ -102,7 +102,7 @@ const Login = () => {
                                                 Me</label>
                                         </div>
                                         <div className="forget-btn">
-                                            <Link to="/reset" className="font-base-font text-[16px] text-[#687693]">Forgot
+                                            <Link to="/forgot" className="font-base-font text-[16px] text-[#687693]">Forgot
                                                 Password?</Link>
                                         </div>
                                     </div>

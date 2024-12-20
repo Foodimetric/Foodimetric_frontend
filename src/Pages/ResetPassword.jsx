@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { FOODIMETRIC_HOST_URL } from '../Utils/host';
+import showToast from '../Utils/toast';
+
 
 const Reset = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+
+    const handleReset = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/forgot-password`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),  // Send the email in the request body
+            });
+
+            if (!response.ok) {
+                throw new Error('An error occurred');
+            }
+
+            const data = await response.json();  // Parse the response body as JSON
+            showToast('success', data.message);
+            navigate(`/reset?email=${encodeURIComponent(email)}`); // Navigate with the email as a query parameter
+        } catch (err) {
+            showToast('error', err.message || 'An error occurred');
+        }
+    };
+
     return (
         <main>
             <div className="page-wrapper">
@@ -10,20 +40,22 @@ const Reset = () => {
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper">
                         <form className="md:w-[1170px] w-[600px] sm:w-[500px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
-                             overflow-hidden" action="#">
+                             overflow-hidden" onSubmit={handleReset}>
                             <div className="md:w-1/2 w-full bg-[#1a384c] flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login">
 
                             </div>
                             <div
                                 className="md:w-1/2 w-full p-[70px_85px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
-                                <h2 className="text-[30px] mb-[10px]  font-heading-font font-semibold">Reset Password</h2>
+                                <h2 className="text-[30px] mb-[10px]  font-heading-font font-semibold">Verify Email</h2>
                                 <p className="text-[15px] mb-[40px] text-[#687693] leading-[20px]">Recover your Account</p>
+
                                 <div>
 
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
                                         <input type="email" id="email" name="email" placeholder="Your email here.."
-                                            className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)} className="rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
                                     </div>
 
 
@@ -33,7 +65,7 @@ const Reset = () => {
                                             justify-center capitalize text-[#fff]
                                             border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
                                         ">
-                                            Reset Password
+                                            Verify Email
                                         </button>
                                     </div>
                                     <div className="w-full">

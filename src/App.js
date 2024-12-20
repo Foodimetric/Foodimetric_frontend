@@ -40,6 +40,7 @@ import HistoryPage from './Pages/User/History';
 import NutritionReportCard from './Pages/User/Report';
 import { Toaster } from 'react-hot-toast';
 import Users from './Pages/User/Users';
+import NewPassword from './Pages/NewPassword';
 
 const router = createBrowserRouter([
   {
@@ -61,8 +62,12 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "reset",
+    path: "forgot",
     element: <Reset />,
+  },
+  {
+    path: "reset",
+    element: <NewPassword />,
   },
   {
     path: "about",

@@ -130,28 +130,24 @@ const UserSettings = () => {
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
                         />
                     </div>
+
                 </div>
+                {!user.category === 1 && (
+                    <p className="mt-4 p-4 text-sm bg-green-50 border border-green-200 rounded-lg shadow-sm text-green-700">
+                        If you are a nutritionist, dietitian, nutrition student, or have expertise in the field of nutrition, consider updating your profession to access advanced tools designed to enhance your work and streamline your professional tasks.
+                    </p>
+                )}
 
                 {/* Buttons */}
                 <div className="flex justify-between mt-6">
-                    <button
-                        onClick={logout}
-                        className="py-2 px-4 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-colors"
-                    >
-                        Sign Out
-                    </button>
-                    <button className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
-                        Save Changes
-                    </button>
-                </div>
-
-                {/* Delete Account Button */}
-                <div className="mt-6">
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="py-2 px-4 bg-red-700 text-white rounded-lg shadow-md hover:bg-red-800 transition-colors"
                     >
                         Delete Account
+                    </button>
+                    <button className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                        Save Changes
                     </button>
                 </div>
             </div>

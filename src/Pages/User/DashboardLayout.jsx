@@ -22,7 +22,7 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main Content */}
-            <div className="flex flex-col flex-1">
+            <div className="flex flex-col flex-1 w-full">
                 {/* Header */}
                 <DashboardHeader title="Dashboard" />
 

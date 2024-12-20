@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
-import { IconButton, Menu, MenuItem, Avatar } from '@mui/material';
+import { Menu, MenuItem, Avatar, Box, Typography, Divider } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
+import { FiLogOut, FiUser, FiHome, FiSearch } from 'react-icons/fi';
 
-const useStyles = styled((theme) => ({
-    menu: {
-        marginTop: theme.spacing(2), // Adds some space below the icon button
-        width: '300px', // Increased width
+const ProfileMenu = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+});
+
+const StyledMenu = styled(Menu)({
+    marginTop: '8px',
+    '& .MuiMenu-paper': {
+        borderRadius: '12px',
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+        minWidth: '250px',
     },
-    menuItem: {
-        fontSize: '1rem', // Larger font size
-        padding: theme.spacing(2), // More padding
+});
+
+const StyledMenuItem = styled(MenuItem)({
+    display: 'flex',
+    alignItems: 'center',
+    padding: '12px 16px',
+    gap: '10px',
+    '&:hover': {
+        backgroundColor: '#f5f5f5',
     },
-    iconButton: {
-        marginRight: theme.spacing(2), // Some margin for better spacing
-    },
-}));
+});
+
+const StyledNavLink = styled(NavLink)({
+    textDecoration: 'none',
+    color: 'inherit',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    width: '100%',
+});
 
 const ProfileDropdown = () => {
-    const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
-
+    const { user, logout } = useAuth();
     const location = useLocation();
 
     const handleClick = (event) => {
@@ -34,12 +55,16 @@ const ProfileDropdown = () => {
     const isSearchPage = location.pathname.startsWith('/search');
     const isAnthroPage = location.pathname.startsWith('/anthro');
 
+    console.log(user);
+
     return (
         <div>
-            <IconButton className={classes.iconButton} onClick={handleClick}>
-                <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
-            </IconButton>
-            <Menu
+            <ProfileMenu onClick={handleClick}>
+                <Avatar alt={user?.firstName && user?.lastName
+                    ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
+                    : 'Guest'} src="/path/to/profile.jpg" />
+            </ProfileMenu>
+            <StyledMenu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
@@ -51,13 +76,35 @@ const ProfileDropdown = () => {
                     vertical: 'top',
                     horizontal: 'right',
                 }}
-                classes={{ paper: classes.menu }}
             >
-                {isSearchPage && <MenuItem onClick={handleClose} className={classes.menuItem}><NavLink to={'/anthro/BMI'}>Anthro</NavLink></MenuItem>}
-                {isAnthroPage && <MenuItem onClick={handleClose} className={classes.menuItem}><NavLink to={'/search/food'}>Search</NavLink></MenuItem>}
-                <MenuItem onClick={handleClose} className={classes.menuItem}><NavLink to={'/dashboard'}>Dashboard</NavLink></MenuItem>
-                <MenuItem onClick={handleClose} className={classes.menuItem}>Logout</MenuItem>
-            </Menu>
+                <StyledMenuItem>
+                    <StyledNavLink to="/dashboard" onClick={handleClose}>
+                        <FiHome size={20} />
+                        Dashboard
+                    </StyledNavLink>
+                </StyledMenuItem>
+                {isSearchPage && (
+                    <StyledMenuItem>
+                        <StyledNavLink to="/anthro/BMI" onClick={handleClose}>
+                            <FiUser size={20} />
+                            Anthropometric Data
+                        </StyledNavLink>
+                    </StyledMenuItem>
+                )}
+                {isAnthroPage && (
+                    <StyledMenuItem>
+                        <StyledNavLink to="/search/food" onClick={handleClose}>
+                            <FiSearch size={20} />
+                            Search Food
+                        </StyledNavLink>
+                    </StyledMenuItem>
+                )}
+                <Divider />
+                <StyledMenuItem onClick={logout}>
+                    <FiLogOut size={20} />
+                    Logout
+                </StyledMenuItem>
+            </StyledMenu>
         </div>
     );
 };

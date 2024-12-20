@@ -7,10 +7,13 @@ import { useAuth } from '../../Context/AuthContext';
 
 const HeaderLink = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, user } = useAuth();
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    console.log(isMenuOpen);
+
     return (
         <div className="px-2 md:px-0 border-t-[#eee] border-t wraper">
             <div className="flex items-center justify-between  rounded-[5px]  relative z-10 md:py-[10px]">
@@ -48,10 +51,10 @@ const HeaderLink = () => {
                         {isAuthenticated && <li className='flex space-x-2 items-center'>
                             <Link to="/dashboard" className='before:hidden after:hidden'>
                                 <IconButton >
-                                    <Avatar alt="Profile Image" src="assets/logo.png" />
+                                    <ProfileDropdown />
                                 </IconButton>
                             </Link>
-                            <span className='text-white font-bold'> Folake Olamide</span>
+                            <span className='text-white font-bold capitalize'>{`${user?.firstName} ${user?.lastName}`}</span>
                         </li>}
                     </ul>
                 </div>
@@ -184,12 +187,14 @@ const HeaderLink = () => {
                 {!isAuthenticated && <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
                     to="/register">Register
                 </Link>}
-                {isAuthenticated &&
-                    <Link to={'/dashboard'} className='before:hidden after:hidden'>
-                        <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
-                            <Avatar alt="Profile Image" src="/path/to/profile.jpg" />
+                {isAuthenticated && (
+                    <div className="hidden md:block">
+                        <IconButton >
+                            <ProfileDropdown />
                         </IconButton>
-                    </Link>}
+                    </div>
+                )}
+
             </div>
         </div>
     );
