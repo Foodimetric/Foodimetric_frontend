@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../Context/AuthContext';
 
 const UserSettings = () => {
+    const { user, logout } = useAuth();
     const [profilePicture, setProfilePicture] = useState('/assets/images/folake.png');
     const [profileDetails, setProfileDetails] = useState({
-        name: 'John Doe',
-        email: 'johndoe@example.com',
+        name: '',
+        email: '',
         location: 'New York, USA',
-        profession: 'Software Developer',
+        profession: '',
         signInDate: '2024-01-01',
     });
+
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletionReason, setDeletionReason] = useState('');
 
@@ -32,15 +36,24 @@ const UserSettings = () => {
         setProfileDetails({ ...profileDetails, [name]: value });
     };
 
-    const handleSignOut = () => {
-        console.log('Sign out');
-    };
 
     const handleDeleteAccount = () => {
         // Logic for account deletion goes here
         console.log('Account deleted');
         setIsModalOpen(false); // Close modal after deletion
     };
+
+    useEffect(() => {
+        if (user) {
+            setProfileDetails({
+                name: `${user.lastName || ''} ${user.firstName || ''}`.trim(),
+                email: user.email || '',
+                location: 'New York, USA',
+                profession: localStorage.getItem('category') || String(user.category) || 'Unknown',
+                signInDate: '2024-01-01',
+            });
+        }
+    }, [user]);
 
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
@@ -75,7 +88,7 @@ const UserSettings = () => {
                         { label: 'Name', name: 'name', type: 'text', value: profileDetails.name },
                         { label: 'Email', name: 'email', type: 'email', value: profileDetails.email },
                         { label: 'Location', name: 'location', type: 'text', value: profileDetails.location },
-                        { label: 'Profession', name: 'profession', type: 'select', value: profileDetails.profession, options: professionOptions },
+                        { label: 'Profession', name: 'profession', type: 'text', value: profileDetails.profession },
                     ].map(({ label, name, type, value, options }) => (
                         <div key={name}>
                             <label htmlFor={name} className="block text-sm font-medium text-gray-700">
@@ -86,7 +99,7 @@ const UserSettings = () => {
                                     name={name}
                                     value={value}
                                     onChange={handleInputChange}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600 capitalize"
                                 >
                                     {options.map((option) => (
                                         <option key={option.value} value={option.value}>
@@ -122,7 +135,7 @@ const UserSettings = () => {
                 {/* Buttons */}
                 <div className="flex justify-between mt-6">
                     <button
-                        onClick={handleSignOut}
+                        onClick={logout}
                         className="py-2 px-4 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-colors"
                     >
                         Sign Out

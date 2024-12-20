@@ -1,48 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material';
+import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Slider from '@mui/material/Slider';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
-
-// Custom styled Slider
-const CustomSlider = styled(Slider)({
-    color: '#3a8589',
-    height: 8,
-    '& .MuiSlider-track': {
-        border: 'none',
-    },
-    '& .MuiSlider-thumb': {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            boxShadow: 'inherit',
-        },
-        '&:before': {
-            display: 'none',
-        },
-    },
-    '& .MuiSlider-valueLabel': {
-        lineHeight: 1.2,
-        fontSize: 12,
-        background: 'unset',
-        padding: 0,
-        width: 32,
-        height: 32,
-        borderRadius: '50% 50% 50% 0',
-        backgroundColor: '#3a8589',
-        transformOrigin: 'bottom left',
-        transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-        '&:before': { display: 'none' },
-        '&.MuiSlider-valueLabelOpen': {
-            transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-        },
-        '& > *': {
-            transform: 'rotate(45deg)',
-        },
-    },
-});
 
 // Custom styled Radio
 const CustomRadio = styled(Radio)({
@@ -60,16 +19,16 @@ const EE = () => {
     const [activityLevel, setActivityLevel] = useState(1.2); // Sedentary
     const [tee, setTee] = useState(null);
 
-    const handleWeightChange = (event, newValue) => {
-        setWeight(newValue);
+    const handleWeightChange = (event) => {
+        setWeight(event.target.value);
     };
 
-    const handleHeightChange = (event, newValue) => {
-        setHeight(newValue);
+    const handleHeightChange = (event) => {
+        setHeight(event.target.value);
     };
 
-    const handleAgeChange = (event, newValue) => {
-        setAge(newValue);
+    const handleAgeChange = (event) => {
+        setAge(event.target.value);
     };
 
     const handleGenderChange = (e) => setGender(e.target.value);
@@ -79,7 +38,6 @@ const EE = () => {
     const calculateTEE = () => {
         let bmr;
         const heightInMeters = height / 100;
-
 
         if (gender === 'male') {
             bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
@@ -105,48 +63,45 @@ const EE = () => {
                     <Typography variant="h6" gutterBottom>
                         Weight (kg)
                     </Typography>
-                    <CustomSlider
+                    <TextField
                         value={weight}
                         onChange={handleWeightChange}
-                        aria-label="Weight"
-                        defaultValue={70}
-                        step={1}
-                        marks
-                        min={1}
-                        max={150}
-                        valueLabelDisplay="on"
+                        label="Weight"
+                        type="number"
+                        fullWidth
+                        variant="outlined"
+                        margin="normal"
                     />
                     <Typography variant="body1">Current Weight: {weight} kg</Typography>
+
                     <Typography variant="h6" gutterBottom>
                         Height (cm)
                     </Typography>
-                    <CustomSlider
+                    <TextField
                         value={height}
                         onChange={handleHeightChange}
-                        aria-label="Height"
-                        defaultValue={170}
-                        step={1}
-                        marks
-                        min={30}
-                        max={250}
-                        valueLabelDisplay="on"
+                        label="Height"
+                        type="number"
+                        fullWidth
+                        variant="outlined"
+                        margin="normal"
                     />
                     <Typography variant="body1">Current Height: {height} cm</Typography>
+
                     <Typography variant="h6" gutterBottom>
                         Age (years)
                     </Typography>
-                    <CustomSlider
+                    <TextField
                         value={age}
                         onChange={handleAgeChange}
-                        aria-label="Age"
-                        defaultValue={25}
-                        step={1}
-                        marks
-                        min={0}
-                        max={100}
-                        valueLabelDisplay="on"
+                        label="Age"
+                        type="number"
+                        fullWidth
+                        variant="outlined"
+                        margin="normal"
                     />
                     <Typography variant="body1">Current Age: {age} years</Typography>
+
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
                         <FormLabel component="legend">Gender</FormLabel>
                         <RadioGroup
@@ -160,6 +115,7 @@ const EE = () => {
                             <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
                         </RadioGroup>
                     </Box>
+
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
                         <FormLabel component="legend">Activity Level</FormLabel>
                         <RadioGroup
@@ -176,7 +132,9 @@ const EE = () => {
                             <FormControlLabel value={1.9} control={<CustomRadio />} label="Extra Active" />
                         </RadioGroup>
                     </Box>
+
                     <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} />
+
                     {tee !== null && (
                         <Typography variant="h6" sx={{ mt: 4 }}>
                             Your Total Energy Expenditure is: {tee.toFixed(2)} kcal/day

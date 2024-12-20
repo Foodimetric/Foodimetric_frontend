@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useAuth } from '../../Context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Styled component using MUI's styling
 const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({
@@ -16,11 +16,12 @@ const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({
 }));
 
 const ProceedButton = ({ color, onClick, width }) => {
+    const navigate = useNavigate()
     const { isAuthenticated } = useAuth();
     const handleClick = (e, func) => {
         e.preventDefault();
-        // if (!isAuthenticated) return;
-        func();
+        if (!isAuthenticated) navigate('/login');
+        func()
     };
 
     return (

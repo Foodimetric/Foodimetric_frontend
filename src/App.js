@@ -39,6 +39,7 @@ import FoodDiary from './Pages/User/Diary';
 import HistoryPage from './Pages/User/History';
 import NutritionReportCard from './Pages/User/Report';
 import { Toaster } from 'react-hot-toast';
+import Users from './Pages/User/Users';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
     path: "register",
     element: <Register />,
   },
+  // {
+  //   path: "users",
+  //   element: <Users />,
+  // },
   {
     path: "login",
     element: <Login />,

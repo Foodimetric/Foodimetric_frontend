@@ -1,48 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material';
+import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Slider from '@mui/material/Slider';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
-
-// Custom styled Slider
-const CustomSlider = styled(Slider)({
-    color: '#3a8589',
-    height: 8,
-    '& .MuiSlider-track': {
-        border: 'none',
-    },
-    '& .MuiSlider-thumb': {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            boxShadow: 'inherit',
-        },
-        '&:before': {
-            display: 'none',
-        },
-    },
-    '& .MuiSlider-valueLabel': {
-        lineHeight: 1.2,
-        fontSize: 12,
-        background: 'unset',
-        padding: 0,
-        width: 32,
-        height: 32,
-        borderRadius: '50% 50% 50% 0',
-        backgroundColor: '#3a8589',
-        transformOrigin: 'bottom left',
-        transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-        '&:before': { display: 'none' },
-        '&.MuiSlider-valueLabelOpen': {
-            transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-        },
-        '& > *': {
-            transform: 'rotate(45deg)',
-        },
-    },
-});
 
 // Custom styled Radio
 const CustomRadio = styled(Radio)({
@@ -58,12 +17,12 @@ const WeightAge = () => {
     const [gender, setGender] = useState('male');
     const [result, setResult] = useState(null);
 
-    const handleWeightChange = (event, newValue) => {
-        setWeight(newValue);
+    const handleWeightChange = (event) => {
+        setWeight(event.target.value);
     };
 
-    const handleAgeChange = (event, newValue) => {
-        setAge(newValue);
+    const handleAgeChange = (event) => {
+        setAge(event.target.value);
     };
 
     const handleGenderChange = (e) => setGender(e.target.value);
@@ -97,31 +56,27 @@ const WeightAge = () => {
                     <Typography variant="h6" gutterBottom>
                         Weight (kg)
                     </Typography>
-                    <CustomSlider
+                    <TextField
+                        type="number"
                         value={weight}
                         onChange={handleWeightChange}
-                        aria-label="Weight"
-                        defaultValue={50}
-                        step={1}
-                        marks
-                        min={1}
-                        max={150}
-                        valueLabelDisplay="on"
+                        label="Weight"
+                        variant="outlined"
+                        fullWidth
+                        inputProps={{ min: 1, max: 150 }}
                     />
                     <Typography variant="body1">Current Weight: {weight} kg</Typography>
                     <Typography variant="h6" gutterBottom>
                         Age (years)
                     </Typography>
-                    <CustomSlider
+                    <TextField
+                        type="number"
                         value={age}
                         onChange={handleAgeChange}
-                        aria-label="Age"
-                        defaultValue={25}
-                        step={1}
-                        marks
-                        min={0}
-                        max={100}
-                        valueLabelDisplay="on"
+                        label="Age"
+                        variant="outlined"
+                        fullWidth
+                        inputProps={{ min: 0, max: 100 }}
                     />
                     <Typography variant="body1">Current Age: {age} years</Typography>
                     <Box sx={{ textAlign: 'left', mt: 2 }}>

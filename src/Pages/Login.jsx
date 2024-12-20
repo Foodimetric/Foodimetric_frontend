@@ -42,14 +42,12 @@ const Login = () => {
                     token: data.payload.token,
                     category: data.payload.user.category
                 }
-                if (rememberMe) {
-                    localStorage.setItem("user", JSON.stringify(user));
-                    login(data.payload.token, user);
-                } else {
-                    sessionStorage.setItem("user", JSON.stringify(user));
-                }
 
-                if (user.category === 0) {
+                localStorage.setItem("user", JSON.stringify(user));
+                login(data.payload.token, user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+
+                if (data.payload.user.category === 0) {
                     // Route to Educate page
                     navigate('/educate');
                 } else {

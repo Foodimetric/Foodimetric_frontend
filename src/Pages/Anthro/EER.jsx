@@ -1,48 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel, MenuItem, Select } from '@mui/material';
+import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel, MenuItem, Select, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Slider from '@mui/material/Slider';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
-
-// Custom styled Slider
-const CustomSlider = styled(Slider)({
-    color: '#3a8589',
-    height: 8,
-    '& .MuiSlider-track': {
-        border: 'none',
-    },
-    '& .MuiSlider-thumb': {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            boxShadow: 'inherit',
-        },
-        '&:before': {
-            display: 'none',
-        },
-    },
-    '& .MuiSlider-valueLabel': {
-        lineHeight: 1.2,
-        fontSize: 12,
-        background: 'unset',
-        padding: 0,
-        width: 32,
-        height: 32,
-        borderRadius: '50% 50% 50% 0',
-        backgroundColor: '#3a8589',
-        transformOrigin: 'bottom left',
-        transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-        '&:before': { display: 'none' },
-        '&.MuiSlider-valueLabelOpen': {
-            transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-        },
-        '& > *': {
-            transform: 'rotate(45deg)',
-        },
-    },
-});
 
 // Custom styled Radio
 const CustomRadio = styled(Radio)({
@@ -61,16 +20,16 @@ const EER = () => {
     const [status, setStatus] = useState('none'); // Pregnancy/Lactation status
     const [eer, setEer] = useState(null);
 
-    const handleWeightChange = (event, newValue) => {
-        setWeight(newValue);
+    const handleWeightChange = (event) => {
+        setWeight(event.target.value);
     };
 
-    const handleHeightChange = (event, newValue) => {
-        setHeight(newValue);
+    const handleHeightChange = (event) => {
+        setHeight(event.target.value);
     };
 
-    const handleAgeChange = (event, newValue) => {
-        setAge(newValue);
+    const handleAgeChange = (event) => {
+        setAge(event.target.value);
     };
 
     const handleGenderChange = (e) => setGender(e.target.value);
@@ -140,54 +99,45 @@ const EER = () => {
 
     console.log(eer);
     return (
-        <main className="py-8 ">
+        <main className="py-8">
             <div className="bg-white p-8 min-h-screen">
                 <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
                     <Typography variant="h6" gutterBottom>
                         Weight (kg)
                     </Typography>
-                    <CustomSlider
+                    <TextField
+                        type="number"
                         value={weight}
                         onChange={handleWeightChange}
-                        aria-label="Weight"
-                        defaultValue={70}
-                        step={1}
-                        marks
-                        min={1}
-                        max={150}
-                        valueLabelDisplay="on"
+                        fullWidth
+                        inputProps={{ min: 1, max: 150 }}
                     />
                     <Typography variant="body1">Current Weight: {weight} kg</Typography>
+
                     <Typography variant="h6" gutterBottom>
                         Height (cm)
                     </Typography>
-                    <CustomSlider
+                    <TextField
+                        type="number"
                         value={height}
                         onChange={handleHeightChange}
-                        aria-label="Height"
-                        defaultValue={170}
-                        step={1}
-                        marks
-                        min={30}
-                        max={250}
-                        valueLabelDisplay="on"
+                        fullWidth
+                        inputProps={{ min: 30, max: 250 }}
                     />
                     <Typography variant="body1">Current Height: {height} cm</Typography>
+
                     <Typography variant="h6" gutterBottom>
                         Age (years)
                     </Typography>
-                    <CustomSlider
+                    <TextField
+                        type="number"
                         value={age}
                         onChange={handleAgeChange}
-                        aria-label="Age"
-                        defaultValue={25}
-                        step={1}
-                        marks
-                        min={0}
-                        max={100}
-                        valueLabelDisplay="on"
+                        fullWidth
+                        inputProps={{ min: 0, max: 100 }}
                     />
                     <Typography variant="body1">Current Age: {age} years</Typography>
+
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
                         <FormLabel component="legend">Gender</FormLabel>
                         <RadioGroup
@@ -201,6 +151,7 @@ const EER = () => {
                             <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
                         </RadioGroup>
                     </Box>
+
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
                         <FormLabel component="legend">Activity Level</FormLabel>
                         <RadioGroup
@@ -217,6 +168,7 @@ const EER = () => {
                             <FormControlLabel value={1.9} control={<CustomRadio />} label="Extra Active" />
                         </RadioGroup>
                     </Box>
+
                     {gender === 'female' && age >= 14 && age <= 50 && (
                         <Box sx={{ textAlign: 'left', my: 2 }}>
                             <FormLabel component="legend">Pregnancy/Lactation Status</FormLabel>
@@ -234,6 +186,7 @@ const EER = () => {
                             </Select>
                         </Box>
                     )}
+
                     <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} />
                     {eer !== null && (
                         <Typography variant="h6" sx={{ mt: 4 }}>

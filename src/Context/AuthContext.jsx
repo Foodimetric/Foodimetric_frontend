@@ -131,6 +131,7 @@ export const AuthProvider = ({ children }) => {
         const newErrors = validateData(formValues);
         setErrors(newErrors);
 
+        localStorage.setItem('category', formValues.category)
         if (Object.keys(newErrors).length === 0) {
             const adjustedFormValues = {
                 ...formValues,
