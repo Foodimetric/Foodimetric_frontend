@@ -18,7 +18,7 @@ const FoodResult = React.memo(() => {
 
             let processedValue = value;
             if (typeof value === 'number') {
-                processedValue = ((parseFloat(value) * parseInt(selectedValue)) / 100).toFixed(2).toString();
+                processedValue = ((parseFloat(value) * parseFloat(selectedValue)) / 100).toFixed(2).toString();
             }
 
             acc.push({ key, value: processedValue });
