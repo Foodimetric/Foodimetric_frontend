@@ -16,7 +16,7 @@ const MultiFoodResult = () => {
             .map(([key, value]) => {
                 let displayValue = value;
                 if (typeof value === 'number') {
-                    displayValue = ((parseFloat(value) * parseInt(item?.details?.WEIGHT)) / 100).toFixed(2).toString();
+                    displayValue = ((parseFloat(value) * parseFloat(item?.details?.WEIGHT)) / 100).toFixed(2).toString();
                 }
                 return { key, displayValue };
             });
