@@ -1,37 +1,101 @@
-import React from 'react';
-import ProceedButton from '../../Components/Buttons/ProceedButton'
+import React, { useState, useEffect } from 'react';
+import { useFoodContext } from '../../Context/Food/FoodContext';
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useLocation to get URL query params
+import ProceedButton from '../../Components/Buttons/ProceedButton';
+import SearchBar from '../../Components/Nav/SearchBar';
+import ResultsTable from '../../Components/Modals/Table'
 
 export const Food = () => {
-    const handleProceed = (e) => {
-        e.preventDEfault();
-        alert('Proceed button clicked');
+    const { data } = useFoodContext();
+    const [weight, setWeight] = useState('');  // State for weight input
+    const [selectedFood, setSelectedFood] = useState(''); // State to store selected food
+    const navigate = useNavigate(); // useNavigate for React Router v6+
+    const location = useLocation(); // Hook to access the URL
+    const [results, setResults] = useState([]); // State for processed results
+
+    // Extract food from URL query parameters when the component mounts or the URL changes
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search); // Get query parameters from the URL
+        const foodFromUrl = queryParams.get('foodName'); // Get 'food' parameter from URL
+        if (foodFromUrl) {
+            setSelectedFood(foodFromUrl); // Set selected food based on the URL
+        }
+    }, [location.search]); // Trigger the effect when the URL changes
+
+    const handleProceed = () => {
+        const foundFood = data?.find(foodItem => foodItem.foodName === selectedFood);
+        const excludeKeys = ['Id', 'Code', 'REFID'];
+
+        // If no food is found, return an empty array
+        if (!foundFood) return [];
+
+        const details = foundFood?.details || {};
+        // Ensure weight is a valid number before proceeding
+        const parsedWeight = parseFloat(weight);
+        if (isNaN(parsedWeight) || parsedWeight <= 0) {
+            console.log('Invalid weight');
+            return [];
+        }
+
+        // Reduce the details object, skipping excluded keys or null values
+        const result = [
+            ...Object.entries(details).reduce((acc, [key, value]) => {
+                if (excludeKeys.includes(key) || value === null) return acc;
+
+                let processedValue = value;
+                if (typeof value === 'number') {
+                    // Perform the calculation using weight and format the result
+                    processedValue = ((parseFloat(value) * parsedWeight) / 100).toFixed(2).toString();
+                }
+
+                acc.push({ key, value: processedValue });
+                return acc;
+            }, []),
+            { key: 'Weight', value: `${parsedWeight} g` }, // Add weight as the first row
+        ];
+
+        setResults(result)
+        // Reset weight after proceeding
+        setWeight(0);
+        navigate({ pathname: window.location.pathname, search: '' });
+
+        console.log("result", result);
+    };
+
+
+    const handleWeightChange = (e) => {
+        setWeight(e.target.value); // Update weight state as the user types
     };
 
     return (
-        <main class="py-8" >
-            <div class="bg-white p-8 min-h-screen">
-                <form className='w-full md:w-3/4 mx-auto'>
+        <main className="py-8">
+            <div className="bg-white p-8 min-h-screen">
+                <form className="w-full md:w-3/4 mx-auto">
+                    <SearchBar />
                     <div>
-                        <label htmlFor='food' className='mb-2 block'>Search Food:</label>
-                        <div class="bg-white rounded flex items-center w-full p-2 shadow-sm border border-gray-200 mb-4 ">
-                            <button class="outline-none focus:outline-none">
-                                <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </button>
-                            <input type="search" name="food" id="food" placeholder="Search Food" class="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent h-8" />
-                        </div>
-                    </div>
-                    <div>
-                        <label htmlFor='weight' className='mb-2 block'>Weight:</label>
-                        <input type="number" name="weight" id="weight" placeholder="Weight" class="w-full p-2 text-sm text-black border border-gray-200 outline-none focus:outline-none bg-transparent h-12" />
+                        <label htmlFor="weight" className="mb-2 block">Weight:</label>
+                        <input
+                            type="number"
+                            name="weight"
+                            id="weight"
+                            placeholder="Weight"
+                            className="w-full p-2 text-sm text-black border border-gray-200 outline-none focus:outline-none bg-transparent h-12"
+                            value={weight} // Bind the value of the input to the state
+                            onChange={handleWeightChange} // Update the state when the user types
+                        />
                     </div>
                     <div className="w-full mx-auto mt-8">
-                        <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} width="100%" />
+                        <ProceedButton color="#ffba08" onClick={handleProceed} width="100%" />
                     </div>
                 </form>
-                <div className='mt-12'>
+                <div className="mt-12">
                     <h2 className="text-[30px] mb-[10px] font-heading-font font-semibold">Result</h2>
+
+                    {results.length > 0 && (
+                        <ResultsTable results={results} tableHeadColor="#ffba08" />
+                    )}
                 </div>
             </div>
         </main>
     );
-}
+};

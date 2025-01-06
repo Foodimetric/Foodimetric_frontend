@@ -41,6 +41,18 @@ import NutritionReportCard from './Pages/User/Report';
 import { Toaster } from 'react-hot-toast';
 import Users from './Pages/User/Users';
 import NewPassword from './Pages/NewPassword';
+import { FoodProvider } from './Context/Food/FoodContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity
+    }
+  }
+})
 
 const router = createBrowserRouter([
   {
@@ -192,21 +204,25 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
-      <AuthProvider>
-        <RouterProvider router={router} />
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-          }}
-        />
-      </AuthProvider>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <AuthProvider>
+          <FoodProvider>
+            <RouterProvider router={router} />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                },
+              }}
+            />
+          </FoodProvider>
+        </AuthProvider>
+      </div>
+    </QueryClientProvider>
   );
 }
 

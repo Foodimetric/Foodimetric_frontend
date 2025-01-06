@@ -15,7 +15,7 @@ const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({
     },
 }));
 
-const ProceedButton = ({ color, onClick, width }) => {
+const ProceedButton = ({ color, onClick, width, disabled }) => {
     const navigate = useNavigate()
     const { isAuthenticated } = useAuth();
     const handleClick = (e, func) => {
@@ -31,15 +31,9 @@ const ProceedButton = ({ color, onClick, width }) => {
             customcolor={color}
             onClick={(e) => handleClick(e, onClick)}
             width={width}
+            disabled={disabled}
         >
             Proceed
-            {/* {isAuthenticated ? (
-                'Proceed'
-            ) : (
-                <Link to="/login">
-                    Login Required
-                </Link>
-            )} */}
         </StyledButton>
     );
 };

@@ -1,37 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+import React, { useEffect, useState } from "react";
+import { FOODIMETRIC_HOST_URL } from "../../Utils/host";
 
 const Users = () => {
-    const [emails, setEmails] = useState([]);
+    const [users, setUsers] = useState([]);
 
     const getUsers = async function () {
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/users/emails`, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
             });
 
             const data = await response.json();
             console.log("data", data.payload);
-            setEmails(data.payload);
+            setUsers(data.payload);
 
-            // Write data to a txt file
-            writeEmailsToTxtFile(data.payload);
+            // Write data to a CSV file
+            writeUsersToCsvFile(data.payload);
         } catch (error) {
-            console.error('Error:', error);
+            console.error("Error:", error);
         }
     };
 
-    const writeEmailsToTxtFile = (emailsData) => {
-        // Extract email strings from the array of objects
-        const emailStrings = emailsData.map(item => item.email);
-        const blob = new Blob([emailStrings.join('\n')], { type: 'text/plain' });
+    const writeUsersToCsvFile = (usersData) => {
+        // Create CSV content
+        const csvHeaders = "Name,Email\n";
+        const csvRows = usersData.map(item => `${item.firstName || "N/A"},${item.email}`).join("\n");
+        const csvContent = csvHeaders + csvRows;
+
+        // Create a blob with the CSV content
+        const blob = new Blob([csvContent], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
 
-        const link = document.createElement('a');
+        // Create a download link and trigger the download
+        const link = document.createElement("a");
         link.href = url;
-        link.download = 'emails.txt';
+        link.download = "users.csv";
         link.click();
 
         // Clean up the object URL
@@ -44,8 +49,8 @@ const Users = () => {
 
     return (
         <ul>
-            {emails.map((h, index) => (
-                <li key={index}>{h.email}</li>
+            {users.map((user, index) => (
+                <li key={index}>{user.firstName || "N/A"} - {user.email}</li>
             ))}
         </ul>
     );

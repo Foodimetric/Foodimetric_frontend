@@ -39,12 +39,12 @@ const HeaderLink = () => {
                                 <li><Link to="/search/multi-food">Multi-Food</Link></li>
                             </ul>
                         </li>
-                        <li><Link to="/anthro/BMI">Physical Stat</Link>
+                        <li><Link to="/anthro/BMI">Nutrition Stat</Link>
                             <ul className="dl-submenu">
                                 <li><Link to="/anthro/BMI">BMI </Link></li>
                                 <li><Link to="/anthro/IBW">IBW</Link></li>
                                 <li><Link to="/anthro/WHR">WHR</Link></li>
-                                <li><Link to="/anthro/percentile">Percentile</Link></li>
+                                {/* <li><Link to="/anthro/percentile">Percentile</Link></li> */}
                             </ul>
                         </li>
                         <li><Link to="/contact">Contact</Link></li>
@@ -85,7 +85,7 @@ const HeaderLink = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Physical Stat</button>
+                                hover:before:opacity-100 hover:before:visible">Nutrition Stat</button>
                         <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible">
@@ -110,13 +110,13 @@ const HeaderLink = () => {
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
                                         hover:after:w-[50%]">WHR</Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to="/anthro/BMI-age" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
                                         hover:after:w-[50%]">Percentile</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </li>
                     <li className="relative inline-block group">
@@ -160,13 +160,13 @@ const HeaderLink = () => {
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
                                         hover:after:w-[50%]">Multi-Food</Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to="/search/alternative" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
                                         text-[#0a272c] group relative overflow-hidden font-bold transition-all
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
                                         hover:after:w-[50%]">Alternative Food Search</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </li>
 

@@ -128,7 +128,7 @@ const Footer = () => {
                                 </div>
                                 <ul>
                                     <li className="mb-[10px] text-white text-[15px] font-heading-font">
-                                        <i className="ti-location-pin text-[#F78914]"></i> <span>Lagos, Nigeria</span>
+                                        <i className="ti-location-pin text-[#F78914]"></i> <span>Ibadan, Nigeria</span>
                                     </li>
                                     <li className="mb-[10px] text-white text-[15px] font-heading-font">
                                         <Link to="mailto:foodimetric@gmail.com" target="_blank" rel="noopener noreferrer">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Headers/Header';
 import { Link } from 'react-router-dom';
@@ -10,9 +10,38 @@ import { Autoplay } from 'swiper/modules';
 import StatSection from '../Components/sections/Stat';
 import BMI from './Anthro/BMI'
 import { data } from '../Utils/db';
+import { FOODIMETRIC_HOST_URL } from '../Utils/host';
 
 
 export const Home = () => {
+    const handleAddWestData = async () => {
+        try {
+            // Make a GET request to the add-west endpoint
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/add-west`, {
+                method: "GET",
+            });
+
+            // Parse the JSON response
+            const data = await response.json();
+
+            // Log success or handle error response
+            if (response.ok) {
+                console.log(data.message); // Success message
+                alert("West Africa food data successfully added to the database.");
+            } else {
+                console.error("Error:", data.message);
+                alert(`Failed to add data: ${data.message}`);
+            }
+        } catch (error) {
+            console.error("Error making request:", error.message);
+            alert("An error occurred while adding West Africa food data.");
+        }
+    };
+
+    // useEffect(() => {
+    //     handleAddWestData()
+    // }, []);
+
     return (
         <>
             {/* <div className="preloader">
@@ -36,7 +65,7 @@ export const Home = () => {
                                 spaceBetween={30}
                                 centeredSlides={true}
                                 autoplay={{
-                                    delay: 2500,
+                                    delay: 4000,
                                     disableOnInteraction: false,
                                 }}
                                 modules={[Autoplay]}

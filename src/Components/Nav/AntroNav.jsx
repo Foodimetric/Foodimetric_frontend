@@ -26,10 +26,10 @@ const AntroNav = () => {
         { to: '/anthro/WHR', label: 'WHR', icon: <FaRulerVertical /> },
         { to: '/anthro/EE', label: 'EE', icon: <FaUserMd /> },
         { to: '/anthro/EER', label: 'EER', icon: <FaWeightHanging /> },
-        { to: '/anthro/BMI-age', label: 'BMI-Age', icon: <FaWeightHanging /> },
-        { to: '/anthro/Weight-age', label: 'Weight-Age', icon: <FaUserMd /> },
-        { to: '/anthro/Height-age', label: 'Height-Age', icon: <FaRulerVertical /> },
-        { to: '/anthro/Weight-Height', label: 'Weight-Height', icon: <FaWeightHanging /> },
+        // { to: '/anthro/BMI-age', label: 'BMI-Age', icon: <FaWeightHanging /> },
+        // { to: '/anthro/Weight-age', label: 'Weight-Age', icon: <FaUserMd /> },
+        // { to: '/anthro/Height-age', label: 'Height-Age', icon: <FaRulerVertical /> },
+        // { to: '/anthro/Weight-Height', label: 'Weight-Height', icon: <FaWeightHanging /> },
     ];
     return (
         <>

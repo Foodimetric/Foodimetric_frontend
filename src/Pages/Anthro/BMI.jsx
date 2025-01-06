@@ -31,15 +31,14 @@ const BMI = ({ islandingPage }) => {
                         <div className="orico-about-text-wrap 111">
                             <div className="orico-about-text">
                                 <span className="text-xl font-heading-font inline-block mb-1 font-normal underline text-[#F78914]">
-                                    PHYSICAL STATS
+                                    NUTRITIONAL STATS
                                 </span>
                                 <h2 className="text-4xl font-normal font-heading-font mb-5 lg:text-4xl sm:text-3xl">
-                                    Track Your Physical Health
+                                    Track Your Health
                                 </h2>
                                 <p className="mb-5">
-                                    We offer a range of tools to help you monitor and improve your physical health. From our BMI calculator to
-                                    other essential metrics, our tools empower you to understand your body better and make informed choices for
-                                    a healthier lifestyle. Explore our physical stat tools to set and reach your wellness goals.
+                                    We offer a comprehensive range of tools and resources to help you monitor and improve your health. From our BMI calculator and other anthropometric calculators to essential nutritional metrics.<br />
+                                    Dive into our nutrition education page for expert insights and practical tips, and explore our nutritional tools to set and achieve your health goals.
                                 </p>
                                 <a className="theme-btn bg-[#147E03] hover:bg-[#289217]" href="/anthro/BMI">
                                     More Tools
