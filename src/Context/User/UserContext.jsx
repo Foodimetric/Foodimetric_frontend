@@ -1,13 +1,17 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { FOODIMETRIC_HOST_URL } from '../Utils/host';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import { openDB } from 'idb';
+import { useAuth } from '../AuthContext';
 
 const UserContext = createContext({});
 
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
+    const { user } = useAuth()
     const [foodData, setFoodData] = useState([]);
+    const [foodEntries, setFoodEntries] = useState([]);
+    const [calculations, setCalculations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -61,29 +65,188 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    useEffect(() => {
-        const fetchFoodData = async () => {
-            try {
-                const cachedData = await getCachedData();
-                if (cachedData) {
-                    setFoodData(cachedData);
-                    setLoading(false);
-                } else {
-                    const data = await fetchAndCacheData();
-                    setFoodData(data);
-                    setLoading(false);
-                }
-            } catch (err) {
-                setError(err);
-                setLoading(false);
+    const fetchCalculations = async () => {
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations/user/${user._id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`, // Adjust token retrieval as needed
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch calculations');
             }
+
+            const data = await response.json();
+            console.log("cal history", data);
+            setCalculations(data.payload.reverse());
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        // Confirm delete action
+        if (window.confirm("Are you sure you want to delete this calculation?")) {
+            try {
+                // Send DELETE request to the server
+                const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to delete calculation');
+                }
+                fetchCalculations();
+                alert('Calculation deleted successfully!');
+            } catch (err) {
+                console.error('Error deleting calculation:', err);
+                alert('Failed to delete calculation');
+            }
+        }
+    };
+
+
+    const fetchFoodEntries = async () => {
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/food_diary/diary/${user._id}`);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch food entries');
+            }
+
+            const foodEntries = await response.json();
+            setFoodEntries(foodEntries)
+            // Process food entries as needed, e.g., set them in state or display them in UI
+
+        } catch (error) {
+            console.error('Error fetching food entries:', error.message);
+            alert('An error occurred while fetching food entries');
+        }
+    };
+
+
+    const handleDiary = async (newLog) => {
+        // Create a new food entry object from form data
+        const foodData = {
+            user_id: user._id, // Replace with actual user ID
+            date: newLog.date, // Current date
+            time: newLog.time, // Replace with the form time value
+            foodEaten: newLog.food, // Replace with the form food name
+            quantity: newLog.quantity, // Replace with the form quantity
+            additionalInfo: newLog.additionalInfo, // Replace with the form additional info if any
         };
 
-        fetchFoodData();
-    }, []);
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/food_diary`, {
+                method: 'POST', // POST request to save the food entry
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(foodData), // Send the food data as the request body
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save food entry');
+            }
+
+            const responseData = await response.json(); // Optional, to handle any response data
+            console.log('Food entry saved:', responseData);
+            fetchFoodEntries()
+            // Optionally, reset form fields or provide feedback
+            alert('Food entry saved successfully');
+        } catch (error) {
+            console.error('Error saving food entry:', error.message);
+            alert('An error occurred while saving the food entry');
+        }
+    };
+
+    const handleDeleteFood = async (foodId) => {
+        if (window.confirm("Are you sure you want to delete this food log?")) {
+            try {
+                const response = await fetch(`${FOODIMETRIC_HOST_URL}/food_diary/diary/${foodId}`, {
+                    method: 'DELETE',
+                });
+
+                // Check if the response was successful
+                if (!response.ok) {
+                    // If the response is not OK, throw an error with the status text
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to delete food entry.');
+                }
+
+                // If the deletion is successful, refresh the food entries
+                fetchFoodEntries();
+            } catch (error) {
+                // Handle any errors that occur during the fetch or in the process
+                console.error('Error deleting food log:', error);
+                alert(`Error: ${error.message}`); // Show error message to the user
+            }
+        }
+    };
+
+
+    const editDiary = async (currentLogId, newLog) => {
+        // Make PUT request to update the log in the database
+        const response = await fetch(`${FOODIMETRIC_HOST_URL}/food_diary/diary/${currentLogId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                date: newLog.date,
+                time: newLog.time,
+                foodEaten: newLog.food, // Matching the field name in the DB
+                quantity: newLog.quantity,
+                additionalInfo: newLog.additionalInfo,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Update the foodEntries state with the updated log
+            fetchFoodEntries();
+        } else {
+            alert('Error updating the food log: ' + data.message);
+        }
+    };
+    useEffect(() => {
+        // const fetchFoodData = async () => {
+        //     try {
+        //         const cachedData = await getCachedData();
+        //         if (cachedData) {
+        //             setFoodData(cachedData);
+        //             setLoading(false);
+        //         } else {
+        //             const data = await fetchAndCacheData();
+        //             setFoodData(data);
+        //             setLoading(false);
+        //         }
+        //     } catch (err) {
+        //         setError(err);
+        //         setLoading(false);
+        //     }
+        // };
+
+        // fetchFoodData();
+
+        if (user) {
+            fetchCalculations();
+            fetchFoodEntries()
+        }
+
+    }, [user]);
+
+
 
     return (
-        <UserContext.Provider value={{ foodData, loading, error }}>
+        <UserContext.Provider value={{ calculations, handleDelete, foodEntries, handleDiary, handleDeleteFood, editDiary }}>
             {children}
         </UserContext.Provider>
     );

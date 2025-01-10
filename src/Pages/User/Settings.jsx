@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const UserSettings = () => {
     const { user, logout } = useAuth();
@@ -7,11 +8,10 @@ const UserSettings = () => {
     const [profileDetails, setProfileDetails] = useState({
         name: '',
         email: '',
-        location: 'New York, USA',
+        location: 'Nigeria',  // Default location
         profession: '',
         signInDate: '2024-01-01',
     });
-
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletionReason, setDeletionReason] = useState('');
@@ -23,6 +23,13 @@ const UserSettings = () => {
         { value: 'Data Scientist', label: 'Data Scientist' },
         { value: 'Engineer', label: 'Engineer' },
     ];
+
+    const countries = [
+        'United States', 'Canada', 'United Kingdom', 'Australia', 'Germany',
+        'France', 'India', 'Brazil', 'China', 'Japan', 'Mexico', 'South Africa',
+        'Italy', 'Spain', 'Netherlands', 'Russia', 'South Korea', 'Argentina',
+        'Nigeria', 'Egypt', 'Saudi Arabia'
+    ]; // A simplified list of countries (you can expand or load dynamically)
 
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
@@ -36,7 +43,6 @@ const UserSettings = () => {
         setProfileDetails({ ...profileDetails, [name]: value });
     };
 
-
     const handleDeleteAccount = () => {
         // Logic for account deletion goes here
         console.log('Account deleted');
@@ -48,13 +54,40 @@ const UserSettings = () => {
             setProfileDetails({
                 name: `${user.lastName || ''} ${user.firstName || ''}`.trim(),
                 email: user.email || '',
-                location: 'New York, USA',
+                location: 'Nigeria',  // Default location if not found in user profile
                 profession: localStorage.getItem('category') || String(user.category) || 'Unknown',
                 signInDate: '2024-01-01',
             });
         }
     }, [user]);
 
+    const handleSaveChanges = async () => {
+        const updatedProfile = {
+            location: profileDetails.location,
+            // category: profileDetails.profession,
+        };
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/update-profile`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`,
+                },
+                body: JSON.stringify(updatedProfile),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update profile');
+            }
+
+            const data = await response.json();
+            console.log('Profile updated successfully:', data);
+            // Optionally, update the user context or state
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
+    };
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
             {/* Profile Picture Section */}
@@ -85,39 +118,43 @@ const UserSettings = () => {
             <div className="flex-grow w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
-                        { label: 'Name', name: 'name', type: 'text', value: profileDetails.name },
-                        { label: 'Email', name: 'email', type: 'email', value: profileDetails.email },
-                        { label: 'Location', name: 'location', type: 'text', value: profileDetails.location },
-                        { label: 'Profession', name: 'profession', type: 'text', value: profileDetails.profession },
-                    ].map(({ label, name, type, value, options }) => (
+                        { label: 'Name', name: 'name', type: 'text', value: profileDetails.name, readOnly: true },
+                        { label: 'Email', name: 'email', type: 'email', value: profileDetails.email, readOnly: true },
+                        { label: 'Profession', name: 'profession', type: 'text', value: profileDetails.profession, readOnly: false },
+                    ].map(({ label, name, type, value, readOnly }) => (
                         <div key={name}>
                             <label htmlFor={name} className="block text-sm font-medium text-gray-700">
                                 {label}
                             </label>
-                            {type === 'select' ? (
-                                <select
-                                    name={name}
-                                    value={value}
-                                    onChange={handleInputChange}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600 capitalize"
-                                >
-                                    {options.map((option) => (
-                                        <option key={option.value} value={option.value}>
-                                            {option.label}
-                                        </option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <input
-                                    type={type}
-                                    name={name}
-                                    value={value}
-                                    onChange={handleInputChange}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
-                                />
-                            )}
+                            <input
+                                readOnly={readOnly}
+                                type={type}
+                                name={name}
+                                value={value}
+                                onChange={handleInputChange}
+                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+                            />
                         </div>
                     ))}
+
+                    <div>
+                        <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                            Location
+                        </label>
+                        <select
+                            name="location"
+                            value={profileDetails.location}
+                            onChange={handleInputChange}
+                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600 capitalize"
+                        >
+                            {countries.map((country) => (
+                                <option key={country} value={country}>
+                                    {country}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     <div className="col-span-1 md:col-span-2">
                         <label htmlFor="signInDate" className="block text-sm font-medium text-gray-700">
                             Sign-in Date
@@ -130,13 +167,7 @@ const UserSettings = () => {
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
                         />
                     </div>
-
                 </div>
-                {!user.category === 1 && (
-                    <p className="mt-4 p-4 text-sm bg-green-50 border border-green-200 rounded-lg shadow-sm text-green-700">
-                        If you are a nutritionist, dietitian, nutrition student, or have expertise in the field of nutrition, consider updating your profession to access advanced tools designed to enhance your work and streamline your professional tasks.
-                    </p>
-                )}
 
                 {/* Buttons */}
                 <div className="flex justify-between mt-6">
@@ -146,7 +177,7 @@ const UserSettings = () => {
                     >
                         Delete Account
                     </button>
-                    <button className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                    <button onClick={handleSaveChanges} className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
                         Save Changes
                     </button>
                 </div>

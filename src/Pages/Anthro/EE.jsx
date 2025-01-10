@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
+import { useAuth } from '../../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 // Custom styled Radio
 const CustomRadio = styled(Radio)({
@@ -12,6 +14,7 @@ const CustomRadio = styled(Radio)({
 });
 
 const EE = () => {
+    const { user } = useAuth();
     const [weight, setWeight] = useState(70);
     const [height, setHeight] = useState(170);
     const [age, setAge] = useState(25);
@@ -33,7 +36,7 @@ const EE = () => {
 
     const handleGenderChange = (e) => setGender(e.target.value);
 
-    const handleActivityLevelChange = (e) => setActivityLevel(e.target.value);
+    const handleActivityLevelChange = (e) => setActivityLevel(parseFloat(e.target.value));
 
     const calculateTEE = () => {
         let bmr;
@@ -50,12 +53,47 @@ const EE = () => {
         setTee(teeValue);
     };
 
-    const handleProceed = () => {
-        calculateTEE();
-        alert('Proceed button clicked');
+    const handleProceed = async () => {
+        calculateTEE(); // Calculate TEE
+
+        if (tee === null) return; // Ensure TEE is calculated before sending data
+
+        const calculationPayload = {
+            user_id: user._id, // Replace `user._id` with the actual user ID
+            calculator_name: "EE",
+            parameters: {
+                weight: `${weight} kg`,
+                height: `${height} cm`,
+                age: `${age} years`,
+                gender: gender,
+                activity_level: activityLevel,
+            },
+            result: `${tee.toFixed(2)} kcal/day`,
+            calculation_details: "TEE calculated using the Harris-Benedict formula adjusted for activity level",
+        };
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`, // Replace with the actual token
+                },
+                body: JSON.stringify(calculationPayload),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Calculation saved:", data);
+            } else {
+                const error = await response.json();
+                console.error("Failed to save calculation:", error);
+            }
+        } catch (err) {
+            console.error("Error saving calculation:", err);
+        }
     };
 
-    console.log(tee);
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

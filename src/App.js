@@ -43,6 +43,7 @@ import Users from './Pages/User/Users';
 import NewPassword from './Pages/NewPassword';
 import { FoodProvider } from './Context/Food/FoodContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { UserProvider } from './Context/User/UserContext';
 
 
 const queryClient = new QueryClient({
@@ -207,19 +208,21 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <AuthProvider>
-          <FoodProvider>
-            <RouterProvider router={router} />
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                duration: 4000,
-                style: {
-                  background: '#363636',
-                  color: '#fff',
-                },
-              }}
-            />
-          </FoodProvider>
+          <UserProvider>
+            <FoodProvider>
+              <RouterProvider router={router} />
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  duration: 4000,
+                  style: {
+                    background: '#363636',
+                    color: '#fff',
+                  },
+                }}
+              />
+            </FoodProvider>
+          </UserProvider>
         </AuthProvider>
       </div>
     </QueryClientProvider>

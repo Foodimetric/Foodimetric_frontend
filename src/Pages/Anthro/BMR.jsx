@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TextField, Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
+import { useAuth } from '../../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 // Custom styled TextField
 const CustomTextField = styled(TextField)({
@@ -33,6 +35,7 @@ const CustomRadio = styled(Radio)({
 });
 
 const BMR = () => {
+    const { user } = useAuth();
     const [weight, setWeight] = useState('');
     const [height, setHeight] = useState('');
     const [age, setAge] = useState('');
@@ -45,6 +48,7 @@ const BMR = () => {
     const handleGenderChange = (e) => setGender(e.target.value);
 
     const calculateBMR = () => {
+        // Use the Revised Harris-Benedict Equation
         let bmrValue;
         if (gender === 'male') {
             bmrValue = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
@@ -52,14 +56,47 @@ const BMR = () => {
             bmrValue = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
         }
         setBmr(bmrValue);
+        return bmrValue;
     };
 
-    const handleProceed = () => {
-        calculateBMR();
-        alert('Proceed button clicked');
+    const handleProceed = async () => {
+        const computedBmr = calculateBMR();
+
+        // Prepare calculation payload
+        const calculationPayload = {
+            user_id: user._id, // Replace `user._id` with the actual user ID from your app's context or state
+            calculator_name: "BMR",
+            parameters: {
+                weight: `${weight} kg`,
+                height: `${height} cm`,
+                age: age,
+                gender: gender,
+            },
+            result: `${computedBmr} calories/day`,
+            calculation_details: "BMR calculated using the Revised Harris-Benedict Equation",
+        };
+
+        // Send the BMR calculation to the backend
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(calculationPayload),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log("Calculation saved successfully:", data);
+        } catch (error) {
+            console.error("Error saving calculation:", error.message);
+        }
     };
 
-    console.log(bmr);
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

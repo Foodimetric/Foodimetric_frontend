@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TextField, Box, Typography, Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
+import { useAuth } from '../../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 // Custom styled TextField
 const CustomTextField = styled(TextField)({
@@ -33,6 +35,7 @@ const CustomRadio = styled(Radio)({
 });
 
 const WHR = () => {
+    const { user } = useAuth()
     const [waist, setWaist] = useState('');
     const [hip, setHip] = useState('');
     const [gender, setGender] = useState('male');
@@ -45,14 +48,51 @@ const WHR = () => {
     const calculateWHR = () => {
         const whrValue = (waist / hip).toFixed(2);
         setWhr(whrValue);
+        return whrValue
     };
 
-    const handleProceed = () => {
-        calculateWHR();
-        alert('Proceed button clicked');
+    const handleProceed = async () => {
+        const whr_value = calculateWHR(); // Calculate WHR
+
+        // Ensure WHR is calculated before sending data
+        if (!whr_value) return;
+
+        const calculationPayload = {
+            user_id: user._id, // Replace `user._id` with the actual user ID
+            calculator_name: "WHR",
+            parameters: {
+                waist: `${waist} cm`,
+                hip: `${hip} cm`,
+                gender: gender,
+            },
+            result: whr_value,
+            calculation_details: "WHR calculated using waist and hip circumferences in cm",
+        };
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`, // Replace with the actual token
+                },
+                body: JSON.stringify(calculationPayload),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Calculation saved:", data);
+            } else {
+                const error = await response.json();
+                console.error("Failed to save calculation:", error);
+            }
+        } catch (err) {
+            console.error("Error saving calculation:", err);
+        }
     };
 
-    console.log(whr);
+
+
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">
