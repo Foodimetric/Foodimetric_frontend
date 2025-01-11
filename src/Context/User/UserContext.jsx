@@ -85,7 +85,7 @@ export const UserProvider = ({ children }) => {
         } catch (err) {
             setError(err.message);
         }
-    }, [user._id, user.token, setCalculations, setError]); // Add dependencies here
+    }, [user?._id, user?.token, setCalculations, setError]); // Add dependencies here
     const handleDelete = async (id) => {
         // Confirm delete action
         if (window.confirm("Are you sure you want to delete this calculation?")) {
@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
             console.error('Error fetching food entries:', error.message);
             alert('An error occurred while fetching food entries');
         }
-    }, [user._id, setFoodEntries]); // Add all necessary dependencies
+    }, [user?._id, setFoodEntries]); // Add all necessary dependencies
 
 
 
