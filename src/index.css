@@ -424,7 +424,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 55px;
-  background: linear-gradient(left, #00ded8, #00a7d5);
+  background: linear-gradient(to right, #00ded8, #00a7d5);
   transition: opacity 0.5s ease-out;
   opacity: 0;
   z-index: -1;
