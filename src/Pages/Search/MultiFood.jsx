@@ -33,7 +33,7 @@ const MultiFood = () => {
             ]);
             setSelectedFood(null)
         },
-        [selectedFood, weight]
+        [selectedFood, setSelectedFood, weight]
     );
 
     // Remove a selected item by index
@@ -71,7 +71,7 @@ const MultiFood = () => {
 
     useEffect(() => {
         setMultiFoodResults([])
-    }, []);
+    }, [setMultiFoodResults]);
 
     return (
         <main className="py-8">

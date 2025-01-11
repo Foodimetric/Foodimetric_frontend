@@ -31,7 +31,7 @@ import WeightHeight from './Pages/Anthro/WeightHeight';
 import WaterIntake from './Pages/Anthro/WaterIntake';
 import Dashboard from './Pages/User/Dashboard'
 import UserSettings from './Pages/User/Settings';
-import DashboardLayout from './Pages/User/DashboardLayout';
+// import DashboardLayout from './Pages/User/DashboardLayout';
 import { AuthProvider } from './Context/AuthContext';
 import Education from './Pages/Education';
 import PrivateRoute from './Context/PrivateRoute';
@@ -39,7 +39,7 @@ import FoodDiary from './Pages/User/Diary';
 import HistoryPage from './Pages/User/History';
 import NutritionReportCard from './Pages/User/Report';
 import { Toaster } from 'react-hot-toast';
-import Users from './Pages/User/Users';
+// import Users from './Pages/User/Users';
 import NewPassword from './Pages/NewPassword';
 import { FoodProvider } from './Context/Food/FoodContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

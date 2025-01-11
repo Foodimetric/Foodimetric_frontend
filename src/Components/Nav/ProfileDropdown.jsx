@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, MenuItem, Avatar, Box, Typography, Divider } from '@mui/material';
+import { Menu, MenuItem, Avatar, Box, Divider } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';

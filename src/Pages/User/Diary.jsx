@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
-import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+// import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import { useUser } from '../../Context/User/UserContext';
 
 const FoodDiary = () => {
     const { user } = useAuth();
+    console.log("user", user);
     const { foodEntries, handleDiary, handleDeleteFood, editDiary } = useUser();
     const [newLog, setNewLog] = useState({
         date: '',

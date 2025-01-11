@@ -40,7 +40,7 @@ const EE = () => {
 
     const calculateTEE = () => {
         let bmr;
-        const heightInMeters = height / 100;
+        // const heightInMeters = height / 100;
 
         if (gender === 'male') {
             bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);

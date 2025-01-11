@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { FOODIMETRIC_HOST_URL } from "../../Utils/host";
 import showToast from '../../Utils/toast'

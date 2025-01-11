@@ -54,7 +54,8 @@ const Nutrient = () => {
 
     useEffect(() => {
         setNutrient(null)
-    }, []);
+    }, [setNutrient]);
+
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

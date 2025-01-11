@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaTrashAlt } from 'react-icons/fa'; // Icons for actions
 import { useUser } from '../../Context/User/UserContext';
-import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+// import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const HistoryPage = () => {
     const { calculations, handleDelete } = useUser();

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useAuth } from '../../Context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Styled component using MUI's styling
 const StyledButton = styled(Button)(({ theme, customcolor, width }) => ({

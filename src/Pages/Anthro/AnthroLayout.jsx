@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Outlet, useLocation } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import AntroNav from '../../Components/Nav/AntroNav';
 import AntroHeader from '../../Components/Headers/AntroHeader';
 import { useAuth } from '../../Context/AuthContext';

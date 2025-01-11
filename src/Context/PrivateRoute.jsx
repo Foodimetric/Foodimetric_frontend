@@ -4,7 +4,7 @@ import DashboardLayout from '../Pages/User/DashboardLayout';
 import { useAuth } from './AuthContext';
 
 const PrivateRoute = () => {
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated } = useAuth();
     return isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />;
 };
 

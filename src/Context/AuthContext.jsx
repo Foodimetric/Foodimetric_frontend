@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [user, setUser] = useState(null);
-    const [token, setToken] = useState(null);
+    const [, setToken] = useState(null);
     const [formValues, setFormValues] = useState({
         firstName: '',
         lastName: '',

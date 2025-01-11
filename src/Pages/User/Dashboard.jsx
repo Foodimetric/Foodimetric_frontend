@@ -6,14 +6,14 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
-    const [userStats, setUserStats] = useState({
+    const [userStats] = useState({
         mealsTracked: 120,
         caloriesBurned: 1500,
         caloriesConsumed: 1800,
         nutrientsTracked: 45,
     });
 
-    const [recentMeals, setRecentMeals] = useState([
+    const [recentMeals] = useState([
         { name: 'Grilled Chicken Salad', time: '12:30 PM', calories: 350 },
         { name: 'Smoothie Bowl', time: '3:00 PM', calories: 300 },
         { name: 'Avocado Toast', time: '7:00 PM', calories: 250 },

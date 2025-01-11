@@ -1,29 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FOODIMETRIC_HOST_URL } from "../../Utils/host";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
 
-    const getUsers = async function () {
-        try {
-            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/users/emails`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            const data = await response.json();
-            console.log("data", data.payload);
-            setUsers(data.payload);
-
-            // Write data to a CSV file
-            writeUsersToCsvFile(data.payload);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    };
-
-    const writeUsersToCsvFile = (usersData) => {
+    const writeUsersToCsvFile = useCallback((usersData) => {
         // Create CSV content
         const csvHeaders = "Name,Email\n";
         const csvRows = usersData.map(item => `${item.firstName || "N/A"},${item.email}`).join("\n");
@@ -41,11 +22,30 @@ const Users = () => {
 
         // Clean up the object URL
         URL.revokeObjectURL(url);
-    };
+    }, []); // Dependency array is empty because this function doesn't rely on external variables
+
+    const getUsers = useCallback(async () => {
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/users/emails`, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = await response.json();
+            console.log("data", data.payload);
+            setUsers(data.payload);
+
+            // Write data to a CSV file
+            writeUsersToCsvFile(data.payload);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }, [setUsers, writeUsersToCsvFile]);
 
     useEffect(() => {
         getUsers();
-    }, []);
+    }, [getUsers]);
 
     return (
         <ul>

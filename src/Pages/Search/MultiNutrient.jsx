@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import SearchBar from '../../Components/Nav/SearchBar';
-import Tooltip from '@mui/material/Tooltip';
+// import Tooltip from '@mui/material/Tooltip';
 import { useFoodContext } from '../../Context/Food/FoodContext';
 import { multiNutrientSearch } from '../../Utils/key';
 import { useLocation, useNavigate } from 'react-router';

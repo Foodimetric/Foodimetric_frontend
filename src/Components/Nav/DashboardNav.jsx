@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaTachometerAlt, FaHistory, FaBook, FaFileAlt, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Using React Icons for improved icons
+import { FaTachometerAlt, FaHistory, FaBook, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Using React Icons for improved icons
 import { useAuth } from '../../Context/AuthContext';
 
 const DashboardNav = ({ isExpanded, toggleSidebar }) => {

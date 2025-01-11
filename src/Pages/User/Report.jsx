@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaLeaf, FaCarrot, FaAppleAlt, FaBreadSlice, FaFireAlt, FaAngleUp, FaAngleDown } from 'react-icons/fa'; // Icons for nutrition categories
+import { FaLeaf, FaCarrot, FaAppleAlt, FaBreadSlice, FaAngleUp, FaAngleDown } from 'react-icons/fa'; // Icons for nutrition categories
 
 const NutritionReportCard = () => {
     const [expandedCard, setExpandedCard] = useState(null);

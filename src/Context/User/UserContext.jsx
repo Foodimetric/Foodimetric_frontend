@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
-import { openDB } from 'idb';
+// import { openDB } from 'idb';
 import { useAuth } from '../AuthContext';
 
 const UserContext = createContext({});
@@ -9,63 +9,63 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
     const { user } = useAuth()
-    const [foodData, setFoodData] = useState([]);
+    // const [foodData, setFoodData] = useState([]);
     const [foodEntries, setFoodEntries] = useState([]);
     const [calculations, setCalculations] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // const [loading, setLoading] = useState(true);
+    const [, setError] = useState(null);
 
     // Function to get cached data from IndexedDB
-    const getCachedData = async () => {
-        try {
-            const db = await openDB('foodimetric', 1, {
-                upgrade(db) {
-                    db.createObjectStore('foods');
-                },
-            });
-            const tx = db.transaction('foods', 'readonly');
-            const store = tx.objectStore('foods');
-            const cachedData = await store.get('foods');
-            return cachedData;
-        } catch (err) {
-            console.error('Failed to get cached data:', err);
-            return null;
-        }
-    };
+    // const getCachedData = async () => {
+    //     try {
+    //         const db = await openDB('foodimetric', 1, {
+    //             upgrade(db) {
+    //                 db.createObjectStore('foods');
+    //             },
+    //         });
+    //         const tx = db.transaction('foods', 'readonly');
+    //         const store = tx.objectStore('foods');
+    //         const cachedData = await store.get('foods');
+    //         return cachedData;
+    //     } catch (err) {
+    //         console.error('Failed to get cached data:', err);
+    //         return null;
+    //     }
+    // };
 
     // Function to fetch data from network and update cache
-    const fetchAndCacheData = async () => {
-        try {
-            const response = await fetch(`${FOODIMETRIC_HOST_URL}/foods`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+    // const fetchAndCacheData = async () => {
+    //     try {
+    //         const response = await fetch(`${FOODIMETRIC_HOST_URL}/foods`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         });
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
+    //         if (!response.ok) {
+    //             throw new Error('Failed to fetch data');
+    //         }
 
-            const data = await response.json();
+    //         const data = await response.json();
 
-            const db = await openDB('foodimetric', 1, {
-                upgrade(db) {
-                    db.createObjectStore('foods');
-                },
-            });
-            const tx = db.transaction('foods', 'readwrite');
-            const store = tx.objectStore('foods');
-            await store.put(data, 'foods');
-            await tx.done;
-            return data;
-        } catch (err) {
-            console.error('Failed to fetch and cache data:', err);
-            throw err;
-        }
-    };
+    //         const db = await openDB('foodimetric', 1, {
+    //             upgrade(db) {
+    //                 db.createObjectStore('foods');
+    //             },
+    //         });
+    //         const tx = db.transaction('foods', 'readwrite');
+    //         const store = tx.objectStore('foods');
+    //         await store.put(data, 'foods');
+    //         await tx.done;
+    //         return data;
+    //     } catch (err) {
+    //         console.error('Failed to fetch and cache data:', err);
+    //         throw err;
+    //     }
+    // };
 
-    const fetchCalculations = async () => {
+    const fetchCalculations = useCallback(async () => {
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/calculations/user/${user._id}`, {
                 method: 'GET',
@@ -85,8 +85,7 @@ export const UserProvider = ({ children }) => {
         } catch (err) {
             setError(err.message);
         }
-    };
-
+    }, [user._id, user.token, setCalculations, setError]); // Add dependencies here
     const handleDelete = async (id) => {
         // Confirm delete action
         if (window.confirm("Are you sure you want to delete this calculation?")) {
@@ -112,7 +111,7 @@ export const UserProvider = ({ children }) => {
     };
 
 
-    const fetchFoodEntries = async () => {
+    const fetchFoodEntries = useCallback(async () => {
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/food_diary/diary/${user._id}`);
 
@@ -121,14 +120,15 @@ export const UserProvider = ({ children }) => {
             }
 
             const foodEntries = await response.json();
-            setFoodEntries(foodEntries)
-            // Process food entries as needed, e.g., set them in state or display them in UI
+            setFoodEntries(foodEntries);
+            // Process food entries as needed
 
         } catch (error) {
             console.error('Error fetching food entries:', error.message);
             alert('An error occurred while fetching food entries');
         }
-    };
+    }, [user._id, setFoodEntries]); // Add all necessary dependencies
+
 
 
     const handleDiary = async (newLog) => {
@@ -241,7 +241,7 @@ export const UserProvider = ({ children }) => {
             fetchFoodEntries()
         }
 
-    }, [user]);
+    }, [fetchCalculations, fetchFoodEntries, user]);
 
 
 

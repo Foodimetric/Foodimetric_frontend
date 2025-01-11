@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from '../Nav/ProfileDropdown';
-import { Avatar, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { useAuth } from '../../Context/AuthContext';
 
 

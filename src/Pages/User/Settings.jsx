@@ -3,7 +3,7 @@ import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const UserSettings = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [profilePicture, setProfilePicture] = useState('/assets/images/folake.png');
     const [profileDetails, setProfileDetails] = useState({
         name: '',
@@ -16,13 +16,6 @@ const UserSettings = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletionReason, setDeletionReason] = useState('');
 
-    const professionOptions = [
-        { value: 'Software Developer', label: 'Software Developer' },
-        { value: 'Designer', label: 'Designer' },
-        { value: 'Product Manager', label: 'Product Manager' },
-        { value: 'Data Scientist', label: 'Data Scientist' },
-        { value: 'Engineer', label: 'Engineer' },
-    ];
 
     const countries = [
         'United States', 'Canada', 'United Kingdom', 'Australia', 'Germany',

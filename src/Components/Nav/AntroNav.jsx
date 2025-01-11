@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
+// import { useAuth } from '../../Context/AuthContext';
 import { FaWeightHanging, FaUserMd, FaRulerVertical } from 'react-icons/fa';
 
 const AntroNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navRef = useRef(null);
-    const { user } = useAuth();
+    // const { user } = useAuth();
 
 
     const toggleMenu = () => {
