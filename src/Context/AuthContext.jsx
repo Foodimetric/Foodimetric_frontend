@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
     const [rememberMe, setRememberMe] = useState(false);
     const [user, setUser] = useState(null);
     const [, setToken] = useState(null);
+    const [loading, setLoading] = useState(false); // Track request st
     const [formValues, setFormValues] = useState({
         firstName: '',
         lastName: '',
@@ -148,6 +149,7 @@ export const AuthProvider = ({ children }) => {
                 ...formValues,
                 category: adjustedCategory
             };
+            setLoading(true); // Start loading
 
             try {
                 const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/sign-up`, {
@@ -166,6 +168,9 @@ export const AuthProvider = ({ children }) => {
                 }
             } catch (error) {
                 console.error('Error:', error);
+                showToast('error', 'An error occurred. Please try again.');
+            } finally {
+                setLoading(false); // Stop loading after request
             }
         }
     };
@@ -182,7 +187,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            isAuthenticated, email, password, rememberMe, formValues, errors, user, login, logout, register, setEmail, setPassword, setIsAuthenticated, setRememberMe, setFormValues, handleChange
+            isAuthenticated, email, password, rememberMe, formValues, errors, user, loading, login, logout, register, setEmail, setPassword, setIsAuthenticated, setRememberMe, setFormValues, handleChange
         }}>
             {children}
         </AuthContext.Provider>

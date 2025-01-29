@@ -6,6 +6,8 @@ import showToast from '../../Utils/toast'
 
 const Footer = () => {
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false); // New loading state
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -14,6 +16,8 @@ const Footer = () => {
             return;
         }
 
+
+        setLoading(true); // Start loading
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/newsletter/subscribe`, {
                 method: "POST",
@@ -35,6 +39,8 @@ const Footer = () => {
         } catch (error) {
             console.error("Error subscribing:", error);
             showToast('error', "An error occurred. Please try again.");
+        } finally {
+            setLoading(false); // Stop loading after request completes
         }
     };
     return (
@@ -158,9 +164,17 @@ const Footer = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)} />
                                 <div className="absolute right-[5px] top-[-17px] translate-y-1/2">
-                                    <button type="submit" className="bg-[#F78914] border-0 outline-0
-                                     text-white w-[40px] h-[45px] leading-[45px] transition-all-all rounded-[5px] ">
-                                        <i className="ti-angle-right"></i>
+                                    <button
+                                        type="submit"
+                                        className="bg-[#F78914] border-0 outline-0 text-white w-[40px] h-[45px] leading-[45px] 
+                    transition-all rounded-[5px] flex items-center justify-center"
+                                        disabled={loading} // Disable button while loading
+                                    >
+                                        {loading ? (
+                                            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+                                        ) : (
+                                            <i className="ti-angle-right"></i>
+                                        )}
                                     </button>
                                 </div>
                             </form>

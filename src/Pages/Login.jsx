@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import showToast from '../Utils/toast';
 const Login = () => {
     const navigate = useNavigate()
     const { email, password, rememberMe, setEmail, setPassword, setRememberMe, setIsAuthenticated, login } = useAuth();
+    const [loading, setLoading] = useState(false); // Track request st
 
     useEffect(() => {
         const rememberedEmail = localStorage.getItem('rememberMeEmail');
@@ -20,6 +21,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true); // Start loading
 
         // Making a request to the login endpoint
         try {
@@ -63,6 +65,9 @@ const Login = () => {
             }
         } catch (error) {
             console.error('Error:', error);
+            showToast('error', 'An error occurred. Please try again.');
+        } finally {
+            setLoading(false); // Stop loading after request
         }
     };
 
@@ -110,11 +115,18 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
-                                    items-center mt-[20px] w-full
-                                     justify-center capitalize text-[#fff]
-                                 border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
-                                 ">Login</button>
+                                        <button
+                                            type="submit"
+                                            className={`w-full h-12 mt-5 text-white font-medium border-2 transition-all rounded-md flex items-center justify-center
+                                            ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#ffba08] border-[#ffba08] hover:bg-transparent hover:text-[#ffba08]'}`}
+                                            disabled={loading}
+                                        >
+                                            {loading ? (
+                                                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                                            ) : (
+                                                'Login'
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                                 <h4

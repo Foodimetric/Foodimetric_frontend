@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext'
 
 const Register = () => {
-    const { register, formValues, handleChange, errors } = useAuth();
+    const { register, formValues, handleChange, errors, loading } = useAuth();
 
     return (
         <main>
@@ -73,11 +73,20 @@ const Register = () => {
                                         {errors.password && <span>{errors.password}</span>}
                                     </div>
                                     <div className="w-full">
-                                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
-                                    items-center mt-[20px] w-full
-                                     justify-center capitalize text-[#fff]
-                                 border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
-                                 ">Sign Up</button>
+                                        <button
+                                            type="submit"
+                                            className={`h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex items-center mt-[20px] w-full
+        justify-center capitalize text-[#fff] border-[#ffba08] border-[2px] transition-all 
+        ${loading ? 'bg-gray-400 cursor-not-allowed' : 'hover:bg-transparent hover:text-[#ffba08]'}`}
+                                            disabled={loading}
+                                        >
+                                            {loading ? (
+                                                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                                            ) : (
+                                                'Sign Up'
+                                            )}
+                                        </button>
+
                                     </div>
                                 </div>
                                 <h4
