@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProfileDropdown from '../Nav/ProfileDropdown';
-import { IconButton } from '@mui/material';
+// import ProfileDropdown from '../Nav/ProfileDropdown';
+import { Avatar, IconButton } from '@mui/material';
 import { useAuth } from '../../Context/AuthContext';
 
 
@@ -12,8 +12,7 @@ const HeaderLink = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    console.log(isMenuOpen);
-
+    // console.log(isAuthenticated);
     return (
         <div className="px-2 md:px-0 border-t-[#eee] border-t wraper">
             <div className="flex items-center justify-between  rounded-[5px]  relative z-10 md:py-[10px]">
@@ -48,11 +47,13 @@ const HeaderLink = () => {
                             </ul>
                         </li>
                         <li><Link to="/contact">Contact</Link></li>
-                        {isAuthenticated && <li className='flex space-x-2 items-center'>
-                            <Link to="/dashboard" className='before:hidden after:hidden'>
-                                <IconButton >
-                                    <ProfileDropdown />
-                                </IconButton>
+                        {isAuthenticated && user && <li className='flex space-x-2 items-center'>
+                            <Link to="/dashboard" className='before:hidden after:hidden capitalize'>
+                                <div
+                                    className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[#F78914] bg-gray-200 text-[#F78914]"
+                                >
+                                    <i className="ti-user text-lg"></i>
+                                </div>
                             </Link>
                             <span className='text-white font-bold capitalize'>{`${user?.firstName} ${user?.lastName}`}</span>
                         </li>}
@@ -187,13 +188,14 @@ const HeaderLink = () => {
                 {!isAuthenticated && <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
                     to="/register">Register
                 </Link>}
-                {isAuthenticated && (
-                    <div className="hidden md:block">
-                        <IconButton >
-                            <ProfileDropdown />
+                {isAuthenticated && user &&
+                    <Link to={'/dashboard'} className='before:hidden after:hidden hidden md:block' >
+                        <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
+                            <Avatar className='capitalize' alt={user?.firstName && user?.lastName
+                                ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
+                                : 'Guest'} src="/path/to/profile.jpg" />
                         </IconButton>
-                    </div>
-                )}
+                    </Link>}
 
             </div>
         </div>

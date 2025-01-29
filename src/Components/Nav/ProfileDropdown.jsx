@@ -3,7 +3,7 @@ import { Menu, MenuItem, Avatar, Box, Divider } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
-import { FiLogOut, FiUser, FiHome, FiSearch } from 'react-icons/fi';
+import { FiLogOut, FiUser, FiHome, FiSearch, FiBook, FiSettings, FiClock } from 'react-icons/fi';
 import { AccountCircle } from '@mui/icons-material';
 
 const ProfileMenu = styled(Box)({
@@ -99,6 +99,28 @@ const ProfileDropdown = () => {
                         {isdashboard ? 'Home' : 'Dashboard'}
                     </StyledNavLink>
                 </StyledMenuItem>
+                {isdashboard && (
+                    <>
+                        <StyledMenuItem>
+                            <StyledNavLink to="/dashboard/history" onClick={handleClose}>
+                                <FiClock size={20} />
+                                History
+                            </StyledNavLink>
+                        </StyledMenuItem>
+                        <StyledMenuItem>
+                            <StyledNavLink to="/dashboard/diary" onClick={handleClose}>
+                                <FiBook size={20} />
+                                Diary
+                            </StyledNavLink>
+                        </StyledMenuItem>
+                        <StyledMenuItem>
+                            <StyledNavLink to="/dashboard/setting" onClick={handleClose}>
+                                <FiSettings size={20} />
+                                Settings
+                            </StyledNavLink>
+                        </StyledMenuItem>
+                    </>
+                )}
                 {!isAnthroPage && (
                     <StyledMenuItem>
                         <StyledNavLink to="/anthro/BMI" onClick={handleClose}>

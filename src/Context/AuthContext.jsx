@@ -70,6 +70,7 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         localStorage.removeItem('user');
+        localStorage.removeItem('isAuth');
         localStorage.removeItem('token'); // Clearing token from localStorage
         sessionStorage.removeItem('user'); // Clearing user from sessionStorage
         sessionStorage.removeItem('token'); // Clearing token from sessionStorage

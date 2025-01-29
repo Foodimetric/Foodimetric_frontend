@@ -116,9 +116,9 @@ const UserSettings = () => {
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
             {/* Profile Picture Section */}
-            <div className="flex flex-col items-center w-1/4">
+            <div className="flex flex-col items-center  w-1/4 xs:w-1/2 md:w-1/4">
                 <img
-                    className="w-32 h-32 rounded-full object-cover border-4 border-green-600"
+                    className="w-32 xs:w-64 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-600"
                     src={profilePicture}
                     alt="Profile"
                 />
@@ -126,7 +126,7 @@ const UserSettings = () => {
                 {/* Custom Upload Image Button */}
                 <label
                     htmlFor="upload-image"
-                    className="mt-3 text-sm text-gray-600 cursor-pointer bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition-colors"
+                    className=" sm:w-[70%] mt-3 text-sm text-gray-600 cursor-pointer bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition-colors"
                 >
                     Upload Image
                 </label>

@@ -38,6 +38,7 @@ const Login = () => {
 
             if (response.ok) {
                 setIsAuthenticated(true);
+                localStorage.setItem("isAuth", "true");
                 const user = {
                     _id: data.payload.user._id,
                     email: data.payload.user.email,
@@ -60,10 +61,12 @@ const Login = () => {
                     navigate('/dashboard');
                 }
             } else {
+                localStorage.setItem("isAuth", "false");
                 console.error('Login failed:', data);
                 showToast('error', `${data.message}`);
             }
         } catch (error) {
+            localStorage.setItem("isAuth", "false");
             console.error('Error:', error);
             showToast('error', 'An error occurred. Please try again.');
         } finally {
