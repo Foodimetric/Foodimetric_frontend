@@ -80,17 +80,18 @@ export const Home = () => {
                                                 <div className="max-w-[720px] lg:w-[600px] md:w-full  absolute top-1/2 left-0 transform  -translate-y-1/2 pb-[175px] lg:pb-0">
                                                     <div data-swiper-parallax="200" className="wpo-hero-title-top">
                                                         <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize mb-[30px] font-normal tracking-[2px]">
-                                                            “<span className="text-[#F78914]">100% ACCURATE BMI RESULT</span>”
+                                                            “<span className="text-[#F78914] xs:text-lg">100% ACCURATE BMI RESULT</span>”
                                                         </p>
                                                     </div>
                                                     <div data-swiper-parallax="300" className="slide-title">
-                                                        <h2 className="text-[75px] font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
-                        lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px] col:leading-[35px] text-white col:mb-[20px]">
+                                                        <h2 className="text-[75px] xs:text-6xl font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
+        lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px] col:leading-[35px] text-white col:mb-[20px] 
+        xs:break-words xs:whitespace-normal">
                                                             Carry out BMI <span className="text-[#F78914]">And</span> Other Anthropometric Calculations.
                                                         </h2>
                                                     </div>
                                                     <div data-swiper-parallax="400" className="slide-text">
-                                                        <p className="text-[22px] text-[#e2e2e2] font-base-font leading-[35px] mb-[40px] 
+                                                        <p className="text-[22px] xs:text-xl text-[#e2e2e2] font-base-font leading-[35px] mb-[40px] 
                         md:text-[18px] col:leading-[25px] col:mb-[30px]">
                                                             Say goodbye to manual calculations. Our accurate Anthropometric calculator gives you instant insights into your health.
                                                         </p>
@@ -116,12 +117,12 @@ export const Home = () => {
                                                     <div data-swiper-parallax="200" className="wpo-hero-title-top">
                                                         <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize
                                                     mb-[30px] font-normal tracking-[2px]">“<span
-                                                                className="text-[#F78914]">GET ACCURATE RESULT</span>”</p>
+                                                                className="text-[#F78914] xs:text-lg">GET ACCURATE RESULT</span>”</p>
                                                     </div>
                                                     <div data-swiper-parallax="300" className="slide-title">
-                                                        <h2 className="text-[75px] font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
+                                                        <h2 className="text-[75px] xs:text-6xl font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
                                                      lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px]
-                                                     col:leading-[35px] text-white col:mb-[20px]">  Discover Your Nutrient Intake,
+                                                     col:leading-[35px] text-white col:mb-[20px] xs:break-words xs:whitespace-normal">  Discover Your Nutrient Intake,
                                                             <span className="text-[#F78914]">Search Now!</span>.</h2>
                                                     </div>
                                                     <div data-swiper-parallax="400" className="slide-text">
@@ -129,7 +130,7 @@ export const Home = () => {
                                                     leading-[35px]
                                                      mb-[40px] 
                                                     md:text-[18px] col:leading-[25px] 
-                                                    col:mb-[30px]">
+                                                    col:mb-[30px] xs:text-xl">
                                                             Say NO to manual calorie calculations. Explore a vast database of Nigerian and West African foods to track your nutritional intake effortlessly.</p>
                                                     </div>
 
@@ -155,12 +156,12 @@ export const Home = () => {
                                                     <div data-swiper-parallax="200" className="wpo-hero-title-top">
                                                         <p className="text-[25px] col:text-[16px] text-white font-base-font capitalize
                                                     mb-[30px] font-normal tracking-[2px]">“<span
-                                                                className="text-[#F78914]">GET ACCESS TO ARTICLES</span>”</p>
+                                                                className="text-[#F78914] xs:text-lg">GET ACCESS TO ARTICLES</span>”</p>
                                                     </div>
                                                     <div data-swiper-parallax="300" className="slide-title">
-                                                        <h2 className="text-[75px] font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
+                                                        <h2 className="text-[75px] xs:text-6xl font-heading-font font-normal uppercase leading-[90px] mt-[10px] mb-[25px]
                                                      lg:text-[50px] md:text-[40px] md:leading-[55px] col:text-[35px]
-                                                     col:leading-[35px] text-white col:mb-[20px]">    Stay Informed with the Latest in Nutrition,
+                                                     col:leading-[35px] text-white col:mb-[20px] xs:break-words xs:whitespace-normal">    Stay Informed with the Latest in Nutrition,
                                                             <span className="text-[#F78914]">Read Our Articles!</span>.</h2>
                                                     </div>
                                                     <div data-swiper-parallax="400" className="slide-text">
@@ -168,7 +169,7 @@ export const Home = () => {
                                                     leading-[35px]
                                                      mb-[40px] 
                                                     md:text-[18px] col:leading-[25px] 
-                                                    col:mb-[30px]">
+                                                    col:mb-[30px] xs:text-xl">
                                                             Don't miss out on the latest research and insights in nutrition. Our regularly updated articles provide you with the knowledge you need to make informed dietary choices. Stay ahead with tips, trends, and scientifically-backed information.</p>
                                                     </div>
 
@@ -201,7 +202,7 @@ export const Home = () => {
                         </div>
                         <div className="grid grid-cols-12 gap-x-4">
                             {data.map((item) => (
-                                <div key={item.id} className="md:col-span-3 col-span-6 col:col-span-12">
+                                <div key={item.id} className="xs:col-span-12 sm:col-span-6 md:col-span-3 col-span-6 col:col-span-12">
                                     <div className="p-7 bg-white rounded-[350px] shadow-[4px_8px_20px_#eaeced] text-center mb-7 group">
                                         <div className="overflow-hidden rounded-full">
                                             <img src={item.img}
@@ -249,7 +250,7 @@ export const Home = () => {
                 </section>
                 <section
                     id='testimonial'
-                    className="py-[120px] md:py-[90px] sm:py-[80px] bg-no-repeat bg-center bg-cover relative z-10">
+                    className="py-[120px] md:py-[90px] sm:py-[80px] xs:py-10 bg-no-repeat bg-center bg-cover relative z-10">
                     <div className="absolute left-[6%] top-[18%] md:hidden">
                         <img src="assets/images/testimonial/vector.png" alt="" className="xl:max-[60%]" />
                     </div>
@@ -276,7 +277,7 @@ export const Home = () => {
                             modules={[Autoplay]}
                             className=""
                         >
-                            <SwiperSlide className='px-12'>
+                            <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
                                     <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-1.jpg" alt=""
@@ -294,11 +295,11 @@ export const Home = () => {
 
                                             I give it a solid 10/10! 👌</p>
                                         <h2 className="font-normal md:text-4xl text-white text-3xl">Karamot Adesewa</h2>
-                                        <span className="font-normal text-base text-white">Nutrition and Dietetics Student, Federal University of Agriculture, Abeokuta</span>
+                                        <span className="font-normal text-base text-white">Nutritionist</span>
                                     </div>
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide className='px-12'>
+                            <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
                                     <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-2.jpg" alt=""
@@ -318,12 +319,12 @@ export const Home = () => {
                                             It would be fantastic if Foodimetric could support Nigerian dietitians even further by adding more nutrition calculators. Keep up the great work!</p>
                                         <h2 className="font-normal md:text-4xl text-white text-3xl">Akinade Emmanuel Adefowowe
                                         </h2>
-                                        <span className="font-normal text-base text-white">Akinade Emmanuel Adefowowe
+                                        <span className="font-normal text-base text-white">Intern Dietitian(University College Hospital)
                                         </span>
                                     </div>
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide className='px-12'>
+                            <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
                                     <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-3.jpg" alt=""
@@ -347,7 +348,6 @@ export const Home = () => {
                                 </div>
                             </SwiperSlide>
                         </Swiper>
-
                     </div>
                 </section>
                 <Footer />

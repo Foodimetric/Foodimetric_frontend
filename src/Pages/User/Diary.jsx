@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
 // import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import { useUser } from '../../Context/User/UserContext';
+import showToast from '../../Utils/toast';
 
 const FoodDiary = () => {
     const { user } = useAuth();
@@ -25,7 +26,7 @@ const FoodDiary = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!newLog.date || !newLog.time || !newLog.food || !newLog.quantity) {
-            alert("Please fill in all required fields.");
+            showToast('error', "Please fill in all required fields.")
             return;
         }
 

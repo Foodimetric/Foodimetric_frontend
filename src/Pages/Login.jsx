@@ -31,6 +31,8 @@ const Login = () => {
                 },
             });
             const data = await response.json();
+            console.log("data from login", data);
+
 
             if (response.ok) {
                 setIsAuthenticated(true);
@@ -40,7 +42,8 @@ const Login = () => {
                     firstName: data.payload.user.firstName,
                     lastName: data.payload.user.lastName,
                     token: data.payload.token,
-                    category: data.payload.user.category
+                    category: data.payload.user.category,
+                    location: data.payload.user.location
                 }
 
                 localStorage.setItem("user", JSON.stringify(user));
@@ -68,17 +71,17 @@ const Login = () => {
             <div className="page-wrapper">
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
-                    <div className="wraper">
-                        <form className="md:w-[1170px] w-[600px] sm:w-[500px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
+                    <div className="wraper-auth">
+                        <form className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
                              overflow-hidden" onSubmit={handleSubmit}>
-                            <div className="md:w-1/2 w-full bg-[#1a384c] flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login">
+                            <div className="hidden sm:w-1/2 w-full bg-[#1a384c] sm:flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login">
 
                             </div>
                             <div
-                                className="md:w-1/2 w-full p-[70px_85px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
+                                className="sm:w-1/2 w-full p-[20px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
                                 <h2 className="text-[30px] mb-[10px] text-[#ffba08] font-heading-font font-semibold">Login</h2>
                                 <p className="text-[15px] mb-[40px] text-[#687693] leading-[20px]">Sign into your pages account</p>
-                                <div>
+                                <div className='w-full'>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Email</label>
                                         <input value={email} type="email" id="email" name="email" placeholder="demo@gmail.com"

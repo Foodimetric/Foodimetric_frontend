@@ -43,7 +43,7 @@ const AntroNav = () => {
             <nav ref={navRef} onBlur={handleBlur} tabIndex="0" className={`fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 z-10 font-base-font transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
                 <div className="flex flex-col justify-between h-full overflow-auto hide-scrollbar">
                     <div className="flex-grow">
-                        <div className="px-4 py-0 text-center border-b h-16">
+                        <div className="px-4 py-0 text-center border-b h-16 flex items-center">
                             <Link to={'/'}>
                                 <img className="" src="../assets/logo.png" alt="Logo" />
                             </Link>

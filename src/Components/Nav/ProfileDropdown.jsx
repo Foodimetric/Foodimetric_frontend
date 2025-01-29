@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import { FiLogOut, FiUser, FiHome, FiSearch } from 'react-icons/fi';
+import { AccountCircle } from '@mui/icons-material';
 
 const ProfileMenu = styled(Box)({
     display: 'flex',
@@ -54,16 +55,31 @@ const ProfileDropdown = () => {
 
     const isSearchPage = location.pathname.startsWith('/search');
     const isAnthroPage = location.pathname.startsWith('/anthro');
+    const isdashboard = location.pathname.startsWith('/dashboard');
 
     console.log(user);
 
     return (
         <div>
-            <ProfileMenu onClick={handleClick}>
+            {!isdashboard && <ProfileMenu onClick={handleClick}>
                 <Avatar alt={user?.firstName && user?.lastName
                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
                     : 'Guest'} src="/path/to/profile.jpg" />
-            </ProfileMenu>
+            </ProfileMenu>}
+            {isdashboard &&
+                <Avatar
+                    onClick={handleClick}
+                    style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundColor: "#F78914",
+                        color: "white",
+                        cursor: "pointer",
+                    }}
+                >
+                    <AccountCircle />
+                </Avatar>
+            }
             <StyledMenu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
@@ -78,12 +94,12 @@ const ProfileDropdown = () => {
                 }}
             >
                 <StyledMenuItem>
-                    <StyledNavLink to="/dashboard" onClick={handleClose}>
+                    <StyledNavLink to={isdashboard ? '/' : "/dashboard"} onClick={handleClose}>
                         <FiHome size={20} />
-                        Dashboard
+                        {isdashboard ? 'Home' : 'Dashboard'}
                     </StyledNavLink>
                 </StyledMenuItem>
-                {isSearchPage && (
+                {!isAnthroPage && (
                     <StyledMenuItem>
                         <StyledNavLink to="/anthro/BMI" onClick={handleClose}>
                             <FiUser size={20} />
@@ -91,7 +107,7 @@ const ProfileDropdown = () => {
                         </StyledNavLink>
                     </StyledMenuItem>
                 )}
-                {isAnthroPage && (
+                {!isSearchPage && (
                     <StyledMenuItem>
                         <StyledNavLink to="/search/food" onClick={handleClose}>
                             <FiSearch size={20} />

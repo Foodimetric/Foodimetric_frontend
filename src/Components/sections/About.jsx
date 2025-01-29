@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const About = ({ padding }) => {
@@ -29,8 +30,7 @@ const About = ({ padding }) => {
                                         <p>It presents data of different foods around West Africa.</p>
                                     </li>
                                 </ul>
-                                <a className="theme-btn bg-[#ffba08] hover:bg-[#f78914ee]" href="/educate">Learn More</a>
-
+                                <Link className="theme-btn bg-[#ffba08] hover:bg-[#f78914ee]" to="/educate">Learn More</Link>
                             </div>
                         </div>
                     </div>

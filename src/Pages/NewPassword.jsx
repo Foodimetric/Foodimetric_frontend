@@ -48,23 +48,23 @@ const NewPassword = () => {
             <div className="page-wrapper">
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
-                    <div className="wraper">
+                    <div className="wraper-auth">
                         <form
-                            className="md:w-[1170px] w-[600px] sm:w-[500px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
+                            className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
                              overflow-hidden"
                             onSubmit={handleSubmit}
                         >
-                            <div className="md:w-1/2 w-full bg-[#1a384c] flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login" />
+                            <div className="hidden sm:w-1/2 w-full bg-[#1a384c] sm:flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login" />
 
                             <div
-                                className="md:w-1/2 w-full p-[70px_85px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center"
+                                className="sm:w-1/2 w-full p-[20px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center"
                             >
                                 <h2 className="text-[30px] mb-[10px] font-heading-font font-semibold">Reset Password</h2>
                                 <p className="text-[15px] mb-[40px] text-[#687693] leading-[20px]">
                                     Set your new password
                                 </p>
 
-                                <div>
+                                <div className='w-full'>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">
                                             New Password

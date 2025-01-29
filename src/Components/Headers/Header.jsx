@@ -52,8 +52,11 @@ const Header = () => {
                                     className="ti-linkedin"></i></Link></li>
                             <li className="inline-block ml-2"><Link target="_blank"
                                 rel="noopener noreferrer" to="https://twitter.com/foodimetric"
-                                className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
-                                    className="ti-twitter"></i></Link></li>
+                                className="text-[#F78914] text-sm transition-all hover:text-[#687693]">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="14" height="14" fill="white" stroke="#F78914" stroke-width="10">
+                                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                                </svg>
+                            </Link></li>
 
                         </ul>
                     </div>
@@ -92,15 +95,15 @@ const Header = () => {
                                 </ul>
                             </li>
                             <li><Link to="contact">Contact</Link></li>
-                            {isAuthenticated && <li className='flex space-x-2 items-center'>
-                                <Link to="/dashboard" className='before:hidden after:hidden'>
-                                    <IconButton >
-                                        <Avatar alt={user?.firstName && user?.lastName
-                                            ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
-                                            : 'Guest'} src="/path/to/profile.jpg" />
-                                    </IconButton>
+                            {isAuthenticated && user && <li className='flex space-x-2 items-center'>
+                                <Link to="/dashboard" className='before:hidden after:hidden capitalize'>
+                                    <div
+                                        className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[#F78914] bg-gray-200 text-[#F78914]"
+                                    >
+                                        <i className="ti-user text-lg"></i>
+                                    </div>
                                 </Link>
-                                <span className='text-white font-bold'> Folake Olamide</span>
+                                <span className='text-white font-bold capitalize'>{`${user?.firstName} ${user?.lastName}`}</span>
                             </li>}
                         </ul>
                     </div>
@@ -242,10 +245,10 @@ const Header = () => {
                     {!isAuthenticated && <Link className={`theme-btn py-[10px] px-[25px] bg-[#1f1e1e]  md:block  before:hidden ${isMenuOpen ? 'hidden' : 'block'}`}
                         to="/register">Register
                     </Link>}
-                    {isAuthenticated &&
+                    {isAuthenticated && user &&
                         <Link to={'/dashboard'} className='before:hidden after:hidden hidden md:block' >
                             <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
-                                <Avatar alt={user?.firstName && user?.lastName
+                                <Avatar className='capitalize' alt={user?.firstName && user?.lastName
                                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
                                     : 'Guest'} src="/path/to/profile.jpg" />
                             </IconButton>

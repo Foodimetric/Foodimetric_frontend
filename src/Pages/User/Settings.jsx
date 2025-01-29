@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+import showToast from '../../Utils/toast';
 
 const UserSettings = () => {
     const { user } = useAuth();
@@ -8,7 +9,7 @@ const UserSettings = () => {
     const [profileDetails, setProfileDetails] = useState({
         name: '',
         email: '',
-        location: 'Nigeria',  // Default location
+        location: '',  // Default location
         profession: '',
         signInDate: '2024-01-01',
     });
@@ -18,11 +19,24 @@ const UserSettings = () => {
 
 
     const countries = [
+        // Existing countries
         'United States', 'Canada', 'United Kingdom', 'Australia', 'Germany',
         'France', 'India', 'Brazil', 'China', 'Japan', 'Mexico', 'South Africa',
         'Italy', 'Spain', 'Netherlands', 'Russia', 'South Korea', 'Argentina',
-        'Nigeria', 'Egypt', 'Saudi Arabia'
-    ]; // A simplified list of countries (you can expand or load dynamically)
+        'Nigeria', 'Egypt', 'Saudi Arabia',
+
+        // All African countries
+        'Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi',
+        'Cabo Verde', 'Cameroon', 'Central African Republic', 'Chad', 'Comoros',
+        'Congo (Congo-Brazzaville)', 'Djibouti', 'Equatorial Guinea', 'Eritrea',
+        'Eswatini (fmr. "Swaziland")', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana',
+        'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia',
+        'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius',
+        'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Rwanda', 'Sao Tome and Principe',
+        'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Sudan',
+        'Sudan', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'
+    ];
+    //  simplified list of countries (you can expand or load dynamically)
 
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
@@ -47,8 +61,8 @@ const UserSettings = () => {
             setProfileDetails({
                 name: `${user.lastName || ''} ${user.firstName || ''}`.trim(),
                 email: user.email || '',
-                location: 'Nigeria',  // Default location if not found in user profile
-                profession: localStorage.getItem('category') || String(user.category) || 'Unknown',
+                location: user.location,  // Default location if not found in user profile
+                profession: user.category,
                 signInDate: '2024-01-01',
             });
         }
@@ -75,12 +89,30 @@ const UserSettings = () => {
             }
 
             const data = await response.json();
-            console.log('Profile updated successfully:', data);
+            showToast('success', 'Profile updated successfully')
             // Optionally, update the user context or state
         } catch (error) {
-            console.error('Error updating profile:', error);
+            showToast('error', 'Error updating profile');
         }
     };
+
+    const profession = [
+        { label: "Lecturer/Researcher", value: 1 },
+        { label: "Registered Dietitian/Clinical Nutritionist", value: 2 },
+        { label: "Nutrition Student", value: 3 },
+        { label: "Others", value: 0 },
+    ];
+
+    const getProfessionLabel = (value) => {
+        console.log("value", value);
+
+        const prof = profession.find((p) => p.value === value);
+        return prof ? prof.label : "Unknown"; // Default to "Unknown" if no match is found
+    };
+
+    console.log("profile", user);
+
+
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
             {/* Profile Picture Section */}
@@ -113,7 +145,7 @@ const UserSettings = () => {
                     {[
                         { label: 'Name', name: 'name', type: 'text', value: profileDetails.name, readOnly: true },
                         { label: 'Email', name: 'email', type: 'email', value: profileDetails.email, readOnly: true },
-                        { label: 'Profession', name: 'profession', type: 'text', value: profileDetails.profession, readOnly: false },
+                        { label: 'Profession', name: 'profession', type: 'text', value: getProfessionLabel(profileDetails.profession), readOnly: false },
                     ].map(({ label, name, type, value, readOnly }) => (
                         <div key={name}>
                             <label htmlFor={name} className="block text-sm font-medium text-gray-700">

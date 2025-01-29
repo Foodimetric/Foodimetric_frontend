@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect, useCallback } fr
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 // import { openDB } from 'idb';
 import { useAuth } from '../AuthContext';
+import showToast from '../../Utils/toast';
 
 const UserContext = createContext({});
 
@@ -14,6 +15,7 @@ export const UserProvider = ({ children }) => {
     const [calculations, setCalculations] = useState([]);
     // const [loading, setLoading] = useState(true);
     const [, setError] = useState(null);
+    const [analytics, setAnalytics] = useState(null);
 
     // Function to get cached data from IndexedDB
     // const getCachedData = async () => {
@@ -102,10 +104,10 @@ export const UserProvider = ({ children }) => {
                     throw new Error('Failed to delete calculation');
                 }
                 fetchCalculations();
-                alert('Calculation deleted successfully!');
+                showToast('info', 'Calculation deleted successfully!');
             } catch (err) {
                 console.error('Error deleting calculation:', err);
-                alert('Failed to delete calculation');
+                showToast('error', 'Failed to delete calculation');
             }
         }
     };
@@ -125,7 +127,7 @@ export const UserProvider = ({ children }) => {
 
         } catch (error) {
             console.error('Error fetching food entries:', error.message);
-            alert('An error occurred while fetching food entries');
+            showToast('error', 'An error occurred while fetching food entries');
         }
     }, [user?._id, setFoodEntries]); // Add all necessary dependencies
 
@@ -159,10 +161,10 @@ export const UserProvider = ({ children }) => {
             console.log('Food entry saved:', responseData);
             fetchFoodEntries()
             // Optionally, reset form fields or provide feedback
-            alert('Food entry saved successfully');
+            showToast('success', 'Food entry saved successfully');
         } catch (error) {
             console.error('Error saving food entry:', error.message);
-            alert('An error occurred while saving the food entry');
+            showToast('error', 'An error occurred while saving the food entry');
         }
     };
 
@@ -185,7 +187,7 @@ export const UserProvider = ({ children }) => {
             } catch (error) {
                 // Handle any errors that occur during the fetch or in the process
                 console.error('Error deleting food log:', error);
-                alert(`Error: ${error.message}`); // Show error message to the user
+                showToast('error', `Error: ${error.message}`); // Show error message to the user
             }
         }
     };
@@ -213,9 +215,35 @@ export const UserProvider = ({ children }) => {
             // Update the foodEntries state with the updated log
             fetchFoodEntries();
         } else {
-            alert('Error updating the food log: ' + data.message);
+            showToast('error', 'Error updating the food log: ' + data.message);
         }
     };
+
+
+    const fetchAnalytics = useCallback(async () => {
+        if (!user || !user.token) return; // Ensure user is logged in
+
+        try {
+            console.log("who called");
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/platform/analytics`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`, // Include Bearer token for authentication
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch analytics");
+            }
+
+            const data = await response.json();
+            setAnalytics(data.data); // Update state with analytics data
+        } catch (error) {
+            console.error("Error fetching analytics:", error.message);
+        }
+    }, [user]); // Dependencies for memoization
+
     useEffect(() => {
         // const fetchFoodData = async () => {
         //     try {
@@ -239,14 +267,16 @@ export const UserProvider = ({ children }) => {
         if (user) {
             fetchCalculations();
             fetchFoodEntries()
+            fetchAnalytics();
+
         }
 
-    }, [fetchCalculations, fetchFoodEntries, user]);
+    }, [fetchAnalytics, fetchCalculations, fetchFoodEntries, user]);
 
 
 
     return (
-        <UserContext.Provider value={{ calculations, handleDelete, foodEntries, handleDiary, handleDeleteFood, editDiary }}>
+        <UserContext.Provider value={{ analytics, calculations, handleDelete, foodEntries, handleDiary, handleDeleteFood, editDiary }}>
             {children}
         </UserContext.Provider>
     );

@@ -233,7 +233,7 @@ const BMI = ({ islandingPage }) => {
                             type="button"
                             auth="authorized"
                             onClick={handleProceed}
-                            width="350px"
+                            width="300px"
                         />
                     </Box>
                 </div>

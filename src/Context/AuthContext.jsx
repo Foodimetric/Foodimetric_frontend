@@ -125,17 +125,28 @@ export const AuthProvider = ({ children }) => {
     // };
 
     // working
+    const profession = [
+        { label: "Lecturer/Researcher", value: 1 },
+        { label: "Registered Dietitian/Clinical Nutritionist", value: 2 },
+        { label: "Nutrition Student", value: 3 },
+        { label: "Others", value: 0 },
+    ];
 
     const register = async (e) => {
         e.preventDefault();
         const newErrors = validateData(formValues);
         setErrors(newErrors);
 
+        const selectedProfession = profession.find(
+            (item) => item.label === formValues.category
+        );
+        const adjustedCategory = selectedProfession ? selectedProfession.value : 0;
         localStorage.setItem('category', formValues.category)
+
         if (Object.keys(newErrors).length === 0) {
             const adjustedFormValues = {
                 ...formValues,
-                category: formValues.category === "others" ? 0 : 1,
+                category: adjustedCategory
             };
 
             try {

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import BMI from '../Anthro/BMI';
 import { Pie } from 'react-chartjs-2';
+import { useUser } from '../../Context/User/UserContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
+    const { foodEntries, analytics } = useUser();
     const [userStats] = useState({
         mealsTracked: 120,
         caloriesBurned: 1500,
@@ -14,9 +16,9 @@ function Dashboard() {
     });
 
     const [recentMeals] = useState([
-        { name: 'Grilled Chicken Salad', time: '12:30 PM', calories: 350 },
-        { name: 'Smoothie Bowl', time: '3:00 PM', calories: 300 },
-        { name: 'Avocado Toast', time: '7:00 PM', calories: 250 },
+        { name: 'Grilled Chicken Salad', time: '12:30 PM', grams: 350 },
+        { name: 'Smoothie Bowl', time: '3:00 PM', grams: 300 },
+        { name: 'Avocado Toast', time: '7:00 PM', grams: 250 },
     ]);
 
 
@@ -42,24 +44,25 @@ function Dashboard() {
         },
     };
 
+    console.log(foodEntries);
     return (
         <div className="col-span-12 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Meals Tracked</h3>
-                    <p className="text-xl font-semibold text-blue-600">{userStats.mealsTracked}</p>
+                    <h3 className="text-sm text-gray-600">Diary Tracked</h3>
+                    <p className="text-xl font-semibold text-blue-600">{analytics.totalFoodLogs}</p>
                 </div>
                 <div className="p-4 bg-green-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Calories Burned</h3>
-                    <p className="text-xl font-semibold text-green-600">{userStats.caloriesBurned} kcal</p>
+                    <h3 className="text-sm text-gray-600">Calculations</h3>
+                    <p className="text-xl font-semibold text-green-600">{analytics.totalCalculations}</p>
                 </div>
                 <div className="p-4 bg-yellow-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Calories Consumed</h3>
-                    <p className="text-xl font-semibold text-yellow-600">{userStats.caloriesConsumed} kcal</p>
+                    <h3 className="text-sm text-gray-600">Most Used</h3>
+                    <p className="text-xl font-semibold text-yellow-600">{analytics.mostUsedCalculator}</p>
                 </div>
                 <div className="p-4 bg-purple-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Nutrients Tracked</h3>
-                    <p className="text-xl font-semibold text-purple-600">{userStats.nutrientsTracked}</p>
+                    <h3 className="text-sm text-gray-600">Usage</h3>
+                    <p className="text-xl font-semibold text-purple-600">{analytics.platformUsage}</p>
                 </div>
             </div>
 
@@ -67,18 +70,21 @@ function Dashboard() {
             <div className="mt-4 bg-white shadow-md rounded-lg p-6">
                 <h3 className="text-lg font-semibold mb-4">Recent Meals</h3>
                 <div className="space-y-4">
-                    {recentMeals.map((meal, index) => (
-                        <div
-                            key={index}
-                            className="flex items-center justify-between p-4 bg-gray-50 border rounded-lg shadow-sm"
-                        >
-                            <div>
-                                <p className="text-sm font-medium text-gray-700">{meal.name}</p>
-                                <p className="text-xs text-gray-500">{meal.time}</p>
+                    {foodEntries
+                        .slice()
+                        .reverse() // Ensure most recent entries come first
+                        .slice(0, 3).map((meal, index) => (
+                            <div
+                                key={index}
+                                className="flex items-center justify-between p-4 bg-gray-50 border rounded-lg shadow-sm"
+                            >
+                                <div>
+                                    <p className="text-sm font-medium text-gray-700">{meal.foodEaten}</p>
+                                    <p className="text-xs text-gray-500">{meal.time}</p>
+                                </div>
+                                <div className="text-sm font-semibold text-gray-800">{meal.quantity} grams</div>
                             </div>
-                            <div className="text-sm font-semibold text-gray-800">{meal.calories} kcal</div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
             {/* Actions Section */}

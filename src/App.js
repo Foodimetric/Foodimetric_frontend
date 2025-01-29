@@ -9,6 +9,8 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import About from './Pages/About';
 import Error from './Pages/Error';
+import Terms from './Pages/Terms';
+import Privacy from './Pages/Privacy';
 import Contact from './Pages/Contact';
 import Reset from './Pages/ResetPassword';
 import SearchLayout from './Pages/Search/SearchLayout';
@@ -32,7 +34,7 @@ import WaterIntake from './Pages/Anthro/WaterIntake';
 import Dashboard from './Pages/User/Dashboard'
 import UserSettings from './Pages/User/Settings';
 // import DashboardLayout from './Pages/User/DashboardLayout';
-import { AuthProvider } from './Context/AuthContext';
+import { AuthProvider, useAuth } from './Context/AuthContext';
 import Education from './Pages/Education';
 import PrivateRoute from './Context/PrivateRoute';
 import FoodDiary from './Pages/User/Diary';
@@ -44,6 +46,8 @@ import NewPassword from './Pages/NewPassword';
 import { FoodProvider } from './Context/Food/FoodContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserProvider } from './Context/User/UserContext';
+import { useEffect } from 'react';
+import { FOODIMETRIC_HOST_URL } from './Utils/host';
 
 
 const queryClient = new QueryClient({
@@ -93,6 +97,13 @@ const router = createBrowserRouter([
   {
     path: "educate",
     element: <Education />,
+  },
+  {
+    path: "privacy",
+    element: <Privacy />,
+  }, {
+    path: "terms",
+    element: <Terms />,
   },
   {
     path: "/search",
@@ -204,6 +215,30 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    const incrementPlatformUsage = async () => {
+      if (!user || !user.token) return;
+      try {
+        const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/analytics`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`, // Ensure token is sent for authenticated requests
+          },
+        });
+
+        if (!response.ok) {
+          console.error("Failed to update platform usage.");
+        }
+      } catch (error) {
+        console.error("Error incrementing platform usage:", error.message);
+      }
+    };
+
+    incrementPlatformUsage();
+  }, [user]); // Only runs once when the component mounts
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">

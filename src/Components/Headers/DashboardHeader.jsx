@@ -1,3 +1,5 @@
+import ProfileDropdown from "../Nav/ProfileDropdown";
+
 const DashboardHeader = ({ title = "Dashboard" }) => {
     return (
         <header className="flex items-center justify-between bg-white px-6 py-4 w-full">
@@ -32,7 +34,7 @@ const DashboardHeader = ({ title = "Dashboard" }) => {
             {/* User Actions */}
             <div className="flex items-center space-x-4">
                 {/* Notification Button */}
-                <button
+                {/* <button
                     className="relative p-2 text-white bg-[#147E03] rounded-full hover:bg-[#F78914] focus:outline-none"
                     aria-label="Notifications"
                 >
@@ -51,14 +53,10 @@ const DashboardHeader = ({ title = "Dashboard" }) => {
                         />
                     </svg>
                     <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
+                </button> */}
 
                 {/* User Avatar */}
-                <img
-                    src="/assets/images/folake.png"
-                    alt="User Avatar"
-                    className="w-10 h-10 rounded-full object-cover border-2 border-[#F78914]"
-                />
+                <ProfileDropdown />
             </div>
         </header>
     );

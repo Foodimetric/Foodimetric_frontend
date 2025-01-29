@@ -12,15 +12,15 @@ const Register = () => {
             <div className="page-wrapper">
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
-                    <div className="wraper">
-                        <form className="w-[600px] sm:w-[500px] md:w-[1170px] col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px] overflow-hidden" onSubmit={register}>
-                            <div className="w-full md:w-1/2 flex flex-col justify-center min-h-[600px] text-center p-[50px] col:p-[30px_10px] register">
+                    <div className="wraper-auth">
+                        <form className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px] overflow-hidden" onSubmit={register}>
+                            <div className="hidden w-full sm:w-1/2 sm:flex flex-col justify-center min-h-[600px] text-center p-[50px] col:p-[30px_10px] register">
                             </div>
                             <div
-                                className="w-full md:w-1/2 p-[70px_85px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
+                                className="w-full sm:w-1/2 p-[20px] md:p-[50px] col:p-[30px_10px] min-h-[600px] flex flex-col justify-center">
                                 <h2 className="text-[30px] mb-[10px] text-[#147e03] font-heading-font font-semibold">Create Account</h2>
                                 <p className="text-[15px] mb-[40px] text-[#687693] leading-[20px]">Sign up for a free account here</p>
-                                <div>
+                                <div className='w-full'>
                                     <div className="w-full">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">First Name</label>
                                         <input type="text" id="text" name="firstName"
@@ -53,7 +53,7 @@ const Register = () => {
                                             border-[1px] block focus:outline-0">
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200 first:border-t-0" value="Lecturer/Researcher">Lecturer/Researcher</option>
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200" value="Registered Dietitian/Clinical Nutritionist">Registered Dietitian/Clinical Nutritionist</option>
-                                            <option class="text-gray-500 bg-white border-b-[1px] border-gray-200" value="nutrition student">Nutrition Student</option>
+                                            <option class="text-gray-500 bg-white border-b-[1px] border-gray-200" value="Nutrition Student">Nutrition Student</option>
                                             <option class="text-gray-500 bg-white border-b-[1px] border-gray-200 last:border-b-0" value="others">Others</option>
                                         </select>
                                         {errors.category && <span>{errors.category}</span>}
