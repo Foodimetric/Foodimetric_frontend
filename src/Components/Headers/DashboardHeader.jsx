@@ -7,7 +7,7 @@ const DashboardHeader = ({ title = "Dashboard" }) => {
             <h1 className="text-2xl font-semibold text-[#147E03]">{title}</h1>
 
             {/* Search Bar */}
-            <div className="relative flex-grow mx-6 hidden sm:block">
+            {/* <div className="relative flex-grow mx-6 hidden sm:block">
                 <input
                     type="text"
                     placeholder="Search..."
@@ -29,7 +29,7 @@ const DashboardHeader = ({ title = "Dashboard" }) => {
                         />
                     </svg>
                 </button>
-            </div>
+            </div> */}
 
             {/* User Actions */}
             <div className="flex items-center space-x-4">
