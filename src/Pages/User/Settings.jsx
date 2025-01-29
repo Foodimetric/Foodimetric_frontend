@@ -88,7 +88,7 @@ const UserSettings = () => {
                 throw new Error('Failed to update profile');
             }
 
-            const data = await response.json();
+            // const data = await response.json();
             showToast('success', 'Profile updated successfully')
             // Optionally, update the user context or state
         } catch (error) {

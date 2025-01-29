@@ -34,7 +34,7 @@ import WaterIntake from './Pages/Anthro/WaterIntake';
 import Dashboard from './Pages/User/Dashboard'
 import UserSettings from './Pages/User/Settings';
 // import DashboardLayout from './Pages/User/DashboardLayout';
-import { AuthProvider, useAuth } from './Context/AuthContext';
+import { AuthProvider } from './Context/AuthContext';
 import Education from './Pages/Education';
 import PrivateRoute from './Context/PrivateRoute';
 import FoodDiary from './Pages/User/Diary';
