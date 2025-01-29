@@ -16,7 +16,7 @@ import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 const BMI = ({ islandingPage }) => {
     const { user } = useAuth();
     const [weight, setWeight] = useState(30);
-    const [height, setHeight] = useState(150);
+    const [height, setHeight] = useState(1.5);
     const [bmi, setBmi] = useState(0);
     const [openModal, setOpenModal] = useState(false);
 
@@ -219,7 +219,7 @@ const BMI = ({ islandingPage }) => {
                             type="number"
                             value={height}
                             onChange={handleHeightChange}
-                            inputProps={{ min: 50, max: 250, step: 1 }}
+                            inputProps={{ min: 1.0, max: 5.0, step: 0.1 }}
                             sx={{ width: '100%', mt: 2 }}
                         />
                         <Typography variant="body1" sx={{ mt: 1 }}>

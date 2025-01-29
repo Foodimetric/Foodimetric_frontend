@@ -124,11 +124,18 @@ const IBW = () => {
                     {/* Calculate and Show Result */}
                     <ProceedButton color="#ffba08" type="button" onClick={handleProceed} />
                     {ibw !== null && (
-                        <Typography variant="h6" sx={{ mt: 4 }}>
-                            Your Ideal Body Weight is: {ibw.toFixed(2)} kg
-                        </Typography>
+                        <div>
+                            <Typography variant="h6" sx={{ mt: 4 }}>
+                                Your Ideal Body Weight is: {ibw.toFixed(2)} kg
+                            </Typography>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                                BMR Formula Used:
+                            </Typography>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                                B. J. Devine Formula (1974)
+                            </Typography>
+                        </div>
                     )}
-
                 </Box>
             </div>
         </main>

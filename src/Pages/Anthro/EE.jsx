@@ -174,9 +174,17 @@ const EE = () => {
                     <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} />
 
                     {tee !== null && (
-                        <Typography variant="h6" sx={{ mt: 4 }}>
-                            Your Total Energy Expenditure is: {tee.toFixed(2)} kcal/day
-                        </Typography>
+                        <div>
+                            <Typography variant="h6" sx={{ mt: 4 }}>
+                                Your Total Energy Expenditure is: {tee.toFixed(2)} kcal/day
+                            </Typography>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                                BMR Formula Used:
+                            </Typography>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                                Mifflin-St Jeor Equation
+                            </Typography>
+                        </div>
                     )}
                 </Box>
             </div>

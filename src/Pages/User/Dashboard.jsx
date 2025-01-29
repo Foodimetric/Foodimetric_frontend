@@ -49,19 +49,19 @@ function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600">Diary Tracked</h3>
-                    <p className="text-xl font-semibold text-blue-600">{analytics.totalFoodLogs || 0}</p>
+                    <p className="text-xl font-semibold text-blue-600">{analytics?.totalFoodLogs || 0}</p>
                 </div>
                 <div className="p-4 bg-green-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600">Calculations</h3>
-                    <p className="text-xl font-semibold text-green-600">{analytics.totalCalculations || 0}</p>
+                    <p className="text-xl font-semibold text-green-600">{analytics?.totalCalculations || 0}</p>
                 </div>
                 <div className="p-4 bg-yellow-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600">Most Used</h3>
-                    <p className="text-xl font-semibold text-yellow-600">{analytics.mostUsedCalculator || 0}</p>
+                    <p className="text-xl font-semibold text-yellow-600">{analytics?.mostUsedCalculator || 0}</p>
                 </div>
                 <div className="p-4 bg-purple-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600">Usage</h3>
-                    <p className="text-xl font-semibold text-purple-600">{analytics.platformUsage || 0}</p>
+                    <p className="text-xl font-semibold text-purple-600">{analytics?.platformUsage || 0}</p>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@ function Dashboard() {
                     {/* chart, pie chart */}
                     <div className="mt-6 p-6 pb-12 bg-white border-t rounded-lg shadow-sm w-full h-80">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Calculation Breakdown</h3>
-                        {analytics.calculationBreakdown && analytics.calculationBreakdown.length > 0 ? (
+                        {analytics?.calculationBreakdown && analytics?.calculationBreakdown.length > 0 ? (
                             <Pie data={pieData} options={pieOptions} />
                         ) : (
                             <p>No calculations performed yet.</p>

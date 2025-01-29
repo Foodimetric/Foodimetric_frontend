@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+import { useSpring, animated } from '@react-spring/web';
 
 // Custom styled TextField
 const CustomTextField = styled(TextField)({
@@ -97,6 +98,13 @@ const BMR = () => {
         }
     };
 
+    // React Spring animation for fade and scale effect
+    const animationProps = useSpring({
+        opacity: bmr !== null ? 1 : 0,
+        transform: bmr !== null ? 'scale(1)' : 'scale(0.9)',
+        config: { tension: 200, friction: 20 }
+    });
+
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">
@@ -139,10 +147,19 @@ const BMR = () => {
                         </RadioGroup>
                     </Box>
                     <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} />
+                    {/* Animated BMR result */}
                     {bmr !== null && (
-                        <Typography variant="h6" sx={{ mt: 4 }}>
-                            Your BMR is: {bmr.toFixed(2)} calories/day
-                        </Typography>
+                        <animated.div style={animationProps}>
+                            <Typography variant="h6" sx={{ mt: 4 }}>
+                                Your BMR is: {bmr.toFixed(2)} calories/day
+                            </Typography>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                                BMR Formula Used:
+                            </Typography>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                                Revised Harris-Benedict Equation
+                            </Typography>
+                        </animated.div>
                     )}
                 </Box>
             </div>

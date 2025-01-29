@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import { useAuth } from '../../Context/AuthContext';
-import { FaWeightHanging, FaUserMd, FaRulerVertical } from 'react-icons/fa';
+import { useAuth } from '../../Context/AuthContext';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const AntroNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { logout } = useAuth()
+
     const navRef = useRef(null);
     // const { user } = useAuth();
 
@@ -20,12 +22,12 @@ const AntroNav = () => {
     }
 
     const menuItems = [
-        { to: '/anthro/BMI', label: 'BMI', icon: <FaWeightHanging /> },
-        { to: '/anthro/BMR', label: 'BMR', icon: <FaUserMd /> },
-        { to: '/anthro/IBW', label: 'IBW', icon: <FaRulerVertical /> },
-        { to: '/anthro/WHR', label: 'WHR', icon: <FaRulerVertical /> },
-        { to: '/anthro/EE', label: 'EE', icon: <FaUserMd /> },
-        { to: '/anthro/EER', label: 'EER', icon: <FaWeightHanging /> },
+        { to: '/anthro/BMI', label: 'BMI', icon: 'ti-ruler' },
+        { to: '/anthro/BMR', label: 'BMR', icon: 'ti-pulse' },
+        { to: '/anthro/IBW', label: 'IBW', icon: 'ti-bar-chart-alt' },
+        { to: '/anthro/WHR', label: 'WHR', icon: 'ti-dashboard' },
+        { to: '/anthro/EE', label: 'EE', icon: "ti-magnet" },
+        // { to: '/anthro/EER', label: 'EER', icon: "ti-stats-down" },
         // { to: '/anthro/BMI-age', label: 'BMI-Age', icon: <FaWeightHanging /> },
         // { to: '/anthro/Weight-age', label: 'Weight-Age', icon: <FaUserMd /> },
         // { to: '/anthro/Height-age', label: 'Height-Age', icon: <FaRulerVertical /> },
@@ -55,22 +57,25 @@ const AntroNav = () => {
                                         <NavLink
                                             to={to}
                                             className={({ isActive }) =>
-                                                `flex items-center rounded-xl font-bold text-sm py-3 px-4 ${isActive ? 'bg-[#147e03] text-white' : 'bg-white hover:bg-green-50 text-gray-900'}`
+                                                `flex items-center rounded-xl font-bold text-sm py-3 px-4 gap-3 ${isActive ? 'bg-[#147e03] text-white' : 'bg-white hover:bg-green-50 text-gray-900'}`
                                             }
                                         >
-                                            {icon}
-                                            {label}
+                                            <i className={`${icon} text-lg`} /> {/* Adjust icon size */}
+                                            <span className="ml-2">{label}</span> {/* Add space between icon and text */}
                                         </NavLink>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="p-4">
-                            <button type="button" className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="" viewBox="0 0 16 16">
-                                    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                                </svg>
-                            </button> <span className="font-bold text-sm ml-2">Logout</span>
+                        <div className="p-4 bg-gray-600">
+                            <button
+                                onClick={logout}
+                                type="button"
+                                className="inline-flex items-center justify-center h-9 px-4 rounded-xl text-white text-sm font-semibold transition"
+                            >
+                                <FaSignOutAlt className="mr-2" />
+                                <span>Logout</span>
+                            </button>
                         </div>
                     </div>
                 </div>
