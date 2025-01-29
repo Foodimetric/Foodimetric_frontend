@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BMI from '../Anthro/BMI';
 import { Pie } from 'react-chartjs-2';
 import { useUser } from '../../Context/User/UserContext';
@@ -8,19 +8,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
     const { foodEntries, analytics } = useUser();
-    const [userStats] = useState({
-        mealsTracked: 120,
-        caloriesBurned: 1500,
-        caloriesConsumed: 1800,
-        nutrientsTracked: 45,
-    });
-
-    const [recentMeals] = useState([
-        { name: 'Grilled Chicken Salad', time: '12:30 PM', grams: 350 },
-        { name: 'Smoothie Bowl', time: '3:00 PM', grams: 300 },
-        { name: 'Avocado Toast', time: '7:00 PM', grams: 250 },
-    ]);
-
     const pieData = {
         labels: analytics?.calculationBreakdown.map(item => item._id),
         datasets: [
