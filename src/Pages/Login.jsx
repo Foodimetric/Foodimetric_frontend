@@ -46,7 +46,8 @@ const Login = () => {
                     lastName: data.payload.user.lastName,
                     token: data.payload.token,
                     category: data.payload.user.category,
-                    location: data.payload.user.location
+                    location: data.payload.user.location,
+                    profilePicture: data?.payload?.user?.profilePicture || ''
                 }
 
                 localStorage.setItem("user", JSON.stringify(user));

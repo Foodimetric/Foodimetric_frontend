@@ -14,12 +14,10 @@ const Contact = () => {
                         <div className="col-span-10 md:col-span-12">
                             <div className="pb-[100px] sm:pb-[60px]">
                                 <div className="grid grid-cols-12 gap-3">
-                                    <div className="md:col-span-4 col-span-6 sm:col-span-12 mb-7">
-                                        <div
-                                            className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
-                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5] leading-[85px] text-center mx-auto
-                                            rounded-[50%]  flex justify-center items-center">
-                                                <div className="icon w-[50px] h-[50px] leading-[50px]">
+                                    <div className="md:col-span-4 sm:col-span-12 col-span-12 mb-7">
+                                        <div className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
+                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5] flex justify-center items-center mx-auto rounded-full">
+                                                <div className="icon w-[50px] h-[50px]">
                                                     <i className="fi flaticon-placeholder text-[35px]"></i>
                                                 </div>
                                             </div>
@@ -27,13 +25,10 @@ const Contact = () => {
                                             <p className="text-[#4f555a] text-[16px] leading-[22px]">Ibadan, Nigeria</p>
                                         </div>
                                     </div>
-                                    <div className="md:col-span-4 col-span-6 sm:col-span-12 mb-7">
-                                        <div
-                                            className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
-                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5]
-                                             leading-[85px] text-center mx-auto rounded-[50%] flex justify-center
-                                             items-center">
-                                                <div className="icon w-[50px] h-[50px] leading-[50px]">
+                                    <div className="md:col-span-4 sm:col-span-12 col-span-12 mb-7">
+                                        <div className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
+                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5] flex justify-center items-center mx-auto rounded-full">
+                                                <div className="icon w-[50px] h-[50px]">
                                                     <i className="fi flaticon-email text-[35px]"></i>
                                                 </div>
                                             </div>
@@ -41,12 +36,10 @@ const Contact = () => {
                                             <p className="text-[#4f555a] text-[16px] leading-[22px]">foodimetric@gmail.com</p>
                                         </div>
                                     </div>
-                                    <div className="md:col-span-4 col-span-6 sm:col-span-12 mb-7">
-                                        <div
-                                            className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
-                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5] leading-[85px] text-center mx-auto
-                                            rounded-[50%] flex justify-center items-center">
-                                                <div className="icon w-[50px] h-[50px] leading-[50px]">
+                                    <div className="md:col-span-4 sm:col-span-12 col-span-12 mb-7">
+                                        <div className="text-center p-[40px] bg-white shadow-[0px_5px_15px_0px_rgba(62,65,159,0.1)]">
+                                            <div className="w-[85px] h-[85px] bg-[#f5f5f5] flex justify-center items-center mx-auto rounded-full">
+                                                <div className="icon w-[50px] h-[50px]">
                                                     <i className="fi flaticon-phone-call text-[35px]"></i>
                                                 </div>
                                             </div>

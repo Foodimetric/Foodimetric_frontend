@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import showToast from '../../Utils/toast';
+import { Avatar } from '@mui/material';
 
 const UserSettings = () => {
-    const { user } = useAuth();
-    const [profilePicture, setProfilePicture] = useState('/assets/images/folake.png');
+    const { user, setUser } = useAuth();
+    const [profilePicture, setProfilePicture] = useState('');
     const [profileDetails, setProfileDetails] = useState({
         name: '',
         email: '',
         location: '',  // Default location
         profession: '',
         signInDate: '2024-01-01',
+        profilePicture: ''
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletionReason, setDeletionReason] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const countries = [
@@ -41,7 +44,13 @@ const UserSettings = () => {
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setProfilePicture(URL.createObjectURL(file));
+            setProfilePicture(file);
+            // Optionally, you can preview the image before saving
+            // const reader = new FileReader();
+            // reader.onloadend = () => {
+            //     setProfilePicture(reader.result);
+            // };
+            // reader.readAsDataURL(file);
         }
     };
 
@@ -64,35 +73,58 @@ const UserSettings = () => {
                 location: user.location,  // Default location if not found in user profile
                 profession: user.category,
                 signInDate: '2024-01-01',
+                profilePicture: user.profilePicture,
             });
         }
     }, [user]);
 
     const handleSaveChanges = async () => {
-        const updatedProfile = {
-            location: profileDetails.location,
-            // category: profileDetails.profession,
-        };
+        const formData = new FormData();
+
+        formData.append('location', profileDetails.location);
+        if (profilePicture) {
+            formData.append('profilePicture', profilePicture); // 'profilePictureFile' is the selected file
+        }
+        setIsLoading(true);
 
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/update-profile`, {
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/json',
                     Authorization: `Bearer ${user.token}`,
                 },
-                body: JSON.stringify(updatedProfile),
+                body: formData,
             });
 
             if (!response.ok) {
                 throw new Error('Failed to update profile');
             }
 
-            // const data = await response.json();
+            const data = await response.json();
+            // Retrieve the current user object from localStorage
+            const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+
+            // Update user details but retain the existing token
+            const updatedUser = {
+                ...storedUser, // Keep existing values
+                _id: data.payload._id,
+                email: data.payload.email,
+                firstName: data.payload.firstName,
+                lastName: data.payload.lastName,
+                category: data.payload.category,
+                location: data.payload.location,
+                profilePicture: data?.payload?.profilePicture || '',
+            };
+            // Save the updated user object back to localStorage
+            localStorage.setItem("user", JSON.stringify(updatedUser));
+            setUser(updatedUser)
             showToast('success', 'Profile updated successfully')
             // Optionally, update the user context or state
         } catch (error) {
             showToast('error', 'Error updating profile');
+        } finally {
+            setIsLoading(false)
         }
     };
 
@@ -110,18 +142,25 @@ const UserSettings = () => {
         return prof ? prof.label : "Unknown"; // Default to "Unknown" if no match is found
     };
 
-    console.log("profile", user);
+    console.log("profile", profileDetails);
 
 
     return (
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
             {/* Profile Picture Section */}
-            <div className="flex flex-col items-center  w-1/4 xs:w-1/2 md:w-1/4">
-                <img
-                    className="w-32 xs:w-64 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-600"
-                    src={profilePicture}
-                    alt="Profile"
-                />
+            <div className="flex flex-col items-center w-1/4 xs:w-1/2 md:w-1/4">
+                {profileDetails.profilePicture ? (
+                    <img
+                        className="w-32 xs:w-64 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-600"
+                        src={`${FOODIMETRIC_HOST_URL}${profileDetails.profilePicture}`}
+                        alt="Profile"
+                    />
+                ) : (
+                    <Avatar
+                        className="w-32 xs:w-64 md:w-32 md:h-32 border-4 border-green-600"
+                        alt="Profile"
+                    />
+                )}
 
                 {/* Custom Upload Image Button */}
                 <label
@@ -138,7 +177,6 @@ const UserSettings = () => {
                     onChange={handleProfilePictureChange}
                 />
             </div>
-
             {/* User Details Form */}
             <div className="flex-grow w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -202,8 +240,12 @@ const UserSettings = () => {
                     >
                         Delete Account
                     </button>
-                    <button onClick={handleSaveChanges} className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
-                        Save Changes
+                    <button onClick={handleSaveChanges} disabled={isLoading} className="py-2 px-4 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                        {isLoading ? (
+                            <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                        ) : (
+                            'Save Changes'
+                        )}
                     </button>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 // import ProfileDropdown from '../Nav/ProfileDropdown';
 import { Avatar, IconButton } from '@mui/material';
 import { useAuth } from '../../Context/AuthContext';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const Header = () => {
     const { isAuthenticated, user } = useAuth();
@@ -250,7 +251,8 @@ const Header = () => {
                             <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
                                 <Avatar className='capitalize' alt={user?.firstName && user?.lastName
                                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
-                                    : 'Guest'} src="/path/to/profile.jpg" />
+                                    : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
+                                />
                             </IconButton>
                         </Link>}
                 </div>

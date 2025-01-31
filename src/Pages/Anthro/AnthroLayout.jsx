@@ -7,9 +7,7 @@ import { useAuth } from '../../Context/AuthContext';
 const AnthroLayout = () => {
     const { user } = useAuth()
     const location = useLocation();
-    // if (user?.category === 0 || user?.category == null) {
-    //     return <Navigate to="/educate" />;
-    // }
+
     const pageTitle = getPageTitle(location.pathname);
 
     console.log(user);

@@ -5,6 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import { FiLogOut, FiUser, FiHome, FiSearch, FiBook, FiSettings, FiClock } from 'react-icons/fi';
 import { AccountCircle } from '@mui/icons-material';
+import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const ProfileMenu = styled(Box)({
     display: 'flex',
@@ -64,10 +65,12 @@ const ProfileDropdown = () => {
             {!isdashboard && <ProfileMenu onClick={handleClick}>
                 <Avatar alt={user?.firstName && user?.lastName
                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
-                    : 'Guest'} src="/path/to/profile.jpg" />
+                    : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
+                />
             </ProfileMenu>}
             {isdashboard &&
                 <Avatar
+                    src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
                     onClick={handleClick}
                     style={{
                         width: "40px",
