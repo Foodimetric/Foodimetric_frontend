@@ -194,7 +194,7 @@ const HeaderLink = () => {
                         <IconButton className={` ${isMenuOpen ? 'hidden' : 'block'}`}>
                             <Avatar className='capitalize' alt={user?.firstName && user?.lastName
                                 ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
-                                : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
+                                : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user?.profilePicture}`}
                             />
                         </IconButton>
                     </Link>}

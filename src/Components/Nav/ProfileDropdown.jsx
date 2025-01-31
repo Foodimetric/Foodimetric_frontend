@@ -65,12 +65,12 @@ const ProfileDropdown = () => {
             {!isdashboard && <ProfileMenu onClick={handleClick}>
                 <Avatar alt={user?.firstName && user?.lastName
                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
-                    : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
+                    : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user?.profilePicture}`}
                 />
             </ProfileMenu>}
             {isdashboard &&
                 <Avatar
-                    src={`${FOODIMETRIC_HOST_URL}${user.profilePicture}`}
+                    src={`${FOODIMETRIC_HOST_URL}${user?.profilePicture}`}
                     onClick={handleClick}
                     style={{
                         width: "40px",

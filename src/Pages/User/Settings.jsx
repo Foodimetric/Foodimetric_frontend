@@ -152,7 +152,7 @@ const UserSettings = () => {
                 {profileDetails.profilePicture ? (
                     <img
                         className="w-32 xs:w-64 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-600"
-                        src={`${FOODIMETRIC_HOST_URL}${profileDetails.profilePicture}`}
+                        src={`${FOODIMETRIC_HOST_URL}${profileDetails?.profilePicture}`}
                         alt="Profile"
                     />
                 ) : (
