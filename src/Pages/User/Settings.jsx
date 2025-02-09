@@ -19,6 +19,7 @@ const UserSettings = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletionReason, setDeletionReason] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     const countries = [
@@ -59,10 +60,39 @@ const UserSettings = () => {
         setProfileDetails({ ...profileDetails, [name]: value });
     };
 
-    const handleDeleteAccount = () => {
-        // Logic for account deletion goes here
-        console.log('Account deleted');
-        setIsModalOpen(false); // Close modal after deletion
+
+    const handleDeleteAccount = async () => {
+        if (!deletionReason.trim()) {
+            showToast('error', "Please provide a reason for deleting your account.");
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/users/delete`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`, // Include Bearer token
+                },
+                // body: JSON.stringify({ reason: deletionReason }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to delete account. Please try again.");
+            }
+
+            showToast('success', "Account deleted successfully");
+            setIsModalOpen(false); // Close modal after deletion
+            localStorage.clear();
+            window.location.href = '/login'
+        } catch (error) {
+            console.error("Error:", error.message);
+            showToast('error', error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -264,15 +294,21 @@ const UserSettings = () => {
                         <div className="flex justify-end space-x-4">
                             <button
                                 onClick={() => setIsModalOpen(false)}
+                                disabled={loading}
                                 className="py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={handleDeleteAccount}
+                                disabled={loading}
                                 className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700"
                             >
-                                Confirm Deletion
+                                {loading ? (
+                                    <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                                ) : (
+                                    '  Confirm Deletion'
+                                )}
                             </button>
                         </div>
                     </div>
