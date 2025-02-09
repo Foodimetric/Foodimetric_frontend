@@ -2,29 +2,46 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFoodContext } from '../../Context/Food/FoodContext';
 
-const SearchBar = () => {
+const SearchBar = ({ selectedDb }) => {
     const [searchTerm, setSearchTerm] = useState("");
-    const { data, error, isLoading, setNutrient, setSelectedFood } = useFoodContext();
+    const { data, west_data, westAfricaError, error, westAfricaLoading, isLoading, setNutrient, setSelectedFood } = useFoodContext();
     const navigate = useNavigate();
     const location = useLocation();
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error loading food data</p>;
 
+    if (westAfricaLoading) return <p>Loading...</p>;
+    if (westAfricaError) return <p>Error loading food data</p>;
     // Filter the food data based on the search term
-    const filteredData = data
-        ? data.filter(item =>
-            item.foodName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.details.LocalName?.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        : [];
+
+    const filteredData = (selectedDb === "nigeria" ? data : west_data)?.filter(item =>
+        item.foodName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.details?.LocalName?.toLowerCase().includes(searchTerm.toLowerCase())
+    ) || [];
+
 
     // Optional logic that checks if the route is /search/nutrient, then sets the nutrient keys
     const handleSearch = () => {
         const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames'];
         if (location.pathname === '/search/nutrient' || location.pathname === '/search/multi-nutrient') {
-            const foundFood = data?.find(foodItem => foodItem?.foodName === searchTerm);
-            const nutrientOptions = Object.entries(foundFood?.details || {})
+            let foundFood;
+
+            if (selectedDb === "nigeria") {
+                // Search in Nigerian food database
+                foundFood = data?.find(foodItem => foodItem?.foodName === searchTerm);
+            } else if (selectedDb === "west_africa") {
+                // Search in West African food database
+                foundFood = west_data?.find(foodItem => foodItem?.foodName === searchTerm);
+            }
+
+            if (!foundFood) {
+                console.log("Food not found");
+                return;
+            }
+
+            // Extract nutrients from the correct structure
+            const nutrientOptions = Object.entries(selectedDb === "nigeria" ? foundFood.details || {} : foundFood.nutrients || {})
                 .filter(([key]) => !excludeKeys.includes(key))
                 .map(([key]) => key);
 
@@ -44,14 +61,24 @@ const SearchBar = () => {
 
     // When a food item is clicked in the dropdown
     const handleFoodSelect = (food) => {
+        console.log("lots of food", selectedDb);
         setSearchTerm(food.foodName); // show the user what they clicked
         setSelectedFood(food);        // put the selected item into context
         handleSearch();
         // Optionally append the selection to the URL
-        navigate(
-            `?foodName=${encodeURIComponent(food.foodName)}&localName=${encodeURIComponent(food.details.LocalName)}`,
-            { replace: true }
-        );
+        if (selectedDb === "nigeria") {
+            navigate(
+                `?foodName=${encodeURIComponent(food.foodName)}&localName=${encodeURIComponent(food.details.LocalName)}`,
+                { replace: true }
+            );
+
+        } else if (selectedDb === "west_africa") {
+            console.log("just append");
+            navigate(
+                `?foodName=${encodeURIComponent(food.foodName)}&localName=${encodeURIComponent(food.foodName)}`,
+                { replace: true }
+            );
+        }
     };
 
     return (
@@ -97,7 +124,7 @@ const SearchBar = () => {
                                 className="cursor-pointer p-4 hover:bg-gray-100 transition duration-200 ease-in-out flex justify-between items-center"
                             >
                                 <div className="text-sm font-medium text-gray-800">
-                                    {item.foodName} - {item.details.LocalName}
+                                    {item.foodName} {item.details?.LocalName && `- ${item.details?.LocalName}`}
                                 </div>
                             </div>
                         ))

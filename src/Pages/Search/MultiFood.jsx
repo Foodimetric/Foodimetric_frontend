@@ -4,11 +4,12 @@ import SearchBar from '../../Components/Nav/SearchBar';
 import { useFoodContext } from '../../Context/Food/FoodContext';
 import { addTotal, multiSearchFood } from '../../Utils/key'; // if you have a utility
 import ResultsTable from '../../Components/Modals/Table';
-import { useNavigate } from 'react-router';
+import { useNavigate, useOutletContext } from 'react-router';
 
 const MultiFood = () => {
-    const { data, selectedFood, multiFoodResults, setMultiFoodResults, setSelectedFood } = useFoodContext();
+    const { data, west_data, selectedFood, multiFoodResults, setMultiFoodResults, setSelectedFood } = useFoodContext();
     const navigate = useNavigate();
+    const { selectedDb } = useOutletContext();
     // This array holds multiple foods the user adds
     const [searchData, setSearchData] = useState([]);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -46,8 +47,7 @@ const MultiFood = () => {
         setIsFormSubmitted(true);
 
         // If you have a multiSearchFood function:
-        const result = multiSearchFood(searchData, data);
-
+        const result = multiSearchFood(searchData, selectedDb === 'nigeria' ? data : west_data, selectedDb);
         console.log("result", result);
 
         // Map over the result to calculate and modify values as needed

@@ -10,39 +10,43 @@ const DashboardNav = ({ isExpanded, toggleSidebar }) => {
             className={`flex flex-col h-full bg-white shadow-md transition-all duration-300 ${isExpanded ? 'w-64' : 'w-16'}`}
         >
             {/* Logo Section */}
-            <div className="flex items-center justify-between py-4">
-                <Link to={'/'} className="flex items-center space-x-2">
+            <div className="flex items-center justify-between py-4 px-4">
+                {/* Logo */}
+                <Link to={'/'} className="flex items-center">
                     <img
-                        src="/assets/logo.png"
+                        src="/assets/logo-alt.png"
                         alt="Logo"
-                        className={`h-10 w-10 object-contain transition-transform ${isExpanded ? 'transform scale-100' : 'transform scale-75'}`}
+                        className={`h-10 w-10 object-contain transition-transform ${isExpanded ? 'scale-100' : 'scale-75'
+                            }`}
                     />
                 </Link>
 
-                {/* Toggle Button */}
-                <button
-                    onClick={toggleSidebar}
-                    className="p-2 text-gray-600 focus:outline-none"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                {/* Close/Menu Toggle Button */}
+                {isExpanded && (
+                    <button
+                        onClick={toggleSidebar}
+                        className="p-2 text-gray-600 focus:outline-none"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d={
-                                isExpanded
-                                    ? 'M6 18L18 6M6 6l12 12' // Close icon
-                                    : 'M4 6h16M4 12h16m-7 6h7' // Menu icon
-                            }
-                        />
-                    </svg>
-                </button>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d={
+                                    isExpanded
+                                        ? 'M6 18L18 6M6 6l12 12' // Close icon
+                                        : 'M4 6h16M4 12h16m-7 6h7' // Menu icon
+                                }
+                            />
+                        </svg>
+                    </button>
+                )}
             </div>
 
             {/* Navigation Links */}

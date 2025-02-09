@@ -47,7 +47,7 @@ const AntroNav = () => {
                     <div className="flex-grow">
                         <div className="px-4 py-0 text-center border-b h-16 flex items-center">
                             <Link to={'/'}>
-                                <img className="" src="../assets/logo.png" alt="Logo" />
+                                <img className="" src="../assets/logo-alt.png" alt="Logo" />
                             </Link>
                         </div>
                         <div className="p-4 h-[80vh] overflow-scroll hide-scrollbar">

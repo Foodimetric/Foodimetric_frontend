@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchData } from '../../Utils/foodb';
+import { fetchData, fetchDataWest } from '../../Utils/foodb';
 
 const FoodContext = createContext();
 
@@ -10,6 +10,11 @@ export const FoodProvider = ({ children }) => {
     const { data, error, isLoading } = useQuery({
         queryKey: ["foods"], // use `queryKey` instead of positional arguments
         queryFn: fetchData,   // use `queryFn` instead of positional arguments
+    });
+
+    const { data: westAfricaData, error: westAfricaError, isLoading: westAfricaLoading } = useQuery({
+        queryKey: ["west_africa"],
+        queryFn: fetchDataWest,
     });
     const [selectedFood, setSelectedFood] = useState(null);
 
@@ -27,7 +32,10 @@ export const FoodProvider = ({ children }) => {
         multiFoodResults,
         setMultiFoodResults,
         nutrient,
-        setNutrient
+        setNutrient,
+        west_data: westAfricaData ? westAfricaData.payload : [],
+        westAfricaError,
+        westAfricaLoading,
         // Any other shared states or updater functions
     };
 

@@ -13,9 +13,24 @@ const getCachedData = async () => {
 
   // Check if data exists in the cache.
   const cachedData = await store.get('foods');
-//   await db.close();
+  //   await db.close();
   return cachedData;
-  
+
+};
+const getCachedDataWest = async () => {
+  const db = await openDB('foodimetric_west', 1, {
+    upgrade(db) {
+      db.createObjectStore('foods');
+    },
+  });
+  const tx = db.transaction('foods', 'readonly');
+  const store = tx.objectStore('foods');
+
+  // Check if data exists in the cache.
+  const cachedData = await store.get('foods');
+  //   await db.close();
+  return cachedData;
+
 };
 
 // Define a function to fetch data from the network and update the cache.
@@ -33,7 +48,7 @@ const fetchAndCacheData = async () => {
 
   const data = await response.json();
 
-  
+
   // Open the IndexedDB database and store the fetched data in the cache.
   const db = await openDB('foodimetric', 1, {
     upgrade(db) {
@@ -44,7 +59,36 @@ const fetchAndCacheData = async () => {
   const store = tx.objectStore('foods');
   await store.put(data, 'foods'); // Store the data in the cache.
   await tx.done; // Wait for the transaction to complete.
-//   await db.close();
+  //   await db.close();
+  return data;
+};
+
+const fetchAndCacheDataWest = async () => {
+  const response = await fetch(`${FOODIMETRIC_HOST_URL}/foods/westafrica`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = await response.json();
+
+
+  // Open the IndexedDB database and store the fetched data in the cache.
+  const db = await openDB('foodimetric_west', 1, {
+    upgrade(db) {
+      db.createObjectStore('foods');
+    },
+  });
+  const tx = db.transaction('foods', 'readwrite');
+  const store = tx.objectStore('foods');
+  await store.put(data, 'foods'); // Store the data in the cache.
+  await tx.done; // Wait for the transaction to complete.
+  //   await db.close();
   return data;
 };
 
@@ -59,4 +103,16 @@ export const fetchData = async () => {
 
   // If data is not in the cache or outdated, fetch it from the network and update the cache.
   return fetchAndCacheData();
+};
+
+export const fetchDataWest = async () => {
+  // Try to get data from the cache.
+  const cachedData = await getCachedDataWest();
+
+  if (cachedData) {
+    return cachedData; // Return cached data if available.
+  }
+
+  // If data is not in the cache or outdated, fetch it from the network and update the cache.
+  return fetchAndCacheDataWest();
 };

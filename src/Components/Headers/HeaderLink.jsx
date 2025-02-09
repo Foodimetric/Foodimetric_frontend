@@ -63,7 +63,7 @@ const HeaderLink = () => {
 
                 <div className="w-[195px] md:w-[150px] sm:w-[200px] col:w-[150px] col:ml-[50px] hidden lg:block">
                     <Link className="flex items-center md:justify-center text-white" to="/">
-                        <img className="" src="assets/logo.png" alt="" /></Link>
+                        <img className="" src="assets/logo-alt.png" alt="" /></Link>
                 </div>
                 <ul className="hidden lg:block space-x-4" >
 

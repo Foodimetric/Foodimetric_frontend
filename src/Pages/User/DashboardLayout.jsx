@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import DashboardNav from '../../Components/Nav/DashboardNav';
 import DashboardHeader from '../../Components/Headers/DashboardHeader';
-// import PrivateRoute from '../../Context/PrivateRoute';
-// import { useAuth } from '../../Context/AuthContext';
+import ChatButton from '../../Components/Buttons/ChatBot'
 
 const DashboardLayout = () => {
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
@@ -30,6 +29,7 @@ const DashboardLayout = () => {
                 <main className="flex-1 overflow-y-auto p-4">
                     <Outlet />
                 </main>
+                <ChatButton />
             </div>
         </div>
     );

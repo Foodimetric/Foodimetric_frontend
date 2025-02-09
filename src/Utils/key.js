@@ -7,7 +7,7 @@ export function findKeyByWord(object, searchWord) {
     return null;
 }
 
-export function multiSearchFood(searchData, data) {
+export function multiSearchFood(searchData, data, selectedDb) {
     const matchedFoods = [];
     searchData.forEach(searchItem => {
         const matchingFood = data?.find(food =>
@@ -15,7 +15,15 @@ export function multiSearchFood(searchData, data) {
         );
 
         if (matchingFood) {
-            matchingFood.details.WEIGHT = searchItem.selectedWeight
+            if (selectedDb === 'nigeria') {
+                // For Nigeria, update weight in details
+                matchingFood.details.WEIGHT = searchItem.selectedWeight;
+            } else if (selectedDb === 'west_africa') {
+                // For West Africa, update weight in nutrients
+                matchingFood.nutrients.WEIGHT = searchItem.selectedWeight;
+            }
+
+            // Push the updated food item into the matchedFoods array
             matchedFoods.push(matchingFood);
         }
     });
@@ -24,7 +32,10 @@ export function multiSearchFood(searchData, data) {
 
     return matchedFoods.map((item) => {
         // Make a copy of details (to avoid mutating the original object)
-        const detailsCopy = { ...item.details };
+        // const detailsCopy = { ...item.details };
+        const detailsCopy = selectedDb === 'nigeria'
+            ? { ...item.details } // For Nigeria, copy details
+            : { ...item.nutrients }; // For West Africa, copy nutrients
 
         // Remove the keys you want to exclude
         excludeKeys.forEach((key) => {

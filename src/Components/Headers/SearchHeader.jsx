@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import ProfileDropdown from '../Nav/ProfileDropdown';
 
-const SearchHeader = ({ title }) => {
+const SearchHeader = ({ title, setSelectedDb, selectedDb }) => {
     // State to keep track of the selected database
-    const [selectedDb, setSelectedDb] = useState('nigeria');
-
     // Function to update the selected database
     const handleSelectDb = (db) => {
         setSelectedDb(db);
@@ -31,9 +29,9 @@ const SearchHeader = ({ title }) => {
                     <input
                         type="radio"
                         name="db"
-                        value="west-africa"
-                        checked={selectedDb === 'west-africa'}
-                        onChange={() => handleSelectDb('west-africa')}
+                        value="west_africa"
+                        checked={selectedDb === 'west_africa'}
+                        onChange={() => handleSelectDb('west_africa')}
                         className=""
                     />
                     <span className='xs:hidden sm:block'> West-Africa DB</span>

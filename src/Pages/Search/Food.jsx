@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useFoodContext } from '../../Context/Food/FoodContext';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import useLocation to get URL query params
+import { useLocation, useNavigate, useOutletContext } from 'react-router-dom'; // Import useLocation to get URL query params
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import SearchBar from '../../Components/Nav/SearchBar';
 import ResultsTable from '../../Components/Modals/Table'
 
 export const Food = () => {
-    const { data } = useFoodContext();
+    const { data, west_data } = useFoodContext();
+    const { selectedDb } = useOutletContext();
     const [weight, setWeight] = useState('');  // State for weight input
     const [selectedFood, setSelectedFood] = useState(''); // State to store selected food
     const navigate = useNavigate(); // useNavigate for React Router v6+
     const location = useLocation(); // Hook to access the URL
     const [results, setResults] = useState([]); // State for processed results
+
 
     // Extract food from URL query parameters when the component mounts or the URL changes
     useEffect(() => {
@@ -23,19 +25,32 @@ export const Food = () => {
     }, [location.search]); // Trigger the effect when the URL changes
 
     const handleProceed = () => {
-        const foundFood = data?.find(foodItem => foodItem.foodName === selectedFood);
+        console.log("who called bayi");
+
+        let foundFood;
+
+        if (selectedDb === "nigeria") {
+            // Search in Nigerian food database
+            foundFood = data?.find(foodItem => foodItem?.foodName === selectedFood);
+        } else if (selectedDb === "west_africa") {
+            // Search in West African food database
+            foundFood = west_data?.find(foodItem => foodItem?.foodName === selectedFood);
+        }
+
         const excludeKeys = ['Id', 'Code', 'REFID'];
 
         // If no food is found, return an empty array
         if (!foundFood) return [];
 
-        const details = foundFood?.details || {};
+        const details = selectedDb === "west_africa" ? foundFood?.nutrients || {} : foundFood?.details || {};
         // Ensure weight is a valid number before proceeding
         const parsedWeight = parseFloat(weight);
         if (isNaN(parsedWeight) || parsedWeight <= 0) {
             console.log('Invalid weight');
             return [];
         }
+
+        console.log("we got details", details);
 
         // Reduce the details object, skipping excluded keys or null values
         const result = [
@@ -71,9 +86,9 @@ export const Food = () => {
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
-                    <SearchBar />
+                    <SearchBar selectedDb={selectedDb} />
                     <div>
-                        <label htmlFor="weight" className="mb-2 block">Weight:</label>
+                        <label htmlFor="weight" className="mb-2 block">Weight(g):</label>
                         <input
                             type="number"
                             name="weight"
