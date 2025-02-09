@@ -75,7 +75,7 @@ export const UserProvider = ({ children }) => {
 
         } catch (error) {
             console.error('Error fetching food entries:', error.message);
-            showToast('error', 'An error occurred while fetching food entries');
+            // showToast('error', 'An error occurred while fetching food entries');
         }
     }, [user?._id, setFoodEntries]); // Add all necessary dependencies
 

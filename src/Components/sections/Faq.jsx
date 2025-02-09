@@ -11,8 +11,7 @@ const Faq = () => {
         {
             id: 1,
             question: "What is Foodimetric?",
-            answer:
-                "Foodimetric is a database-inclined platform that assists users to make informed nutrition choices by providing important information about foods around them. Having noted the gap between nutrition information and healthy eating among Nigerians, Foodimetric presents compiled data on several foods around the country in a more relatable way to its users. Foodimetric is an important tool for both nutrition professionals and the general public to identify the nutrient composition of foods and their level of safety. Our vision is to advance the reality of healthiness to all. Our mission is to harness technology resources to improve nutrition and health.",
+            answer: "Foodimetric is a health-tech startup that's devoted to promoting the reality of healthiness to Africans through tech and nutrition science. Foodimetric is an important platform for both nutrition professionals and the general public to identify the nutrient composition of their foods, assess their nutrition status, and access nutrition care."
         },
         {
             id: 2,

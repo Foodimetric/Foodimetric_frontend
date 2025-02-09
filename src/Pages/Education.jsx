@@ -27,16 +27,19 @@ const Education = () => {
                             <strong>Calories:</strong> The energy your body gets from food, measured per serving or portion.
                         </li>
                         <li>
-                            <strong>Protein:</strong> Found in beans, fish, and meat; essential for building and repairing tissues.
+                            <strong>Protein:</strong> An important nutrient for building and repairing tissues found in foods like beans, fish, eggs, meat, etc.
                         </li>
                         <li>
                             <strong>Carbohydrates:</strong> The body’s primary energy source, found in rice, yam, and cassava.
                         </li>
                         <li>
-                            <strong>Fats:</strong> Healthy fats from groundnuts, palm oil, and avocados are vital for body functions.
+                            <strong>Fats:</strong> Healthy fats such as groundnut oil and olive oil are essential for synthesizing vital substances for our daily body function and also supply the body with energy.
                         </li>
                         <li>
-                            <strong>Vitamins & Minerals:</strong> Found in vegetables like ugu (fluted pumpkin) and okra; support immunity.
+                            <strong>Vitamins & Minerals:</strong> These nutrients support immunity and metabolism of other nutrients. They are primarily found in fruits and vegetables.
+                        </li>
+                        <li className="mt-2 font-semibold">
+                            Moderation is key—do not consume less or more than you should. Consult a registered dietitian for professional assessment and personalized nutrition care.
                         </li>
                     </ul>
                 </section>
