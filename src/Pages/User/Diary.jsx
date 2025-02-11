@@ -162,7 +162,7 @@ const FoodDiary = () => {
                         {foodEntries.map((log, index) => (
                             <li key={index} className="bg-white p-6 shadow-lg rounded-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                                 <div className="flex justify-between items-start">
-                                    <div>
+                                    <div className='w-11/12'>
                                         <h3 className="text-2xl font-semibold text-green-600 mb-1">{log.foodEaten}</h3>
                                         <p className="text-gray-500 text-sm">{log.time} on {new Date(log.date).toLocaleDateString('en-US', {
                                             year: 'numeric',

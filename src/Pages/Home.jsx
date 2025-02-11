@@ -224,7 +224,7 @@ export const Home = () => {
                         </div>
                     </div>
                 </section>
-                <section
+                {/* <section
                     id='partner'
                     className="relative py-[60px] bg-no-repeat bg-center bg-cover z-10 
         before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-[#8AC224] before:opacity-[0.9] before:-z-10 ">
@@ -247,7 +247,7 @@ export const Home = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 <section
                     id='testimonial'
                     className="py-[120px] md:py-[90px] sm:py-[80px] xs:py-10 bg-no-repeat bg-center bg-cover relative z-10">

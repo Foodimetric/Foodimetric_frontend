@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import GoogleBtn from '../Components/Buttons/GoogleBtn';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useAuth } from '../Context/AuthContext'
 
 const Register = () => {
     const { register, formValues, handleChange, errors, loading } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
+
 
     return (
         <main>
@@ -60,13 +62,13 @@ const Register = () => {
                                     </div>
                                     <div className="w-full relative">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Password</label>
-                                        <input type="password" placeholder="" name="password"
+                                        <input type={showPassword ? "text" : "password"} placeholder="" name="password"
                                             value={formValues.password}
                                             onChange={handleChange} id="password"
                                             className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5] border-[1px] block focus:outline-0" />
 
                                         <span className="absolute right-[10px] top-[45px]">
-                                            <button className="btn btn-default reveal6" type="button">
+                                            <button className="btn btn-default reveal6" type="button" onClick={() => setShowPassword(!showPassword)}>
                                                 <i className="ti-eye" id="togglePassword"></i>
                                             </button>
                                         </span>

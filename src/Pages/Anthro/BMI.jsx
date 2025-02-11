@@ -12,6 +12,7 @@ import {
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+import { Link } from 'react-router-dom';
 
 const BMI = ({ islandingPage }) => {
     const { user } = useAuth();
@@ -174,12 +175,12 @@ const BMI = ({ islandingPage }) => {
                                     practical tips, and explore our nutritional tools to set and
                                     achieve your health goals.
                                 </p>
-                                <a
+                                <Link
                                     className="theme-btn bg-[#147E03] hover:bg-[#289217]"
-                                    href="/anthro/BMI"
+                                    to="/anthro/BMI"
                                 >
                                     More Tools
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

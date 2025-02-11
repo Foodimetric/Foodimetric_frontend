@@ -108,6 +108,12 @@ const Footer = () => {
                                         </Link>
                                     </li>
                                     <li className="relative z-[1] py-[6px]">
+                                        <Link to="/educate" className="text-[16px] font-heading-font transition-all-all text-white 
+                                           duration-300 hover:text-[#F78914]">
+                                            Education
+                                        </Link>
+                                    </li>
+                                    <li className="relative z-[1] py-[6px]">
                                         <Link to="/terms" className="text-[16px] font-heading-font transition-all-all text-white 
                                            duration-300 hover:text-[#F78914]">
                                             Terms of Service

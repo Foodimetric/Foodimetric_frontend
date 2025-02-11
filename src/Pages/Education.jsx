@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderLink from "../Components/Headers/HeaderLink";
 import Footer from "../Components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const Education = () => {
     return (
@@ -45,7 +46,7 @@ const Education = () => {
                 </section>
 
                 {/* Section: Local Measurements */}
-                <section className="mb-12 bg-gray-100 p-8 rounded-lg">
+                {/* <section className="mb-12 bg-gray-100 p-8 rounded-lg">
                     <h2 className="text-2xl font-semibold text-[#0a272c] mb-4">
                         Local Measurements and Their Equivalents
                     </h2>
@@ -60,7 +61,7 @@ const Education = () => {
                         <li><strong>1 medium-sized tuber of yam:</strong> Around 2-3 kg.</li>
                         <li><strong>1 wrap of moi-moi:</strong> About 250 grams.</li>
                     </ul>
-                </section>
+                </section> */}
 
                 <div className="mb-10 bg-white shadow-md p-8 rounded-lg">
                     <h2 className="text-3xl font-semibold text-[#0a272c] mb-4">
@@ -123,12 +124,12 @@ const Education = () => {
                         At Foodimetric, we simplify these measurements with tools designed to cater to the unique needs of Nigerians
                         and Africans. Explore our tools for personalized health tips and accurate calculations.
                     </p>
-                    <a
-                        href="/anthro/BMI"
+                    <Link
+                        to="/anthro/BMI"
                         className="bg-[#ffba08] text-white px-6 py-3 rounded-lg hover:bg-[#f78914] transition"
                     >
                         Explore Tools
-                    </a>
+                    </Link>
                 </section>
             </div>
             <Footer />

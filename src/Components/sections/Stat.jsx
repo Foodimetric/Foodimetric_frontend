@@ -11,10 +11,10 @@ const StatSection = () => {
     useEffect(() => {
         // Simulating an API call to get the statistics
         setTimeout(() => {
-            setTrustedCustomers(276);
-            setMonthsFoundation(6);
-            setMonthlyUsers(50);
-            setFoodSearch(500);
+            setTrustedCustomers(700);
+            setMonthsFoundation(2);
+            setMonthlyUsers(80);
+            setFoodSearch(2000);
         }, 1000);
     }, []);
 
@@ -34,9 +34,9 @@ const StatSection = () => {
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
                             <div>
                                 <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
-                                    <Odometer value={monthsFoundation} format="d" />{`>`}
+                                    <Odometer value={monthsFoundation} format="d" />
                                 </h3>
-                                <p className="text-base text-white md:text-sm">Months of Foundation</p>
+                                <p className="text-base text-white md:text-sm">Partners</p>
                             </div>
                         </div>
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">

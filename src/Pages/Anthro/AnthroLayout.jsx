@@ -9,6 +9,8 @@ const AnthroLayout = () => {
     const location = useLocation();
 
     const pageTitle = getPageTitle(location.pathname);
+    const formulaName = getFormulaName(location.pathname);
+
 
     console.log(user);
 
@@ -41,6 +43,23 @@ const AnthroLayout = () => {
         }
     }
 
+    function getFormulaName(pathname) {
+        switch (pathname) {
+            case '/anthro/BMI': return 'Body Mass Index Formula';
+            case '/anthro/IBW': return 'B. J. Devine Formula (1974)';
+            case '/anthro/WHR': return 'Waist to Hip Ratio Formula';
+            case '/anthro/BMI-age': return 'BMI for Age Formula';
+            case '/anthro/BMR': return 'Revised Harris-Benedict Equation';
+            case '/anthro/EER': return 'Estimated Energy Requirement Formula';
+            case '/anthro/EE': return 'Mifflin-St Jeor Equation';
+            case '/anthro/Weight-age': return 'Weight for Age Formula';
+            case '/anthro/Height-age': return 'Height for Age Formula';
+            case '/anthro/Weight-Height': return 'Weight for Height Formula';
+            case '/anthro/Water-intake': return 'Water Intake Recommendation Formula';
+            default: return null;
+        }
+    }
+
     return (
         <main className='flex max-h-screen'>
             <div className=''>
@@ -53,6 +72,9 @@ const AnthroLayout = () => {
                         <Outlet />
                     </div>
                 </div>
+                <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8">
+                    Formula: {formulaName}
+                </footer>
             </div>
         </main>
     )

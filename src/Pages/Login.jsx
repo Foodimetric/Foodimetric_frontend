@@ -10,6 +10,8 @@ const Login = () => {
     const navigate = useNavigate()
     const { email, password, rememberMe, setEmail, setPassword, setRememberMe, setIsAuthenticated, login } = useAuth();
     const [loading, setLoading] = useState(false); // Track request st
+    const [showPassword, setShowPassword] = useState(false);
+
 
     useEffect(() => {
         const rememberedEmail = localStorage.getItem('rememberMeEmail');
@@ -47,6 +49,7 @@ const Login = () => {
                     token: data.payload.token,
                     category: data.payload.user.category,
                     location: data.payload.user.location,
+                    createdAt: data.payload.user.createdAt,
                     profilePicture: data?.payload?.user?.profilePicture || ''
                 }
 
@@ -98,10 +101,10 @@ const Login = () => {
                                     </div>
                                     <div className="w-full relative">
                                         <label className="font-heading-font text-[#687693] text-[15px] block">Password</label>
-                                        <input type="password" placeholder="" value={password} name="pass" id="password" className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5]
+                                        <input type={showPassword ? "text" : "password"} placeholder="" value={password} name="pass" id="password" className="pwd6 relative rounded-[2px] w-full mb-[15px] pl-[20px] h-[60px] border-[#e5e5e5]
                                     border-[1px] block focus:outline-0" onChange={(e) => setPassword(e.target.value)} />
                                         <span className="absolute right-[10px] top-[45px]">
-                                            <button className="btn btn-default reveal6" type="button">
+                                            <button className="btn btn-default reveal6" type="button" onClick={() => setShowPassword(!showPassword)}>
                                                 <i className="ti-eye" id="togglePassword"></i>
                                             </button>
                                         </span>

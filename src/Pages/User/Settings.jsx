@@ -12,7 +12,7 @@ const UserSettings = () => {
         email: '',
         location: '',  // Default location
         profession: '',
-        signInDate: '2024-01-01',
+        signInDate: '',
         profilePicture: ''
     });
 
@@ -24,6 +24,7 @@ const UserSettings = () => {
 
     const countries = [
         // Existing countries
+        'Choose Location',
         'United States', 'Canada', 'United Kingdom', 'Australia', 'Germany',
         'France', 'India', 'Brazil', 'China', 'Japan', 'Mexico', 'South Africa',
         'Italy', 'Spain', 'Netherlands', 'Russia', 'South Korea', 'Argentina',
@@ -86,6 +87,7 @@ const UserSettings = () => {
             showToast('success', "Account deleted successfully");
             setIsModalOpen(false); // Close modal after deletion
             localStorage.clear();
+            sessionStorage.clear();
             window.location.href = '/login'
         } catch (error) {
             console.error("Error:", error.message);
@@ -102,7 +104,11 @@ const UserSettings = () => {
                 email: user.email || '',
                 location: user.location,  // Default location if not found in user profile
                 profession: user.category,
-                signInDate: '2024-01-01',
+                signInDate: new Date(user.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                }),
                 profilePicture: user.profilePicture,
             });
         }
@@ -173,6 +179,8 @@ const UserSettings = () => {
     };
 
     console.log("profile", profileDetails);
+
+    console.log(user);
 
 
     return (

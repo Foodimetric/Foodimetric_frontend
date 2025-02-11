@@ -8,6 +8,7 @@ import showToast from '../Utils/toast';
 const NewPassword = () => {
     const navigate = useNavigate();
     const [newPassword, setNewPassword] = useState('');
+    const [loading, setLoading] = useState(false); // Track request st
     const [confirmPassword, setConfirmPassword] = useState('');
 
     // Extract email from the query parameter
@@ -30,6 +31,7 @@ const NewPassword = () => {
             return;
         }
 
+        setLoading(true)
         try {
             const response = await axios.post(`${FOODIMETRIC_HOST_URL}/users/reset-password`, {
                 email,
@@ -40,6 +42,8 @@ const NewPassword = () => {
             navigate('/login')
         } catch (err) {
             showToast('error', err.response?.data?.message || 'An error occurred');
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -92,10 +96,15 @@ const NewPassword = () => {
 
                                     <div className="w-full">
                                         <button
+                                            disabled={loading}
                                             type="submit"
                                             className="h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex items-center mt-[20px] w-full justify-center capitalize text-[#fff] border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]"
                                         >
-                                            Reset Password
+                                            {loading ? (
+                                                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                                            ) : (
+                                                'Reset Password'
+                                            )}
                                         </button>
                                     </div>
                                 </div>

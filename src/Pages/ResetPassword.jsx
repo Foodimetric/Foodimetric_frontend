@@ -8,10 +8,12 @@ import showToast from '../Utils/toast';
 const Reset = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false); // Track request st
+
 
     const handleReset = async (e) => {
         e.preventDefault();
-
+        setLoading(true)
         try {
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/forgot-password`, {
                 method: 'POST',
@@ -30,6 +32,8 @@ const Reset = () => {
             navigate(`/reset?email=${encodeURIComponent(email)}`); // Navigate with the email as a query parameter
         } catch (err) {
             showToast('error', err.message || 'An error occurred');
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -59,12 +63,16 @@ const Reset = () => {
 
 
                                     <div className="w-full">
-                                        <button type="submit" className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
+                                        <button type="submit" disabled={loading} className=" h-[45px] bg-[#ffba08] text-[16px] p-[10px_20px] text-center flex
                                             items-center mt-[20px] w-full
                                             justify-center capitalize text-[#fff]
                                             border-[#ffba08] border-[2px] transition-all hover:bg-transparent hover:text-[#ffba08]
                                         ">
-                                            Verify Email
+                                            {loading ? (
+                                                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                                            ) : (
+                                                ' Verify Email'
+                                            )}
                                         </button>
                                     </div>
                                     <div className="w-full">

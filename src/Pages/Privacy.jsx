@@ -110,8 +110,12 @@ const Privacy = () => {
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold mb-4">Disclaimer</h2>
                     <p>
-                        The information on this website is for informational purposes only and is not intended as a substitute
-                        for professional medical advice. Always consult a registered dietitian for questions regarding your diet.
+                        The information on this website is for informational purposes only and is not intended as a substitute for professional medical advice.
+                        Always consult a registered dietitian for questions regarding your diet. The information, including but not limited to, text, graphics, images,
+                        and other material contained on this website, is for informational purposes only. No information on this site is intended to be a substitute
+                        for professional medical advice, diagnosis, or treatment. Always consult a registered dietitian with any questions you may have regarding
+                        your diet modification and before undertaking a new diet regimen. Never disregard professional medical advice or delay in seeking it
+                        because of something you have read on this website.
                     </p>
                     <p>Last updated: April 7, 2024</p>
                 </section>
