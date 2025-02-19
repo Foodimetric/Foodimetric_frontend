@@ -82,8 +82,8 @@ const SearchBar = ({ selectedDb }) => {
     };
 
     return (
-        <div>
-            <label htmlFor="food" className="mb-2 block">Search Food:</label>
+        <div className='font-base-font'>
+            <label htmlFor="food" className="mb-2 block font-heading-font">Search Food:</label>
             <div className="bg-white rounded flex items-center w-full p-2 shadow-sm border border-gray-200 mb-4">
                 <button
                     type="button"

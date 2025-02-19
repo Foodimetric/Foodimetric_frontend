@@ -90,13 +90,13 @@ export const Food = () => {
                 <form className="w-full md:w-3/4 mx-auto">
                     <SearchBar selectedDb={selectedDb} />
                     <div>
-                        <label htmlFor="weight" className="mb-2 block">Weight(g):</label>
+                        <label htmlFor="weight" className="mb-2 block font-heading-font">Weight(g):</label>
                         <input
                             type="number"
                             name="weight"
                             id="weight"
                             placeholder="Weight"
-                            className="w-full p-2 text-sm text-black border border-gray-200 outline-none focus:outline-none bg-transparent h-12"
+                            className="w-full font-base-font p-2 text-sm text-black border border-gray-200 outline-none focus:outline-none bg-transparent h-12"
                             value={weight} // Bind the value of the input to the state
                             onChange={handleWeightChange} // Update the state when the user types
                         />

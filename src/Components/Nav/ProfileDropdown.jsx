@@ -66,6 +66,7 @@ const ProfileDropdown = () => {
                 <Avatar alt={user?.firstName && user?.lastName
                     ? `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`
                     : 'Guest'} src={`${FOODIMETRIC_HOST_URL}${user?.profilePicture}`}
+                    sx={{ fontFamily: 'Itim, cursive' }}
                 />
             </ProfileMenu>}
             {isdashboard &&
@@ -79,6 +80,7 @@ const ProfileDropdown = () => {
                         color: "white",
                         cursor: "pointer",
                     }}
+                    sx={{ fontFamily: 'Itim, cursive' }}
                 >
                     <AccountCircle />
                 </Avatar>
@@ -97,7 +99,7 @@ const ProfileDropdown = () => {
                 }}
             >
                 <StyledMenuItem>
-                    <StyledNavLink to={isdashboard ? '/' : "/dashboard"} onClick={handleClose}>
+                    <StyledNavLink to={isdashboard ? '/' : "/dashboard"} onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                         <FiHome size={20} />
                         {isdashboard ? 'Home' : 'Dashboard'}
                     </StyledNavLink>
@@ -105,19 +107,19 @@ const ProfileDropdown = () => {
                 {isdashboard && (
                     <>
                         <StyledMenuItem>
-                            <StyledNavLink to="/dashboard/history" onClick={handleClose}>
+                            <StyledNavLink to="/dashboard/history" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                                 <FiClock size={20} />
                                 History
                             </StyledNavLink>
                         </StyledMenuItem>
                         <StyledMenuItem>
-                            <StyledNavLink to="/dashboard/diary" onClick={handleClose}>
+                            <StyledNavLink to="/dashboard/diary" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                                 <FiBook size={20} />
                                 Diary
                             </StyledNavLink>
                         </StyledMenuItem>
                         <StyledMenuItem>
-                            <StyledNavLink to="/dashboard/setting" onClick={handleClose}>
+                            <StyledNavLink to="/dashboard/setting" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                                 <FiSettings size={20} />
                                 Settings
                             </StyledNavLink>
@@ -126,7 +128,7 @@ const ProfileDropdown = () => {
                 )}
                 {!isAnthroPage && (
                     <StyledMenuItem>
-                        <StyledNavLink to="/anthro/BMI" onClick={handleClose}>
+                        <StyledNavLink to="/anthro/BMI" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                             <FiUser size={20} />
                             Anthropometric Data
                         </StyledNavLink>
@@ -134,14 +136,14 @@ const ProfileDropdown = () => {
                 )}
                 {!isSearchPage && (
                     <StyledMenuItem>
-                        <StyledNavLink to="/search/food" onClick={handleClose}>
+                        <StyledNavLink to="/search/food" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                             <FiSearch size={20} />
                             Search Food
                         </StyledNavLink>
                     </StyledMenuItem>
                 )}
                 <Divider />
-                <StyledMenuItem onClick={logout}>
+                <StyledMenuItem onClick={logout} sx={{ fontFamily: 'Outfit, serif' }}>
                     <FiLogOut size={20} />
                     Logout
                 </StyledMenuItem>

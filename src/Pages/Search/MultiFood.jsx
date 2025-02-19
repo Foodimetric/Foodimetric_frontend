@@ -74,7 +74,7 @@ const MultiFood = () => {
     }, [setMultiFoodResults]);
 
     return (
-        <main className="py-8">
+        <main className="py-8 font-base-font">
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
 
@@ -83,7 +83,7 @@ const MultiFood = () => {
 
                     {/* Weight input */}
                     <div className="mt-4">
-                        <label htmlFor="weight" className="mb-2 block">
+                        <label htmlFor="weight" className="mb-2 block font-heading-font">
                             Weight (g):
                         </label>
                         <input
@@ -106,7 +106,7 @@ const MultiFood = () => {
                             type="button"
                             onClick={handleAddFood}
                             disabled={searchData.length >= 5}
-                            className="px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
+                            className="px-4 py-2 bg-green-500 text-white text-sm rounded hover:bg-green-600"
                         >
                             Add
                         </button>

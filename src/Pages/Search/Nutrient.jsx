@@ -57,12 +57,12 @@ const Nutrient = () => {
     }, [setNutrient]);
 
     return (
-        <main className="py-8">
+        <main className="py-8 font-base-font">
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
                     <SearchBar />
                     <div className="mb-4">
-                        <label htmlFor="nutrient" className="mb-2 block">
+                        <label htmlFor="nutrient" className="mb-2 block font-heading-font">
                             Nutrients:
                         </label>
                         <select
@@ -80,7 +80,7 @@ const Nutrient = () => {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="weight" className="mb-2 block">
+                        <label htmlFor="weight" className="mb-2 block font-heading-font">
                             Weight:
                         </label>
                         <input

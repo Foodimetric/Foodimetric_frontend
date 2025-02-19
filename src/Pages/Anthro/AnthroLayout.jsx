@@ -72,7 +72,7 @@ const AnthroLayout = () => {
                         <Outlet />
                     </div>
                 </div>
-                <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8">
+                <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8 font-base-font">
                     Formula: {formulaName}
                 </footer>
             </div>

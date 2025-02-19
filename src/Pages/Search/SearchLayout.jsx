@@ -36,7 +36,7 @@ const SearchLayout = () => {
                     <div className='px-8 pt-16 '>
                         <Outlet context={{ selectedDb }} />
                     </div>
-                    <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8">
+                    <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8 font-base-font">
                         Data sources: Nigeria Food Composition Table, 2017 & FAO West African Food Database, 2019
                     </footer>
                 </div>

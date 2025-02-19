@@ -116,6 +116,7 @@ const BMR = () => {
                         onChange={handleWeightChange}
                         fullWidth
                         margin="normal"
+                        sx={{ fontFamily: 'Outfit, serif' }}
                     />
                     <CustomTextField
                         label="Height (cm)"
@@ -124,6 +125,7 @@ const BMR = () => {
                         onChange={handleHeightChange}
                         fullWidth
                         margin="normal"
+                        sx={{ fontFamily: 'Outfit, serif' }}
                     />
                     <CustomTextField
                         label="Age (years)"
@@ -132,9 +134,10 @@ const BMR = () => {
                         onChange={handleAgeChange}
                         fullWidth
                         margin="normal"
+                        sx={{ fontFamily: 'Outfit, serif' }}
                     />
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
-                        <FormLabel component="legend">Gender</FormLabel>
+                        <FormLabel component="legend" sx={{ fontFamily: 'Outfit, serif' }}>Gender</FormLabel>
                         <RadioGroup
                             row
                             value={gender}
@@ -142,21 +145,21 @@ const BMR = () => {
                             aria-label="gender"
                             name="gender"
                         >
-                            <FormControlLabel value="male" control={<CustomRadio />} label="Male" />
-                            <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
+                            <FormControlLabel value="male" control={<CustomRadio />} label="Male" sx={{ fontFamily: 'Outfit, serif' }} />
+                            <FormControlLabel value="female" control={<CustomRadio />} label="Female" sx={{ fontFamily: 'Outfit, serif' }} />
                         </RadioGroup>
                     </Box>
                     <ProceedButton color="#ffba08" type="button" auth="authorized" onClick={handleProceed} />
                     {/* Animated BMR result */}
                     {bmr !== null && (
                         <animated.div style={animationProps}>
-                            <Typography variant="h6" sx={{ mt: 4 }}>
+                            <Typography variant="h6" sx={{ mt: 4, fontFamily: 'Itim, cursive' }}>
                                 Your BMR is: {bmr.toFixed(2)} calories/day
                             </Typography>
-                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray', fontFamily: 'Outfit, serif' }}>
                                 BMR Formula Used:
                             </Typography>
-                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555', fontFamily: 'Outfit, serif' }}>
                                 Revised Harris-Benedict Equation
                             </Typography>
                         </animated.div>

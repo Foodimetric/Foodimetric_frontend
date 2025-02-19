@@ -42,6 +42,7 @@ const ProceedButton = ({ color, onClick, width, disabled }) => {
         <StyledButton
             variant="contained"
             type="submit"
+            sx={{ fontFamily: 'Outfit, serif' }}
             customcolor={color}
             onClick={(e) => handleClick(e, onClick)}
             width={width}

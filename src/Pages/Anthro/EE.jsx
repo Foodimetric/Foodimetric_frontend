@@ -98,7 +98,7 @@ const EE = () => {
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">
                 <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Itim, cursive' }}>
                         Weight (kg)
                     </Typography>
                     <TextField
@@ -110,9 +110,10 @@ const EE = () => {
                         variant="outlined"
                         margin="normal"
                     />
-                    <Typography variant="body1">Current Weight: {weight} kg</Typography>
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit, serif' }}
+                    >Current Weight: {weight} kg</Typography>
 
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Itim, cursive' }}>
                         Height (cm)
                     </Typography>
                     <TextField
@@ -124,9 +125,10 @@ const EE = () => {
                         variant="outlined"
                         margin="normal"
                     />
-                    <Typography variant="body1">Current Height: {height} cm</Typography>
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit, serif' }}
+                    >Current Height: {height} cm</Typography>
 
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Itim, cursive' }}>
                         Age (years)
                     </Typography>
                     <TextField
@@ -138,7 +140,8 @@ const EE = () => {
                         variant="outlined"
                         margin="normal"
                     />
-                    <Typography variant="body1">Current Age: {age} years</Typography>
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit, serif' }}
+                    >Current Age: {age} years</Typography>
 
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
                         <FormLabel component="legend">Gender</FormLabel>
@@ -155,7 +158,7 @@ const EE = () => {
                     </Box>
 
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
-                        <FormLabel component="legend">Activity Level</FormLabel>
+                        <FormLabel component="legend" sx={{ fontFamily: 'Itim, cursive' }}>Activity Level</FormLabel>
                         <RadioGroup
                             row
                             value={activityLevel}
@@ -163,11 +166,11 @@ const EE = () => {
                             aria-label="activity level"
                             name="activity level"
                         >
-                            <FormControlLabel value={1.2} control={<CustomRadio />} label="Sedentary" />
-                            <FormControlLabel value={1.375} control={<CustomRadio />} label="Lightly Active" />
-                            <FormControlLabel value={1.55} control={<CustomRadio />} label="Moderately Active" />
-                            <FormControlLabel value={1.725} control={<CustomRadio />} label="Very Active" />
-                            <FormControlLabel value={1.9} control={<CustomRadio />} label="Extra Active" />
+                            <FormControlLabel value={1.2} control={<CustomRadio />} label="Sedentary" sx={{ fontFamily: 'Outfit, serif' }} />
+                            <FormControlLabel value={1.375} control={<CustomRadio />} label="Lightly Active" sx={{ fontFamily: 'Outfit, serif' }} />
+                            <FormControlLabel value={1.55} control={<CustomRadio />} label="Moderately Active" sx={{ fontFamily: 'Outfit, serif' }} />
+                            <FormControlLabel value={1.725} control={<CustomRadio />} label="Very Active" sx={{ fontFamily: 'Outfit, serif' }} />
+                            <FormControlLabel value={1.9} control={<CustomRadio />} label="Extra Active" sx={{ fontFamily: 'Outfit, serif' }} />
                         </RadioGroup>
                     </Box>
 
@@ -175,13 +178,13 @@ const EE = () => {
 
                     {tee !== null && (
                         <div>
-                            <Typography variant="h6" sx={{ mt: 4 }}>
+                            <Typography variant="h6" sx={{ mt: 4, fontFamily: 'Itim, cursive' }}>
                                 Your Total Energy Expenditure is: {tee.toFixed(2)} kcal/day
                             </Typography>
-                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray', fontFamily: 'Outfit, serif' }}>
                                 BMR Formula Used:
                             </Typography>
-                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555', fontFamily: 'Outfit, serif' }}>
                                 Mifflin-St Jeor Equation
                             </Typography>
                         </div>

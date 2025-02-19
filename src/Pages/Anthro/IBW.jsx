@@ -94,7 +94,7 @@ const IBW = () => {
                 <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
 
                     {/* Height Input */}
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Itim, cursive' }}>
                         Height (cm)
                     </Typography>
                     <TextField
@@ -104,11 +104,13 @@ const IBW = () => {
                         inputProps={{ min: 105, max: 400, step: 1 }}
                         sx={{ width: '100%', mt: 2 }}
                     />
-                    <Typography variant="body1">Current Height: {height} cm</Typography>
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit, serif' }}
+                    >Current Height: {height} cm</Typography>
 
                     {/* Gender Selection */}
                     <Box sx={{ textAlign: 'left', mt: 2 }}>
-                        <FormLabel component="legend">Gender</FormLabel>
+                        <FormLabel component="legend" sx={{ fontFamily: 'Outfit, serif' }}
+                        >Gender</FormLabel>
                         <RadioGroup
                             row
                             value={gender}
@@ -125,13 +127,13 @@ const IBW = () => {
                     <ProceedButton color="#ffba08" type="button" onClick={handleProceed} />
                     {ibw !== null && (
                         <div>
-                            <Typography variant="h6" sx={{ mt: 4 }}>
+                            <Typography variant="h6" sx={{ mt: 4, fontFamily: 'Itim, cursive' }}>
                                 Your Ideal Body Weight is: {ibw.toFixed(2)} kg
                             </Typography>
-                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray' }}>
+                            <Typography sx={{ mt: 2, fontSize: '1rem', color: 'gray', fontFamily: 'Outfit, serif' }}>
                                 BMR Formula Used:
                             </Typography>
-                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555' }}>
+                            <Typography sx={{ mt: 1, fontStyle: 'italic', color: '#555', fontFamily: 'Outfit, serif' }}>
                                 B. J. Devine Formula (1974)
                             </Typography>
                         </div>

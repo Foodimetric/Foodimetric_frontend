@@ -14,7 +14,7 @@ const SearchHeader = ({ title, setSelectedDb, selectedDb }) => {
 
 
     return (
-        <div className="fixed right-0 top-0 left-60 h-16 bg-white z-10">
+        <div className="fixed right-0 top-0 left-60 h-16 bg-white z-10 font-base-font">
             <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300 xs:px-1 md:px-8">
                 <h1 className="text-xl font-medium text-[#147e03] font-heading-font xs:text-base sm:text-xl">{title}</h1>
                 <label className={`flex items-center justify-center h-10 px-4 ml-auto xs:text-xs sm:text-sm xs:px-1 sm:px-4 text-sm font-medium rounded cursor-pointer space-x-1`}>

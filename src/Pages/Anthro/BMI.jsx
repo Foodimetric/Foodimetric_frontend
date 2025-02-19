@@ -194,16 +194,15 @@ const BMI = ({ islandingPage }) => {
                             textAlign: 'center',
                         }}
                     >
-                        <Typography className='font-heading-font' variant="h6">Weight (kg)</Typography>
+                        <Typography sx={{ fontFamily: 'Itim, cursive' }} variant="h6">Weight (kg)</Typography>
                         <TextField
                             type="number"
                             value={weight}
                             onChange={handleWeightChange}
                             inputProps={{ min: 10, max: 200, step: 1 }}
-                            sx={{ width: '100%', mt: 2 }}
-                            className='font-base-font'
+                            sx={{ width: '100%', mt: 2, fontFamily: 'Outfit, serif' }}
                         />
-                        <Typography variant="body1" sx={{ mt: 1 }} className='font-base-font'>
+                        <Typography variant="body1" sx={{ mt: 1, fontFamily: 'Outfit, serif' }} >
                             Current Weight: {weight} kg
                         </Typography>
                     </Box>
@@ -216,15 +215,15 @@ const BMI = ({ islandingPage }) => {
                             textAlign: 'center',
                         }}
                     >
-                        <Typography variant="h6">Height (m)</Typography>
+                        <Typography variant="h6" sx={{ fontFamily: 'Itim, cursive' }}>Height (m)</Typography>
                         <TextField
                             type="number"
                             value={height}
                             onChange={handleHeightChange}
                             inputProps={{ min: 1.0, max: 5.0, step: 0.1 }}
-                            sx={{ width: '100%', mt: 2 }}
+                            sx={{ width: '100%', mt: 2, fontFamily: 'Outfit, serif' }}
                         />
-                        <Typography variant="body1" sx={{ mt: 1 }}>
+                        <Typography variant="body1" sx={{ mt: 1, fontFamily: 'Outfit, serif' }}>
                             Current Height: {height} m
                         </Typography>
                     </Box>
@@ -254,11 +253,11 @@ const BMI = ({ islandingPage }) => {
                     >
                         <Typography
                             variant="h5"
-                            sx={{ mb: 1, fontWeight: 'bold' }}
+                            sx={{ mb: 1, fontWeight: 'bold', fontFamily: 'Itim, cursive' }}
                         >
                             Your BMI is: {bmi.toFixed(2)} Kgm²
                         </Typography>
-                        <Typography variant="subtitle1" sx={{ color: getBmiColor(bmi), mb: 2 }}>
+                        <Typography variant="subtitle1" sx={{ color: getBmiColor(bmi), mb: 2, fontFamily: 'Outfit, serif' }}>
                             Category: {getBmiCategory(bmi)}
                         </Typography>
 
@@ -293,7 +292,7 @@ const BMI = ({ islandingPage }) => {
                                     <text x="214" y="45" transform="rotate(42, 214, 45)">35</text>
                                     <text x="252" y="95" transform="rotate(72, 252, 95)">40</text>
                                 </g>
-                                <g style={{ fontSize: '14px' }}>
+                                <g style={{ fontSize: '14px', fontFamily: 'Itim, cursive' }}>
                                     <text><textPath xlinkHref="#curvetxt1">Underweight</textPath></text>
                                     <text><textPath xlinkHref="#curvetxt2">Normal</textPath></text>
                                     <text><textPath xlinkHref="#curvetxt3">Overweight</textPath></text>
@@ -302,13 +301,13 @@ const BMI = ({ islandingPage }) => {
                                 <line id="movingLine" x1="140" y1="140" x2="65" y2="140" stroke="#666" strokeWidth="2" markerEnd="url(#arrowhead)">
                                     <animateTransform ref={lineAnimationEl} id="lineAnimation" attributeName="transform" attributeType="XML" type="rotate" from="0 140 140" to="0 140 140" dur="1s" fill="freeze" repeatCount="1"></animateTransform>
                                 </line>
-                                <text x="67" y="120" style={{ fontSize: '26px', fontWeight: 'bold', color: '#000' }}>{`BMI = ${bmi.toFixed(2)}`}</text>
+                                <text x="67" y="120" style={{ fontSize: '26px', fontWeight: 'bold', color: '#000', fontFamily: 'Itim, cursive' }}>{`BMI = ${bmi.toFixed(2)}`}</text>
                             </g>
                         </svg>
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpenModal(false)}>Close</Button>
+                    <Button onClick={() => setOpenModal(false)} sx={{ fontFamily: 'Outfit, serif' }}>Close</Button>
                 </DialogActions>
             </Dialog>
         </main>
