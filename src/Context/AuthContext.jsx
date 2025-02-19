@@ -150,6 +150,7 @@ export const AuthProvider = ({ children }) => {
         if (Object.keys(newErrors).length === 0) {
             const adjustedFormValues = {
                 ...formValues,
+                email: formValues.email.toLowerCase(),
                 category: adjustedCategory
             };
             setLoading(true); // Start loading
