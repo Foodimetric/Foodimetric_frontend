@@ -52,6 +52,8 @@ export const Food = () => {
 
         console.log("we got details", details);
 
+        console.log(typeof details.FAT);
+
         // Reduce the details object, skipping excluded keys or null values
         const result = [
             ...Object.entries(details).reduce((acc, [key, value]) => {

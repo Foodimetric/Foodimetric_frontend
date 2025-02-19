@@ -4,7 +4,7 @@ const DashboardHeader = ({ title = "Dashboard" }) => {
     return (
         <header className="flex items-center justify-between bg-white px-6 py-4 w-full">
             {/* Page Title */}
-            <h1 className="text-2xl font-semibold text-[#147E03]">{title}</h1>
+            <h1 className="text-2xl font-semibold font-heading-font text-[#147E03]">{title}</h1>
 
             {/* Search Bar */}
             {/* <div className="relative flex-grow mx-6 hidden sm:block">

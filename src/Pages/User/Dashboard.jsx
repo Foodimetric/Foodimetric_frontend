@@ -35,20 +35,20 @@ function Dashboard() {
         <div className="col-span-12 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Diary Tracked</h3>
-                    <p className="text-xl font-semibold text-blue-600">{analytics?.totalFoodLogs || 0}</p>
+                    <h3 className="text-sm text-gray-600 font-heading-font">Diary Tracked</h3>
+                    <p className="text-xl font-semibold text-blue-600 font-base-font">{analytics?.totalFoodLogs || 0}</p>
                 </div>
                 <div className="p-4 bg-green-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Calculations</h3>
-                    <p className="text-xl font-semibold text-green-600">{analytics?.totalCalculations || 0}</p>
+                    <h3 className="text-sm text-gray-600 font-heading-font">Calculations</h3>
+                    <p className="text-xl font-semibold text-green-600 font-base-font">{analytics?.totalCalculations || 0}</p>
                 </div>
                 <div className="p-4 bg-yellow-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Most Used</h3>
-                    <p className="text-xl font-semibold text-yellow-600">{analytics?.mostUsedCalculator || 0}</p>
+                    <h3 className="text-sm text-gray-600 font-heading-font">Most Used</h3>
+                    <p className="text-xl font-semibold text-yellow-600 font-base-font">{analytics?.mostUsedCalculator || 0}</p>
                 </div>
                 <div className="p-4 bg-purple-100 rounded-lg shadow-md">
-                    <h3 className="text-sm text-gray-600">Usage</h3>
-                    <p className="text-xl font-semibold text-purple-600">{analytics?.platformUsage || 0}</p>
+                    <h3 className="text-sm text-gray-600 font-heading-font">Usage</h3>
+                    <p className="text-xl font-semibold text-purple-600 font-base-font">{analytics?.platformUsage || 0}</p>
                 </div>
             </div>
 
@@ -65,10 +65,10 @@ function Dashboard() {
                                 className="flex items-center justify-between p-4 bg-gray-50 border rounded-lg shadow-sm"
                             >
                                 <div>
-                                    <p className="text-sm font-medium text-gray-700">{meal.foodEaten}</p>
-                                    <p className="text-xs text-gray-500">{meal.time}</p>
+                                    <p className="text-sm font-medium text-gray-700 font-heading-font">{meal.foodEaten}</p>
+                                    <p className="text-xs text-gray-500 font-base-font">{meal.time}</p>
                                 </div>
-                                <div className="text-sm font-semibold text-gray-800">{meal.quantity} grams</div>
+                                <div className="text-sm font-semibold text-gray-800 font-heading-font">{meal.quantity} grams</div>
                             </div>
                         ))}
                 </div>
@@ -78,24 +78,24 @@ function Dashboard() {
                 <div className='w-full md:w-1/3'>
                     {/* Nutrition Quote of the Day */}
                     <div className="mt-8 p-6 bg-gray-50 border-t rounded-lg shadow-sm w-full h-fit">
-                        <h3 className="text-lg font-semibold text-gray-800">Nutrition Quote of the Day</h3>
-                        <p className="text-sm text-gray-600 mt-2 italic">
+                        <h3 className="text-lg font-semibold text-gray-800 font-heading-font">Nutrition Quote of the Day</h3>
+                        <p className="text-sm text-gray-600 mt-2 italic font-base-font">
                             "Let food be thy medicine and medicine be thy food." - Hippocrates
                         </p>
                     </div>
 
                     {/* chart, pie chart */}
                     <div className="mt-6 p-6 pb-12 bg-white border-t rounded-lg shadow-sm w-full h-80">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-4">Calculation Breakdown</h3>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4 font-heading-font">Calculation Breakdown</h3>
                         {analytics?.calculationBreakdown && analytics?.calculationBreakdown.length > 0 ? (
                             <Pie data={pieData} options={pieOptions} />
                         ) : (
-                            <p>No calculations performed yet.</p>
+                            <p className='font-base-font'>No calculations performed yet.</p>
                         )}
                     </div>
                     <div className="mt-6 p-6 bg-gray-50 border-t rounded-lg shadow-sm w-full h-fit">
-                        <h3 className="text-lg font-semibold text-gray-800">What’s Next?</h3>
-                        <p className="text-sm text-gray-600 mt-2">
+                        <h3 className="text-lg font-semibold text-gray-800 font-heading-font">What’s Next?</h3>
+                        <p className="text-sm text-gray-600 mt-2 font-base-font">
                             Stay tuned for upcoming features like personalized AI insights and advanced nutrient tracking!
                         </p>
                     </div>

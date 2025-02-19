@@ -7,7 +7,7 @@ const DashboardNav = ({ isExpanded, toggleSidebar }) => {
     const { logout } = useAuth()
     return (
         <nav
-            className={`flex flex-col h-full bg-white shadow-md transition-all duration-300 ${isExpanded ? 'w-64' : 'w-16'}`}
+            className={`flex flex-col font-base-font h-full bg-white shadow-md transition-all duration-300 ${isExpanded ? 'w-64' : 'w-16'}`}
         >
             {/* Logo Section */}
             <div className="flex items-center justify-between py-4 px-4">

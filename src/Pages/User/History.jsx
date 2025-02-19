@@ -21,7 +21,7 @@ const HistoryPage = () => {
 
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="max-w-6xl mx-auto p-6 font-base-font">
             {/* Responsive Table */}
             <div className="overflow-x-auto bg-white shadow-xl rounded-lg">
                 <table className="min-w-full table-auto text-sm text-gray-700">

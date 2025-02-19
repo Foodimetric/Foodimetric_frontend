@@ -148,7 +148,7 @@ const BMI = ({ islandingPage }) => {
 
 
     return (
-        <main className="py-8">
+        <main className="py-8 font-base-font">
             <div
                 className={`bg-white p-8 ${islandingPage
                     ? 'h-auto flex flex-col lg:flex-row items-center border-b border-b-[#f7891470] pb-16'
@@ -194,15 +194,16 @@ const BMI = ({ islandingPage }) => {
                             textAlign: 'center',
                         }}
                     >
-                        <Typography variant="h6">Weight (kg)</Typography>
+                        <Typography className='font-heading-font' variant="h6">Weight (kg)</Typography>
                         <TextField
                             type="number"
                             value={weight}
                             onChange={handleWeightChange}
                             inputProps={{ min: 10, max: 200, step: 1 }}
                             sx={{ width: '100%', mt: 2 }}
+                            className='font-base-font'
                         />
-                        <Typography variant="body1" sx={{ mt: 1 }}>
+                        <Typography variant="body1" sx={{ mt: 1 }} className='font-base-font'>
                             Current Weight: {weight} kg
                         </Typography>
                     </Box>

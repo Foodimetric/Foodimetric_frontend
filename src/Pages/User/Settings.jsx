@@ -184,7 +184,7 @@ const UserSettings = () => {
 
 
     return (
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
+        <div className="font-base-font flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
             {/* Profile Picture Section */}
             <div className="flex flex-col items-center w-1/4 xs:w-1/2 md:w-1/4">
                 {profileDetails.profilePicture ? (

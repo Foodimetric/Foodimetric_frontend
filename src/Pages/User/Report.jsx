@@ -192,7 +192,7 @@ const NutritionReportCard = () => {
     ];
 
     return (
-        <div className="flex items-center flex-wrap gap-4">
+        <div className="flex items-center flex-wrap gap-4 font-base-font">
             {reportData.map((report, index) => (
                 <div
                     key={index}
