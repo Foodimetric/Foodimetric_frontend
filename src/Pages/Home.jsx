@@ -97,7 +97,7 @@ export const Home = () => {
                                                         </p>
                                                     </div>
                                                     <div data-swiper-parallax="500" className="slide-btn">
-                                                        <Link to="/login" className="btn theme-btn bg-[#147e03]">Explore more</Link>
+                                                        <Link to="/anthro/BMI" className="btn theme-btn bg-[#147e03]">Explore more</Link>
                                                     </div>
                                                 </div>
                                             </div>

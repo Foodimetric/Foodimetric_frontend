@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useOutletContext } from 'react-router-dom'; /
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import SearchBar from '../../Components/Nav/SearchBar';
 import ResultsTable from '../../Components/Modals/Table'
+import { cleanAndConvertFoodData } from '../../Utils/key';
 
 export const Food = () => {
     const { data, west_data } = useFoodContext();
@@ -37,7 +38,7 @@ export const Food = () => {
             foundFood = west_data?.find(foodItem => foodItem?.foodName === selectedFood);
         }
 
-        const excludeKeys = ['Id', 'Code', 'REFID'];
+        const excludeKeys = ['Id', 'Code', 'REFID', "FOOD CODE", 'EDIBLE1'];
 
         // If no food is found, return an empty array
         if (!foundFood) return [];
@@ -50,13 +51,11 @@ export const Food = () => {
             return [];
         }
 
-        console.log("we got details", details);
-
-        console.log(typeof details.FAT);
+        const processedDetails = selectedDb === "west_africa" ? cleanAndConvertFoodData(details) : details;
 
         // Reduce the details object, skipping excluded keys or null values
         const result = [
-            ...Object.entries(details).reduce((acc, [key, value]) => {
+            ...Object.entries(processedDetails).reduce((acc, [key, value]) => {
                 if (excludeKeys.includes(key) || value === null) return acc;
 
                 let processedValue = value;
@@ -83,6 +82,8 @@ export const Food = () => {
     const handleWeightChange = (e) => {
         setWeight(e.target.value); // Update weight state as the user types
     };
+
+    console.log("we are looking for slected db", selectedDb);
 
     return (
         <main className="py-8">

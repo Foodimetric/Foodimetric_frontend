@@ -21,18 +21,22 @@ export const FoodProvider = ({ children }) => {
     // If you have a multiSearchFood utility or a way to store results:
     const [multiFoodResults, setMultiFoodResults] = useState([]);
     const [nutrient, setNutrient] = useState(null);
+    const [searchData, setSearchData] = useState([]);
+
 
     // Add any other states or functions here
     const value = {
         data: data ? data.payload : [],
         isLoading,
         error,
+        searchData,
         selectedFood,
         setSelectedFood,
         multiFoodResults,
         setMultiFoodResults,
         nutrient,
         setNutrient,
+        setSearchData,
         west_data: westAfricaData ? westAfricaData.payload : [],
         westAfricaError,
         westAfricaLoading,

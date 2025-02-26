@@ -7,11 +7,10 @@ import ResultsTable from '../../Components/Modals/Table';
 import { useNavigate, useOutletContext } from 'react-router';
 
 const MultiFood = () => {
-    const { data, west_data, selectedFood, multiFoodResults, setMultiFoodResults, setSelectedFood } = useFoodContext();
+    const { data, west_data, searchData, setSearchData, selectedFood, multiFoodResults, setMultiFoodResults, setSelectedFood } = useFoodContext();
     const navigate = useNavigate();
     const { selectedDb } = useOutletContext();
     // This array holds multiple foods the user adds
-    const [searchData, setSearchData] = useState([]);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [total, settotal] = useState();
 
@@ -34,13 +33,13 @@ const MultiFood = () => {
             ]);
             setSelectedFood(null)
         },
-        [selectedFood, setSelectedFood, weight]
+        [selectedFood, setSearchData, setSelectedFood, weight]
     );
 
     // Remove a selected item by index
     const removeItem = useCallback((index) => {
         setSearchData((prev) => prev.filter((_, i) => i !== index));
-    }, []);
+    }, [setSearchData]);
 
     // Handle final submission
     const handleSubmit = (e) => {
@@ -73,13 +72,18 @@ const MultiFood = () => {
         setMultiFoodResults([])
     }, [setMultiFoodResults]);
 
+    useEffect(() => {
+        setSearchData([])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <main className="py-8 font-base-font">
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
 
                     {/* The SearchBar handles all searching & item selection internally */}
-                    <SearchBar />
+                    <SearchBar selectedDb={selectedDb} />
 
                     {/* Weight input */}
                     <div className="mt-4">

@@ -4,24 +4,26 @@ import SearchBar from '../../Components/Nav/SearchBar';
 // import Tooltip from '@mui/material/Tooltip';
 import { useFoodContext } from '../../Context/Food/FoodContext';
 import { multiNutrientSearch } from '../../Utils/key';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate, useOutletContext } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import ResultsTable from '../../Components/Modals/Table';
 
 const MultiNutrient = () => {
     const {
         data,
+        west_data,
         nutrient,
+        searchData, setSearchData,
     } = useFoodContext();
 
     const [searchParams] = useSearchParams();
     const location = useLocation();
+    const { selectedDb } = useOutletContext();
     const navigate = useNavigate();
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedNutrient, setSelectedNutrient] = useState('');
     const [weight, setWeight] = useState('');
-    const [searchData, setSearchData] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [multiNutrientResult, setMultiNutrientResult] = useState();
 
@@ -73,17 +75,21 @@ const MultiNutrient = () => {
     // onProceed or handle form submit: do multi-nutrient search
     const handleProceed = (e) => {
         setFormSubmitted(true);
-        const result = multiNutrientSearch(searchData, data);
+        const result = multiNutrientSearch(searchData, selectedDb === "west_africa" ? west_data : data, selectedDb);
         setMultiNutrientResult(result);
         setSearchData([]);
     };
 
+    useEffect(() => {
+        setSearchData([])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     // ---- Render ----
     return (
         <main className="py-8 font-base-font">
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
-                    <SearchBar />
+                    <SearchBar selectedDb={selectedDb} />
                     {/* Nutrient Selector */}
                     <div className="mb-4">
                         <label htmlFor="nutrient" className="mb-2 block font-heading-font">

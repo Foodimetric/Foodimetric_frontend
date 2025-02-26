@@ -46,7 +46,7 @@ const ProceedButton = ({ color, onClick, width, disabled }) => {
             customcolor={color}
             onClick={(e) => handleClick(e, onClick)}
             width={width}
-            disabled={loading} // Disable if loading or explicitly disabled
+            disabled={loading || disabled} // Disable if loading or explicitly disabled
         >
             {loading ? (
                 <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>

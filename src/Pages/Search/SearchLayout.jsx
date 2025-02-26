@@ -37,7 +37,9 @@ const SearchLayout = () => {
                         <Outlet context={{ selectedDb }} />
                     </div>
                     <footer className="bg-gray-200 text-center text-gray-700 text-sm py-4 mt-8 font-base-font">
-                        Data sources: Nigeria Food Composition Table, 2017 & FAO West African Food Database, 2019
+                        Data sources: {selectedDb === "west_africa"
+                            ? "FAO West African Food Database, 2019"
+                            : "Nigeria Food Composition Table, 2017"}
                     </footer>
                 </div>
             </div>

@@ -23,7 +23,7 @@ const SearchBar = ({ selectedDb }) => {
 
     // Optional logic that checks if the route is /search/nutrient, then sets the nutrient keys
     const handleSearch = () => {
-        const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames'];
+        const excludeKeys = ['Id', 'Code', 'REFID', 'Category', 'LocalName', 'EnglishName', 'ScientificName', 'FrenchNames', 'FOOD CODE', 'FOOD NAME IN ENGLISH', 'EDIBLE1'];
         if (location.pathname === '/search/nutrient' || location.pathname === '/search/multi-nutrient') {
             let foundFood;
 
@@ -42,7 +42,7 @@ const SearchBar = ({ selectedDb }) => {
 
             // Extract nutrients from the correct structure
             const nutrientOptions = Object.entries(selectedDb === "nigeria" ? foundFood.details || {} : foundFood.nutrients || {})
-                .filter(([key]) => !excludeKeys.includes(key))
+                .filter(([key, value]) => !excludeKeys.includes(key) && parseFloat(value) !== 0)
                 .map(([key]) => key);
 
             setNutrient(nutrientOptions);
@@ -80,6 +80,8 @@ const SearchBar = ({ selectedDb }) => {
             );
         }
     };
+
+    console.log("the selected db is what", selectedDb);
 
     return (
         <div className='font-base-font'>

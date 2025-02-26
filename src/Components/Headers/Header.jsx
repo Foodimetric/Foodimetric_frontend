@@ -79,7 +79,7 @@ const Header = () => {
                                     <li><a href="Faq.html">FAQ</a></li>
                                 </ul>
                             </li>
-                            <li><NavLink to="/search/food" >Search</NavLink>
+                            <li><NavLink to="/search/food" >Food Search</NavLink>
                                 <ul className="dl-submenu">
                                     <li><NavLink to="/search/nutrient">Nutrient</NavLink></li>
                                     <li><NavLink to="/search/food">Food</NavLink></li>
@@ -188,7 +188,7 @@ const Header = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Search</button>
+                                hover:before:opacity-100 hover:before:visible">Food Search</button>
                             <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">
