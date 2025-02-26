@@ -35,6 +35,7 @@ const HeaderLink = () => {
                             <ul className="dl-submenu">
                                 <li><Link to="/search/nutrient">Nutrient</Link></li>
                                 <li><Link to="/search/food">Food</Link></li>
+                                <li><Link to="/dashboard/diary">Food Diary</Link></li>
                                 <li><Link to="/search/multi-nutrient">Multi-Nutrient</Link></li>
                                 <li><Link to="/search/multi-food">Multi-Food</Link></li>
                             </ul>
@@ -140,6 +141,13 @@ const HeaderLink = () => {
                                         after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                         after:content after:bg-[#ea7c08] after:transition-all font-base-font
                                         hover:after:w-[50%]">Food</Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/diary" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize
+                                        text-[#0a272c] group relative overflow-hidden font-bold transition-all
+                                        after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
+                                        after:content after:bg-[#ea7c08] after:transition-all font-base-font
+                                        hover:after:w-[50%]">Food Diary</Link>
                             </li>
                             <li>
                                 <Link to="/search/nutrient" className="text-[16px] lg:text-[16px] inline-block  px-[15px] capitalize

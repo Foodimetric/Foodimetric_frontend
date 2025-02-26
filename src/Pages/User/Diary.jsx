@@ -128,7 +128,7 @@ const FoodDiary = () => {
                     {/* Additional Info */}
                     <div>
                         <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700">
-                            Additional Info
+                            Additional info (describe the quantity/size of foods in detail, eating location, e.t.c)
                         </label>
                         <textarea
                             id="additionalInfo"
@@ -137,6 +137,7 @@ const FoodDiary = () => {
                             onChange={handleInputChange}
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
                             rows="3"
+                            placeholder='Additional info (describe the quantity/size of foods in detail, eating location, e.t.c)'
                         />
                     </div>
                 </div>
