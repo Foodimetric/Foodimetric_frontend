@@ -1,15 +1,61 @@
-import React, { useState } from "react";
-import { useAuth } from '../../Context/AuthContext'
+import React, { useState, useEffect } from "react";
+import { openDB } from "idb";
+import { useAuth } from '../../Context/AuthContext';
 
 const ChatComponent = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
+  // Open IndexedDB and create a messages store
+  const openDatabase = async () => {
+    return openDB("NutriBotDB", 1, {
+      upgrade(db) {
+        if (!db.objectStoreNames.contains("messages")) {
+          db.createObjectStore("messages", { keyPath: "id", autoIncrement: true });
+        }
+      },
+    });
+  };
+
+  // Save messages to IndexedDB
+  const saveMessageToDB = async (message) => {
+    const db = await openDatabase();
+    const tx = db.transaction("messages", "readwrite");
+    const store = tx.objectStore("messages");
+    await store.put(message);
+    await tx.done;
+  };
+
+  // Load messages from IndexedDB
+  const loadMessages = async () => {
+    const db = await openDatabase();
+    const tx = db.transaction("messages", "readonly");
+    const store = tx.objectStore("messages");
+    const allMessages = await store.getAll();
+    setMessages(allMessages);
+  };
+
+  // Clear IndexedDB (optional - useful if user logs out)
+  const clearMessages = async () => {
+    const db = await openDatabase();
+    const tx = db.transaction("messages", "readwrite");
+    const store = tx.objectStore("messages");
+    await store.clear();
+    setMessages([]);
+  };
+
+  // Fetch messages from IndexedDB when component mounts
+  useEffect(() => {
+    loadMessages();
+    // eslint-disable-next-line
+  }, []);
+
   const handleSendMessage = async () => {
     if (input.trim()) {
       const newMessage = { sender: "user", text: input, user_id: user._id };
-      setMessages((prev) => [...prev, newMessage]); // Add user message
+      setMessages((prev) => [...prev, newMessage]);
+      await saveMessageToDB(newMessage); // Save to IndexedDB
 
       // Add a loading message for AI response
       const loadingMessage = { sender: "bot", text: "Thinking...", loading: true };
@@ -24,27 +70,28 @@ const ChatComponent = () => {
 
         const data = await response.json();
 
+        const botMessage = { sender: "bot", text: data.response };
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.loading ? { sender: "bot", text: data.response } : msg
+            msg.loading ? botMessage : msg
           )
         );
+        await saveMessageToDB(botMessage); // Save bot response
       } catch (error) {
         console.error("Network error:", error);
 
+        const errorMessage = { sender: "bot", text: "Network error! Please try again.", error: true };
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.loading
-              ? { sender: "bot", text: "Network error! Please try again.", error: true }
-              : msg
+            msg.loading ? errorMessage : msg
           )
         );
+        await saveMessageToDB(errorMessage);
       }
 
       setInput("");
     }
   };
-
   return (
     <div className="relative">
       <input type="checkbox" id="chat-toggle" className="hidden" />
