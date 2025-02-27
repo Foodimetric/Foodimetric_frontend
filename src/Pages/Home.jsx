@@ -10,38 +10,8 @@ import { Autoplay } from 'swiper/modules';
 import StatSection from '../Components/sections/Stat';
 import BMI from './Anthro/BMI'
 import { data } from '../Utils/db';
-// import { FOODIMETRIC_HOST_URL } from '../Utils/host';
-
 
 export const Home = () => {
-    // const handleAddWestData = async () => {
-    //     try {
-    //         // Make a GET request to the add-west endpoint
-    //         const response = await fetch(`${FOODIMETRIC_HOST_URL}/add-west`, {
-    //             method: "GET",
-    //         });
-
-    //         // Parse the JSON response
-    //         const data = await response.json();
-
-    //         // Log success or handle error response
-    //         if (response.ok) {
-    //             console.log(data.message); // Success message
-    //             alert("West Africa food data successfully added to the database.");
-    //         } else {
-    //             console.error("Error:", data.message);
-    //             alert(`Failed to add data: ${data.message}`);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error making request:", error.message);
-    //         alert("An error occurred while adding West Africa food data.");
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     handleAddWestData()
-    // }, []);
-
     return (
         <>
             {/* <div className="preloader">
@@ -279,12 +249,12 @@ export const Home = () => {
                         >
                             <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                    <div className="basis-[28%]">
+                                    {/* <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-1.jpg" alt=""
                                             className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
-                                    </div>
+                                    </div> */}
                                     <div
-                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px]  before:absolute 
+                                        className="p-[60px] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px]  before:absolute 
                                             before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
                                             before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
                                             before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
@@ -301,12 +271,12 @@ export const Home = () => {
                             </SwiperSlide>
                             <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                    <div className="basis-[28%]">
+                                    {/* <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-2.jpg" alt=""
                                             className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
-                                    </div>
+                                    </div> */}
                                     <div
-                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
+                                        className="p-[60px] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
                         before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
                          before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
                          before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">
@@ -326,12 +296,12 @@ export const Home = () => {
                             </SwiperSlide>
                             <SwiperSlide className='md:px-12 sm:px-6'>
                                 <div className="md:flex bg-[#F78914] rounded-[20px] items-center block">
-                                    <div className="basis-[28%]">
+                                    {/* <div className="basis-[28%]">
                                         <img src="assets/images/testimonial/img-3.jpg" alt=""
                                             className="rounded-tl-[20px] rounded-bl-[20px] md:rounded-bl-[0] md:rounded-tr-[20px] md:h-[400px] md:object-cover" />
-                                    </div>
+                                    </div> */}
                                     <div
-                                        className="p-[60px] basis-[72%] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
+                                        className="p-[60px] relative z-10 xl:p-5 md:py-7 sm:p-[20px_10px] before:absolute 
                                         before:left-1/2 before:top-1/2 before:content-['\f10a'] before:font-['Flaticon'] before:-z-10
                                         before:text-[260px] before:text-white before:rotate-[180deg] before:transform-[-50%_-50%] 
                                         before:translate-x-[-50%] before:translate-y-[-50%] before:opacity-[.1] sm:before:top-[40%] sm:before:text-[200px]">

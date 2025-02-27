@@ -388,6 +388,7 @@ body {
 }
 
 @media (max-width: 991px) {
+
   .theme-btn,
   .view-cart-btn {
     font-size: 18px;
@@ -395,6 +396,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   .theme-btn,
   .view-cart-btn {
     padding: 8px 18px;
@@ -497,6 +499,7 @@ body {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
+
 .wpo-team-img img {
   width: 100%;
   transform: scale(1);
@@ -684,6 +687,7 @@ input[type="number"] {
 
 .testimonial-slider .owl-stage-outer {
   margin: -15px;
+
   @media (max-width: 991px) {
     padding-bottom: 0px;
   }
@@ -710,6 +714,7 @@ input[type="number"] {
     display: none;
   }
 }
+
 .testimonial-slider button:hover {
   background: #f78914;
   color: #fff;
@@ -724,6 +729,7 @@ input[type="number"] {
     display: none;
   }
 }
+
 .testimonial-slider:hover button {
   visibility: visible;
   opacity: 1;
@@ -799,6 +805,7 @@ input[type="number"] {
 }
 
 @media (max-width: 991px) {
+
   .wpo-service-slider-two .owl-nav .owl-prev,
   .wpo-service-slider-two .owl-nav .owl-next {
     display: none;
@@ -817,6 +824,7 @@ input[type="number"] {
 }
 
 @media (max-width: 575px) {
+
   .wpo-service-slider-two .owl-nav .owl-prev:hover .fi:before,
   .wpo-service-slider-two .owl-nav .owl-next:hover .fi:before {
     display: none;
@@ -953,6 +961,7 @@ input[type="number"] {
 }
 
 @media (max-width: 1700px) {
+
   .project-slider-s2 .owl-nav button,
   .project-slider-s2 .owl-nav button {
     right: 170px;
@@ -969,6 +978,7 @@ input[type="number"] {
 }
 
 @media (max-width: 1700px) {
+
   .project-slider-s2 .owl-nav button.owl-next,
   .project-slider-s3 .owl-nav button.owl-next {
     right: 100px;
@@ -1037,6 +1047,7 @@ input[type="number"] {
 }
 
 @media (max-width: 991px) {
+
   .wpo-testimonial-slide .slick-prev,
   .wpo-testimonial-slide .slick-next {
     display: none !important;
@@ -1185,61 +1196,61 @@ input[type="number"] {
   overflow: visible;
 }
 
-.hero-slider .slide-caption > div {
+.hero-slider .slide-caption>div {
   overflow: hidden;
 }
 
-.hero-slider .slide-caption > div * {
+.hero-slider .slide-caption>div * {
   -webkit-animation: fadeOutLeft 1.5s both;
   animation: fadeOutLeft 1.5s both;
 }
 
-.hero-slider .slide-caption > .slider-pic * {
+.hero-slider .slide-caption>.slider-pic * {
   -webkit-animation: fadeOutRight 1.5s both;
   animation: fadeOutRight 1.5s both;
 }
 
-.hero-slider .slide-caption > div.slide-title * {
+.hero-slider .slide-caption>div.slide-title * {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
 
-.hero-slider .slide-caption > div.slide-subtitle * {
+.hero-slider .slide-caption>div.slide-subtitle * {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
 
-.hero-slider .slide-caption > div.btns * {
+.hero-slider .slide-caption>div.btns * {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
 
-.hero-slider .slick-current .slide-caption > div * {
+.hero-slider .slick-current .slide-caption>div * {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
 }
 
-.hero-slider .slick-current .slide-caption > .slider-pic * {
+.hero-slider .slick-current .slide-caption>.slider-pic * {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
 }
 
-.hero-slider .slick-current .slide-caption > div.slide-title * {
+.hero-slider .slick-current .slide-caption>div.slide-title * {
   -webkit-animation-delay: 0.5s;
   animation-delay: 0.5s;
 }
 
-.hero-slider .slick-current .slide-caption > div.slide-subtitle * {
+.hero-slider .slick-current .slide-caption>div.slide-subtitle * {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
 
-.hero-slider .slick-current .slide-caption > div.btns * {
+.hero-slider .slick-current .slide-caption>div.btns * {
   -webkit-animation-delay: 1.5s;
   animation-delay: 1.5s;
 }
 
-.hero-slider .slick-current .slide-caption > div.slider-pic * {
+.hero-slider .slick-current .slide-caption>div.slider-pic * {
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
@@ -1559,14 +1570,14 @@ input[type="number"] {
   margin-top: 35px;
 }
 
-.shop-single-slider .slider-nav > i {
+.shop-single-slider .slider-nav>i {
   position: absolute;
   top: 50%;
   left: 0;
   z-index: 100;
 }
 
-.shop-single-slider .slider-nav > i:hover {
+.shop-single-slider .slider-nav>i:hover {
   cursor: pointer;
 }
 
@@ -1596,27 +1607,27 @@ input[type="number"] {
   display: none;
 }
 
-.product-option .product-row > div {
+.product-option .product-row>div {
   height: 35px;
   display: inline-block;
 }
 
-.product-option .product-row > div + div {
+.product-option .product-row>div+div {
   margin-left: 15px;
 }
 
-.product-option .product-row > div + div .theme-btn {
+.product-option .product-row>div+div .theme-btn {
   border-radius: 0;
   border-width: 1px;
   height: 40px;
   padding: 0 18px;
 }
 
-.product-option .product-row > div:first-child {
+.product-option .product-row>div:first-child {
   width: 85px;
 }
 
-.product-option .product-row > div:last-child .theme-btn:hover {
+.product-option .product-row>div:last-child .theme-btn:hover {
   background: #f78914;
   border-color: #f78914;
   color: #fff;
@@ -1654,7 +1665,7 @@ input[type="number"] {
   font-size: 15px;
 }
 
-.product-option .product-row > div:last-child .theme-btn {
+.product-option .product-row>div:last-child .theme-btn {
   background-color: #fff;
   font-size: 18px;
   color: #6e6e6e;
@@ -1670,7 +1681,7 @@ input[type="number"] {
   padding-left: 10px;
 }
 
-.product-option .input-group > .form-control {
+.product-option .input-group>.form-control {
   position: relative;
   flex: 1 1 auto;
   width: 1%;
@@ -1762,12 +1773,12 @@ input[type="number"] {
   color: #ddd;
 }
 
-.give-rating:not(:hover) label input:checked ~ .icon,
-.give-rating:hover label:hover input ~ .icon {
+.give-rating:not(:hover) label input:checked~.icon,
+.give-rating:hover label:hover input~.icon {
   color: #ffd400;
 }
 
-.give-rating label input:focus:not(:checked) ~ .icon:last-child {
+.give-rating label input:focus:not(:checked)~.icon:last-child {
   color: #ddd;
   text-shadow: 0 0 5px #ffd400;
 }
@@ -1945,6 +1956,7 @@ label.error {
 }
 
 @media (max-width: 767px) {
+
   #success,
   #c-success,
   #c-error,
@@ -1972,8 +1984,7 @@ label.error {
   perspective-origin: 50% 200%;
 }
 
-.dl-menuwrapper:first-child {
-}
+.dl-menuwrapper:first-child {}
 
 .dl-menuwrapper button {
   background: #f78914;
@@ -2031,13 +2042,13 @@ label.error {
   background: rgba(255, 248, 213, 0.1);
 }
 
-.dl-menuwrapper li.dl-back > a {
+.dl-menuwrapper li.dl-back>a {
   padding-left: 30px;
   background: rgba(0, 0, 0, 0.1);
 }
 
 .dl-menuwrapper li.dl-back:after,
-.dl-menuwrapper li > a:not(:only-child):after {
+.dl-menuwrapper li>a:not(:only-child):after {
   position: absolute;
   top: 0;
   line-height: 50px;
@@ -2054,7 +2065,7 @@ label.error {
   transform: rotate(180deg);
 }
 
-.dl-menuwrapper li > a:after {
+.dl-menuwrapper li>a:after {
   right: 10px;
   color: rgba(0, 0, 0, 0.15);
 }
@@ -2095,21 +2106,21 @@ The opened submenu will get the class "dl-subviewopen".
 All this is done for any sub-level being entered.
 */
 .dl-menu.dl-subview li,
-.dl-menu.dl-subview li.dl-subviewopen > a,
-.dl-menu.dl-subview li.dl-subview > a {
+.dl-menu.dl-subview li.dl-subviewopen>a,
+.dl-menu.dl-subview li.dl-subview>a {
   display: none;
 }
 
 .dl-menu.dl-subview li.dl-subview,
 .dl-menu.dl-subview li.dl-subview .dl-submenu,
 .dl-menu.dl-subview li.dl-subviewopen,
-.dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
-.dl-menu.dl-subview li.dl-subviewopen > .dl-submenu > li {
+.dl-menu.dl-subview li.dl-subviewopen>.dl-submenu,
+.dl-menu.dl-subview li.dl-subviewopen>.dl-submenu>li {
   display: block;
 }
 
 /* Dynamically added submenu outside of the menu context */
-.dl-menuwrapper > .dl-submenu {
+.dl-menuwrapper>.dl-submenu {
   position: absolute;
   width: 100%;
   top: 50px;
@@ -2145,8 +2156,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut1 {
-  0% {
-  }
+  0% {}
 
   50% {
     -webkit-transform: translateZ(-250px) rotateY(30deg);
@@ -2164,8 +2174,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut2 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateX(-100%);
@@ -2174,8 +2183,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut3 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(300px);
@@ -2184,8 +2192,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut4 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(-300px);
@@ -2194,8 +2201,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut5 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateY(40%);
@@ -2204,8 +2210,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut1 {
-  0% {
-  }
+  0% {}
 
   50% {
     -webkit-transform: translateZ(-250px) rotateY(30deg);
@@ -2226,8 +2231,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut2 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateX(-100%);
@@ -2237,8 +2241,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut3 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(300px);
@@ -2248,8 +2251,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut4 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(-300px);
@@ -2259,8 +2261,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut5 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateY(40%);
@@ -2435,27 +2436,27 @@ All this is done for any sub-level being entered.
   }
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-1 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-1 {
   -webkit-animation: SubMenuAnimIn1 0.4s ease;
   animation: SubMenuAnimIn1 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-2 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-2 {
   -webkit-animation: SubMenuAnimIn2 0.3s ease-in-out;
   animation: SubMenuAnimIn2 0.3s ease-in-out;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-3 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-3 {
   -webkit-animation: SubMenuAnimIn3 0.4s ease;
   animation: SubMenuAnimIn3 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-4 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-4 {
   -webkit-animation: SubMenuAnimIn4 0.4s ease;
   animation: SubMenuAnimIn4 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-5 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-5 {
   -webkit-animation: SubMenuAnimIn5 0.4s ease;
   animation: SubMenuAnimIn5 0.4s ease;
 }
@@ -2590,27 +2591,27 @@ All this is done for any sub-level being entered.
   }
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-1 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-1 {
   -webkit-animation: SubMenuAnimOut1 0.4s ease;
   animation: SubMenuAnimOut1 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-2 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-2 {
   -webkit-animation: SubMenuAnimOut2 0.3s ease-in-out;
   animation: SubMenuAnimOut2 0.3s ease-in-out;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-3 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-3 {
   -webkit-animation: SubMenuAnimOut3 0.4s ease;
   animation: SubMenuAnimOut3 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-4 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-4 {
   -webkit-animation: SubMenuAnimOut4 0.4s ease;
   animation: SubMenuAnimOut4 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-5 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-5 {
   -webkit-animation: SubMenuAnimOut5 0.4s ease;
   animation: SubMenuAnimOut5 0.4s ease;
 }
@@ -2761,11 +2762,11 @@ All this is done for any sub-level being entered.
   display: none;
 }
 
-.no-js .dl-menuwrapper li > a:not(:only-child) {
+.no-js .dl-menuwrapper li>a:not(:only-child) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.no-js .dl-menuwrapper li > a:not(:only-child):after {
+.no-js .dl-menuwrapper li>a:not(:only-child):after {
   content: "";
 }
 
@@ -2890,7 +2891,7 @@ All this is done for any sub-level being entered.
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.dl-menuwrapper li > a:not(:only-child):after {
+.dl-menuwrapper li>a:not(:only-child):after {
   font-family: "themify";
   content: "î˜š";
   font-size: 10px;
@@ -3002,13 +3003,13 @@ button.dl-trigger {
   background: rgba(255, 248, 213, 0.1);
 }
 
-.dl-menuwrapper li.dl-back > a {
+.dl-menuwrapper li.dl-back>a {
   padding-left: 30px;
   background: rgba(0, 0, 0, 0.1);
 }
 
 .dl-menuwrapper li.dl-back:after,
-.dl-menuwrapper li > a:not(:only-child):after {
+.dl-menuwrapper li>a:not(:only-child):after {
   position: absolute;
   top: 0;
   line-height: 50px;
@@ -3025,7 +3026,7 @@ button.dl-trigger {
   transform: rotate(180deg);
 }
 
-.dl-menuwrapper li > a:after {
+.dl-menuwrapper li>a:after {
   right: 10px;
   color: rgba(0, 0, 0, 0.15);
 }
@@ -3069,21 +3070,21 @@ The opened submenu will get the class "dl-subviewopen".
 All this is done for any sub-level being entered.
 */
 .dl-menu.dl-subview li,
-.dl-menu.dl-subview li.dl-subviewopen > a,
-.dl-menu.dl-subview li.dl-subview > a {
+.dl-menu.dl-subview li.dl-subviewopen>a,
+.dl-menu.dl-subview li.dl-subview>a {
   display: none;
 }
 
 .dl-menu.dl-subview li.dl-subview,
 .dl-menu.dl-subview li.dl-subview .dl-submenu,
 .dl-menu.dl-subview li.dl-subviewopen,
-.dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
-.dl-menu.dl-subview li.dl-subviewopen > .dl-submenu > li {
+.dl-menu.dl-subview li.dl-subviewopen>.dl-submenu,
+.dl-menu.dl-subview li.dl-subviewopen>.dl-submenu>li {
   display: block;
 }
 
 /* Dynamically added submenu outside of the menu context */
-.dl-menuwrapper > .dl-submenu {
+.dl-menuwrapper>.dl-submenu {
   position: absolute;
   width: 300px;
   top: 70px;
@@ -3119,8 +3120,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut1 {
-  0% {
-  }
+  0% {}
 
   50% {
     -webkit-transform: translateZ(-250px) rotateY(30deg);
@@ -3138,8 +3138,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut2 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateX(-100%);
@@ -3148,8 +3147,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut3 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(300px);
@@ -3158,8 +3156,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut4 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(-300px);
@@ -3168,8 +3165,7 @@ All this is done for any sub-level being entered.
 }
 
 @-webkit-keyframes MenuAnimOut5 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateY(40%);
@@ -3178,8 +3174,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut1 {
-  0% {
-  }
+  0% {}
 
   50% {
     -webkit-transform: translateZ(-250px) rotateY(30deg);
@@ -3200,8 +3195,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut2 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateX(-100%);
@@ -3211,8 +3205,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut3 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(300px);
@@ -3222,8 +3215,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut4 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateZ(-300px);
@@ -3233,8 +3225,7 @@ All this is done for any sub-level being entered.
 }
 
 @keyframes MenuAnimOut5 {
-  0% {
-  }
+  0% {}
 
   100% {
     -webkit-transform: translateY(40%);
@@ -3409,27 +3400,27 @@ All this is done for any sub-level being entered.
   }
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-1 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-1 {
   -webkit-animation: SubMenuAnimIn1 0.4s ease;
   animation: SubMenuAnimIn1 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-2 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-2 {
   -webkit-animation: SubMenuAnimIn2 0.3s ease-in-out;
   animation: SubMenuAnimIn2 0.3s ease-in-out;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-3 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-3 {
   -webkit-animation: SubMenuAnimIn3 0.4s ease;
   animation: SubMenuAnimIn3 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-4 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-4 {
   -webkit-animation: SubMenuAnimIn4 0.4s ease;
   animation: SubMenuAnimIn4 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-in-5 {
+.dl-menuwrapper>.dl-submenu.dl-animate-in-5 {
   -webkit-animation: SubMenuAnimIn5 0.4s ease;
   animation: SubMenuAnimIn5 0.4s ease;
 }
@@ -3564,27 +3555,27 @@ All this is done for any sub-level being entered.
   }
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-1 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-1 {
   -webkit-animation: SubMenuAnimOut1 0.4s ease;
   animation: SubMenuAnimOut1 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-2 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-2 {
   -webkit-animation: SubMenuAnimOut2 0.3s ease-in-out;
   animation: SubMenuAnimOut2 0.3s ease-in-out;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-3 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-3 {
   -webkit-animation: SubMenuAnimOut3 0.4s ease;
   animation: SubMenuAnimOut3 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-4 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-4 {
   -webkit-animation: SubMenuAnimOut4 0.4s ease;
   animation: SubMenuAnimOut4 0.4s ease;
 }
 
-.dl-menuwrapper > .dl-submenu.dl-animate-out-5 {
+.dl-menuwrapper>.dl-submenu.dl-animate-out-5 {
   -webkit-animation: SubMenuAnimOut5 0.4s ease;
   animation: SubMenuAnimOut5 0.4s ease;
 }
@@ -3735,11 +3726,11 @@ All this is done for any sub-level being entered.
   display: none;
 }
 
-.no-js .dl-menuwrapper li > a:not(:only-child) {
+.no-js .dl-menuwrapper li>a:not(:only-child) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.no-js .dl-menuwrapper li > a:not(:only-child):after {
+.no-js .dl-menuwrapper li>a:not(:only-child):after {
   content: "";
 }
 
@@ -3924,7 +3915,7 @@ All this is done for any sub-level being entered.
 }
 
 #stat {
-  background-image: url("../public/assets/images/slider/slider-3.jpg");
+  background-image: url("../public/assets/images/slider/slider-3.webp");
 }
 
 #testimonial {
@@ -3932,26 +3923,27 @@ All this is done for any sub-level being entered.
 }
 
 .register {
-  background-image: url("../public/assets/images/service-single/1.jpg");
+  background-image: url("../public/assets/images/service/community.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .login {
-  background-image: url("../public/assets/images/service/img-3.jpg");
+  background-image: url("../public/assets/images/service/happy.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .bg-hero {
-  background-image: url("../public/assets/images/slider/slide-4.jpg");
+  background-image: url("../public/assets/images/slider/slider-1.jpg");
 }
 
 .bg-hero-1 {
-  background-image: url("../public/assets/images/slider/slide-1.jpg");
+  background-image: url("../public/assets/images/slider/slide-3.jpg");
 }
+
 .bg-hero-3 {
-  background-image: url("../public/assets/images/slider/slider-3.jpg");
+  background-image: url("../public/assets/images/slider/slider-4.jpg");
 }

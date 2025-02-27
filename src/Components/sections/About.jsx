@@ -38,7 +38,7 @@ const About = ({ padding }) => {
                         <div className="md:pl-12 pl-0 md:mt-14">
                             <div className="relative z-10 w-full p-5 col:p-2 border border-[#f7891470] ">
                                 <div>
-                                    <img src="assets/images/about/ab.jpg" alt="" className="w-full" />
+                                    <img src="assets/images/about/ab.webp" alt="" className="w-full" />
                                 </div>
                             </div>
                         </div>
