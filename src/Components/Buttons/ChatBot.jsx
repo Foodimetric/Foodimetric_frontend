@@ -18,46 +18,54 @@ const ChatComponent = () => {
     });
   };
 
-  // Save messages to IndexedDB
+  // Save messages to IndexedDB with timestamp
   const saveMessageToDB = async (message) => {
     const db = await openDatabase();
     const tx = db.transaction("messages", "readwrite");
     const store = tx.objectStore("messages");
-    await store.put(message);
+    await store.put({ ...message, timestamp: Date.now() }); // Add timestamp
     await tx.done;
   };
 
-  // Load messages from IndexedDB
+  // Load messages from IndexedDB and delete old ones
   const loadMessages = async () => {
     const db = await openDatabase();
     const tx = db.transaction("messages", "readonly");
     const store = tx.objectStore("messages");
     const allMessages = await store.getAll();
-    setMessages(allMessages);
+
+    // Filter out messages older than 7 days
+    const now = Date.now();
+    const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000;
+    const recentMessages = allMessages.filter(msg => msg.timestamp >= sevenDaysAgo);
+
+    setMessages(recentMessages);
+
+    // Remove old messages from IndexedDB
+    const deleteTx = db.transaction("messages", "readwrite");
+    const deleteStore = deleteTx.objectStore("messages");
+    for (const msg of allMessages) {
+      if (msg.timestamp < sevenDaysAgo) {
+        await deleteStore.delete(msg.id);
+      }
+    }
+    await deleteTx.done;
   };
 
-  // Clear IndexedDB (optional - useful if user logs out)
-  const clearMessages = async () => {
-    const db = await openDatabase();
-    const tx = db.transaction("messages", "readwrite");
-    const store = tx.objectStore("messages");
-    await store.clear();
-    setMessages([]);
-  };
-
-  // Fetch messages from IndexedDB when component mounts
+  // Periodically clear messages older than 7 days
   useEffect(() => {
     loadMessages();
-    // eslint-disable-next-line
+    const interval = setInterval(loadMessages, 60 * 60 * 1000); // Run every hour
+    return () => clearInterval(interval);
+    // eslint-disable-next-line 
   }, []);
 
   const handleSendMessage = async () => {
     if (input.trim()) {
       const newMessage = { sender: "user", text: input, user_id: user._id };
       setMessages((prev) => [...prev, newMessage]);
-      await saveMessageToDB(newMessage); // Save to IndexedDB
+      await saveMessageToDB(newMessage);
 
-      // Add a loading message for AI response
       const loadingMessage = { sender: "bot", text: "Thinking...", loading: true };
       setMessages((prev) => [...prev, loadingMessage]);
 
@@ -69,22 +77,18 @@ const ChatComponent = () => {
         });
 
         const data = await response.json();
-
         const botMessage = { sender: "bot", text: data.response };
+
         setMessages((prev) =>
-          prev.map((msg) =>
-            msg.loading ? botMessage : msg
-          )
+          prev.map((msg) => (msg.loading ? botMessage : msg))
         );
-        await saveMessageToDB(botMessage); // Save bot response
+        await saveMessageToDB(botMessage);
       } catch (error) {
         console.error("Network error:", error);
-
         const errorMessage = { sender: "bot", text: "Network error! Please try again.", error: true };
+
         setMessages((prev) =>
-          prev.map((msg) =>
-            msg.loading ? errorMessage : msg
-          )
+          prev.map((msg) => (msg.loading ? errorMessage : msg))
         );
         await saveMessageToDB(errorMessage);
       }
@@ -92,6 +96,7 @@ const ChatComponent = () => {
       setInput("");
     }
   };
+
   return (
     <div className="relative">
       <input type="checkbox" id="chat-toggle" className="hidden" />
