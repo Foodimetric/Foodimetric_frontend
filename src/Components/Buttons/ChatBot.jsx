@@ -1,28 +1,81 @@
-import React, { useState, useEffect } from "react";
-import { io } from "socket.io-client";
-
-const socket = io("https://foodimetric-backend.onrender.com");
+import React, { useState } from "react";
+// import { io } from "socket.io-client";
+import { useAuth } from '../../Context/AuthContext'
+// const socket = io("https://foodimetric-backend.onrender.com");
 
 const ChatComponent = () => {
+  // const { user } = useAuth()
+  // const [messages, setMessages] = useState([]);
+  // const [input, setInput] = useState("");
+
+  // useEffect(() => {
+  //   // Listen for incoming messages from the server
+  //   socket.on("chat_response", (data) => {
+  //     setMessages((prev) => [...prev, { sender: "bot", text: data.text }]);
+  //   });
+
+  //   return () => {
+  //     socket.off("chat_response"); // Cleanup listener on unmount
+  //   };
+  // }, []);
+
+  // const handleSendMessage = () => {
+  //   if (input.trim()) {
+  //     const newMessage = { sender: "user", text: input };
+
+  //     setMessages([...messages, newMessage]); // Update frontend UI instantly
+  //     socket.emit("chat_message", { text: input, user_id: user._id }); // Send message to backend
+  //     setInput("");
+  //   }
+  // };
+
+  const { user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  useEffect(() => {
-    // Listen for incoming messages from the server
-    socket.on("chat_response", (data) => {
-      setMessages((prev) => [...prev, { sender: "bot", text: data.text }]);
-    });
 
-    return () => {
-      socket.off("chat_response"); // Cleanup listener on unmount
-    };
-  }, []);
+  // Fetch messages from the server periodically (polling)
+  // useEffect(() => {
+  //   const fetchMessages = async () => {
+  //     try {
+  //       const response = await fetch("https://foodimetric-backend.onrender.com/chat");
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setMessages(data);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching messages:", error);
+  //     }
+  //   };
 
-  const handleSendMessage = () => {
+  //   fetchMessages();
+  //   const interval = setInterval(fetchMessages, 3000); // Poll every 3 seconds
+
+  //   return () => clearInterval(interval); // Cleanup on unmount
+  // }, []);
+
+  // Send a message to the backend
+  const handleSendMessage = async () => {
     if (input.trim()) {
-      const newMessage = { sender: "user", text: input };
+      const newMessage = { sender: "user", text: input, user_id: user._id };
 
-      setMessages([...messages, newMessage]); // Update frontend UI instantly
-      socket.emit("chat_message", { text: input, user_id: "user123" }); // Send message to backend
+      setMessages((prev) => [...prev, newMessage]); // Update UI immediately
+
+      try {
+        const response = await fetch("https://foodimetric-backend.onrender.com/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newMessage),
+        });
+
+        console.log("this is ai response", response);
+
+        if (!response.ok) {
+          console.error("Message failed to send");
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+      }
+
       setInput("");
     }
   };
