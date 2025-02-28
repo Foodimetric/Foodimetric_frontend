@@ -73,6 +73,7 @@ input[type="password"]::-ms-reveal {
 .chat-body {
   flex: 1;
   padding: 1rem;
+  max-height: 100%;
   overflow-y: auto;
   background: #f9f9f9;
 }

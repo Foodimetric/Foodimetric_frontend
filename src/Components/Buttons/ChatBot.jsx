@@ -63,6 +63,7 @@ const ChatComponent = () => {
   const handleSendMessage = async () => {
     if (input.trim()) {
       const newMessage = { sender: "user", text: input, user_id: user._id };
+      setInput("");
       setMessages((prev) => [...prev, newMessage]);
       await saveMessageToDB(newMessage);
 
@@ -93,7 +94,6 @@ const ChatComponent = () => {
         await saveMessageToDB(errorMessage);
       }
 
-      setInput("");
     }
   };
 

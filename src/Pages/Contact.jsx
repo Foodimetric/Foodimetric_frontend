@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLink from '../Components/Headers/HeaderLink';
 import Footer from '../Components/Footer/Footer';
-
+import axios from 'axios';
+import { FOODIMETRIC_HOST_URL } from '../Utils/host';
+import showToast from '../Utils/toast';
 
 const Contact = () => {
+    const [loading, setLoading] = useState(false); // Track loading state
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        address: "",
+        service: "",
+        note: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true); // Show loading animation
+        try {
+            const response = await axios.post(`${FOODIMETRIC_HOST_URL}/users/contact`, formData);
+            setFormData({ name: "", email: "", address: "", service: "", note: "" });
+            showToast('success', "Message sent successfully!");
+            console.log(response);
+        } catch (error) {
+            showToast('error', "Error sending message. Please try again.");
+        } finally {
+            setLoading(false); // Hide loading animation
+        }
+    };
+
+
     return (
         <>
             <HeaderLink />
@@ -59,57 +90,62 @@ const Contact = () => {
                             <div className="p-[50px] bg-white mb-[-125px] relative z-10
                             shadow-[0px_1px_15px_0px_rgba(62,65,159,0.1)] sm:p-7 sm:pt-[50px]">
                                 <form method="post" className="contact-validation-active mx-[-15px] overflow-hidden"
-                                    id="contact-form-main">
+                                    id="contact-form-main" onSubmit={handleSubmit}>
                                     <div
                                         className="w-[calc(50%-30px)] float-left mx-[15px] mb-[25px] col:float-none col:w-[calc(100%-25px)]">
                                         <input type="text" className="form-control w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px]
                                         text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none
                                          focus:border-[#F78914] focus:bg-transparent " name="name" id="name"
-                                            placeholder="Your Name*" />
+                                            placeholder="Your Name*" value={formData.name} onChange={handleChange} />
                                     </div>
                                     <div
                                         className="w-[calc(50%-30px)] float-left mx-[15px] mb-[25px] col:float-none col:w-[calc(100%-25px)]">
                                         <input type="email"
                                             className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px] text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent"
-                                            name="email" id="email" placeholder="Your Email*" />
+                                            name="email" id="email" placeholder="Your Email*" value={formData.email} onChange={handleChange} />
                                     </div>
                                     <div
                                         className="w-[calc(50%-30px)] float-left mx-[15px] mb-[25px] col:float-none col:w-[calc(100%-25px)]">
                                         <input type="text"
                                             className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px] text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent"
-                                            name="adress" id="adress" placeholder="Adress" />
+                                            name="address" id="address" placeholder="Address" value={formData.address} onChange={handleChange} />
                                     </div>
                                     <div
                                         className="w-[calc(50%-30px)] float-left mx-[15px] mb-[25px] col:float-none col:w-[calc(100%-25px)]">
                                         <select name="service"
-                                            className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px]  text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent">
+                                            value={formData.service} onChange={handleChange} className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px]  text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent">
                                             <option disabled="disabled" selected="">Services</option>
                                             <option>Food Search</option>
-                                            <option>Anthropometric</option>
+                                            <option>Nutrition Stat</option>
                                             <option>Article</option>
+                                            <option>Nutri-Bot</option>
                                             <option>Partnership</option>
-                                            <option>Others</option>
                                         </select>
                                     </div>
                                     <div className="w-[calc-(100%-25px)] mb-[25px] mx-[15px]">
                                         <textarea
                                             className="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[180px]  text-[#212529] transition-all pt-[15px] pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#F78914] focus:bg-transparent"
-                                            name="note" id="note" placeholder="Message..."></textarea>
+                                            value={formData.note} onChange={handleChange} name="note" id="note" placeholder="Message..."></textarea>
                                     </div>
                                     <div className="text-center w-full mb-[10px]">
                                         <button type="submit" className="bg-[#F78914] text-[#fff] inline-block py-[12px] px-[22px] border
                                         hover:text-[#F78914]
                                         border-transparent ] capitalize transition-all hover:bg-transparent
-                                        hover:border-[#F78914]">Get
-                                            in Touch</button>
-                                        <div id="loader">
+                                        hover:border-[#F78914]">
+                                            {loading ? (
+                                                <div className="animate-spin h-5 w-5 border-2 text-[#F78914] border-white border-t-transparent rounded-full"></div>
+                                            ) : (
+                                                "Get in Touch"
+                                            )}
+                                        </button>
+                                        {/* <div id="loader">
                                             <i className="ti-reload"></i>
-                                        </div>
+                                        </div> */}
                                     </div>
-                                    <div className="clearfix error-handling-messages">
+                                    {/* <div className="clearfix error-handling-messages">
                                         <div id="success">Thank you</div>
                                         <div id="error"> Error occurred while sending email. Please try again later. </div>
-                                    </div>
+                                    </div> */}
                                 </form>
                             </div>
                         </div>
