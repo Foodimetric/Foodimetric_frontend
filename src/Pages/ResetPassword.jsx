@@ -40,6 +40,7 @@ const Reset = () => {
     return (
         <main>
             <div className="page-wrapper">
+                <title>Forgot Password? Reset Your Foodimetric Account Securely</title>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">

@@ -27,6 +27,7 @@ export const Home = () => {
             </div> */}
             <Header />
             <main>
+                <title>Foodimetric: AI-Powered Nutrition Tool for Smart Eating</title>
                 <div className="relative mt-2">
                     <section className="bg-[#131313] w-full h-[900px]  lg:h-[680px]
                  md:h-[600px] sm:h-[500px]  relative z-[1] overflow-hidden">

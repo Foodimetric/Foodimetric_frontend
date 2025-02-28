@@ -81,6 +81,7 @@ const Login = () => {
     return (
         <main>
             <div className="page-wrapper">
+                <title>Login to Foodimetric - Access Your Personalized Nutrition Hub</title>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">

@@ -12,6 +12,7 @@ const Register = () => {
     return (
         <main>
             <div className="page-wrapper">
+                <title>Sign Up for Foodimetric - Your Smart Nutrition Companion</title>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">
