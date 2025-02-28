@@ -30,7 +30,6 @@ export const UserProvider = ({ children }) => {
             }
 
             const data = await response.json();
-            console.log("cal history", data);
             setCalculations(data.payload.reverse());
         } catch (err) {
             setError(err.message);
@@ -105,8 +104,8 @@ export const UserProvider = ({ children }) => {
                 throw new Error('Failed to save food entry');
             }
 
-            const responseData = await response.json(); // Optional, to handle any response data
-            console.log('Food entry saved:', responseData);
+            await response.json(); // Optional, to handle any response data
+            // console.log('Food entry saved:', responseData);
             fetchFoodEntries()
             // Optionally, reset form fields or provide feedback
             showToast('success', 'Food entry saved successfully');
@@ -172,7 +171,6 @@ export const UserProvider = ({ children }) => {
         if (!user || !user.token) return; // Ensure user is logged in
 
         try {
-            console.log("who called");
             const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/platform/analytics`, {
                 method: "GET",
                 headers: {

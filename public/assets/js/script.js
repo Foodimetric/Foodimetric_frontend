@@ -502,18 +502,18 @@
         });
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         var counter = 1;
         var number = $('#number');
         var increaseButton = $('#increase');
         var decreaseButton = $('#decrease');
 
-        increaseButton.on('click', function() {
+        increaseButton.on('click', function () {
             counter++;
             number.val(counter);
         });
 
-        decreaseButton.on('click', function() {
+        decreaseButton.on('click', function () {
             if (counter > 0) {
                 counter--;
             }
@@ -812,18 +812,18 @@
             nextArrow: '<i class="nav-btn nav-btn-rt ti-arrow-right"></i>',
 
             responsive: [{
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 3,
-                        infinite: true
-                    }
-                },
-                {
-                    breakpoint: 400,
-                    settings: {
-                        slidesToShow: 2
-                    }
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 3,
+                    infinite: true
                 }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 2
+                }
+            }
             ]
 
         });
@@ -863,7 +863,7 @@
     /*------------------------------------------
         = BACK TO TOP BTN SETTING
     -------------------------------------------*/
-    $("body").append("<a href='#' class='back-to-top'><i class='ti-arrow-up'></i></a>");
+    $("body").append("<a href='#' title='back-to-top' class='back-to-top'><i class='ti-arrow-up'></i></a>");
 
     function toggleBackToTopBtn() {
         var amountScrolled = 1000;

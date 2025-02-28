@@ -37,7 +37,7 @@ const Login = () => {
                 },
             });
             const data = await response.json();
-            console.log("data from login", data);
+            // console.log("data from login", data);
 
 
             if (response.ok) {
@@ -68,12 +68,12 @@ const Login = () => {
                 }
             } else {
                 localStorage.setItem("isAuth", "false");
-                console.error('Login failed:', data);
+                // console.error('Login failed:', data);
                 showToast('error', `${data.message}`);
             }
         } catch (error) {
             localStorage.setItem("isAuth", "false");
-            console.error('Error:', error);
+            // console.error('Error:', error);
             showToast('error', 'An error occurred. Please try again.');
         } finally {
             setLoading(false); // Stop loading after request

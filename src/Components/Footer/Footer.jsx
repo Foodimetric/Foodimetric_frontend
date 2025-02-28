@@ -28,7 +28,7 @@ const Footer = () => {
             });
 
             const result = await response.json();
-            console.log("result", result);
+            // console.log("result", result);
 
 
             if (response.ok) {
@@ -59,7 +59,7 @@ const Footer = () => {
                                         rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
-                                      hover:bg-[#F78914]" href="# ">
+                                      hover:bg-[#F78914]" title="facebook">
                                         <i className="ti-facebook"></i>
                                     </Link>
                                 </li>
@@ -68,7 +68,7 @@ const Footer = () => {
                                         rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-center rounded-[50%]
                                       text-[18px] transition-all-all
-                                      hover:bg-[#F78914]">
+                                      hover:bg-[#F78914]" title='x'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18" fill="white">
                                             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
                                         </svg>
@@ -79,7 +79,7 @@ const Footer = () => {
                                         rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
-                                      hover:bg-[#F78914]">
+                                      hover:bg-[#F78914]" title='instagram'>
                                         <i className="ti-instagram"></i>
                                     </Link>
                                 </li>
@@ -88,7 +88,7 @@ const Footer = () => {
                                         rel="noopener noreferrer" className="text-white w-[36px] h-[36px] leading-[40px]
                                      bg-[rgba(255,255,255,0.1)] block text-center rounded-[50%]
                                       text-[18px] transition-all-all
-                                      hover:bg-[#F78914]">
+                                      hover:bg-[#F78914]" title='linkedin'>
                                         <i className="ti-linkedin"></i>
                                     </Link>
                                 </li>
@@ -108,7 +108,7 @@ const Footer = () => {
                                         </Link>
                                     </li>
                                     <li className="relative z-[1] py-[6px]">
-                                        <Link to="/educate" className="text-[16px] font-heading-font transition-all-all text-white 
+                                        <Link to="/educate" title='educate' className="text-[16px] font-heading-font transition-all-all text-white 
                                            duration-300 hover:text-[#F78914]">
                                             Education
                                         </Link>
@@ -172,6 +172,7 @@ const Footer = () => {
                                 <div className="absolute right-[5px] top-[-17px] translate-y-1/2">
                                     <button
                                         type="submit"
+                                        title='submit'
                                         className="bg-[#F78914] border-0 outline-0 text-white w-[40px] h-[45px] leading-[45px] 
                     transition-all rounded-[5px] flex items-center justify-center"
                                         disabled={loading} // Disable button while loading

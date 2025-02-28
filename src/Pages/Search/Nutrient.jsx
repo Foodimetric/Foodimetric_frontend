@@ -25,7 +25,7 @@ const Nutrient = () => {
     const handleWeightChange = (e) => {
         setWeight(e.target.value);
     };
-    console.log("selected nutrient", selectedNutrient);
+    // console.log("selected nutrient", selectedNutrient);
 
 
     const handleProceed = useCallback(() => {
@@ -46,7 +46,7 @@ const Nutrient = () => {
             foundFood = west_data?.find(foodItem => foodItem?.foodName === searchQuery);
         }
 
-        console.log("found the nutrient", foundFood);
+        // console.log("found the nutrient", foundFood);
 
         if (foundFood && selectedNutrient) {
             const data_parse = selectedDb === "west_africa" ? foundFood?.nutrients || {} : foundFood?.details || {};
@@ -75,7 +75,7 @@ const Nutrient = () => {
             };
             setResult([newResult]);
         } else {
-            console.log('Food not found in the data.');
+            // console.log('Food not found in the data.');
         }
 
         setWeight('');

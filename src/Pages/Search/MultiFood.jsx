@@ -48,14 +48,14 @@ const MultiFood = () => {
 
         // If you have a multiSearchFood function:
         const result = multiSearchFood(searchData, selectedDb === 'nigeria' ? data : west_data, selectedDb);
-        console.log("result", result);
+        // console.log("result", result);
 
         // Map over the result to calculate and modify values as needed
         const processedResult = result.map((item) => {
             return Object.entries(item).filter(([key, value]) => value !== null).map(([key, value]) => {
                 let displayValue = value;
                 if (typeof value === 'number') {
-                    console.log(weight, parseFloat(weight));
+                    // console.log(weight, parseFloat(weight));
                     displayValue = ((parseFloat(value) * parseFloat(item.WEIGHT)) / 100).toFixed(2).toString();
                 }
                 return { key, value: displayValue };

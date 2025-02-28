@@ -186,9 +186,9 @@ export const Home = () => {
                                                 className="w-full rounded-full transform-all scale-100 transition group-hover:scale-110" />
                                         </div>
                                         <div>
-                                            <h4 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">
-                                                {item.title}</h4>
-                                            <a href={item.link} target="_blank"
+                                            <h6 className="font-normal text-xl text-center mb-5 sm:text-lg font-heading-font">
+                                                {item.title}</h6>
+                                            <a href={item.link} target="_blank" title={item.title}
                                                 rel="noopener noreferrer" className="block w-16 h-16 leading-[64px] border border-[#F78914] bg-transparent
                                                 mx-auto mt-2 rounded-[50%] transition-all hover:bg-[#F78914] hover:text-white">
                                                 <i className="ti-arrow-right"></i>

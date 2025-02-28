@@ -92,8 +92,8 @@ const BMR = () => {
                 throw new Error(`Error: ${response.statusText}`);
             }
 
-            const data = await response.json();
-            console.log("Calculation saved successfully:", data);
+            await response.json();
+            // console.log("Calculation saved successfully:", data);
         } catch (error) {
             console.error("Error saving calculation:", error.message);
         }

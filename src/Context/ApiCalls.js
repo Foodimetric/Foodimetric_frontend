@@ -20,7 +20,7 @@ class AuthService {
             if (!response.ok) throw new Error(data.message || "Request failed");
             return data;
         } catch (error) {
-            console.error(`AuthService error: ${error.message}`);
+            // console.error(`AuthService error: ${error.message}`);
             throw error;
         }
     }

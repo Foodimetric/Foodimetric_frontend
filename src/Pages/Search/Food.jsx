@@ -27,7 +27,6 @@ export const Food = () => {
     }, [location.search]); // Trigger the effect when the URL changes
 
     const handleProceed = () => {
-        console.log("who called bayi");
 
         let foundFood;
 
@@ -48,7 +47,6 @@ export const Food = () => {
         // Ensure weight is a valid number before proceeding
         const parsedWeight = parseFloat(weight);
         if (isNaN(parsedWeight) || parsedWeight <= 0) {
-            console.log('Invalid weight');
             return [];
         }
 
@@ -76,7 +74,7 @@ export const Food = () => {
         setWeight(0);
         navigate({ pathname: window.location.pathname, search: '' });
 
-        console.log("result", result);
+        // console.log("result", result);
     };
 
 
@@ -84,7 +82,7 @@ export const Food = () => {
         setWeight(e.target.value); // Update weight state as the user types
     };
 
-    console.log("we are looking for slected db", selectedDb);
+    // console.log("we are looking for slected db", selectedDb);
 
     return (
         <main className="py-8">

@@ -91,7 +91,7 @@ const UserSettings = () => {
             sessionStorage.clear();
             window.location.href = '/login'
         } catch (error) {
-            console.error("Error:", error.message);
+            // console.error("Error:", error.message);
             showToast('error', error.message);
         } finally {
             setLoading(false);
@@ -173,15 +173,12 @@ const UserSettings = () => {
     ];
 
     const getProfessionLabel = (value) => {
-        console.log("value", value);
+        // console.log("value", value);
 
         const prof = profession.find((p) => p.value === value);
         return prof ? prof.label : "Unknown"; // Default to "Unknown" if no match is found
     };
 
-    console.log("profile", profileDetails);
-
-    console.log(user);
 
 
     return (

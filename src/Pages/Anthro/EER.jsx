@@ -97,7 +97,7 @@ const EER = () => {
         alert('Proceed button clicked');
     };
 
-    console.log(eer);
+    // console.log(eer);
     return (
         <main className="py-8">
             <div className="bg-white p-8 min-h-screen">

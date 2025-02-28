@@ -31,7 +31,7 @@ function Dashboard() {
         },
     };
 
-    console.log(foodEntries);
+    // console.log(foodEntries);
     return (
         <div className="col-span-12 w-full">
             <Helmet>

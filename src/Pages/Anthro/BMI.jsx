@@ -90,14 +90,14 @@ const BMI = ({ islandingPage }) => {
         const slope = (rotationAngles[rotationAngles.length - 1] - rotationAngles[0]) / (bmiValues[bmiValues.length - 1] - bmiValues[0]);
         const yIntercept = rotationAngles[0] - slope * bmiValues[0];
 
-        console.log("three", slope, _bmi, yIntercept);
+        // console.log("three", slope, _bmi, yIntercept);
 
         // Calculate the rotation angle using linear interpolation
         const rotationAngle = slope * _bmi + yIntercept;
 
-        console.log("rotation", rotationAngle);
+        // console.log("rotation", rotationAngle);
 
-        console.log('node', lineAnimationEl);
+        // console.log('node', lineAnimationEl);
 
         lineAnimationEl.current.setAttribute('to', rotationAngle + ' 140 140');
         lineAnimationEl.current.beginElement();
@@ -133,8 +133,8 @@ const BMI = ({ islandingPage }) => {
                 throw new Error(`Error: ${response.statusText}`);
             }
 
-            const data = await response.json();
-            console.log("Calculation saved successfully:", data);
+            await response.json();
+            // console.log("Calculation saved successfully:", data);
         } catch (error) {
             console.error("Error saving calculation:", error.message);
         }
@@ -194,12 +194,14 @@ const BMI = ({ islandingPage }) => {
                             textAlign: 'center',
                         }}
                     >
-                        <Typography sx={{ fontFamily: 'Itim, cursive' }} variant="h6">Weight (kg)</Typography>
+                        <Typography id="weight-label" sx={{ fontFamily: 'Itim, cursive' }} variant="h5">
+                            Weight (kg)
+                        </Typography>
                         <TextField
                             type="number"
                             value={weight}
                             onChange={handleWeightChange}
-                            inputProps={{ min: 10, max: 200, step: 1 }}
+                            inputProps={{ min: 10, max: 200, step: 1, 'aria-labelledby': 'weight-label' }}
                             sx={{ width: '100%', mt: 2, fontFamily: 'Outfit, serif' }}
                         />
                         <Typography variant="body1" sx={{ mt: 1, fontFamily: 'Outfit, serif' }} >
@@ -215,12 +217,12 @@ const BMI = ({ islandingPage }) => {
                             textAlign: 'center',
                         }}
                     >
-                        <Typography variant="h6" sx={{ fontFamily: 'Itim, cursive' }}>Height (m)</Typography>
+                        <Typography variant="h5" id="height-label" sx={{ fontFamily: 'Itim, cursive' }}>Height (m)</Typography>
                         <TextField
                             type="number"
                             value={height}
                             onChange={handleHeightChange}
-                            inputProps={{ min: 1.0, max: 5.0, step: 0.1 }}
+                            inputProps={{ min: 1.0, max: 5.0, step: 0.1, 'aria-labelledby': 'height-label' }}
                             sx={{ width: '100%', mt: 2, fontFamily: 'Outfit, serif' }}
                         />
                         <Typography variant="body1" sx={{ mt: 1, fontFamily: 'Outfit, serif' }}>

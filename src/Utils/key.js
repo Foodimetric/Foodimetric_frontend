@@ -82,7 +82,7 @@ export function multiNutrientSearch(searchData, data, selectedDb) {
         if (matchingDataItem) {
             const matchingKey = findKeyByWord(selectedDb === "west_africa" ? matchingDataItem.nutrients : matchingDataItem.details, query.nutrient);
             if (matchingKey && query.nutrient) {
-                console.log('matching', matchingDataItem);
+                // console.log('matching', matchingDataItem);
                 const unit = extractUnit(query.nutrient)
                 searchResults.push({
                     foodName: query.foodName,

@@ -6,7 +6,7 @@ import DashboardLayout from '../Pages/User/DashboardLayout';
 const PrivateRoute = () => {
     const is_Authenticated = localStorage.getItem("isAuth") === "true";
     // const { is_Authenticated } = useAuth();
-    console.log("are we really auth", is_Authenticated);
+    // console.log("are we really auth", is_Authenticated);
     return is_Authenticated ? <DashboardLayout /> : <Navigate to="/login" />;
 };
 

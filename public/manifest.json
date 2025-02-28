@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Foodimetric",
+  "name": "Foodimetric - AI-Powered Nutrition App",
+  "description": "Foodimetric provides advanced nutrition analysis, food insights, and AI-powered dietary recommendations.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,13 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "theme_color": "#ED3300",
+  "orientation": "portrait",
+  "categories": ["health", "fitness", "nutrition", "AI", "chatbot"],
+  "dir": "ltr",
+  "lang": "en",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
 }

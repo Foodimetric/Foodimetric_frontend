@@ -61,7 +61,6 @@ const SearchBar = ({ selectedDb }) => {
 
     // When a food item is clicked in the dropdown
     const handleFoodSelect = (food) => {
-        console.log("lots of food", selectedDb);
         setSearchTerm(food.foodName); // show the user what they clicked
         setSelectedFood(food);        // put the selected item into context
         handleSearch();
@@ -73,16 +72,12 @@ const SearchBar = ({ selectedDb }) => {
             );
 
         } else if (selectedDb === "west_africa") {
-            console.log("just append");
             navigate(
                 `?foodName=${encodeURIComponent(food.foodName)}&localName=${encodeURIComponent(food.foodName)}`,
                 { replace: true }
             );
         }
     };
-
-    console.log("the selected db is what", selectedDb);
-
     return (
         <div className='font-base-font'>
             <label htmlFor="food" className="mb-2 block font-heading-font">Search Food:</label>

@@ -58,7 +58,7 @@ const ProfileDropdown = () => {
     const isAnthroPage = location.pathname.startsWith('/anthro');
     const isdashboard = location.pathname.startsWith('/dashboard');
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <div>

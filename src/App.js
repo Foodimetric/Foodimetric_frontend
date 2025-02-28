@@ -216,6 +216,18 @@ const router = createBrowserRouter([
 
 function App() {
   const user = JSON.parse(localStorage.getItem('user'));
+  const CURRENT_VERSION = "2.0";
+
+  useEffect(() => {
+    const storedVersion = localStorage.getItem("appVersion");
+    if (storedVersion !== CURRENT_VERSION) {
+      localStorage.clear();
+      sessionStorage.clear();
+      localStorage.setItem("appVersion", CURRENT_VERSION);
+      window.location.reload();
+    }
+  }, []);
+
 
   useEffect(() => {
     const incrementPlatformUsage = async () => {

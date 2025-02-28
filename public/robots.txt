@@ -1,3 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# Allow all search engines
 User-agent: *
-Disallow:
+
+# Disallow indexing of sensitive areas
+Disallow: /dashboard/setting
+
+# Allow indexing of public dashboard and chatbot
+Allow: /dashboard
+Allow: /search
+Allow: /anthro

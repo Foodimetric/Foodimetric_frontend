@@ -86,7 +86,6 @@ const ChatComponent = () => {
         );
         await saveMessageToDB(botMessage);
       } catch (error) {
-        console.error("Network error:", error);
         const errorMessage = { sender: "bot", text: "Network error! Please try again.", error: true };
 
         setMessages((prev) =>

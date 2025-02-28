@@ -33,13 +33,13 @@ const Users = () => {
             });
 
             const data = await response.json();
-            console.log("data", data.payload);
+            // console.log("data", data.payload);
             setUsers(data.payload);
 
             // Write data to a CSV file
             writeUsersToCsvFile(data.payload);
         } catch (error) {
-            console.error("Error:", error);
+            // console.error("Error:", error);
         }
     }, [setUsers, writeUsersToCsvFile]);
 

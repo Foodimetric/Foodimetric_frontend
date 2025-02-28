@@ -77,8 +77,8 @@ const IBW = () => {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                console.log("Calculation saved:", data);
+                await response.json();
+                // console.log("Calculation saved:", data);
             } else {
                 const error = await response.json();
                 console.error("Failed to save calculation:", error);

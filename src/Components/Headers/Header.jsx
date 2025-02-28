@@ -37,21 +37,21 @@ const Header = () => {
                     <div className="md:col-span-4 col-span-12 ">
                         <ul className="md:text-right text-center md:mt-2 space-x-4">
                             <li className="inline-block ml-2">Visit our social pages</li>
-                            <li className="inline-block ml-2"><Link target="_blank"
+                            <li className="inline-block ml-2"><Link target="_blank" title='facebook'
                                 rel="noopener noreferrer" to="https://web.facebook.com/profile.php?id=61557260650546"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
                                     className="ti-facebook"></i></Link></li>
 
-                            <li className="inline-block ml-2"><Link target="_blank"
+                            <li className="inline-block ml-2"><Link target="_blank" title='instagram'
                                 rel="noopener noreferrer" to="https://www.instagram.com/foodimetric/?utm_source=ig_web_button_share_sheet"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
                                     className="ti-instagram"></i></Link></li>
 
-                            <li className="inline-block ml-2"><Link target="_blank"
+                            <li className="inline-block ml-2"><Link target="_blank" title='linkedin'
                                 rel="noopener noreferrer" to="https://www.linkedin.com/company/foodimetric/"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]"><i
                                     className="ti-linkedin"></i></Link></li>
-                            <li className="inline-block ml-2"><Link target="_blank"
+                            <li className="inline-block ml-2"><Link target="_blank" title='X'
                                 rel="noopener noreferrer" to="https://twitter.com/foodimetric"
                                 className="text-[#F78914] text-sm transition-all hover:text-[#687693]">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="14" height="14" fill="white" stroke="#F78914" stroke-width="10">

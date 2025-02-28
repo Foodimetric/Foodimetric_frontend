@@ -67,7 +67,6 @@ export const AuthProvider = ({ children }) => {
 
 
     const logout = () => {
-        console.log("we called logout");
         setToken(null);
         setUser(null);
         localStorage.removeItem('token'); // Clearing token from localStorage
@@ -171,7 +170,7 @@ export const AuthProvider = ({ children }) => {
                     showToast('error', `Registration failed: ${data.message}`);
                 }
             } catch (error) {
-                console.error('Error:', error);
+                // console.error('Error:', error);
                 showToast('error', 'An error occurred. Please try again.');
             } finally {
                 setLoading(false); // Stop loading after request

@@ -10,13 +10,13 @@ const DashboardNav = ({ isExpanded, toggleSidebar }) => {
             className={`flex flex-col font-base-font h-full bg-white shadow-md transition-all duration-300 ${isExpanded ? 'w-64' : 'w-16'}`}
         >
             {/* Logo Section */}
-            <div className="flex items-center justify-between py-4 px-4">
+            <div className={`flex items-center justify-between py-4 ${isExpanded ? 'px-4' : 'px-1'}`}>
                 {/* Logo */}
                 <Link to={'/'} className="flex items-center">
                     <img
-                        src="/assets/logo-alt.png"
+                        src={isExpanded ? "/assets/logo-alt.png" : "/assets/logo-alt-2.png"}
                         alt="Logo"
-                        className={`h-10 w-10 object-contain transition-transform ${isExpanded ? 'scale-100' : 'scale-75'
+                        className={`transition-transform ${isExpanded ? 'scale-100' : 'scale-75'
                             }`}
                     />
                 </Link>
