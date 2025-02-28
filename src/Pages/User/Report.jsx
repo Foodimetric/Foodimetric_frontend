@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaLeaf, FaCarrot, FaAppleAlt, FaBreadSlice, FaAngleUp, FaAngleDown } from 'react-icons/fa'; // Icons for nutrition categories
 
 const NutritionReportCard = () => {
@@ -193,6 +194,11 @@ const NutritionReportCard = () => {
 
     return (
         <div className="flex items-center flex-wrap gap-4 font-base-font">
+            <Helmet>
+                <title>Generate Nutrition Reports - AI-Powered Insights | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             {reportData.map((report, index) => (
                 <div
                     key={index}

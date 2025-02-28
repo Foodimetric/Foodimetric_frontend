@@ -6,6 +6,7 @@ import { useLocation, useNavigate, useOutletContext } from 'react-router';
 import { extractUnit, findKeyByWord } from '../../Utils/key';
 import ResultsTable from '../../Components/Modals/Table';
 import showToast from '../../Utils/toast';
+import { Helmet } from 'react-helmet-async';
 
 const Nutrient = () => {
     const { nutrient, data, setNutrient, west_data } = useFoodContext();
@@ -88,6 +89,11 @@ const Nutrient = () => {
 
     return (
         <main className="py-8 font-base-font">
+            <Helmet>
+                <title>Nutrient Database - Discover Essential Nutrients | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
                     <SearchBar selectedDb={selectedDb} />

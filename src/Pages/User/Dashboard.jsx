@@ -3,6 +3,7 @@ import BMI from '../Anthro/BMI';
 import { Pie } from 'react-chartjs-2';
 import { useUser } from '../../Context/User/UserContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Helmet } from 'react-helmet-async';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,6 +34,11 @@ function Dashboard() {
     console.log(foodEntries);
     return (
         <div className="col-span-12 w-full">
+            <Helmet>
+                <title>Your Foodimetric Dashboard - Track Nutrition & Health</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600 font-heading-font">Diary Tracked</h3>

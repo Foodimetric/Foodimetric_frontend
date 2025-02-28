@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../Utils/host';
 import showToast from '../Utils/toast';
+import { Helmet } from "react-helmet-async";
+
 
 const Login = () => {
     const navigate = useNavigate()
@@ -81,7 +83,11 @@ const Login = () => {
     return (
         <main>
             <div className="page-wrapper">
-                <title>Login to Foodimetric - Access Your Personalized Nutrition Hub</title>
+                <Helmet>
+                    <title>Login to Foodimetric - Access Your Personalized Nutrition Hub</title>
+                    <meta name="description"
+                        content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+                </Helmet>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">

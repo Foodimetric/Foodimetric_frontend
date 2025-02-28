@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaTrashAlt } from 'react-icons/fa'; // Icons for actions
 import { useUser } from '../../Context/User/UserContext';
+import { Helmet } from 'react-helmet-async';
 // import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const HistoryPage = () => {
@@ -22,6 +23,11 @@ const HistoryPage = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-6 font-base-font">
+            <Helmet>
+                <title>Nutrition History - Track Your Dietary Trends | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             {/* Responsive Table */}
             <div className="overflow-x-auto bg-white shadow-xl rounded-lg">
                 <table className="min-w-full table-auto text-sm text-gray-700">

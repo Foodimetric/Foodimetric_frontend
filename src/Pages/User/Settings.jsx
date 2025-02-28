@@ -3,6 +3,7 @@ import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import showToast from '../../Utils/toast';
 import { Avatar } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 const UserSettings = () => {
     const { user, setUser } = useAuth();
@@ -185,6 +186,11 @@ const UserSettings = () => {
 
     return (
         <div className="font-base-font flex flex-col lg:flex-row items-center lg:items-start gap-8 p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-10">
+            <Helmet>
+                <title>Account Settings - Customize Your Foodimetric Experience</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             {/* Profile Picture Section */}
             <div className="flex flex-col items-center w-1/4 xs:w-1/2 md:w-1/4">
                 {profileDetails.profilePicture ? (

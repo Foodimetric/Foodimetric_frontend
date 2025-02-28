@@ -3,6 +3,7 @@ import HeaderLink from '../Components/Headers/HeaderLink';
 import { Link, useNavigate } from 'react-router-dom';
 import { FOODIMETRIC_HOST_URL } from '../Utils/host';
 import showToast from '../Utils/toast';
+import { Helmet } from 'react-helmet-async';
 
 
 const Reset = () => {
@@ -40,7 +41,10 @@ const Reset = () => {
     return (
         <main>
             <div className="page-wrapper">
-                <title>Forgot Password? Reset Your Foodimetric Account Securely</title>
+                <Helmet>
+                    <title>Forgot Password? Reset Your Foodimetric Account Securely</title>
+                    <meta name="description" content="Access nutrition databases, food insights, and a BMI calculator to improve your health." />
+                </Helmet>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">

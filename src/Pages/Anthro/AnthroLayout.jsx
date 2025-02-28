@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router';
 import AntroNav from '../../Components/Nav/AntroNav';
 import AntroHeader from '../../Components/Headers/AntroHeader';
 import { useAuth } from '../../Context/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const AnthroLayout = () => {
     const { user } = useAuth()
@@ -62,6 +63,11 @@ const AnthroLayout = () => {
 
     return (
         <main className='flex max-h-screen'>
+            <Helmet>
+                <title>Track your health and Find Your Body Mass Index | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className=''>
                 <AntroNav />
             </div>

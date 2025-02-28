@@ -7,6 +7,7 @@ import { multiNutrientSearch } from '../../Utils/key';
 import { useLocation, useNavigate, useOutletContext } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import ResultsTable from '../../Components/Modals/Table';
+import { Helmet } from 'react-helmet-async';
 
 const MultiNutrient = () => {
     const {
@@ -87,6 +88,11 @@ const MultiNutrient = () => {
     // ---- Render ----
     return (
         <main className="py-8 font-base-font">
+            <Helmet>
+                <title>Compare Nutrient Profiles of Foods | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
                     <SearchBar selectedDb={selectedDb} />

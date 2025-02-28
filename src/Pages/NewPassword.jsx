@@ -4,6 +4,7 @@ import HeaderLink from '../Components/Headers/HeaderLink';
 import axios from 'axios';
 import { FOODIMETRIC_HOST_URL } from '../Utils/host';
 import showToast from '../Utils/toast';
+import { Helmet } from "react-helmet-async";
 
 const NewPassword = () => {
     const navigate = useNavigate();
@@ -50,7 +51,10 @@ const NewPassword = () => {
     return (
         <main>
             <div className="page-wrapper">
-                <title>Reset Your Password | Foodimetric Secure Account Recovery</title>
+                <Helmet>
+                    <title>Reset Your Password | Foodimetric Secure Account Recovery</title>
+                    <meta name="description" content="Access nutrition databases, food insights, and a BMI calculator to improve your health." />
+                </Helmet>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">

@@ -2,10 +2,16 @@ import React from "react";
 import HeaderLink from "../Components/Headers/HeaderLink";
 import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Education = () => {
     return (
         <div className="">
+            <Helmet>
+                <title>Nutrition Education Hub | Learn Healthy Eating with Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <HeaderLink />
             <div className="max-w-6xl mx-auto p-6">
                 <section className="mb-12 text-center">

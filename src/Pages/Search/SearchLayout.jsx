@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import SearchNav from '../../Components/Nav/SearchNav'
 import SearchHeader from '../../Components/Headers/SearchHeader';
+import { Helmet } from 'react-helmet-async';
 
 const SearchLayout = () => {
     const location = useLocation();
@@ -27,6 +28,11 @@ const SearchLayout = () => {
     }
     return (
         <main className='flex max-h-screen w-screen'>
+            <Helmet>
+            <title>Search Foods & Nutrients - Find Healthier Choices | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className=''>
                 <SearchNav />
             </div>

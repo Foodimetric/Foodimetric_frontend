@@ -1,11 +1,17 @@
 import React from 'react';
 import Footer from '../Components/Footer/Footer';
 import HeaderLink from '../Components/Headers/HeaderLink'
+import { Helmet } from 'react-helmet-async';
 
 const Privacy = () => {
     return (
         <div>
             <HeaderLink />
+            <Helmet>
+                <title>Privacy Policy | How Foodimetric Protects Your Data</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="container mx-auto px-4 py-8 text-gray-800">
                 <h1 className="text-4xl font-bold text-center mb-6">Privacy Policy for Foodimetric</h1>
                 <p className="text-center mb-8 text-sm text-gray-600">

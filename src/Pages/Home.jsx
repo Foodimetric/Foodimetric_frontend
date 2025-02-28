@@ -10,6 +10,7 @@ import { Autoplay } from 'swiper/modules';
 import StatSection from '../Components/sections/Stat';
 import BMI from './Anthro/BMI'
 import { data } from '../Utils/db';
+import { Helmet } from 'react-helmet-async';
 
 export const Home = () => {
     return (
@@ -27,7 +28,11 @@ export const Home = () => {
             </div> */}
             <Header />
             <main>
-                <title>Foodimetric: AI-Powered Nutrition Tool for Smart Eating</title>
+                <Helmet>
+                    <title>Foodimetric: AI-Powered Nutrition Tool for Smart Eating</title>
+                    <meta name="description"
+                        content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+                </Helmet>
                 <div className="relative mt-2">
                     <section className="bg-[#131313] w-full h-[900px]  lg:h-[680px]
                  md:h-[600px] sm:h-[500px]  relative z-[1] overflow-hidden">

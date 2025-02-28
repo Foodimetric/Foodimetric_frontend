@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import ProceedButton from '../../Components/Buttons/ProceedButton';
 import { useAuth } from '../../Context/AuthContext';
 import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
+import { Helmet } from 'react-helmet-async';
 
 // Custom styled Radio
 const CustomRadio = styled(Radio)({
@@ -96,6 +97,11 @@ const EE = () => {
 
     return (
         <main className="py-8">
+            <Helmet>
+                <title>Energy Expenditure (EE) Calculator - Track Your Caloric Burn</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="bg-white p-8 min-h-screen">
                 <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
                     <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Itim, cursive' }}>

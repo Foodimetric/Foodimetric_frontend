@@ -3,6 +3,7 @@ import { useAuth } from '../../Context/AuthContext';
 // import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 import { useUser } from '../../Context/User/UserContext';
 import showToast from '../../Utils/toast';
+import { Helmet } from 'react-helmet-async';
 
 const FoodDiary = () => {
     const { user } = useAuth();
@@ -55,6 +56,11 @@ const FoodDiary = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 font-base-font">
+            <Helmet>
+                <title>Food Diary - Log & Monitor Your Daily Meals | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 shadow-lg rounded-lg">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Date */}

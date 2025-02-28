@@ -5,6 +5,7 @@ import ProceedButton from '../../Components/Buttons/ProceedButton';
 import SearchBar from '../../Components/Nav/SearchBar';
 import ResultsTable from '../../Components/Modals/Table'
 import { cleanAndConvertFoodData } from '../../Utils/key';
+import { Helmet } from 'react-helmet-async';
 
 export const Food = () => {
     const { data, west_data } = useFoodContext();
@@ -87,6 +88,11 @@ export const Food = () => {
 
     return (
         <main className="py-8">
+            <Helmet>
+                <title>Food Search - Explore Nutritional Information | Foodimetric</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <div className="bg-white p-8 min-h-screen">
                 <form className="w-full md:w-3/4 mx-auto">
                     <SearchBar selectedDb={selectedDb} />

@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import { HelmetProvider } from "react-helmet-async";
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import About from './Pages/About';
@@ -241,25 +241,27 @@ function App() {
   }, [user]); // Only runs once when the component mounts
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <AuthProvider>
-          <UserProvider>
-            <FoodProvider>
-              <RouterProvider router={router} />
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 4000,
-                  style: {
-                    background: '#363636',
-                    color: '#fff',
-                  },
-                }}
-              />
-            </FoodProvider>
-          </UserProvider>
-        </AuthProvider>
-      </div>
+      <HelmetProvider>
+        <div className="App">
+          <AuthProvider>
+            <UserProvider>
+              <FoodProvider>
+                <RouterProvider router={router} />
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    duration: 4000,
+                    style: {
+                      background: '#363636',
+                      color: '#fff',
+                    },
+                  }}
+                />
+              </FoodProvider>
+            </UserProvider>
+          </AuthProvider>
+        </div>
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }

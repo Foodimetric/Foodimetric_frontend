@@ -1,9 +1,15 @@
 import React from 'react';
 import Footer from '../Components/Footer/Footer';
 import HeaderLink from '../Components/Headers/HeaderLink'
+import { Helmet } from 'react-helmet-async';
 const Terms = () => {
     return (
         <div>
+            <Helmet>
+                <title>Terms of Service | Foodimetric User Agreement</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <HeaderLink />
             <div className="p-6 max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-4">Terms of Service</h1>

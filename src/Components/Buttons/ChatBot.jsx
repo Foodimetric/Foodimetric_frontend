@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { openDB } from "idb";
 import { useAuth } from '../../Context/AuthContext';
+import { Helmet } from "react-helmet-async";
 
 const ChatComponent = () => {
   const { user } = useAuth();
@@ -97,8 +98,28 @@ const ChatComponent = () => {
     }
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NutriBot | Foodimetric",
+    "description": "Foodimetric AI-powered chatbot offering personalized nutrition advice, food insights, and dietary recommendations.",
+    "url": "https://foodimetric.com/dashboard",
+    "applicationCategory": "Health & Fitness",
+    "creator": {
+      "@type": "Organization",
+      "name": "Foodimetric",
+      "url": "https://foodimetric.com"
+    }
+  };
   return (
     <div className="relative">
+      <Helmet defer={false}>
+        <title>NutriBot - Your Personalized Nutrition Assistant</title>
+        <meta name="description" content="Chat with NutriBot for instant nutrition insights, dietary guidance, and food recommendations tailored to your health goals." />
+        <meta name="keywords" content="nutrition chatbot, food insights, diet recommendations, healthy eating, personalized nutrition" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
       <input type="checkbox" id="chat-toggle" className="hidden" />
       <label
         htmlFor="chat-toggle"

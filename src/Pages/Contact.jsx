@@ -4,6 +4,7 @@ import Footer from '../Components/Footer/Footer';
 import axios from 'axios';
 import { FOODIMETRIC_HOST_URL } from '../Utils/host';
 import showToast from '../Utils/toast';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
     const [loading, setLoading] = useState(false); // Track loading state
@@ -37,6 +38,11 @@ const Contact = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Contact Foodimetric - Get Support & Nutrition Assistance</title>
+                <meta name="description"
+                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+            </Helmet>
             <HeaderLink />
             <section className="relative pt-[60px] pb-[60px]  z-1">
                 <div className="wraper">
