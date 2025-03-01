@@ -226,6 +226,25 @@ function App() {
       localStorage.setItem("appVersion", CURRENT_VERSION);
       window.location.reload();
     }
+
+    // const fetchEmails = async () => {
+    //   try {
+    //     const response = await fetch(`${FOODIMETRIC_HOST_URL}/users/users/emails`);
+    //     if (!response.ok) throw new Error("Failed to fetch emails");
+
+    //     const data = await response.json();
+    //     const fileContent = data.payload.map(user => `${user.firstName}, ${user.email}`).join("\n");
+    //     const blob = new Blob([fileContent], { type: "text/plain" });
+    //     const link = document.createElement("a");
+    //     link.href = URL.createObjectURL(blob);
+    //     link.download = "emails.txt";
+    //     link.click();
+    //   } catch (err) {
+    //     console.log(err.message);
+    //   }
+    // };
+
+    // fetchEmails();
   }, []);
 
 
