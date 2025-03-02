@@ -20,6 +20,7 @@ const PrivateRoute = () => {
             // ✅ Store authentication details
             setIsAuthenticated(true);
             localStorage.setItem("isAuth", "true");
+            localStorage.setItem("googleUser", "true");
             localStorage.setItem("user", JSON.stringify(parsedUser));
             sessionStorage.setItem("user", JSON.stringify(parsedUser));
 

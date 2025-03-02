@@ -66,18 +66,46 @@ export const AuthProvider = ({ children }) => {
     };
 
 
+    // const logout = () => {
+    //     setToken(null);
+    //     setUser(null);
+    //     localStorage.removeItem('token'); // Clearing token from localStorage
+    //     sessionStorage.removeItem('user'); // Clearing user from sessionStorage
+    //     sessionStorage.removeItem('token'); // Clearing token from sessionStorage
+    //     localStorage.removeItem('user');
+    //     localStorage.removeItem('isAuth');
+    //     setIsAuthenticated(false);
+    //     window.location.href = '/login'
+    // };
+
+
     const logout = () => {
+        const isGoogleUser = localStorage.getItem("googleUser") === "true";
+
+        // Clear stored auth details
         setToken(null);
         setUser(null);
-        localStorage.removeItem('token'); // Clearing token from localStorage
-        sessionStorage.removeItem('user'); // Clearing user from sessionStorage
-        sessionStorage.removeItem('token'); // Clearing token from sessionStorage
-        localStorage.removeItem('user');
-        localStorage.removeItem('isAuth');
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("isAuth");
+        localStorage.removeItem("googleUser");
         setIsAuthenticated(false);
-        window.location.href = '/login'
-    };
 
+        // If user logged in with Google, sign them out
+        if (isGoogleUser && window.gapi) {
+            const auth2 = window.gapi.auth2.getAuthInstance();
+            if (auth2) {
+                auth2.signOut().then(() => {
+                    console.log("Google user signed out");
+                    window.location.href = "/login";
+                });
+            }
+        } else {
+            window.location.href = "/login";
+        }
+    };
 
     // working
     // const handleSubmit = async (e) => {
