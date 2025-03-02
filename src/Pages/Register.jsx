@@ -22,9 +22,6 @@ const Register = () => {
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
                     <div className="wraper-auth">
-                        <ul className="flex items-center justify-center mb-[20px] flex-wrap">
-                            <GoogleBtn />
-                        </ul>
                         <form className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px] overflow-hidden" onSubmit={register}>
                             <div className="hidden w-full sm:w-1/2 sm:flex flex-col justify-center min-h-[600px] text-center p-[50px] col:p-[30px_10px] register">
                             </div>
@@ -106,6 +103,9 @@ const Register = () => {
                                     <span
                                         className="text-[16px] uppercase inline-block px-[25px] bg-white relative top-[-14px] text-[#147e03]">OR</span>
                                 </h4>
+                                <ul className="flex items-center justify-center mb-[20px] flex-wrap">
+                                    <GoogleBtn />
+                                </ul>
                                 <p className="text-[16px] text-[#687693] text-center">Already have an account?
                                     <Link to="/login" className='text-[#147e03]'> Login</Link>
                                 </p>
