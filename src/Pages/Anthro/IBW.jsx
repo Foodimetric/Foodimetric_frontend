@@ -96,7 +96,7 @@ const IBW = () => {
                 <meta name="description"
                     content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
             </Helmet>
-            Find Your Body Mass Index
+            {/* Find Your Body Mass Index */}
             <div className="bg-white p-8 min-h-screen">
                 <Box sx={{ maxWidth: 400, margin: 'auto', padding: 4, textAlign: 'center' }}>
 
