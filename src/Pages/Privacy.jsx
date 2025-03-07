@@ -1,131 +1,118 @@
 import React from 'react';
 import Footer from '../Components/Footer/Footer';
-import HeaderLink from '../Components/Headers/HeaderLink'
+import HeaderLink from '../Components/Headers/HeaderLink';
 import { Helmet } from 'react-helmet-async';
 
 const Privacy = () => {
+    const sections = [
+        { id: 'introduction', title: 'Introduction' },
+        { id: 'information-we-collect', title: 'Information We Collect' },
+        { id: 'how-we-use-information', title: 'How We Use Your Information' },
+        { id: 'how-we-share-information', title: 'How We Share Your Information' },
+        { id: 'data-retention', title: 'Data Retention' },
+        { id: 'your-rights', title: 'Your Rights' },
+        { id: 'changes-to-policy', title: 'Changes to This Privacy Policy' },
+        { id: 'contact-us', title: 'Contact Us' },
+        { id: 'disclaimer', title: 'Disclaimer' },
+    ];
+
     return (
-        <div>
+        <div className="bg-gray-50 min-h-screen text-gray-800">
             <HeaderLink />
             <Helmet>
                 <title>Privacy Policy | How Foodimetric Protects Your Data</title>
-                <meta name="description"
-                    content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
+                <meta name="description" content="Learn how Foodimetric safeguards your personal information and maintains your privacy." />
             </Helmet>
-            <div className="container mx-auto px-4 py-8 text-gray-800">
-                <h1 className="text-4xl font-bold text-center mb-6">Privacy Policy for Foodimetric</h1>
-                <p className="text-center mb-8 text-sm text-gray-600">
-                    Effective date: April 1, 2024
-                </p>
+            <div className="container mx-auto py-12 lg:py-16 flex">
+                {/* Table of Contents */}
+                <aside className="hidden lg:block w-1/4 pr-8">
+                    <nav className="sticky top-20">
+                        <h2 className="text-xl font-semibold mb-4 font-base-font">Table of Contents</h2>
+                        <ul className="space-y-2">
+                            {sections.map(section => (
+                                <li key={section.id}>
+                                    <a href={`#${section.id}`} className="font-base-font text-gray-600 hover:underline">
+                                        {section.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                </aside>
+                {/* Main Content */}
+                <main className="w-full lg:w-3/4 bg-white p-8 shadow-lg rounded-lg font-heading-font">
+                    <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-6">Privacy Policy</h1>
+                    <p className="text-center text-sm text-gray-500 mb-8">Effective Date: April 1, 2024</p>
 
-                <section className="mb-6">
-                    <p>
-                        Welcome to Foodimetric ("us", "we", or "our"). We are committed to protecting your
-                        personal information and your right to privacy. If you have any questions or concerns
-                        about our policy, or our practices with regards to your personal information, please
-                        contact us at <a href="mailto:foodimetric@gmail.com" className="text-blue-600 underline">foodimetric@gmail.com</a>.
-                    </p>
-                    <p>
-                        This Privacy Policy applies to all information collected through our website
-                        (<a href="https://www.foodimetric.com" className="text-blue-600 underline">www.foodimetric.com</a>),
-                        and/or any related services, sales, marketing or events (we refer to them collectively in this
-                        Privacy Policy as the "Services").
-                    </p>
-                    <p>
-                        Please read this Privacy Policy carefully as it will help you make informed decisions about sharing your personal information with us.
-                    </p>
-                </section>
+                    <section id="introduction" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Introduction</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            Welcome to Foodimetric ("us", "we", or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, please contact us at foodimetric@gmail.com.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mt-4">
+                            This Privacy Policy applies to all information collected through our website (www.foodimetric.com) and related services, sales, marketing, or events ("Services").
+                        </p>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">1. Information We Collect</h2>
+                    <section id="information-we-collect" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Information We Collect</h2>
+                        <ul className="space-y-3">
+                            <li className="bg-gray-100 p-4 rounded-lg"><strong>Personal Information:</strong> Name, email, phone number, address, payment information, etc.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg"><strong>Credentials:</strong> Passwords, password hints, and security information.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg"><strong>Automatically Collected Data:</strong> IP address, browser details, and other technical data for security and analytics.</li>
+                        </ul>
+                    </section>
 
-                    <h3 className="text-xl font-medium mb-2">1.1. Personal Information:</h3>
-                    <p>
-                        We collect personal information that you voluntarily provide to us when registering on
-                        the Services, expressing an interest in obtaining information about us or our products
-                        and services, participating in activities on the Services, or otherwise contacting us.
-                    </p>
-                    <ul className="list-disc ml-6 mt-2">
-                        <li>
-                            <strong>Personal Information Provided by You:</strong> Includes name, email address,
-                            phone number, address, payment information, etc.
-                        </li>
-                        <li>
-                            <strong>Credentials:</strong> Includes passwords, password hints, and similar security information.
-                        </li>
-                    </ul>
+                    <section id="how-we-use-information" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">How We Use Your Information</h2>
+                        <ul className="space-y-3">
+                            <li className="bg-gray-100 p-4 rounded-lg">To facilitate account creation and logon processes.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">To send marketing and promotional communications.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">To process transactions and improve our Services.</li>
+                        </ul>
+                    </section>
 
-                    <h3 className="text-xl font-medium mt-4 mb-2">1.2. Information Automatically Collected:</h3>
-                    <p>
-                        This includes device and usage information, such as your IP address, browser and device
-                        characteristics, and other technical data needed for security and analytics.
-                    </p>
-                </section>
+                    <section id="how-we-share-information" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">How We Share Your Information</h2>
+                        <ul className="space-y-3">
+                            <li className="bg-gray-100 p-4 rounded-lg">With your consent.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">To comply with laws.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">To protect our rights.</li>
+                        </ul>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">2. How We Use Your Information</h2>
-                    <ul className="list-disc ml-6">
-                        <li>To facilitate account creation and logon process.</li>
-                        <li>To send marketing and promotional communications.</li>
-                        <li>To respond to inquiries and offer support.</li>
-                        <li>To process transactions and improve our Services.</li>
-                    </ul>
-                </section>
+                    <section id="data-retention" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Retention</h2>
+                        <p className="text-gray-700 leading-relaxed">We will retain your personal information only as long as necessary for legal and operational purposes.</p>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">3. How We Share Your Information</h2>
-                    <p>We share your information only under the following circumstances:</p>
-                    <ul className="list-disc ml-6">
-                        <li>With your consent.</li>
-                        <li>To comply with laws.</li>
-                        <li>To protect our rights.</li>
-                    </ul>
-                </section>
+                    <section id="your-rights" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your Rights</h2>
+                        <ul className="space-y-3">
+                            <li className="bg-gray-100 p-4 rounded-lg">Request access to your personal information.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">Request correction or deletion of your personal data.</li>
+                            <li className="bg-gray-100 p-4 rounded-lg">Object to our use and processing of your personal information.</li>
+                        </ul>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">4. Data Retention</h2>
-                    <p>
-                        We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy.
-                    </p>
-                </section>
+                    <section id="changes-to-policy" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Changes to This Privacy Policy</h2>
+                        <p className="text-gray-700 leading-relaxed">We may update our Privacy Policy periodically and will notify users of changes by posting updates on this page.</p>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">5. Your Rights</h2>
-                    <ul className="list-disc ml-6">
-                        <li>Request access to your personal information.</li>
-                        <li>Request correction or deletion of your personal information.</li>
-                        <li>Object to our use and processing of your personal information.</li>
-                    </ul>
-                </section>
+                    <section id="contact-us" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contact Us</h2>
+                        <p className="text-gray-700 leading-relaxed">For any inquiries, contact us at:</p>
+                        <p className="mt-2"><a href="mailto:foodimetric@gmail.com" className="text-blue-600 font-medium underline">foodimetric@gmail.com</a></p>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">6. Changes to This Privacy Policy</h2>
-                    <p>
-                        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
-                    </p>
-                </section>
+                    <section id="disclaimer" className="mb-8">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Disclaimer</h2>
+                        <p className="text-gray-700 leading-relaxed">The information on this website is for informational purposes only and is not intended as a substitute for professional medical advice. Always consult a registered dietitian for questions regarding your diet. The information, including but not limited to, text, graphics, images, and other material contained on this website, is for informational purposes only. No information on this site is intended to be a substitute for professional medical advice, diagnosis, or treatment. Always consult a registered dietitian with any questions you may have regarding your diet modification and before undertaking a new diet regimen. Never disregard professional medical advice or delay in seeking it because of something you have read on this website.</p>
+                    </section>
 
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">7. Contact Us</h2>
-                    <p>
-                        If you have any questions or suggestions about our Privacy Policy, contact us at
-                        <a href="mailto:foodimetric@gmail.com" className="text-blue-600 underline"> foodimetric@gmail.com</a>.
-                    </p>
-                </section>
-
-                <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-4">Disclaimer</h2>
-                    <p>
-                        The information on this website is for informational purposes only and is not intended as a substitute for professional medical advice.
-                        Always consult a registered dietitian for questions regarding your diet. The information, including but not limited to, text, graphics, images,
-                        and other material contained on this website, is for informational purposes only. No information on this site is intended to be a substitute
-                        for professional medical advice, diagnosis, or treatment. Always consult a registered dietitian with any questions you may have regarding
-                        your diet modification and before undertaking a new diet regimen. Never disregard professional medical advice or delay in seeking it
-                        because of something you have read on this website.
-                    </p>
-                    <p>Last updated: April 7, 2024</p>
-                </section>
-
+                    <p className="text-green-700 leading-relaxed mt-4">Last updated: March 7, 2025</p>
+                </main>
             </div>
             <Footer />
         </div>
