@@ -43,7 +43,7 @@ function Dashboard() {
             <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-2 rounded-md">
                 <p className="font-semibold">Important:</p>
                 <p className="text-sm">
-                    For existing users who are <strong>Nutrition professionals</strong>, kindly go to the{" "}
+                    For existing users, users before <span className="text-red-600 font-bold">07-03-2025</span> who are <strong>Nutrition professionals</strong>, kindly go to the{" "}
                     <Link to="/dashboard/setting" className="text-blue-600 underline">Settings</Link> page to update your profession
                     in order to unlock features tailored for your expertise.
                     <br />
