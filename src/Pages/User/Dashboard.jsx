@@ -4,6 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import { useUser } from '../../Context/User/UserContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -39,6 +40,18 @@ function Dashboard() {
                 <meta name="description"
                     content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
             </Helmet>
+            <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-2 rounded-md">
+                <p className="font-semibold">Important:</p>
+                <p className="text-sm">
+                    For existing users who are <strong>Nutrition professionals</strong>, kindly go to the{" "}
+                    <Link to="/dashboard/setting" className="text-blue-600 underline">Settings</Link> page to update your profession
+                    in order to unlock features tailored for your expertise.
+                    <br />
+                    If you are <strong>not a professional</strong>, please select "Others."
+                    This will grant you access to functionality designed to support your nutrition journey and goals.
+                    <strong> After updating, remember to save your changes.</strong>
+                </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 <div className="p-4 bg-blue-100 rounded-lg shadow-md">
                     <h3 className="text-sm text-gray-600 font-heading-font">Diary Tracked</h3>
