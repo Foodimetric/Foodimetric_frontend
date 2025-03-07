@@ -23,7 +23,7 @@ const Privacy = () => {
                 <title>Privacy Policy | How Foodimetric Protects Your Data</title>
                 <meta name="description" content="Learn how Foodimetric safeguards your personal information and maintains your privacy." />
             </Helmet>
-            <div className="container mx-auto py-12 lg:py-16 flex">
+            <div className="container xs:w-[90%] xs:max-w-[85%] sm:container mx-auto py-12 lg:py-16 flex">
                 {/* Table of Contents */}
                 <aside className="hidden lg:block w-1/4 pr-8">
                     <nav className="sticky top-20">
