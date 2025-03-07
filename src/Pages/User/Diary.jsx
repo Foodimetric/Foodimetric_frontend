@@ -49,6 +49,12 @@ const FoodDiary = () => {
         });
         setEditMode(true);
         setCurrentLogId(log._id);
+
+        const form = document.getElementById("food_diary");
+        if (form) {
+            form.scrollIntoView({ behavior: "smooth" });
+            form.focus();
+        }
     };
 
     return (
@@ -58,7 +64,7 @@ const FoodDiary = () => {
                 <meta name="description"
                     content="Foodimetric is your AI-powered nutrition companion, helping you track and improve your diet with advanced tools. Explore our food database, nutrient search, and BMI calculator—trusted across Africa and Nigeria for smarter health choices." />
             </Helmet>
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 shadow-lg rounded-lg">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 shadow-lg rounded-lg" id='food_diary'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Date */}
                     <div>
