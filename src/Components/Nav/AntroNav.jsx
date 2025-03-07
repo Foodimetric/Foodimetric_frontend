@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -14,18 +14,12 @@ const AntroNav = () => {
 
 
     const navRef = useRef(null);
-    // const { user } = useAuth();
 
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleBlur = (event) => {
-        if (!navRef.current.contains(event.relatedTarget)) {
-            setIsMenuOpen(false);
-        }
-    }
 
     const menuItems = [
         { to: '/anthro/BMI', label: 'BMI', icon: 'ti-ruler' },
@@ -39,6 +33,26 @@ const AntroNav = () => {
         // { to: '/anthro/Height-age', label: 'Height-Age', icon: <FaRulerVertical /> },
         // { to: '/anthro/Weight-Height', label: 'Weight-Height', icon: <FaWeightHanging /> },
     ];
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
     return (
         <>
             <div className="fixed top-0 left-0 bg-white h-16 z-10 w-60 md:hidden flex items-center border-b border-gray-300">
@@ -48,7 +62,7 @@ const AntroNav = () => {
                     </svg>
                 </button>
             </div>
-            <nav ref={navRef} onBlur={handleBlur} tabIndex="0" className={`fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 z-10 font-base-font transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+            <nav ref={navRef} tabIndex="0" className={`fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 z-10 font-base-font transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
                 <div className="flex flex-col justify-between h-full overflow-auto hide-scrollbar">
                     <div className="flex-grow">
                         <div className="px-4 py-0 text-center border-b h-16 flex items-center">

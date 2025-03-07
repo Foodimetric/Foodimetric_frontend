@@ -20,11 +20,6 @@ const SearchNav = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    // const handleBlur = (event) => {
-    //     if (!navRef.current.contains(event.relatedTarget)) {
-    //         setIsMenuOpen(false);
-    //     }
-    // }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
