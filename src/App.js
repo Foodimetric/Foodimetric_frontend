@@ -248,7 +248,6 @@ function App() {
     //     console.log(err.message);
     //   }
     // };
-
     // fetchEmails();
   }, []);
 
