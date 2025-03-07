@@ -72,9 +72,9 @@ function Dashboard() {
                             >
                                 <div>
                                     <p className="text-sm font-medium text-gray-700 font-heading-font">{meal.foodEaten}</p>
-                                    <p className="text-xs text-gray-500 font-base-font">{meal.time}</p>
+                                    <p className="text-xs text-gray-500 font-base-font italic font-medium">{meal.quantity}</p>
                                 </div>
-                                <div className="text-sm font-semibold text-gray-800 font-heading-font">{meal.quantity} grams</div>
+                                <div className="text-sm font-semibold text-gray-800 font-heading-font">{meal.time}</div>
                             </div>
                         ))}
                 </div>

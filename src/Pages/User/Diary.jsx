@@ -113,10 +113,10 @@ const FoodDiary = () => {
                     {/* Quantity */}
                     <div>
                         <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
-                            Quantity(g)
+                            Quantity
                         </label>
                         <input
-                            type="number"
+                            type="text"
                             id="quantity"
                             name="quantity"
                             value={newLog.quantity}
@@ -174,7 +174,7 @@ const FoodDiary = () => {
                                             day: 'numeric',
                                         })}</p>
                                     </div>
-                                    <span className="text-gray-700 font-medium">{log.quantity}g</span>
+                                    {/* <span className="text-gray-700 font-medium">{log.quantity}g</span> */}
                                 </div>
                                 {log.additionalInfo && (
                                     <p className="mt-3 text-gray-700 text-sm">{log.additionalInfo}</p>
