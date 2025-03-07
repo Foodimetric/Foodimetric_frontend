@@ -45,6 +45,12 @@ const Team = () => {
             image: "assets/images/gidi.jpg",
             linkedin: "https://www.linkedin.com/in/gideon-olaniyi-0234b1226",
         },
+        {
+            name: "Joshua Salako",
+            role: 'AI Engineer',
+            image: 'assets/images/josh.jpg',
+            linkedin: 'https://www.linkedin.com/in/salakojoshua'
+        }
     ];
     return (
         <div className="md:pt-[100px] pt-[90px] sm:pt-[80px] pb-[50px] sm:pb-[30px]">
@@ -72,7 +78,7 @@ const Team = () => {
                                         className="absolute left-0 -top-[10%] w-full h-full flex justify-center flex-col
                                     rounded-[50%] transition-all translate-y-full pt-4 group-hover:translate-y-0 group-hover:top-[10%]">
                                         <div>
-                                            <h2 className="font-heading-font font-normal text-3xl text-white lg:text-2xl">{member.name}</h2>
+                                            <h2 className="font-heading-font font-normal text-3xl text-white lg:text-2xl xs:text-base">{member.name}</h2>
                                             <span className="font-base-font font-normal text-base text-white">{member.role}</span>
                                             <ul className="flex justify-center mt-4">
                                                 <li><a target='_blank' rel="noreferrer" title='linkedln' href={member.linkedin}

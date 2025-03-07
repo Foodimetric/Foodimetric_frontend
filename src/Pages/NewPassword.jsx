@@ -57,7 +57,7 @@ const NewPassword = () => {
                 </Helmet>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
-                    <div className="wraper-auth">
+                    <div className="wraper-auth w-[95%]">
                         <form
                             className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
                              overflow-hidden"

@@ -47,7 +47,7 @@ const Reset = () => {
                 </Helmet>
                 <HeaderLink />
                 <div className="w-full overflow-hidden flex items-center min-h-[100vh] p-[50px_0]">
-                    <div className="wraper-auth">
+                    <div className="wraper-auth w-[90%]">
                         <form className="w-full col:w-full flex flex-wrap bg-white m-auto shadow-[0px_14px_60px_rgba(0,0,0,0.06)] rounded-[10px]
                              overflow-hidden" onSubmit={handleReset}>
                             <div className="hidden sm:w-1/2 w-full bg-[#1a384c] sm:flex flex-col justify-between min-h-[600px] text-center p-[50px] col:p-[30px_10px] login">
