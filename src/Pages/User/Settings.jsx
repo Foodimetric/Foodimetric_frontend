@@ -119,6 +119,7 @@ const UserSettings = () => {
         const formData = new FormData();
 
         formData.append('location', profileDetails.location);
+        formData.append('category', parseInt(profileDetails.profession, 10));
         if (profilePicture) {
             formData.append('profilePicture', profilePicture); // 'profilePictureFile' is the selected file
         }
@@ -172,13 +173,13 @@ const UserSettings = () => {
         { label: "Others", value: 0 },
     ];
 
-    const getProfessionLabel = (value) => {
-        // console.log("value", value);
+    // const getProfessionLabel = (value) => {
+    //     // console.log("value", value);
 
-        const prof = profession.find((p) => p.value === value);
-        return prof ? prof.label : "Unknown"; // Default to "Unknown" if no match is found
-    };
-
+    //     const prof = profession.find((p) => p.value === value);
+    //     return prof ? prof.label : "Unknown"; // Default to "Unknown" if no match is found
+    // };
+    console.log(profileDetails);
 
 
     return (
@@ -218,6 +219,11 @@ const UserSettings = () => {
                     className="hidden"
                     onChange={handleProfilePictureChange}
                 />
+                {profileDetails.profilePicture && (
+                    <p className="text-sm text-gray-600 mt-2">
+                        <strong>Don't forget to save your changes</strong> after updating your profile picture.
+                    </p>
+                )}
             </div>
             {/* User Details Form */}
             <div className="flex-grow w-full">
@@ -225,7 +231,7 @@ const UserSettings = () => {
                     {[
                         { label: 'Name', name: 'name', type: 'text', value: profileDetails.name, readOnly: true },
                         { label: 'Email', name: 'email', type: 'email', value: profileDetails.email, readOnly: true },
-                        { label: 'Profession', name: 'profession', type: 'text', value: getProfessionLabel(profileDetails.profession), readOnly: false },
+                        // { label: 'Profession', name: 'profession', type: 'text', value: getProfessionLabel(profileDetails.profession), readOnly: false },
                     ].map(({ label, name, type, value, readOnly }) => (
                         <div key={name}>
                             <label htmlFor={name} className="block text-sm font-medium text-gray-700">
@@ -242,6 +248,34 @@ const UserSettings = () => {
                         </div>
                     ))}
 
+                    <div>
+                        <label htmlFor="profession" className="block text-sm font-medium text-gray-700">
+                            Profession
+                        </label>
+                        {profileDetails.profession === "0" && (
+                            <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-2 rounded-md">
+                                <p className="font-semibold">Important:</p>
+                                <p className="text-sm">
+                                    If you are <strong>not a professional</strong>, please select "Others."
+                                    This will grant you access to functionality designed to support your nutrition journey and goals.
+                                    If you are a professional, selecting the correct profession will unlock features tailored for your expertise.
+                                    <strong>After updating, remember to save your changes.</strong>
+                                </p>
+                            </div>
+                        )}
+                        <select
+                            name="profession"
+                            value={profileDetails.profession}
+                            onChange={handleInputChange}
+                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+                        >
+                            {profession.map((prof) => (
+                                <option key={prof.value} value={prof.value}>
+                                    {prof.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                     <div>
                         <label htmlFor="location" className="block text-sm font-medium text-gray-700">
                             Location
