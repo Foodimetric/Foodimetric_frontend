@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaEye, FaTrashAlt } from 'react-icons/fa'; // Icons for actions
 import { useUser } from '../../Context/User/UserContext';
 import { Helmet } from 'react-helmet-async';
+import { FaExclamationCircle } from "react-icons/fa";
 // import { FOODIMETRIC_HOST_URL } from '../../Utils/host';
 
 const HistoryPage = () => {
@@ -30,52 +31,63 @@ const HistoryPage = () => {
             </Helmet>
             {/* Responsive Table */}
             <div className="overflow-x-auto bg-white shadow-xl rounded-lg">
-                <table className="min-w-full table-auto text-sm text-gray-700">
-                    <thead className="bg-green-600 text-white">
-                        <tr>
-                            <th className="p-4 text-left">Date</th>
-                            <th className="p-4 text-left">Calculation</th>
-                            <th className="p-4 text-left">Result</th>
-                            <th className="p-4 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {calculations.map((item, index) => (
-                            <tr
-                                key={item._id || index}
-                                className="hover:bg-gray-100 transition-all duration-300"
-                            >
-                                <td className="p-4">{item.timestamp
-                                    ? `${new Date(item.timestamp).toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric',
-                                    })} ${new Date(item.timestamp).toLocaleTimeString('en-US', {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                        second: '2-digit',
-                                    })}`
-                                    : 'N/A'}</td>
-                                <td className="p-4">{item.calculator_name || 'Unnamed'}</td>
-                                <td className="p-4">{item.result || 'N/A'}</td>
-                                <td className="p-4 text-center flex justify-center space-x-4">
-                                    <button
-                                        onClick={() => handleViewDetails(item)}
-                                        className="text-blue-500 hover:text-blue-700 focus:outline-none"
-                                    >
-                                        <FaEye size={20} />
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(item._id)}
-                                        className="text-red-500 hover:text-red-700 focus:outline-none"
-                                    >
-                                        <FaTrashAlt size={20} />
-                                    </button>
-                                </td>
+                {calculations.length > 0 ? (
+                    <table className="min-w-full table-auto text-sm text-gray-700">
+                        <thead className="bg-green-600 text-white">
+                            <tr>
+                                <th className="p-4 text-left">Date</th>
+                                <th className="p-4 text-left">Calculation</th>
+                                <th className="p-4 text-left">Result</th>
+                                <th className="p-4 text-center">Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {calculations.map((item, index) => (
+                                <tr
+                                    key={item._id || index}
+                                    className="hover:bg-gray-100 transition-all duration-300"
+                                >
+                                    <td className="p-4">{item.timestamp
+                                        ? `${new Date(item.timestamp).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric',
+                                        })} ${new Date(item.timestamp).toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                        })}`
+                                        : 'N/A'}</td>
+                                    <td className="p-4">{item.calculator_name || 'Unnamed'}</td>
+                                    <td className="p-4">{item.result || 'N/A'}</td>
+                                    <td className="p-4 text-center flex justify-center space-x-4">
+                                        <button
+                                            onClick={() => handleViewDetails(item)}
+                                            className="text-blue-500 hover:text-blue-700 focus:outline-none"
+                                        >
+                                            <FaEye size={20} />
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(item._id)}
+                                            className="text-red-500 hover:text-red-700 focus:outline-none"
+                                        >
+                                            <FaTrashAlt size={20} />
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (<div className="flex flex-col items-center justify-center p-10">
+                    <FaExclamationCircle className="text-gray-500 text-4xl mb-2" />
+                    <p className="text-gray-600 text-lg font-semibold">
+                        No Nutrition assessment yet. Navigate to{' '}
+                        <a href="/anthro/BMI" className="text-blue-500 hover:underline">
+                            Nutrition Assessment
+                        </a>{' '}
+                        to perform your nutrition calculation.
+                    </p>
+                </div>)}
             </div>
 
             {/* Modal */}
