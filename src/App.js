@@ -48,6 +48,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserProvider } from './Context/User/UserContext';
 import { useEffect } from 'react';
 import { FOODIMETRIC_HOST_URL } from './Utils/host';
+import Verify from './Pages/Verify';
 
 
 const queryClient = new QueryClient({
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
   {
     path: "forgot",
     element: <Reset />,
+  },
+  {
+    path: "verify",
+    element: <Verify />,
   },
   {
     path: "reset",

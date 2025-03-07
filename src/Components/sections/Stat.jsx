@@ -25,34 +25,34 @@ const StatSection = () => {
                     <div className="grid grid-cols-12 gap-x-4 justify-center">
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
                             <div>
-                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
+                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl xs:text-3xl flex items-center justify-center">
                                     <Odometer value={trustedCustomers} format="d" />+
                                 </h3>
-                                <p className="text-base text-white md:text-sm">Trusted By Customers</p>
+                                <p className="text-base text-white xs:text-sm">Trusted By Customers</p>
                             </div>
                         </div>
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
                             <div>
-                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
+                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl xs:text-3xl flex items-center justify-center">
                                     <Odometer value={monthsFoundation} format="d" />
                                 </h3>
-                                <p className="text-base text-white md:text-sm">Partners</p>
+                                <p className="text-base text-white xs:text-sm">Partners</p>
                             </div>
                         </div>
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
                             <div>
-                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
+                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl xs:text-3xl flex items-center justify-center">
                                     <Odometer value={monthlyUsers} format="d" />+
                                 </h3>
-                                <p className="text-base text-white md:text-sm">Monthly Users</p>
+                                <p className="text-base text-white xs:text-sm">Monthly Users</p>
                             </div>
                         </div>
                         <div className="md:col-span-3 col-span-6 col:col-span-12 md:mb-8">
                             <div>
-                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl flex items-center justify-center">
+                                <h3 className="text-7xl text-white font-heading-font lg:text-6xl sm:text-5xl xs:text-3xl flex items-center justify-center">
                                     <Odometer value={foodSearch} format="d" />+
                                 </h3>
-                                <p className="text-base text-white md:text-sm">Food Searches</p>
+                                <p className="text-base text-white xs:text-sm">Food Searches</p>
                             </div>
                         </div>
                     </div>

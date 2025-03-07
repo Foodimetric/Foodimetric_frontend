@@ -88,7 +88,7 @@ const Header = () => {
                                     <li><NavLink to="/search/multi-food">Multi-Food</NavLink></li>
                                 </ul>
                             </li>
-                            <li><NavLink to="/anthro/BMI">Nutrition Stats</NavLink>
+                            <li><NavLink to="/anthro/BMI">Nutrition Assessment</NavLink>
                                 <ul className="dl-submenu">
                                     <li><a href="shop.html">BMI </a></li>
                                     <li><a href="shop-single.html">IBW</a></li>
@@ -105,7 +105,7 @@ const Header = () => {
                                         <i className="ti-user text-lg"></i>
                                     </div>
                                 </Link>
-                                <span className='text-white font-bold capitalize'>{`${user?.firstName} ${user?.lastName}`}</span>
+                                <span className='text-white font-bold capitalize'>{`Your Dashboard Tracker`}</span>
                             </li>}
                         </ul>
                     </div>
@@ -146,7 +146,7 @@ const Header = () => {
                                 before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                 before:bg-[#ea7c08] before:content
                                 before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                hover:before:opacity-100 hover:before:visible">Nutrition Stats</button>
+                                hover:before:opacity-100 hover:before:visible">Nutrition Assessment</button>
                             <ul className="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
                                 shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                 group-hover:opacity-100 group-hover:top-full group-hover:visible ">

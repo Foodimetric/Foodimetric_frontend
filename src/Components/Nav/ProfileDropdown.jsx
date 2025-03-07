@@ -130,7 +130,7 @@ const ProfileDropdown = () => {
                     <StyledMenuItem>
                         <StyledNavLink to="/anthro/BMI" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                             <FiUser size={20} />
-                            Anthropometric Data
+                            Nutrition Assessment
                         </StyledNavLink>
                     </StyledMenuItem>
                 )}
@@ -138,7 +138,7 @@ const ProfileDropdown = () => {
                     <StyledMenuItem>
                         <StyledNavLink to="/search/food" onClick={handleClose} sx={{ fontFamily: 'Outfit, serif' }}>
                             <FiSearch size={20} />
-                            Search Food
+                            Food Search
                         </StyledNavLink>
                     </StyledMenuItem>
                 )}

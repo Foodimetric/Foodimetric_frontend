@@ -54,7 +54,7 @@ const DashboardNav = ({ isExpanded, toggleSidebar }) => {
                 {[
                     { name: 'Dashboard', path: '/dashboard', icon: <FaTachometerAlt /> },
                     { name: 'History', path: '/dashboard/history', icon: <FaHistory /> },
-                    { name: 'Diary', path: '/dashboard/diary', icon: <FaBook /> },
+                    { name: 'Food Diary', path: '/dashboard/diary', icon: <FaBook /> },
                     // { name: 'Report', path: '/dashboard/report', icon: <FaFileAlt /> },
                     { name: 'Settings', path: '/dashboard/setting', icon: <FaCog /> },
                 ].map((item) => (
