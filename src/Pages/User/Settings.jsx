@@ -22,25 +22,20 @@ const UserSettings = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [loading, setLoading] = useState(false);
 
-
     const countries = [
-        // Existing countries
         'Choose Location',
-        'United States', 'Canada', 'United Kingdom', 'Australia', 'Germany',
-        'France', 'India', 'Brazil', 'China', 'Japan', 'Mexico', 'South Africa',
-        'Italy', 'Spain', 'Netherlands', 'Russia', 'South Korea', 'Argentina',
-        'Nigeria', 'Egypt', 'Saudi Arabia',
-
-        // All African countries
-        'Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi',
-        'Cabo Verde', 'Cameroon', 'Central African Republic', 'Chad', 'Comoros',
-        'Congo (Congo-Brazzaville)', 'Djibouti', 'Equatorial Guinea', 'Eritrea',
-        'Eswatini (fmr. "Swaziland")', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana',
-        'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia',
-        'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius',
-        'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Rwanda', 'Sao Tome and Principe',
-        'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Sudan',
-        'Sudan', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'
+        'Algeria', 'Angola', 'Argentina', 'Australia', 'Benin', 'Botswana', 'Brazil',
+        'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cameroon', 'Canada', 'Central African Republic',
+        'Chad', 'China', 'Comoros', 'Congo (Congo-Brazzaville)', 'Djibouti', 'Egypt',
+        'Equatorial Guinea', 'Eritrea', 'Eswatini (fmr. "Swaziland")', 'Ethiopia',
+        'France', 'Gabon', 'Gambia', 'Germany', 'Ghana', 'Guinea', 'Guinea-Bissau',
+        'India', 'Italy', 'Ivory Coast', 'Japan', 'Kenya', 'Lesotho', 'Liberia',
+        'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Mexico',
+        'Morocco', 'Mozambique', 'Namibia', 'Netherlands', 'Niger', 'Nigeria',
+        'Russia', 'Rwanda', 'Saudi Arabia', 'Sao Tome and Principe', 'Senegal',
+        'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Korea',
+        'South Sudan', 'Spain', 'Sudan', 'Tanzania', 'Togo', 'Tunisia', 'Uganda',
+        'United Kingdom', 'United States', 'Zambia', 'Zimbabwe'
     ];
     //  simplified list of countries (you can expand or load dynamically)
 
